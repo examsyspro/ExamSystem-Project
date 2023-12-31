@@ -45,16 +45,11 @@ namespace ExamSystem_Project.Forms
 
 
             if (!e.IsExpired)
-                label_clock.Invoke((MethodInvoker)delegate{label_timer.Text = sender.ToString();});
+                label_clock.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
             else
             {
-                label_clock.Invoke((MethodInvoker)delegate{label_timer.Text = sender.ToString();});
+                label_clock.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
             }
-
-
-
-
-
         }
 
         private void button_startExam_Click(object sender, EventArgs e)
@@ -62,6 +57,11 @@ namespace ExamSystem_Project.Forms
             timer.StartTimer();
             Button clickedButton = (Button)sender;
             clickedButton.Enabled = false;
+        }
+
+        private void ExamRunForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

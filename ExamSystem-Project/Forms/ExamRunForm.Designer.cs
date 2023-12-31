@@ -71,6 +71,7 @@
             Controls.Add(button_startExam);
             Name = "ExamRunForm";
             Text = "ExamRunForm";
+            FormClosing += ExamRunForm_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }

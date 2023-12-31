@@ -21,7 +21,7 @@ namespace ExamSystem.ServerAPI
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddSingleton<Sql_Funcs>(provider => new Sql_Funcs(configuration));
+            builder.Services.AddSingleton<IUsersRepository,UsersRepository>();
             builder.Services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
