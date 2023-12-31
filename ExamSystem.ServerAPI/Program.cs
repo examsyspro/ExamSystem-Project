@@ -1,5 +1,4 @@
 using ExamSystem.ServerAPI.Repositories;
-using ExamSystem.ServerAPI.SQL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +31,7 @@ namespace ExamSystem.ServerAPI
             });
 
             var app = builder.Build();
-            var sqlFuncs = app.Services.GetService<Sql_Funcs>();
+         //   var sqlFuncs = app.Services.GetService<Sql_Funcs>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

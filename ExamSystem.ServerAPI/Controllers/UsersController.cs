@@ -1,8 +1,6 @@
 ﻿using ExamSystem.ServerAPI.Models;
 using ExamSystem.ServerAPI.Repositories;
-using ExamSystem.ServerAPI.SQL;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 using System.Net.Mime;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -20,14 +18,9 @@ namespace ExamSystem.ServerAPI.Controllers
         }
         // GET: api/<UsersController>
         [HttpGet("getallusers")]
-        public async Task<DataTable> GetAllUsers()
+        public async Task<List<User>> GetAllUsers()
         {
-            
-           
-
-            return  Sql_Funcs.sql_Funcs.GetAll_Users();
-
-            //return await _usersRepo.GetAllUsers();
+            return await _usersRepo.GetAllUsers();
         }
 
         // GET api/<UsersController>/5
