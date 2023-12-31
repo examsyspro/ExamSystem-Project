@@ -1,5 +1,4 @@
-﻿using ExamSystem.Client.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using ExamSystem_Project.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace ExamSystem.Client.ApiRequestors
+namespace ExamSystem_Project.ApiRequestors
 {
     public class UserRequestor
     {

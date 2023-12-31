@@ -1,11 +1,4 @@
-﻿using ExamSystem.Client.Pages.Views;
-using System;
-using System.Windows;
-using System.Windows.Threading;
-using System.Timers;
-using ExamSystem.Client.Pages.Windows;
-using System.Windows.Interop;
-using System.Diagnostics.Contracts;
+﻿using System.Timers;
 
 namespace ExamSystem.Client.Helpers
 {
@@ -24,7 +17,7 @@ namespace ExamSystem.Client.Helpers
         private int Seconds = 0;
         public string FormattedTime = "";
         public string Msg = "";
-        private Timer timer;
+        private System.Timers.Timer timer;
         MyTimerEventArgs Timer_Args;
 
         public TimerClass( int initialHours, int initialMinutes, int initialSeconds)
@@ -42,7 +35,7 @@ namespace ExamSystem.Client.Helpers
         {
            
 
-            timer = new Timer(1000);
+            timer = new System.Timers.Timer(1000);
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
             timer.Enabled = true;

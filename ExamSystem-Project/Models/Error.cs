@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 
 
-namespace ExamSystem.Client.Models
+namespace ExamSystem_Project.Models
 {
     public class Error
     {

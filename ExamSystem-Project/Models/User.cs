@@ -1,4 +1,5 @@
 ﻿using ExamSystem.Client.Helpers;
+using ExamSystem_Project.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ExamSystem.Client.Models
+namespace ExamSystem_Project.Models
 {
     public class User
     {

@@ -1,5 +1,5 @@
 ﻿using ExamSystem.Client.Helpers;
-using Microsoft.Data.SqlClient;
+using ExamSystem_Project.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ExamSystem.Client.Models
+namespace ExamSystem_Project.Models
 {
     public class Exam
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExamSystem.Client.Models
+namespace ExamSystem_Project.Models
 {
     public class Question
     {
