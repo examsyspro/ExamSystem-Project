@@ -31,6 +31,8 @@
             panel1 = new Panel();
             label1 = new Label();
             panel2 = new Panel();
+            label_characters = new Label();
+            label_userid = new Label();
             label_registerNow = new Label();
             label2 = new Label();
             textBox_password = new TextBox();
@@ -49,7 +51,7 @@
             panel1.ForeColor = SystemColors.ControlText;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(487, 121);
+            panel1.Size = new Size(532, 121);
             panel1.TabIndex = 2;
             // 
             // label1
@@ -57,7 +59,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(254, 255, 255);
-            label1.Location = new Point(192, 38);
+            label1.Location = new Point(224, 41);
             label1.Name = "label1";
             label1.Size = new Size(104, 45);
             label1.TabIndex = 0;
@@ -66,6 +68,8 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.Window;
+            panel2.Controls.Add(label_characters);
+            panel2.Controls.Add(label_userid);
             panel2.Controls.Add(panel1);
             panel2.Controls.Add(label_registerNow);
             panel2.Controls.Add(label2);
@@ -75,8 +79,28 @@
             panel2.ForeColor = SystemColors.ControlText;
             panel2.Location = new Point(394, 88);
             panel2.Name = "panel2";
-            panel2.Size = new Size(487, 628);
+            panel2.Size = new Size(532, 628);
             panel2.TabIndex = 3;
+            // 
+            // label_characters
+            // 
+            label_characters.AutoSize = true;
+            label_characters.ForeColor = SystemColors.GrayText;
+            label_characters.Location = new Point(96, 339);
+            label_characters.Name = "label_characters";
+            label_characters.Size = new Size(388, 25);
+            label_characters.TabIndex = 6;
+            label_characters.Text = "8+ characters, 1 uppercase, 1 lowercase, 1 digit.";
+            // 
+            // label_userid
+            // 
+            label_userid.AutoSize = true;
+            label_userid.ForeColor = SystemColors.GrayText;
+            label_userid.Location = new Point(96, 230);
+            label_userid.Name = "label_userid";
+            label_userid.Size = new Size(179, 25);
+            label_userid.TabIndex = 5;
+            label_userid.Text = "Enter valid 9-digit ID.";
             // 
             // label_registerNow
             // 
@@ -84,7 +108,7 @@
             label_registerNow.Cursor = Cursors.Hand;
             label_registerNow.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             label_registerNow.ForeColor = Color.FromArgb(0, 160, 244);
-            label_registerNow.Location = new Point(162, 556);
+            label_registerNow.Location = new Point(195, 561);
             label_registerNow.Name = "label_registerNow";
             label_registerNow.Size = new Size(140, 28);
             label_registerNow.TabIndex = 4;
@@ -95,7 +119,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.ControlDarkDark;
-            label2.Location = new Point(135, 529);
+            label2.Location = new Point(168, 534);
             label2.Name = "label2";
             label2.Size = new Size(202, 25);
             label2.TabIndex = 3;
@@ -107,7 +131,7 @@
             textBox_password.BorderStyle = BorderStyle.None;
             textBox_password.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             textBox_password.ForeColor = Color.FromArgb(0, 135, 209);
-            textBox_password.Location = new Point(76, 258);
+            textBox_password.Location = new Point(96, 290);
             textBox_password.Multiline = true;
             textBox_password.Name = "textBox_password";
             textBox_password.Size = new Size(336, 46);
@@ -121,7 +145,7 @@
             textBox_userId.BorderStyle = BorderStyle.None;
             textBox_userId.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             textBox_userId.ForeColor = Color.FromArgb(0, 135, 209);
-            textBox_userId.Location = new Point(76, 182);
+            textBox_userId.Location = new Point(96, 182);
             textBox_userId.Multiline = true;
             textBox_userId.Name = "textBox_userId";
             textBox_userId.Size = new Size(336, 45);
@@ -135,7 +159,7 @@
             button_loginStart.FlatStyle = FlatStyle.Flat;
             button_loginStart.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_loginStart.ForeColor = Color.White;
-            button_loginStart.Location = new Point(144, 376);
+            button_loginStart.Location = new Point(179, 411);
             button_loginStart.Name = "button_loginStart";
             button_loginStart.Size = new Size(182, 59);
             button_loginStart.TabIndex = 0;
@@ -148,7 +172,7 @@
             panel3.BackColor = Color.Gainsboro;
             panel3.Location = new Point(375, 72);
             panel3.Name = "panel3";
-            panel3.Size = new Size(523, 662);
+            panel3.Size = new Size(568, 662);
             panel3.TabIndex = 4;
             // 
             // Login
@@ -179,5 +203,7 @@
         private Label label2;
         private Label label_registerNow;
         private Panel panel3;
+        private Label label_userid;
+        private Label label_characters;
     }
 }
