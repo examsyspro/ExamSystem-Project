@@ -134,7 +134,7 @@ namespace ExamSystem_Project.UserControls
 
         private void Register_Load(object sender, EventArgs e)
         {
-           
+
             comboBox_Type.Items.Insert(0, "Click to select");
             comboBox_Type.SelectedIndex = 0;
             comboBox_Type.Items.Insert(1, UserType_Enum.Teacher);

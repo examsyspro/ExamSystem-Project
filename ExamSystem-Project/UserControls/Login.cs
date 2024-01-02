@@ -41,27 +41,6 @@ namespace ExamSystem_Project.UserControls
             MainForm.main.UISwitch("Register");
         }
 
-        private void textBox_userId_TextChanged(object sender, EventArgs e)
-        {
-            ButtonHandler();
-        }
-
-        private void textBox_password_TextChanged(object sender, EventArgs e)
-        {
-            ButtonHandler();
-        }
-
-        public void ButtonHandler()
-        {
-            if (textBox_userId.Text == "UserId" || string.IsNullOrEmpty(textBox_userId.Text.Trim()) || textBox_password.Text == "Password" || string.IsNullOrEmpty(textBox_password.Text.Trim()))
-            {
-                button_loginStart.Enabled = false;
-            }
-            else
-            {
-                button_loginStart.Enabled = true;
-            }
-        }
 
         private async void button_loginStart_Click(object sender, EventArgs e)
         {
@@ -96,6 +75,7 @@ namespace ExamSystem_Project.UserControls
                     if (userResponse.TypeOfUser == "Student")
                     {
 
+                        MessageBox.Show("Student");
                         //Window mainWindow = Window.GetWindow(this);
                         //StudentWindow student = new StudentWindow(userResponse);
                         //student.Show();
@@ -106,7 +86,7 @@ namespace ExamSystem_Project.UserControls
                     else if (userResponse.TypeOfUser == "Teacher")
                     {
 
-                        //this.Content = new TeacherMain(userResponse);
+                        MessageBox.Show("Teacher");
                     }
                 }
                 else

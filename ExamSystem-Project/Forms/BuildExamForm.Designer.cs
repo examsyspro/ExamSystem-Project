@@ -39,10 +39,10 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            tabControl1.Location = new Point(97, 126);
+            tabControl1.Location = new Point(97, 106);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1556, 989);
+            tabControl1.Size = new Size(1594, 1045);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -52,7 +52,7 @@
             tabPage1.Location = new Point(4, 47);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1548, 938);
+            tabPage1.Size = new Size(1586, 994);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "tabPage1";
             // 
@@ -61,7 +61,7 @@
             tabPage2.Location = new Point(4, 47);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1741, 1172);
+            tabPage2.Size = new Size(1567, 968);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
@@ -70,7 +70,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1749, 1223);
+            ClientSize = new Size(1789, 1262);
             Controls.Add(tabControl1);
             Name = "BuildExamForm";
             Text = "BuildExamForm";

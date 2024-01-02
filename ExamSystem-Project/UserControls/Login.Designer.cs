@@ -153,27 +153,25 @@
             // 
             // textBox_password
             // 
-            textBox_password.BackColor = Color.FromArgb(235, 235, 235);
+            textBox_password.BackColor = Color.Snow;
             textBox_password.BorderStyle = BorderStyle.FixedSingle;
-            textBox_password.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox_password.ForeColor = Color.FromArgb(0, 135, 209);
+            textBox_password.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox_password.ForeColor = SystemColors.ControlText;
             textBox_password.Location = new Point(195, 289);
             textBox_password.Name = "textBox_password";
             textBox_password.Size = new Size(336, 37);
             textBox_password.TabIndex = 2;
-            textBox_password.TextChanged += textBox_password_TextChanged;
             // 
             // textBox_userId
             // 
-            textBox_userId.BackColor = Color.FromArgb(235, 235, 235);
+            textBox_userId.BackColor = Color.Snow;
             textBox_userId.BorderStyle = BorderStyle.FixedSingle;
-            textBox_userId.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox_userId.ForeColor = Color.FromArgb(0, 135, 209);
+            textBox_userId.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox_userId.ForeColor = SystemColors.ControlText;
             textBox_userId.Location = new Point(195, 181);
             textBox_userId.Name = "textBox_userId";
             textBox_userId.Size = new Size(336, 37);
             textBox_userId.TabIndex = 1;
-            textBox_userId.TextChanged += textBox_userId_TextChanged;
             // 
             // button_loginStart
             // 

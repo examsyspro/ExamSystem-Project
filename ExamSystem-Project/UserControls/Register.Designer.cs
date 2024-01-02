@@ -158,8 +158,9 @@
             // 
             // comboBox_Course_Select
             // 
-            comboBox_Course_Select.BackColor = Color.FromArgb(235, 235, 235);
+            comboBox_Course_Select.BackColor = Color.Snow;
             comboBox_Course_Select.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox_Course_Select.ForeColor = SystemColors.ControlText;
             comboBox_Course_Select.FormattingEnabled = true;
             comboBox_Course_Select.Location = new Point(682, 297);
             comboBox_Course_Select.Name = "comboBox_Course_Select";
@@ -168,10 +169,10 @@
             // 
             // textBox_password
             // 
-            textBox_password.BackColor = Color.FromArgb(235, 235, 235);
+            textBox_password.BackColor = Color.Snow;
             textBox_password.BorderStyle = BorderStyle.FixedSingle;
-            textBox_password.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox_password.ForeColor = Color.FromArgb(0, 135, 209);
+            textBox_password.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox_password.ForeColor = SystemColors.ControlText;
             textBox_password.Location = new Point(457, 411);
             textBox_password.Name = "textBox_password";
             textBox_password.Size = new Size(258, 37);
@@ -235,8 +236,9 @@
             // 
             // comboBox_Type
             // 
-            comboBox_Type.BackColor = Color.FromArgb(235, 235, 235);
+            comboBox_Type.BackColor = Color.Snow;
             comboBox_Type.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox_Type.ForeColor = SystemColors.ControlText;
             comboBox_Type.FormattingEnabled = true;
             comboBox_Type.Location = new Point(306, 297);
             comboBox_Type.Name = "comboBox_Type";
@@ -247,10 +249,10 @@
             // 
             // textBox_textName
             // 
-            textBox_textName.BackColor = Color.FromArgb(235, 235, 235);
+            textBox_textName.BackColor = Color.Snow;
             textBox_textName.BorderStyle = BorderStyle.FixedSingle;
-            textBox_textName.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox_textName.ForeColor = Color.FromArgb(0, 135, 209);
+            textBox_textName.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox_textName.ForeColor = SystemColors.ControlText;
             textBox_textName.Location = new Point(241, 193);
             textBox_textName.Name = "textBox_textName";
             textBox_textName.Size = new Size(269, 37);
@@ -282,10 +284,10 @@
             // 
             // textBox_textid
             // 
-            textBox_textid.BackColor = Color.FromArgb(235, 235, 235);
+            textBox_textid.BackColor = Color.Snow;
             textBox_textid.BorderStyle = BorderStyle.FixedSingle;
-            textBox_textid.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox_textid.ForeColor = Color.FromArgb(0, 135, 209);
+            textBox_textid.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox_textid.ForeColor = SystemColors.ControlText;
             textBox_textid.Location = new Point(628, 193);
             textBox_textid.Name = "textBox_textid";
             textBox_textid.Size = new Size(273, 37);
