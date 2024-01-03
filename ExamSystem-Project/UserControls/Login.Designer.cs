@@ -52,8 +52,9 @@
             panel1.Dock = DockStyle.Top;
             panel1.ForeColor = SystemColors.ControlText;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(2, 2, 2, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(679, 121);
+            panel1.Size = new Size(543, 97);
             panel1.TabIndex = 2;
             // 
             // label1
@@ -61,9 +62,10 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(254, 255, 255);
-            label1.Location = new Point(279, 40);
+            label1.Location = new Point(223, 32);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(104, 45);
+            label1.Size = new Size(89, 37);
             label1.TabIndex = 0;
             label1.Text = "Login";
             // 
@@ -81,9 +83,10 @@
             panel2.Controls.Add(textBox_userId);
             panel2.Controls.Add(button_loginStart);
             panel2.ForeColor = SystemColors.ControlText;
-            panel2.Location = new Point(315, 85);
+            panel2.Location = new Point(252, 68);
+            panel2.Margin = new Padding(2, 2, 2, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(679, 628);
+            panel2.Size = new Size(543, 502);
             panel2.TabIndex = 3;
             // 
             // label4
@@ -91,9 +94,10 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.FromArgb(0, 135, 209);
-            label4.Location = new Point(143, 183);
+            label4.Location = new Point(114, 146);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(46, 30);
+            label4.Size = new Size(40, 25);
             label4.TabIndex = 10;
             label4.Text = "Id :";
             // 
@@ -102,9 +106,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.FromArgb(0, 135, 209);
-            label3.Location = new Point(65, 291);
+            label3.Location = new Point(45, 233);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(124, 30);
+            label3.Size = new Size(107, 25);
             label3.TabIndex = 9;
             label3.Text = "Password :";
             // 
@@ -112,9 +117,10 @@
             // 
             label_characters.AutoSize = true;
             label_characters.ForeColor = SystemColors.GrayText;
-            label_characters.Location = new Point(195, 329);
+            label_characters.Location = new Point(156, 263);
+            label_characters.Margin = new Padding(2, 0, 2, 0);
             label_characters.Name = "label_characters";
-            label_characters.Size = new Size(388, 25);
+            label_characters.Size = new Size(323, 20);
             label_characters.TabIndex = 6;
             label_characters.Text = "8+ characters, 1 uppercase, 1 lowercase, 1 digit.";
             // 
@@ -122,9 +128,10 @@
             // 
             label_userid.AutoSize = true;
             label_userid.ForeColor = SystemColors.GrayText;
-            label_userid.Location = new Point(195, 221);
+            label_userid.Location = new Point(156, 177);
+            label_userid.Margin = new Padding(2, 0, 2, 0);
             label_userid.Name = "label_userid";
-            label_userid.Size = new Size(179, 25);
+            label_userid.Size = new Size(150, 20);
             label_userid.TabIndex = 5;
             label_userid.Text = "Enter valid 9-digit ID.";
             // 
@@ -134,9 +141,10 @@
             label_registerNow.Cursor = Cursors.Hand;
             label_registerNow.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             label_registerNow.ForeColor = Color.FromArgb(0, 160, 244);
-            label_registerNow.Location = new Point(266, 553);
+            label_registerNow.Location = new Point(213, 442);
+            label_registerNow.Margin = new Padding(2, 0, 2, 0);
             label_registerNow.Name = "label_registerNow";
-            label_registerNow.Size = new Size(140, 28);
+            label_registerNow.Size = new Size(118, 23);
             label_registerNow.TabIndex = 4;
             label_registerNow.Text = "Register Now";
             label_registerNow.Click += label_registerNow_Click;
@@ -145,9 +153,10 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.ControlDarkDark;
-            label2.Location = new Point(239, 526);
+            label2.Location = new Point(191, 421);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(202, 25);
+            label2.Size = new Size(167, 20);
             label2.TabIndex = 3;
             label2.Text = "Don't have an account ?";
             // 
@@ -157,9 +166,10 @@
             textBox_password.BorderStyle = BorderStyle.FixedSingle;
             textBox_password.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             textBox_password.ForeColor = SystemColors.ControlText;
-            textBox_password.Location = new Point(195, 289);
+            textBox_password.Location = new Point(156, 231);
+            textBox_password.Margin = new Padding(2, 2, 2, 2);
             textBox_password.Name = "textBox_password";
-            textBox_password.Size = new Size(336, 37);
+            textBox_password.Size = new Size(269, 32);
             textBox_password.TabIndex = 2;
             // 
             // textBox_userId
@@ -168,9 +178,10 @@
             textBox_userId.BorderStyle = BorderStyle.FixedSingle;
             textBox_userId.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             textBox_userId.ForeColor = SystemColors.ControlText;
-            textBox_userId.Location = new Point(195, 181);
+            textBox_userId.Location = new Point(156, 145);
+            textBox_userId.Margin = new Padding(2, 2, 2, 2);
             textBox_userId.Name = "textBox_userId";
-            textBox_userId.Size = new Size(336, 37);
+            textBox_userId.Size = new Size(269, 32);
             textBox_userId.TabIndex = 1;
             // 
             // button_loginStart
@@ -179,9 +190,10 @@
             button_loginStart.FlatStyle = FlatStyle.Flat;
             button_loginStart.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_loginStart.ForeColor = Color.White;
-            button_loginStart.Location = new Point(250, 403);
+            button_loginStart.Location = new Point(200, 322);
+            button_loginStart.Margin = new Padding(2, 2, 2, 2);
             button_loginStart.Name = "button_loginStart";
-            button_loginStart.Size = new Size(182, 59);
+            button_loginStart.Size = new Size(146, 47);
             button_loginStart.TabIndex = 0;
             button_loginStart.Text = "Login";
             button_loginStart.UseVisualStyleBackColor = false;
@@ -190,21 +202,23 @@
             // panel3
             // 
             panel3.BackColor = Color.Gainsboro;
-            panel3.Location = new Point(296, 69);
+            panel3.Location = new Point(237, 55);
+            panel3.Margin = new Padding(2, 2, 2, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(715, 662);
+            panel3.Size = new Size(572, 530);
             panel3.TabIndex = 4;
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
             Controls.Add(panel2);
             Controls.Add(panel3);
             ForeColor = Color.FromArgb(100, 121, 95);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Login";
-            Size = new Size(1277, 801);
+            Size = new Size(1022, 641);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

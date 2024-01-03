@@ -34,8 +34,6 @@
             label1 = new Label();
             label2 = new Label();
             dataGridView_StudentExam = new DataGridView();
-            studentExamBindingSource1 = new BindingSource(components);
-            studentExamBindingSource = new BindingSource(components);
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
@@ -47,6 +45,8 @@
             dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
             dataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
             StartExam = new DataGridViewButtonColumn();
+            studentExamBindingSource1 = new BindingSource(components);
+            studentExamBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView_StudentExam).BeginInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).BeginInit();
@@ -55,7 +55,7 @@
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(266, 106);
+            textBox1.Location = new Point(266, 123);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(248, 27);
             textBox1.TabIndex = 0;
@@ -64,7 +64,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(49, 106);
+            label1.Location = new Point(49, 123);
             label1.Name = "label1";
             label1.Size = new Size(211, 28);
             label1.TabIndex = 1;
@@ -73,10 +73,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 22.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.FromArgb(0, 135, 209);
             label2.Location = new Point(386, 32);
             label2.Name = "label2";
-            label2.Size = new Size(296, 50);
+            label2.Size = new Size(313, 50);
             label2.TabIndex = 3;
             label2.Text = "Student Window";
             // 
@@ -96,7 +97,7 @@
             dataGridView_StudentExam.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewCheckBoxColumn1, StartExam });
             dataGridView_StudentExam.DataSource = studentExamBindingSource1;
             dataGridView_StudentExam.EnableHeadersVisualStyles = false;
-            dataGridView_StudentExam.Location = new Point(49, 155);
+            dataGridView_StudentExam.Location = new Point(49, 172);
             dataGridView_StudentExam.Name = "dataGridView_StudentExam";
             dataGridView_StudentExam.RowHeadersWidth = 51;
             dataGridView_StudentExam.RowTemplate.Height = 29;
@@ -104,10 +105,6 @@
             dataGridView_StudentExam.Size = new Size(998, 359);
             dataGridView_StudentExam.TabIndex = 4;
             dataGridView_StudentExam.CellClick += dataGridView_StudentExam_CellClick;
-            // 
-            // studentExamBindingSource1
-            // 
-            studentExamBindingSource1.DataSource = typeof(Models.StudentExam);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -166,7 +163,7 @@
             dataGridViewTextBoxColumn7.HeaderText = "Total Time";
             dataGridViewTextBoxColumn7.MinimumWidth = 8;
             dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.Width = 130;
+            dataGridViewTextBoxColumn7.Width = 150;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -201,6 +198,10 @@
             StartExam.Text = "Start Exam";
             StartExam.UseColumnTextForButtonValue = true;
             StartExam.Width = 125;
+            // 
+            // studentExamBindingSource1
+            // 
+            studentExamBindingSource1.DataSource = typeof(Models.StudentExam);
             // 
             // StudentForm
             // 
