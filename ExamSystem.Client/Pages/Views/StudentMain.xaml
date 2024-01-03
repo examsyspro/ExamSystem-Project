@@ -31,6 +31,7 @@
         <Button Content="Log out" HorizontalAlignment="Left" Margin="8,22,0,0" VerticalAlignment="Top" Height="32" Width="84" FontWeight="Bold" FontSize="12" Foreground="White" Background="#FF0087D1" BorderBrush="#FF1A1A1A" Click="LogOut_Click" Grid.Column="5" Name="logOut"/>
 
         <Label Content="Student Window" HorizontalAlignment="Left" VerticalAlignment="Top" Height="52" Width="306" FontSize="36" FontWeight="Bold" Foreground="#FF006ECC" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="211,12,0,0" RenderTransformOrigin="0.478,0.566" Grid.Column="1" Grid.ColumnSpan="4"   />
+        <Label Content="Label"/>
 
 
     </Grid>

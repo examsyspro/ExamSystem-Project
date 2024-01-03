@@ -17,7 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ExamSystem.Client.Pages.Views;
 using ExamSystem.Client.Helpers;
-using ExamSystem.ServerAPI.SQL;
+
 
 namespace ExamSystem.Client.Pages.Windows
 {
@@ -30,7 +30,7 @@ namespace ExamSystem.Client.Pages.Windows
         {
 
             InitializeComponent();
-            
+
             //PlaceHolder.Content = new TeacherMain(new User());
         }
         private void Login_Click(object sender, RoutedEventArgs e)
