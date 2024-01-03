@@ -40,6 +40,8 @@ namespace ExamSystem_Project.Forms
 
         }
 
+
+        //Updating the Timer
         public void Timer_Update(object sender, MyTimerEventArgs e)
         {
 
