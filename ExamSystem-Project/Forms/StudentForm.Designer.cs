@@ -34,8 +34,8 @@
             label1 = new Label();
             label2 = new Label();
             dataGridView_StudentExam = new DataGridView();
-            studentExamBindingSource = new BindingSource(components);
             studentExamBindingSource1 = new BindingSource(components);
+            studentExamBindingSource = new BindingSource(components);
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
@@ -48,27 +48,25 @@
             dataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
             StartExam = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView_StudentExam).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).BeginInit();
             SuspendLayout();
             // 
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(332, 132);
-            textBox1.Margin = new Padding(4);
+            textBox1.Location = new Point(266, 106);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(310, 31);
+            textBox1.Size = new Size(248, 27);
             textBox1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(61, 132);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(49, 106);
             label1.Name = "label1";
-            label1.Size = new Size(263, 32);
+            label1.Size = new Size(211, 28);
             label1.TabIndex = 1;
             label1.Text = "Search for exam in DB :";
             // 
@@ -76,10 +74,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 22.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(482, 40);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(386, 32);
             label2.Name = "label2";
-            label2.Size = new Size(357, 61);
+            label2.Size = new Size(296, 50);
             label2.TabIndex = 3;
             label2.Text = "Student Window";
             // 
@@ -99,13 +96,12 @@
             dataGridView_StudentExam.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewCheckBoxColumn1, StartExam });
             dataGridView_StudentExam.DataSource = studentExamBindingSource1;
             dataGridView_StudentExam.EnableHeadersVisualStyles = false;
-            dataGridView_StudentExam.Location = new Point(61, 194);
-            dataGridView_StudentExam.Margin = new Padding(4);
+            dataGridView_StudentExam.Location = new Point(49, 155);
             dataGridView_StudentExam.Name = "dataGridView_StudentExam";
             dataGridView_StudentExam.RowHeadersWidth = 51;
             dataGridView_StudentExam.RowTemplate.Height = 29;
             dataGridView_StudentExam.ScrollBars = ScrollBars.Vertical;
-            dataGridView_StudentExam.Size = new Size(1247, 449);
+            dataGridView_StudentExam.Size = new Size(998, 359);
             dataGridView_StudentExam.TabIndex = 4;
             dataGridView_StudentExam.CellClick += dataGridView_StudentExam_CellClick;
             // 
@@ -146,7 +142,7 @@
             dataGridViewTextBoxColumn4.HeaderText = "Exam Title";
             dataGridViewTextBoxColumn4.MinimumWidth = 8;
             dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.Width = 150;
+            dataGridViewTextBoxColumn4.Width = 130;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -154,7 +150,7 @@
             dataGridViewTextBoxColumn5.HeaderText = "Exam Date";
             dataGridViewTextBoxColumn5.MinimumWidth = 8;
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.Width = 150;
+            dataGridViewTextBoxColumn5.Width = 130;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -162,7 +158,7 @@
             dataGridViewTextBoxColumn6.HeaderText = "Start Time";
             dataGridViewTextBoxColumn6.MinimumWidth = 8;
             dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.Width = 150;
+            dataGridViewTextBoxColumn6.Width = 130;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -170,7 +166,7 @@
             dataGridViewTextBoxColumn7.HeaderText = "Total Time";
             dataGridViewTextBoxColumn7.MinimumWidth = 8;
             dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.Width = 150;
+            dataGridViewTextBoxColumn7.Width = 130;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -208,20 +204,19 @@
             // 
             // StudentForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1346, 876);
+            ClientSize = new Size(1077, 701);
             Controls.Add(dataGridView_StudentExam);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBox1);
-            Margin = new Padding(4);
             Name = "StudentForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "StudentForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView_StudentExam).EndInit();
-            ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
