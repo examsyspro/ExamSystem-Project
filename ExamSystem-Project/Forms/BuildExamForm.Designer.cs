@@ -29,49 +29,66 @@
         private void InitializeComponent()
         {
             tabControl1 = new TabControl();
+            tabPage_step1 = new TabPage();
+            tabPage_step2 = new TabPage();
             tabPage1 = new TabPage();
-            tabPage2 = new TabPage();
             tabControl1.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
             // 
+            tabControl1.Controls.Add(tabPage_step1);
+            tabControl1.Controls.Add(tabPage_step2);
             tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
             tabControl1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            tabControl1.Location = new Point(97, 106);
+            tabControl1.Location = new Point(11, 25);
+            tabControl1.Margin = new Padding(2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1594, 1045);
+            tabControl1.Size = new Size(991, 553);
             tabControl1.TabIndex = 0;
+            // 
+            // tabPage_step1
+            // 
+            tabPage_step1.BackColor = SystemColors.InactiveBorder;
+            tabPage_step1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tabPage_step1.Location = new Point(4, 34);
+            tabPage_step1.Margin = new Padding(2);
+            tabPage_step1.Name = "tabPage_step1";
+            tabPage_step1.Padding = new Padding(2);
+            tabPage_step1.Size = new Size(983, 515);
+            tabPage_step1.TabIndex = 0;
+            tabPage_step1.Text = "Exam details";
+            // 
+            // tabPage_step2
+            // 
+            tabPage_step2.Location = new Point(4, 34);
+            tabPage_step2.Margin = new Padding(2);
+            tabPage_step2.Name = "tabPage_step2";
+            tabPage_step2.Padding = new Padding(2);
+            tabPage_step2.Size = new Size(983, 515);
+            tabPage_step2.TabIndex = 1;
+            tabPage_step2.Text = "Add questions";
+            tabPage_step2.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
-            tabPage1.BackColor = SystemColors.Window;
-            tabPage1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            tabPage1.Location = new Point(4, 47);
+            tabPage1.Location = new Point(4, 34);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1586, 994);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
-            // 
-            // tabPage2
-            // 
-            tabPage2.Location = new Point(4, 47);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1567, 968);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
-            tabPage2.UseVisualStyleBackColor = true;
+            tabPage1.Size = new Size(1083, 515);
+            tabPage1.TabIndex = 2;
+            tabPage1.Text = "Question list";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // BuildExamForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1789, 1262);
+            BackColor = Color.SkyBlue;
+            ClientSize = new Size(1013, 638);
             Controls.Add(tabControl1);
+            Margin = new Padding(2);
             Name = "BuildExamForm";
             Text = "BuildExamForm";
             tabControl1.ResumeLayout(false);
@@ -81,7 +98,8 @@
         #endregion
 
         private TabControl tabControl1;
+        private TabPage tabPage_step1;
+        private TabPage tabPage_step2;
         private TabPage tabPage1;
-        private TabPage tabPage2;
     }
 }

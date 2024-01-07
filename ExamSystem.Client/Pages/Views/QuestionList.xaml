@@ -9,8 +9,6 @@
     <Grid>
         <Button Content="Delete Question" x:Name="Button_Delete_Question" HorizontalAlignment="Center" Margin="0,406,0,0" VerticalAlignment="Top" Height="40" Width="120"
                 Foreground="White" Background="#FF0087D1" BorderBrush="White" />
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="50,70,550,100" IsSynchronizedWithCurrentItem="False"/>
-        <DataGrid Name="Datagrid_question" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="554,70,46,100"/>
 
     </Grid>
 </UserControl>

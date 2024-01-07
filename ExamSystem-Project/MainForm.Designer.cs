@@ -46,7 +46,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1704, 187);
+            panel1.Size = new Size(1801, 184);
             panel1.TabIndex = 6;
             // 
             // label4
@@ -54,7 +54,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.FromArgb(0, 135, 209);
-            label4.Location = new Point(914, 136);
+            label4.Location = new Point(957, 131);
             label4.Name = "label4";
             label4.Size = new Size(449, 28);
             label4.TabIndex = 8;
@@ -67,7 +67,7 @@
             label5.FlatStyle = FlatStyle.Flat;
             label5.Font = new Font("Segoe UI", 60F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = SystemColors.ControlDarkDark;
-            label5.Location = new Point(788, 0);
+            label5.Location = new Point(828, 0);
             label5.Margin = new Padding(0);
             label5.Name = "label5";
             label5.Size = new Size(443, 159);
@@ -80,7 +80,7 @@
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Segoe UI", 60F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.FromArgb(0, 135, 209);
-            label6.Location = new Point(462, 0);
+            label6.Location = new Point(483, 0);
             label6.Margin = new Padding(0);
             label6.Name = "label6";
             label6.Size = new Size(372, 159);
@@ -91,28 +91,30 @@
             // 
             panel2.BackColor = SystemColors.Window;
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 1150);
+            panel2.Location = new Point(0, 1062);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1704, 47);
+            panel2.Size = new Size(1801, 42);
             panel2.TabIndex = 7;
             // 
             // panel1_main
             // 
             panel1_main.BackColor = Color.Transparent;
-            panel1_main.Location = new Point(222, 266);
+            panel1_main.Location = new Point(232, 240);
             panel1_main.Name = "panel1_main";
-            panel1_main.Size = new Size(1277, 801);
+            panel1_main.Size = new Size(1341, 722);
             panel1_main.TabIndex = 8;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(144F, 144F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
             BackColor = Color.FromArgb(0, 135, 209);
-            ClientSize = new Size(1704, 1197);
+            ClientSize = new Size(1801, 1104);
             Controls.Add(panel1_main);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";

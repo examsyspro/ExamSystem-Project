@@ -101,7 +101,7 @@
             panel2.Controls.Add(button_loginStart);
             panel2.Controls.Add(panel1);
             panel2.ForeColor = SystemColors.ControlText;
-            panel2.Location = new Point(85, 62);
+            panel2.Location = new Point(98, 62);
             panel2.Name = "panel2";
             panel2.Size = new Size(1070, 677);
             panel2.TabIndex = 6;
@@ -320,7 +320,7 @@
             // 
             panel3.BackColor = Color.FromArgb(235, 235, 235);
             panel3.Controls.Add(panel4);
-            panel3.Location = new Point(57, 42);
+            panel3.Location = new Point(70, 42);
             panel3.Name = "panel3";
             panel3.Size = new Size(1119, 719);
             panel3.TabIndex = 7;
