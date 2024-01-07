@@ -132,7 +132,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.FromArgb(0, 135, 209);
-            label5.Location = new Point(54, 117);
+            label5.Location = new Point(54, 121);
             label5.Name = "label5";
             label5.Size = new Size(133, 30);
             label5.TabIndex = 11;
@@ -152,7 +152,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label8.ForeColor = SystemColors.GrayText;
-            label8.Location = new Point(395, 550);
+            label8.Location = new Point(398, 548);
             label8.Name = "label8";
             label8.Size = new Size(81, 25);
             label8.TabIndex = 28;
@@ -163,7 +163,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label7.ForeColor = Color.FromArgb(0, 135, 209);
-            label7.Location = new Point(58, 310);
+            label7.Location = new Point(57, 312);
             label7.Name = "label7";
             label7.Size = new Size(136, 30);
             label7.TabIndex = 20;
@@ -173,16 +173,16 @@
             // 
             textBox_examTitle.BorderStyle = BorderStyle.FixedSingle;
             textBox_examTitle.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_examTitle.Location = new Point(193, 119);
+            textBox_examTitle.Location = new Point(203, 119);
             textBox_examTitle.Name = "textBox_examTitle";
-            textBox_examTitle.Size = new Size(253, 37);
+            textBox_examTitle.Size = new Size(292, 37);
             textBox_examTitle.TabIndex = 0;
             // 
             // textBox_minutes_StartTime
             // 
             textBox_minutes_StartTime.BorderStyle = BorderStyle.FixedSingle;
             textBox_minutes_StartTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_minutes_StartTime.Location = new Point(392, 405);
+            textBox_minutes_StartTime.Location = new Point(395, 401);
             textBox_minutes_StartTime.Name = "textBox_minutes_StartTime";
             textBox_minutes_StartTime.Size = new Size(100, 37);
             textBox_minutes_StartTime.TabIndex = 17;
@@ -192,7 +192,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label9.ForeColor = SystemColors.GrayText;
-            label9.Location = new Point(264, 550);
+            label9.Location = new Point(267, 548);
             label9.Name = "label9";
             label9.Size = new Size(63, 25);
             label9.TabIndex = 27;
@@ -212,7 +212,7 @@
             // 
             textBox_hours_StartTime.BorderStyle = BorderStyle.FixedSingle;
             textBox_hours_StartTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_hours_StartTime.Location = new Point(261, 405);
+            textBox_hours_StartTime.Location = new Point(264, 401);
             textBox_hours_StartTime.Name = "textBox_hours_StartTime";
             textBox_hours_StartTime.Size = new Size(100, 37);
             textBox_hours_StartTime.TabIndex = 2;
@@ -243,7 +243,7 @@
             // 
             textBox_hours_totalTime.BorderStyle = BorderStyle.FixedSingle;
             textBox_hours_totalTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_hours_totalTime.Location = new Point(261, 513);
+            textBox_hours_totalTime.Location = new Point(264, 511);
             textBox_hours_totalTime.Name = "textBox_hours_totalTime";
             textBox_hours_totalTime.Size = new Size(100, 37);
             textBox_hours_totalTime.TabIndex = 22;
@@ -283,7 +283,7 @@
             // 
             textBox_minutes_totalTime.BorderStyle = BorderStyle.FixedSingle;
             textBox_minutes_totalTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_minutes_totalTime.Location = new Point(392, 513);
+            textBox_minutes_totalTime.Location = new Point(395, 511);
             textBox_minutes_totalTime.Name = "textBox_minutes_totalTime";
             textBox_minutes_totalTime.Size = new Size(100, 37);
             textBox_minutes_totalTime.TabIndex = 23;
@@ -324,7 +324,7 @@
             tabPage_step2.Location = new Point(4, 47);
             tabPage_step2.Name = "tabPage_step2";
             tabPage_step2.Padding = new Padding(3);
-            tabPage_step2.Size = new Size(1368, 822);
+            tabPage_step2.Size = new Size(1397, 825);
             tabPage_step2.TabIndex = 1;
             tabPage_step2.Text = "Add questions";
             tabPage_step2.UseVisualStyleBackColor = true;
@@ -335,7 +335,7 @@
             tabPage_step3.Margin = new Padding(4, 5, 4, 5);
             tabPage_step3.Name = "tabPage_step3";
             tabPage_step3.Padding = new Padding(4, 5, 4, 5);
-            tabPage_step3.Size = new Size(1368, 822);
+            tabPage_step3.Size = new Size(1397, 825);
             tabPage_step3.TabIndex = 2;
             tabPage_step3.Text = "Question list";
             tabPage_step3.UseVisualStyleBackColor = true;
