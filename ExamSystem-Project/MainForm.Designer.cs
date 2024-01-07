@@ -98,6 +98,8 @@
             // 
             // panel1_main
             // 
+            panel1_main.Anchor = AnchorStyles.Top;
+            panel1_main.AutoSize = true;
             panel1_main.BackColor = Color.Transparent;
             panel1_main.Location = new Point(232, 240);
             panel1_main.Name = "panel1_main";
@@ -122,6 +124,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
