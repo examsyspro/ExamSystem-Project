@@ -182,7 +182,7 @@
             // 
             textBox_minutes_StartTime.BorderStyle = BorderStyle.FixedSingle;
             textBox_minutes_StartTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_minutes_StartTime.Location = new Point(395, 401);
+            textBox_minutes_StartTime.Location = new Point(331, 401);
             textBox_minutes_StartTime.Name = "textBox_minutes_StartTime";
             textBox_minutes_StartTime.Size = new Size(100, 37);
             textBox_minutes_StartTime.TabIndex = 17;
@@ -212,7 +212,7 @@
             // 
             textBox_hours_StartTime.BorderStyle = BorderStyle.FixedSingle;
             textBox_hours_StartTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_hours_StartTime.Location = new Point(267, 401);
+            textBox_hours_StartTime.Location = new Point(203, 401);
             textBox_hours_StartTime.Name = "textBox_hours_StartTime";
             textBox_hours_StartTime.Size = new Size(100, 37);
             textBox_hours_StartTime.TabIndex = 2;
@@ -233,7 +233,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.GrayText;
-            label2.Location = new Point(398, 442);
+            label2.Location = new Point(334, 441);
             label2.Name = "label2";
             label2.Size = new Size(81, 25);
             label2.TabIndex = 26;
@@ -273,7 +273,7 @@
             label_teaStu.AutoSize = true;
             label_teaStu.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label_teaStu.ForeColor = SystemColors.GrayText;
-            label_teaStu.Location = new Point(267, 442);
+            label_teaStu.Location = new Point(203, 441);
             label_teaStu.Name = "label_teaStu";
             label_teaStu.Size = new Size(63, 25);
             label_teaStu.TabIndex = 25;
