@@ -166,6 +166,7 @@
             comboBox_Course_Select.Name = "comboBox_Course_Select";
             comboBox_Course_Select.Size = new Size(219, 38);
             comboBox_Course_Select.TabIndex = 13;
+           
             // 
             // textBox_password
             // 

@@ -30,10 +30,7 @@ namespace ExamSystem.Client.Pages.Views
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            Course_Select.Items.Insert(0, "Click to select");
-            Course_Select.SelectedIndex = 0;
-            Course_Select.Items.Insert(1, Course_Enum.C_Sharp);
-            Course_Select.Items.Insert(2, Course_Enum.JavaSctipt);
+
         }
 
         private void Course_Select_SelectionChanged(object sender, SelectionChangedEventArgs e)
