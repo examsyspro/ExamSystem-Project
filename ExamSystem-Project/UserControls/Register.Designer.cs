@@ -166,7 +166,6 @@
             comboBox_Course_Select.Name = "comboBox_Course_Select";
             comboBox_Course_Select.Size = new Size(219, 38);
             comboBox_Course_Select.TabIndex = 13;
-           
             // 
             // textBox_password
             // 
@@ -250,6 +249,7 @@
             // 
             // textBox_textName
             // 
+            textBox_textName.Anchor = AnchorStyles.Top;
             textBox_textName.BackColor = Color.Snow;
             textBox_textName.BorderStyle = BorderStyle.FixedSingle;
             textBox_textName.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
