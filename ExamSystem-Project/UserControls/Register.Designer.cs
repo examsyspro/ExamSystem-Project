@@ -80,6 +80,7 @@
             // 
             // panel2
             // 
+            panel2.AutoSize = true;
             panel2.BackColor = SystemColors.Window;
             panel2.Controls.Add(label_pass);
             panel2.Controls.Add(label_cour);
@@ -330,6 +331,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             BackColor = Color.Transparent;
             Controls.Add(panel2);
             Controls.Add(panel3);
@@ -342,6 +344,7 @@
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
