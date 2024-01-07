@@ -243,7 +243,7 @@
             // 
             textBox_hours_totalTime.BorderStyle = BorderStyle.FixedSingle;
             textBox_hours_totalTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_hours_totalTime.Location = new Point(264, 511);
+            textBox_hours_totalTime.Location = new Point(264, 504);
             textBox_hours_totalTime.Name = "textBox_hours_totalTime";
             textBox_hours_totalTime.Size = new Size(100, 37);
             textBox_hours_totalTime.TabIndex = 22;
@@ -283,7 +283,7 @@
             // 
             textBox_minutes_totalTime.BorderStyle = BorderStyle.FixedSingle;
             textBox_minutes_totalTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_minutes_totalTime.Location = new Point(395, 511);
+            textBox_minutes_totalTime.Location = new Point(395, 508);
             textBox_minutes_totalTime.Name = "textBox_minutes_totalTime";
             textBox_minutes_totalTime.Size = new Size(100, 37);
             textBox_minutes_totalTime.TabIndex = 23;
