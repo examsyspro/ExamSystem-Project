@@ -74,10 +74,10 @@
             tabControl1.Controls.Add(tabPage_step2);
             tabControl1.Controls.Add(tabPage_step3);
             tabControl1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            tabControl1.Location = new Point(34, 110);
+            tabControl1.Location = new Point(24, 105);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1376, 871);
+            tabControl1.Size = new Size(1405, 876);
             tabControl1.TabIndex = 0;
             // 
             // tabPage_step1
@@ -88,7 +88,7 @@
             tabPage_step1.Location = new Point(4, 47);
             tabPage_step1.Name = "tabPage_step1";
             tabPage_step1.Padding = new Padding(3);
-            tabPage_step1.Size = new Size(1368, 820);
+            tabPage_step1.Size = new Size(1397, 825);
             tabPage_step1.TabIndex = 0;
             tabPage_step1.Text = "Exam details";
             // 
@@ -324,7 +324,7 @@
             tabPage_step2.Location = new Point(4, 47);
             tabPage_step2.Name = "tabPage_step2";
             tabPage_step2.Padding = new Padding(3);
-            tabPage_step2.Size = new Size(1368, 820);
+            tabPage_step2.Size = new Size(1368, 822);
             tabPage_step2.TabIndex = 1;
             tabPage_step2.Text = "Add questions";
             tabPage_step2.UseVisualStyleBackColor = true;
@@ -335,7 +335,7 @@
             tabPage_step3.Margin = new Padding(4, 5, 4, 5);
             tabPage_step3.Name = "tabPage_step3";
             tabPage_step3.Padding = new Padding(4, 5, 4, 5);
-            tabPage_step3.Size = new Size(1368, 820);
+            tabPage_step3.Size = new Size(1368, 822);
             tabPage_step3.TabIndex = 2;
             tabPage_step3.Text = "Question list";
             tabPage_step3.UseVisualStyleBackColor = true;
