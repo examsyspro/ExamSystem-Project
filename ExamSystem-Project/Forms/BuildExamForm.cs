@@ -26,9 +26,10 @@ namespace ExamSystem_Project.Forms
             comboBox_Course_Select.SelectedIndex = 0;
             comboBox_Course_Select.Items.Insert(1, Course_Enum.C_Sharp);
             comboBox_Course_Select.Items.Insert(2, Course_Enum.JavaSctipt);
-
             tabControl1.TabPages.Remove(tabPage_step2);
             tabControl1.TabPages.Remove(tabPage_step3);
+            dateTimePicker_examDate.MinDate = DateTime.Now;
+            
         }
 
         private void button_next_Click(object sender, EventArgs e)

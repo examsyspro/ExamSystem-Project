@@ -31,7 +31,6 @@
             tabControl1 = new TabControl();
             tabPage_step1 = new TabPage();
             panel1 = new Panel();
-            panel2 = new Panel();
             label5 = new Label();
             dateTimePicker_examDate = new DateTimePicker();
             label8 = new Label();
@@ -94,7 +93,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(panel2);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(dateTimePicker_examDate);
             panel1.Controls.Add(label8);
@@ -118,14 +116,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1084, 763);
             panel1.TabIndex = 30;
-            // 
-            // panel2
-            // 
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1084, 56);
-            panel2.TabIndex = 31;
             // 
             // label5
             // 
@@ -471,7 +461,6 @@
         private Label label2;
         private Label label8;
         private Label label9;
-        private Panel panel2;
         private Panel panel1;
         private Panel panel3;
         private Panel panel4;
