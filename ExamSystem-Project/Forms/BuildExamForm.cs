@@ -14,7 +14,8 @@ namespace ExamSystem_Project.Forms
 {
     public partial class BuildExamForm : Form
     {
-        private int textBoxCounter = 1;
+        private int textBoxCounter = 0;
+        private int optionNameCounter = 1;
         public BuildExamForm()
         {
             InitializeComponent();
@@ -88,29 +89,11 @@ namespace ExamSystem_Project.Forms
 
         }
 
-        private double GetTopMargin()
-        {
-            double topMargin = -350;
 
-            // Find the last TextBox in mainGrid and adjust the top margin
-            if (panel_questions.Children.Count > 0)
-            {
-                foreach (UIElement element in panel_questions.Children)
-                {
-                    if (element is TextBox textBox)
-                    {
-                        topMargin += textBox.ActualHeight + 50; // Increase the space between TextBoxes
-                    }
-                }
-            }
-
-            return topMargin;
-        }
 
         private void button_addOption_Click(object sender, EventArgs e)
         {
-
-            button_AddQuestion.Enabled = textBoxCounter == 5 ? false : true;
+            button_addOption.Enabled = textBoxCounter ==4 ? true : false;
 
             // Create a unique identifier for the dynamic controls
             string controlId = Guid.NewGuid().ToString();
@@ -118,11 +101,11 @@ namespace ExamSystem_Project.Forms
             // Create a new Label
             Label dynamicLabel = new Label
             {
-                Font = new Font("Arial", 14, FontStyle.Bold), // Set Font to bold
-                ForeColor = Color.DarkSlateGray,
-                Text = "Option " + textBoxCounter + " :",
+                Font = new Font("Segoe UI", 11, FontStyle.Bold), // Set Font to bold
+                ForeColor = Color.FromArgb(0, 135, 209),
+                Text = "Option " + optionNameCounter + " :",
                 TextAlign = System.Drawing.ContentAlignment.MiddleLeft,
-                Location = new Point(250, GetTopMargin()),
+                Location = new Point(label_question.Left, Convert.ToInt32(GetTopMargin())),
                 AutoSize = true,
                 Tag = controlId // Set a unique identifier as the Tag
             };
@@ -132,61 +115,90 @@ namespace ExamSystem_Project.Forms
             {
                 Width = 362,
                 Height = 26,
-                Margin = new Thickness(70, GetTopMargin(), 10, 10),
-                Name = "TextBox" + textBoxCounter, // Unique name based on the counter
+                BorderStyle = BorderStyle.FixedSingle,
+                Location = new Point(dynamicLabel.Right + 50, dynamicLabel.Top),
+                Name = "TextBox" + optionNameCounter, // Unique name based on the counter
+                Tag = controlId, // Set the same unique identifier as the Tag
 
-                Tag = controlId // Set the same unique identifier as the Tag
             };
 
             // Create a Delete button (trash icon)
             Button deleteButton = new Button
             {
-                Content = "Delete",
-                Width = 40,
-                Name = "Button_" + textBoxCounter,
-                Height = 20,
-                Margin = new Thickness(480, GetTopMargin(), 10, 10),
+                Text = "Delete",
+                Width = 148,
+              Font=  new Font("Segoe UI", 12, FontStyle.Bold),
+                Name = "Button_" + optionNameCounter,
+                ForeColor = Color.White,
+                BackColor = Color.FromArgb(0, 135, 209),
+                Height = 54,
+                AutoSize = true,
+                Location = new Point(dynamicTextBox.Right + 50, dynamicTextBox.Top-4),// Use Location instead of Margin
                 Tag = controlId // Set the same unique identifier as the Tag
             };
 
+           
             // Attach a click event handler to the delete button
-            deleteButton.Click += (sender, e) =>
+            deleteButton.Click += (deleteSender, deleteEventArgs) =>
             {
-                if (sender is Button btn)
+                if (deleteSender is Button btn)
                 {
-
                     var arr = btn.Name.Split("_");
-                    if (int.Parse(arr[1]) < textBoxCounter - 1)
+                    if (int.Parse(arr[1]) < textBoxCounter)
                     {
-                        MessageBox.Show($"Delete Option {textBoxCounter - 1} first");
+                        MessageBox.Show($"Delete Option {textBoxCounter} first");
                         return;
                     }
-
                 }
-                Button_add_Option.IsEnabled = textBoxCounter == 5 ? false : true;
+                button_addOption.Enabled = textBoxCounter <= 4 ? true : false;
                 textBoxCounter--;
+                optionNameCounter--;
+              
+
+
                 // Retrieve the unique identifier associated with the controls
                 string tag = deleteButton.Tag as string;
 
                 // Find and remove controls with the same unique identifier
-                var controlsToRemove = mainGrid.Children
-                    .Cast<FrameworkElement>()
+                var controlsToRemove = panel_questions.Controls
+                    .Cast<Control>()
                     .Where(control => control.Tag as string == tag)
                     .ToList();
 
                 foreach (var control in controlsToRemove)
                 {
-                    mainGrid.Children.Remove(control);
+                    panel_questions.Controls.Remove(control);
                 }
             };
 
-            // Add Label, TextBox, and Delete button to the mainGrid
-            mainGrid.Children.Add(dynamicLabel);
-            mainGrid.Children.Add(dynamicTextBox);
-            mainGrid.Children.Add(deleteButton);
+            // Add Label, TextBox, and Delete button to the panel_questions
+            panel_questions.Controls.Add(dynamicLabel);
+            panel_questions.Controls.Add(dynamicTextBox);
+            panel_questions.Controls.Add(deleteButton);
 
             // Increment the counter for the next TextBox
             textBoxCounter++;
+            optionNameCounter ++;
+        }
+
+
+        private double GetTopMargin()
+        {
+            double topMargin = 10;
+
+            // Find the last TextBox in panel_questions and adjust the top margin
+            if (panel_questions.Controls.Count > 0)
+            {
+                foreach (Control control in panel_questions.Controls)
+                {
+                    if (control is TextBox textBox)
+                    {
+                        topMargin += textBox.Height + 50; // Increase the space between TextBoxes
+                    }
+                }
+            }
+
+            return topMargin;
         }
     }
 }
