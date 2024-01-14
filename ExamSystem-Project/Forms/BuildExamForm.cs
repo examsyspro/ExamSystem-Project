@@ -150,7 +150,7 @@ namespace ExamSystem_Project.Forms
                         return;
                     }
                 }
-                button_addOption.Enabled = textBoxCounter <= 4 ? true : false;
+                button_addOption.Enabled = textBoxCounter < 5;
                 textBoxCounter--;
                 optionNameCounter--;
               
@@ -169,6 +169,7 @@ namespace ExamSystem_Project.Forms
                 {
                     panel_questions.Controls.Remove(control);
                 }
+                button_addOption.Enabled = textBoxCounter < 5;
             };
 
             // Add Label, TextBox, and Delete button to the panel_questions
@@ -177,8 +178,10 @@ namespace ExamSystem_Project.Forms
             panel_questions.Controls.Add(deleteButton);
 
             // Increment the counter for the next TextBox
+           
             textBoxCounter++;
             optionNameCounter ++;
+            button_addOption.Enabled = textBoxCounter < 5;
         }
 
 
