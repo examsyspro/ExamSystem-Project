@@ -113,7 +113,7 @@ namespace ExamSystem_Project.Forms
             // Create a new TextBox
             TextBox dynamicTextBox = new TextBox
             {
-                Width = 600,
+                Width = 500,
                 Height = 26,
                 BorderStyle = BorderStyle.FixedSingle,
                 Location = new Point(dynamicLabel.Right + 50, dynamicLabel.Top),
@@ -126,14 +126,14 @@ namespace ExamSystem_Project.Forms
             Button deleteButton = new Button
             {
                 Text = "Delete",
-                Width = 148,
+                Width = 130,
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 Name = "Button_" + optionNameCounter,
                 ForeColor = Color.White,
                 BackColor = Color.FromArgb(0, 135, 209),
                 Height = 54,
                 AutoSize = true,
-                Location = new Point(dynamicTextBox.Right + 50, dynamicTextBox.Top - 4),// Use Location instead of Margin
+                Location = new Point(dynamicTextBox.Right + 20, dynamicTextBox.Top - 4),// Use Location instead of Margin
                 Tag = controlId // Set the same unique identifier as the Tag
             };
 
