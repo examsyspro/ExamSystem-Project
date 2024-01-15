@@ -105,6 +105,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.Transparent;
             panel1.Controls.Add(checkBox_QuestionOrder);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(dateTimePicker_examDate);
@@ -138,7 +139,7 @@
             checkBox_QuestionOrder.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_QuestionOrder.ForeColor = Color.FromArgb(0, 135, 209);
             checkBox_QuestionOrder.Location = new Point(58, 646);
-            checkBox_QuestionOrder.Margin = new Padding(4, 4, 4, 4);
+            checkBox_QuestionOrder.Margin = new Padding(4);
             checkBox_QuestionOrder.Name = "checkBox_QuestionOrder";
             checkBox_QuestionOrder.Size = new Size(303, 34);
             checkBox_QuestionOrder.TabIndex = 29;
@@ -378,7 +379,7 @@
             button_addOption.FlatStyle = FlatStyle.Flat;
             button_addOption.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_addOption.ForeColor = Color.White;
-            button_addOption.Location = new Point(1078, 375);
+            button_addOption.Location = new Point(1161, 370);
             button_addOption.Margin = new Padding(2);
             button_addOption.Name = "button_addOption";
             button_addOption.Size = new Size(172, 54);
@@ -393,8 +394,8 @@
             checkBox_OptionOrder.CheckAlign = ContentAlignment.MiddleRight;
             checkBox_OptionOrder.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_OptionOrder.ForeColor = Color.FromArgb(0, 135, 209);
-            checkBox_OptionOrder.Location = new Point(1045, 650);
-            checkBox_OptionOrder.Margin = new Padding(4, 4, 4, 4);
+            checkBox_OptionOrder.Location = new Point(1128, 645);
+            checkBox_OptionOrder.Margin = new Padding(4);
             checkBox_OptionOrder.Name = "checkBox_OptionOrder";
             checkBox_OptionOrder.Size = new Size(188, 34);
             checkBox_OptionOrder.TabIndex = 2;
@@ -407,7 +408,7 @@
             button_AddQuestion.FlatStyle = FlatStyle.Flat;
             button_AddQuestion.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_AddQuestion.ForeColor = Color.White;
-            button_AddQuestion.Location = new Point(1045, 700);
+            button_AddQuestion.Location = new Point(1128, 695);
             button_AddQuestion.Margin = new Padding(2);
             button_AddQuestion.Name = "button_AddQuestion";
             button_AddQuestion.Size = new Size(172, 54);
@@ -421,16 +422,16 @@
             panel_questions.Controls.Add(textBox_QuetionContent_BE);
             panel_questions.Controls.Add(label_question);
             panel_questions.Location = new Point(35, 30);
-            panel_questions.Margin = new Padding(4, 4, 4, 4);
+            panel_questions.Margin = new Padding(4);
             panel_questions.Name = "panel_questions";
-            panel_questions.Size = new Size(974, 752);
+            panel_questions.Size = new Size(1030, 752);
             panel_questions.TabIndex = 1;
             // 
             // textBox_QuetionContent_BE
             // 
             textBox_QuetionContent_BE.BorderStyle = BorderStyle.FixedSingle;
             textBox_QuetionContent_BE.Location = new Point(301, 29);
-            textBox_QuetionContent_BE.Margin = new Padding(4, 4, 4, 4);
+            textBox_QuetionContent_BE.Margin = new Padding(4);
             textBox_QuetionContent_BE.Name = "textBox_QuetionContent_BE";
             textBox_QuetionContent_BE.Size = new Size(641, 45);
             textBox_QuetionContent_BE.TabIndex = 1;
@@ -453,7 +454,7 @@
             button_SaveQuestion.FlatStyle = FlatStyle.Flat;
             button_SaveQuestion.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_SaveQuestion.ForeColor = Color.White;
-            button_SaveQuestion.Location = new Point(1078, 505);
+            button_SaveQuestion.Location = new Point(1161, 500);
             button_SaveQuestion.Margin = new Padding(2);
             button_SaveQuestion.Name = "button_SaveQuestion";
             button_SaveQuestion.Size = new Size(211, 54);
@@ -573,6 +574,7 @@
             Controls.Add(panel3);
             Margin = new Padding(2);
             Name = "BuildExamForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "BuildExamForm";
             tabControl1.ResumeLayout(false);
             tabPage_step1.ResumeLayout(false);

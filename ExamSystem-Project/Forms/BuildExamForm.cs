@@ -32,7 +32,7 @@ namespace ExamSystem_Project.Forms
             tabControl1.TabPages.Remove(tabPage_step2);
             tabControl1.TabPages.Remove(tabPage_step3);
             dateTimePicker_examDate.MinDate = DateTime.Now;
-
+            dateTimePicker_examDate.MaxDate = DateTime.Now.AddDays(60);
         }
 
         private void button_next_Click(object sender, EventArgs e)
@@ -93,7 +93,7 @@ namespace ExamSystem_Project.Forms
 
         private void button_addOption_Click(object sender, EventArgs e)
         {
-            button_addOption.Enabled = textBoxCounter ==4 ? true : false;
+            button_addOption.Enabled = textBoxCounter == 4 ? true : false;
 
             // Create a unique identifier for the dynamic controls
             string controlId = Guid.NewGuid().ToString();
@@ -113,7 +113,7 @@ namespace ExamSystem_Project.Forms
             // Create a new TextBox
             TextBox dynamicTextBox = new TextBox
             {
-                Width = 362,
+                Width = 600,
                 Height = 26,
                 BorderStyle = BorderStyle.FixedSingle,
                 Location = new Point(dynamicLabel.Right + 50, dynamicLabel.Top),
@@ -127,17 +127,17 @@ namespace ExamSystem_Project.Forms
             {
                 Text = "Delete",
                 Width = 148,
-              Font=  new Font("Segoe UI", 12, FontStyle.Bold),
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 Name = "Button_" + optionNameCounter,
                 ForeColor = Color.White,
                 BackColor = Color.FromArgb(0, 135, 209),
                 Height = 54,
                 AutoSize = true,
-                Location = new Point(dynamicTextBox.Right + 50, dynamicTextBox.Top-4),// Use Location instead of Margin
+                Location = new Point(dynamicTextBox.Right + 50, dynamicTextBox.Top - 4),// Use Location instead of Margin
                 Tag = controlId // Set the same unique identifier as the Tag
             };
 
-           
+
             // Attach a click event handler to the delete button
             deleteButton.Click += (deleteSender, deleteEventArgs) =>
             {
@@ -153,7 +153,7 @@ namespace ExamSystem_Project.Forms
                 button_addOption.Enabled = textBoxCounter < 5;
                 textBoxCounter--;
                 optionNameCounter--;
-              
+
 
 
                 // Retrieve the unique identifier associated with the controls
@@ -178,9 +178,9 @@ namespace ExamSystem_Project.Forms
             panel_questions.Controls.Add(deleteButton);
 
             // Increment the counter for the next TextBox
-           
+
             textBoxCounter++;
-            optionNameCounter ++;
+            optionNameCounter++;
             button_addOption.Enabled = textBoxCounter < 5;
         }
 
