@@ -30,6 +30,7 @@ namespace ExamSystem_Project.UserControls
             InitializeComponent();
             //button_loginStart.Enabled = false;
             userRequestor = new UserRequestor();
+
             userid = string.Empty;
             password = string.Empty;
             user = new User();

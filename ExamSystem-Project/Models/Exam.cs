@@ -16,15 +16,44 @@ namespace ExamSystem_Project.Models
         #region Properties
 
         public int ExamId { get; set; }  //AutoIncrement
+        public Guid StrId { get; set; }  //AutoIncrement
         public string ExamTitle { get; set; } //Title
         public DateTime ExamDate { get; set; }
-        public string TeacherFullName { get; set; } // when the thecher was loggedon the name show automaticly
+        public string TeacherFullName { get; set; } // when the thecher was logged on the name show automaticly
         public DateTime StartTime { get; set; } //available for execution
         public int TotalHours { get; set; } //Total exam Hours duration 
         public int TotalMinutes { get; set; } //Total exam Minutes duration 
-        public bool RandomOrder { get; set; } //Random order of the questions
-        public List<Question> QuestionsList { get; set; } //List of questions
+        public bool RandomQuestionOrder { get; set; } //Random order of the questions
         public Course_Enum CourseType { get; set; }
+
+
+
+
+        #endregion
+        public Exam() { }
+        #region Methods 
+
+        public bool AddNewExam(Exam e)
+        {
+            try
+            {
+                StrId = Guid.NewGuid();
+                ExamTitle = e.ExamTitle;
+                ExamDate = e.ExamDate;
+                TeacherFullName = e.TeacherFullName;
+                StartTime = e.StartTime;
+                TotalHours = e.TotalHours;
+                TotalMinutes = e.TotalMinutes;
+                RandomQuestionOrder = e.RandomQuestionOrder;
+                CourseType = e.CourseType;
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
 
 
 
@@ -33,13 +62,10 @@ namespace ExamSystem_Project.Models
 
 
 
-        
 
-        public Exam()
-        {
-          
-            QuestionsList = new List<Question>();
-        }
+
+
+
         public override string ToString()
         {
             return "";
@@ -52,5 +78,5 @@ namespace ExamSystem_Project.Models
 
     }
 
-    
+
 }

@@ -28,10 +28,12 @@ namespace ExamSystem_Project.UserControls
         public User user;
         public string password;
 
+
         public Register()
         {
             InitializeComponent();
             userRequestor = new UserRequestor();
+
             success = false;
             selectedItem = string.Empty;
             userType = new UserType_Enum();
@@ -120,6 +122,7 @@ namespace ExamSystem_Project.UserControls
                             return;
                         }
                     }
+
                     else
                     {
                         MessageBox.Show(Helpers.Constants.alreadyExists);
