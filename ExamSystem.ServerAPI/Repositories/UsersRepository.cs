@@ -30,10 +30,10 @@ namespace ExamSystem.ServerAPI.Repositories
         /// <returns></returns>
         public async Task<bool> UserRegister(User user)
         {
-            await using (UsersDbContext Db = new UsersDbContext())
+            await using (AppDbContext Db = new AppDbContext())
             {
-              user.PassWord = MD5Convertor.GetMd5Hash(user.PassWord);
-                Db._Users.Add(user);
+                user.PassWord = MD5Convertor.GetMd5Hash(user.PassWord);
+                Db.Users.Add(user);
                 return Db.SaveChanges() > 0;
             }
         }
@@ -47,9 +47,9 @@ namespace ExamSystem.ServerAPI.Repositories
         public async Task<bool> Check_ExistingUser(string userid)
         {
 
-            await using (UsersDbContext Db = new UsersDbContext())
+            await using (AppDbContext Db = new AppDbContext())
             {
-                User? user = Db._Users.FirstOrDefault(x => x.UserId == userid);
+                User? user = Db.Users.FirstOrDefault(x => x.UserId == userid);
                 if (user != null)
                 {
                     return true;
@@ -63,10 +63,10 @@ namespace ExamSystem.ServerAPI.Repositories
         {
 
             User? user = null;
-            await using (UsersDbContext Db = new UsersDbContext())
+            await using (AppDbContext Db = new AppDbContext())
             {
                 string convertedPass = MD5Convertor.GetMd5Hash(password);
-                user = Db._Users.FirstOrDefault(x => x.UserId == userid && x.PassWord == convertedPass);
+                user = Db.Users.FirstOrDefault(x => x.UserId == userid && x.PassWord == convertedPass);
 
                 return user;
 
@@ -79,12 +79,12 @@ namespace ExamSystem.ServerAPI.Repositories
         /// get all users from db to list
         /// </summary>
         /// <returns></returns>
-        public async Task <List<User>> GetAllUsers()
+        public async Task<List<User>> GetAllUsers()
         {
             List<User> users = new List<User>();
-            await using (UsersDbContext Db = new UsersDbContext())
+            await using (AppDbContext Db = new AppDbContext())
             {
-                users = Db._Users.ToList();
+                users = Db.Users.ToList();
             }
             return users;
         }

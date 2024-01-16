@@ -16,7 +16,7 @@ namespace ExamSystem_Project.Models
         #region Properties
 
         public int ExamId { get; set; }  //AutoIncrement
-        public Guid ExamStrId { get; set; }  //AutoIncrement
+        public Guid ExamStrId { get; set; }  
         public string ExamTitle { get; set; } //Title
         public DateTime ExamDate { get; set; }
         public string TeacherFullName { get; set; } // when the thecher was logged on the name show automaticly

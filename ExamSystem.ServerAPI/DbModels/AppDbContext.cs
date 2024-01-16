@@ -21,5 +21,12 @@ namespace ExamSystem.ServerAPI.DbModels
         public DbSet<User> Users { get; set; }
         public DbSet<StudentExam> StudentExams { get; set; }  // This line was missing
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Configure relationships, constraints, etc., if needed
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }
