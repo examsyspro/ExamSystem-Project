@@ -12,6 +12,7 @@ namespace ExamSystem_Project.Models
 
 
         public int QuestionId { get; set; }
+        public Guid QuestionStrId { get; set; }
         public string Text { get; set; }
         public List<OptionAns> Options { get; set; }
         public int Exam_Id { get; set; }

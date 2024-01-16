@@ -27,6 +27,8 @@ namespace ExamSystem.ServerAPI
             builder.Services.AddScoped<IQuestionsRepository, QuestionsRepository>();
             builder.Services.AddScoped<IOptionAnsRepository, OptionAnsRepository>();
             builder.Services.AddScoped<IUsersRepository, UsersRepository>();
+            builder.Services.AddScoped<IStudentExamRepository, StudentExamRepository>();
+
             builder.Services.AddCors(options =>
             {
                 options.AddDefaultPolicy(

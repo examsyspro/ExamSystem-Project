@@ -14,14 +14,14 @@ namespace ExamSystem.ServerAPI.Models
 
         [Key]
         public int ExamId { get; set; }  //AutoIncrement
+        public Guid ExamStrId { get; set; }  //AutoIncrement
         public string ExamTitle { get; set; } //Title
         public DateTime ExamDate { get; set; }
-        public string TeacherFullName { get; set; } // when the thecher was loggedon the name show automaticly
+        public string TeacherFullName { get; set; } // when the thecher was logged on the name show automaticly
         public DateTime StartTime { get; set; } //available for execution
         public int TotalHours { get; set; } //Total exam Hours duration 
         public int TotalMinutes { get; set; } //Total exam Minutes duration 
-        public bool RandomOrder { get; set; } //Random order of the questions
-        public List<Question> QuestionsList { get; set; } //List of questions
+        public bool RandomQuestionOrder { get; set; } //Random order of the questions
         public Course_Enum CourseType { get; set; }
         #endregion
 

@@ -9,6 +9,7 @@ namespace ExamSystem_Project.Models
     public class OptionAns
     {
         public int OptionAnsId { get; set; }
+        public Guid OptionAnsStrId { get; set; }
         public int Question_Id { get; set; }
         public string OptionText { get; set; }
         public bool IsCorrect { get; set; }

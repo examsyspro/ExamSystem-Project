@@ -16,7 +16,7 @@ namespace ExamSystem_Project.Models
         #region Properties
 
         public int ExamId { get; set; }  //AutoIncrement
-        public Guid StrId { get; set; }  //AutoIncrement
+        public Guid ExamStrId { get; set; }  //AutoIncrement
         public string ExamTitle { get; set; } //Title
         public DateTime ExamDate { get; set; }
         public string TeacherFullName { get; set; } // when the thecher was logged on the name show automaticly
@@ -37,15 +37,7 @@ namespace ExamSystem_Project.Models
         {
             try
             {
-                StrId = Guid.NewGuid();
-                ExamTitle = e.ExamTitle;
-                ExamDate = e.ExamDate;
-                TeacherFullName = e.TeacherFullName;
-                StartTime = e.StartTime;
-                TotalHours = e.TotalHours;
-                TotalMinutes = e.TotalMinutes;
-                RandomQuestionOrder = e.RandomQuestionOrder;
-                CourseType = e.CourseType;
+
                 return true;
             }
             catch (Exception)

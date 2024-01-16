@@ -19,5 +19,7 @@ namespace ExamSystem.ServerAPI.DbModels
         public DbSet<Question> Questions { get; set; }
         public DbSet<OptionAns> OptionAns { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<StudentExam> StudentExams { get; set; }  // This line was missing
+
     }
 }
