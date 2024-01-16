@@ -1,8 +1,11 @@
+using ExamSystem.ServerAPI.DbModels;
 using ExamSystem.ServerAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace ExamSystem.ServerAPI
 {
@@ -13,14 +16,17 @@ namespace ExamSystem.ServerAPI
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Configuration.AddJsonFile("appsettings.json");
-            var configuration = builder.Configuration;
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddSingleton<IUsersRepository,UsersRepository>();
+            builder.Services.AddScoped<IExamsRepository, ExamsRepository>();
+            builder.Services.AddScoped<IQuestionsRepository, QuestionsRepository>();
+            builder.Services.AddScoped<IOptionAnsRepository, OptionAnsRepository>();
+            builder.Services.AddScoped<IUsersRepository, UsersRepository>();
             builder.Services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
@@ -31,7 +37,6 @@ namespace ExamSystem.ServerAPI
             });
 
             var app = builder.Build();
-         //   var sqlFuncs = app.Services.GetService<Sql_Funcs>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -51,3 +56,7 @@ namespace ExamSystem.ServerAPI
         }
     }
 }
+
+
+
+

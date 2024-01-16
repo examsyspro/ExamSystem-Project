@@ -52,12 +52,15 @@ namespace ExamSystem.ServerAPI.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+
+
         }
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+
         }
     }
 }
