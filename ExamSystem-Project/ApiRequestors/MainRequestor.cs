@@ -29,92 +29,67 @@ namespace ExamSystem_Project.ApiRequestors
             httpClient.BaseAddress = new Uri(apiUrl);
         }
 
-        public async Task<bool> Request_NewPost(object obj, string apiStr, EnumModel enumModel)
+        public async Task<bool> Request_NewPost<T>(T obj, string apiStr)
         {
             try
             {
-                string jsonData = string.Empty;
-                //3.1) Convert credentials Object to JSON
-
-                switch (enumModel)
-                {
-                    case EnumModel.Exam:
-                        jsonData = JsonSerializer.Serialize<Exam>((Exam)obj);
-                        break;
-                    case EnumModel.Question:
-                        jsonData = JsonSerializer.Serialize<Question>((Question)obj);
-                        break;
-                    case EnumModel.OptionAns:
-                        jsonData = JsonSerializer.Serialize<OptionAns>((OptionAns)obj);
-                        break;
-                    default:
-                        break;
-                }
+                string jsonData = JsonSerializer.Serialize<T>(obj);
 
                 using StringContent dataContent = new StringContent(jsonData, Encoding.UTF8, @"application/json");
 
+                using HttpResponseMessage response = await httpClient.PostAsync(apiStr, dataContent);
 
-                using HttpResponseMessage response =
-                    await httpClient.PostAsync(apiStr, dataContent);
+                response.EnsureSuccessStatusCode(); // 201
 
-                response.EnsureSuccessStatusCode();//201
-
-                //3.3 Get Json Data From Server Result
-                isOkResponse =
-              await response.Content.ReadFromJsonAsync<bool>();
+                // Get Json Data From Server Result
+                bool isOkResponse = await response.Content.ReadFromJsonAsync<bool>();
 
                 return isOkResponse;
             }
             catch (Exception ex)
             {
-                return isOkResponse;
+
+                throw;
             }
+
+
+
+            //bool resultExam = await Request_NewPost<Exam>(examObject, "yourApiEndpoint");
+            //bool resultQuestion = await Request_NewPost<Question>(questionObject, "yourApiEndpoint");
+            //bool resultOptionAns = await Request_NewPost<OptionAns>(optionAnsObject, "yourApiEndpoint");
         }
 
 
-        public async Task<object> Request_GetById(string strId, string apiStr, EnumModel enumModel)
+        public async Task<T> Request_GetById<T>(string strId, string apiStr)
         {
             try
             {
-
                 using HttpResponseMessage response = await httpClient.GetAsync($"{apiStr}/{strId}");
 
                 response.EnsureSuccessStatusCode(); // 201
 
                 // Get Json Data From Server Result
-                var obj = new object();
-                switch (enumModel)
-                {
-                    case EnumModel.Exam:
-                        obj = await response.Content.ReadFromJsonAsync<Exam>();
-
-                        break;
-                    case EnumModel.Question:
-                        obj = await response.Content.ReadFromJsonAsync<Question>();
-                        break;
-                    case EnumModel.OptionAns:
-                        obj = await response.Content.ReadFromJsonAsync<OptionAns>();
-                        break;
-                    case EnumModel.User:
-                        obj = await response.Content.ReadFromJsonAsync<User>();
-                        break;
-                    default:
-                        obj = await response.Content.ReadFromJsonAsync<object>();
-                        break;
-                }
-
+                T obj = await response.Content.ReadFromJsonAsync<T>();
 
                 return obj;
             }
             catch (Exception)
             {
-                return new object(); // Return false in case of an exception.
+
+                throw;
             }
+
+
+
+            //Exam exam = await Request_GetById<Exam>("yourId", "yourApiEndpoint");
+            //Question question = await Request_GetById<Question>("yourId", "yourApiEndpoint");
+            //OptionAns optionAns = await Request_GetById<OptionAns>("yourId", "yourApiEndpoint");
+            //User user = await Request_GetById<User>("yourId", "yourApiEndpoint");
         }
 
 
 
-        public async Task<List<object>> Request_GetAll(string apiStr, EnumModel enumModel)
+        public async Task<List<T>> Request_GetAll<T>(string apiStr)
         {
             try
             {
@@ -126,48 +101,83 @@ namespace ExamSystem_Project.ApiRequestors
 
 
                 // Get Json Data From Server Result
-                //List<object> objList = new List<object>();
-                var objList = new object();
-                switch (enumModel)
-                {
-                    case EnumModel.Exam:
-                        objList = await response.Content.ReadFromJsonAsync<List<Exam>>();
-                        break;
-                    case EnumModel.Question:
-                        objList = await response.Content.ReadFromJsonAsync<List<Question>>();
-
-                        break;
-                    case EnumModel.OptionAns:
-                        objList = await response.Content.ReadFromJsonAsync<List<OptionAns>>();
-
-                        break;
-                    case EnumModel.User:
-                        objList = await response.Content.ReadFromJsonAsync<List<User>>();
-
-                        break;
-                    default:
-                        objList = await response.Content.ReadFromJsonAsync<object>();
-                        break;
-                }
+                List<T> objList = await response.Content.ReadFromJsonAsync<List<T>>();
 
 
+                //List<Exam> exams = await Request_GetAll<Exam>("yourApiEndpoint");
+                //List<Question> questions = await Request_GetAll<Question>("yourApiEndpoint");
+                //List<OptionAns> optionAnswers = await Request_GetAll<OptionAns>("yourApiEndpoint");
+                //List<User> users = await Request_GetAll<User>("yourApiEndpoint");
 
 
                 return objList;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return objList; // Return false in case of an exception.
+                 throw; // Return false in case of an exception.
             }
         }
 
 
-    }
-    public enum EnumModel
-    {
-        Exam,
-        Question,
-        OptionAns,
-        User
+
+        public async Task<T> Request_Put<T>(T obj, string strId, string apiStr)
+        {
+            try
+            {
+                string jsonData = JsonSerializer.Serialize<T>(obj);
+
+                using StringContent dataContent = new StringContent(jsonData, Encoding.UTF8, @"application/json");
+
+                using HttpResponseMessage response = await httpClient.PutAsync($"{apiStr}/{strId}", dataContent);
+
+                response.EnsureSuccessStatusCode(); // 200 OK
+
+                // Get Json Data From Server Result
+                T updatedObject = await response.Content.ReadFromJsonAsync<T>();
+
+                return updatedObject;
+            }
+            catch (Exception ex)
+            {
+                // Log exception details or throw a custom exception
+                // Log.Error(ex, "An error occurred in Request_Put.");
+                throw;
+            }
+
+
+
+            //Exam updatedExam = await Request_Put<Exam>(examObject, "yourId", "yourApiEndpoint");
+            //Question updatedQuestion = await Request_Put<Question>(questionObject, "yourId", "yourApiEndpoint");
+            //OptionAns updatedOptionAns = await Request_Put<OptionAns>(optionAnsObject, "yourId", "yourApiEndpoint");
+            //User updatedUser = await Request_Put<User>(userObject, "yourId", "yourApiEndpoint");
+
+        }
+
+
+        public async Task<bool> Request_Delete(string strId, string apiStr)
+        {
+            try
+            {
+                using HttpResponseMessage response = await httpClient.DeleteAsync($"{apiStr}/{strId}");
+
+                response.EnsureSuccessStatusCode(); // 200 OK
+
+                // Get Json Data From Server Result
+                bool isOkResponse = await response.Content.ReadFromJsonAsync<bool>();
+
+                return isOkResponse;
+            }
+            catch (Exception ex)
+            {
+                // Log exception details or throw a custom exception
+                // Log.Error(ex, "An error occurred in Request_Delete.");
+                throw;
+            }
+
+
+            //bool resultDelete = await Request_Delete("yourId", "yourApiEndpoint");
+
+        }
+
     }
 }

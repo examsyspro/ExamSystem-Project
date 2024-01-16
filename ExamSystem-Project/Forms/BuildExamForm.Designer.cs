@@ -83,7 +83,7 @@
             tabControl1.Controls.Add(tabPage_step2);
             tabControl1.Controls.Add(tabPage_step3);
             tabControl1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            tabControl1.Location = new Point(24, 105);
+            tabControl1.Location = new Point(52, 105);
             tabControl1.Margin = new Padding(2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -139,7 +139,7 @@
             checkBox_QuestionOrder.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_QuestionOrder.ForeColor = Color.FromArgb(0, 135, 209);
             checkBox_QuestionOrder.Location = new Point(58, 646);
-            checkBox_QuestionOrder.Margin = new Padding(4, 4, 4, 4);
+            checkBox_QuestionOrder.Margin = new Padding(4);
             checkBox_QuestionOrder.Name = "checkBox_QuestionOrder";
             checkBox_QuestionOrder.Size = new Size(303, 34);
             checkBox_QuestionOrder.TabIndex = 29;
@@ -379,7 +379,7 @@
             button_addOption.FlatStyle = FlatStyle.Flat;
             button_addOption.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_addOption.ForeColor = Color.White;
-            button_addOption.Location = new Point(1182, 292);
+            button_addOption.Location = new Point(1165, 473);
             button_addOption.Margin = new Padding(2);
             button_addOption.Name = "button_addOption";
             button_addOption.Size = new Size(172, 54);
@@ -394,8 +394,8 @@
             checkBox_OptionOrder.CheckAlign = ContentAlignment.MiddleRight;
             checkBox_OptionOrder.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_OptionOrder.ForeColor = Color.FromArgb(0, 135, 209);
-            checkBox_OptionOrder.Location = new Point(1168, 365);
-            checkBox_OptionOrder.Margin = new Padding(4, 4, 4, 4);
+            checkBox_OptionOrder.Location = new Point(1165, 563);
+            checkBox_OptionOrder.Margin = new Padding(4);
             checkBox_OptionOrder.Name = "checkBox_OptionOrder";
             checkBox_OptionOrder.Size = new Size(188, 34);
             checkBox_OptionOrder.TabIndex = 2;
@@ -408,7 +408,7 @@
             button_AddQuestion.FlatStyle = FlatStyle.Flat;
             button_AddQuestion.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_AddQuestion.ForeColor = Color.White;
-            button_AddQuestion.Location = new Point(1168, 502);
+            button_AddQuestion.Location = new Point(1165, 638);
             button_AddQuestion.Margin = new Padding(2);
             button_AddQuestion.Name = "button_AddQuestion";
             button_AddQuestion.Size = new Size(211, 54);
@@ -422,7 +422,7 @@
             panel_questions.Controls.Add(textBox_QuetionContent_BE);
             panel_questions.Controls.Add(label_question);
             panel_questions.Location = new Point(35, 30);
-            panel_questions.Margin = new Padding(4, 4, 4, 4);
+            panel_questions.Margin = new Padding(4);
             panel_questions.Name = "panel_questions";
             panel_questions.Size = new Size(1095, 752);
             panel_questions.TabIndex = 1;
@@ -431,7 +431,7 @@
             // 
             textBox_QuetionContent_BE.BorderStyle = BorderStyle.FixedSingle;
             textBox_QuetionContent_BE.Location = new Point(301, 29);
-            textBox_QuetionContent_BE.Margin = new Padding(4, 4, 4, 4);
+            textBox_QuetionContent_BE.Margin = new Padding(4);
             textBox_QuetionContent_BE.Name = "textBox_QuetionContent_BE";
             textBox_QuetionContent_BE.Size = new Size(641, 45);
             textBox_QuetionContent_BE.TabIndex = 1;
@@ -454,7 +454,7 @@
             button_SaveQuestion.FlatStyle = FlatStyle.Flat;
             button_SaveQuestion.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_SaveQuestion.ForeColor = Color.White;
-            button_SaveQuestion.Location = new Point(1168, 426);
+            button_SaveQuestion.Location = new Point(1165, 728);
             button_SaveQuestion.Margin = new Padding(2);
             button_SaveQuestion.Name = "button_SaveQuestion";
             button_SaveQuestion.Size = new Size(211, 54);
@@ -479,7 +479,7 @@
             button_SaveExamBuilder.FlatStyle = FlatStyle.Flat;
             button_SaveExamBuilder.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_SaveExamBuilder.ForeColor = Color.White;
-            button_SaveExamBuilder.Location = new Point(629, 16);
+            button_SaveExamBuilder.Location = new Point(668, 17);
             button_SaveExamBuilder.Margin = new Padding(2);
             button_SaveExamBuilder.Name = "button_SaveExamBuilder";
             button_SaveExamBuilder.Size = new Size(181, 54);
@@ -493,7 +493,7 @@
             button_next.FlatStyle = FlatStyle.Flat;
             button_next.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_next.ForeColor = Color.White;
-            button_next.Location = new Point(1312, 16);
+            button_next.Location = new Point(1319, 17);
             button_next.Margin = new Padding(2);
             button_next.Name = "button_next";
             button_next.Size = new Size(134, 54);
@@ -511,7 +511,7 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1459, 1055);
+            panel3.Size = new Size(1508, 1106);
             panel3.TabIndex = 2;
             // 
             // panel5
@@ -520,10 +520,10 @@
             panel5.Controls.Add(button_Previous);
             panel5.Controls.Add(button_SaveExamBuilder);
             panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(0, 964);
+            panel5.Location = new Point(0, 1015);
             panel5.Margin = new Padding(2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(1459, 91);
+            panel5.Size = new Size(1508, 91);
             panel5.TabIndex = 2;
             // 
             // button_Previous
@@ -532,7 +532,7 @@
             button_Previous.FlatStyle = FlatStyle.Flat;
             button_Previous.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_Previous.ForeColor = Color.White;
-            button_Previous.Location = new Point(12, 16);
+            button_Previous.Location = new Point(56, 17);
             button_Previous.Margin = new Padding(2);
             button_Previous.Name = "button_Previous";
             button_Previous.Size = new Size(148, 54);
@@ -549,7 +549,7 @@
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1459, 89);
+            panel4.Size = new Size(1508, 89);
             panel4.TabIndex = 1;
             // 
             // label11
@@ -570,7 +570,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(1459, 1055);
+            ClientSize = new Size(1508, 1106);
             Controls.Add(panel3);
             Margin = new Padding(2);
             Name = "BuildExamForm";
