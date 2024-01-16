@@ -15,6 +15,7 @@ namespace ExamSystem_Project.ApiRequestors
     {
         bool isOkResponse;
         List<object> objResponse;
+
         readonly HttpClient httpClient;
 
 
@@ -113,28 +114,52 @@ namespace ExamSystem_Project.ApiRequestors
 
 
 
-        //public async Task<List<User>> Request_GetAllUsers()
-        //{
-        //    try
-        //    {
+        public async Task<List<object>> Request_GetAll(string apiStr, EnumModel enumModel)
+        {
+            try
+            {
+                // Get response
+                using HttpResponseMessage response = await httpClient.GetAsync($"{apiStr}/getall");
+
+                response.EnsureSuccessStatusCode(); // 201
 
 
 
-        //        // Get response
-        //        using HttpResponseMessage response = await httpClient.GetAsync($"api/users/getallusers");
+                // Get Json Data From Server Result
+                //List<object> objList = new List<object>();
+                var objList = new object();
+                switch (enumModel)
+                {
+                    case EnumModel.Exam:
+                        objList = await response.Content.ReadFromJsonAsync<List<Exam>>();
+                        break;
+                    case EnumModel.Question:
+                        objList = await response.Content.ReadFromJsonAsync<List<Question>>();
 
-        //        response.EnsureSuccessStatusCode(); // 201
+                        break;
+                    case EnumModel.OptionAns:
+                        objList = await response.Content.ReadFromJsonAsync<List<OptionAns>>();
 
-        //        // Get Json Data From Server Result
-        //        usersResponse = await response.Content.ReadFromJsonAsync<List<User>>();
+                        break;
+                    case EnumModel.User:
+                        objList = await response.Content.ReadFromJsonAsync<List<User>>();
 
-        //        return usersResponse;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return usersResponse; // Return false in case of an exception.
-        //    }
-        //}
+                        break;
+                    default:
+                        objList = await response.Content.ReadFromJsonAsync<object>();
+                        break;
+                }
+
+
+
+
+                return objList;
+            }
+            catch (Exception ex)
+            {
+                return objList; // Return false in case of an exception.
+            }
+        }
 
 
     }
