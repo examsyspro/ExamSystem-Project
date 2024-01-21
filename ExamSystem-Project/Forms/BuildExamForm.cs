@@ -211,10 +211,16 @@ namespace ExamSystem_Project.Forms
         {
             try
             {
-                string st = string.Format($"{textBox_hours_StartTime.Text}:{textBox_minutes_StartTime.Text}");
+                string time = string.Format($"{textBox_hours_StartTime.Text}:{textBox_minutes_StartTime.Text}");
                 exam.ExamTitle = textBox_examTitle.Text;
                 exam.TeacherFullName = textBox_teacherName.Text; 
-                exam.ExamDateTime = DateTime.Parse($"{textBox_date.Text} {st}");
+                exam.ExamDateTime = DateTime.Parse($"{textBox_date.Text} {time}");
+                exam.TotalHours = int.Parse(textBox_hours_totalTime.Text);
+                string coursetype = comboBox_Course_Select.SelectedItem.ToString();
+                exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
+                exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
+
+                 
                 
                 
 
