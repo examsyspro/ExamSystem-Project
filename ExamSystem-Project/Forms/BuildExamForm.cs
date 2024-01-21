@@ -23,6 +23,7 @@ namespace ExamSystem_Project.Forms
             InitializeComponent();
             InitializeAll();
             exam = new Exam();
+            exam.ExamStrId = Guid.NewGuid();
         }
 
 
