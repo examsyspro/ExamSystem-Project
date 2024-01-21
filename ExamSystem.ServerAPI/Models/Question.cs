@@ -14,7 +14,7 @@ namespace ExamSystem.ServerAPI.Models
         public int QuestionId { get; set; }
         public Guid QuestionStrId { get; set; }
         public string Text { get; set; }
-        public int Exam_Id { get; set; }
+        public Guid ExamStrId { get; set; }
         public bool RandomAnsOrder { get; set; }
         public int IndexCorrect { get; set; }
 

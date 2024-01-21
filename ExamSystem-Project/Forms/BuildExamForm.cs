@@ -220,12 +220,6 @@ namespace ExamSystem_Project.Forms
                 string coursetype = comboBox_Course_Select.SelectedItem.ToString();
                 exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
                 exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
-
-                 
-                
-                
-
-
             }
             catch (Exception ex)
             {

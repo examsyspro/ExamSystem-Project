@@ -12,7 +12,7 @@ namespace ExamSystem.ServerAPI.Models
         [Key]
         public int OptionAnsId { get; set; }
         public Guid OptionAnsStrId { get; set; }
-        public int Question_Id { get; set; }
+        public Guid QuestionStrId { get; set; }
         public string OptionText { get; set; }
         public bool IsCorrect { get; set; }
 

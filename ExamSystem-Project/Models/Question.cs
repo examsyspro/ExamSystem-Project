@@ -15,7 +15,7 @@ namespace ExamSystem_Project.Models
         public Guid QuestionStrId { get; set; }
         public string Text { get; set; }
         public List<OptionAns> Options { get; set; }
-        public int Exam_Id { get; set; }
+        public Guid ExamStrId { get; set; }
         public bool RandomAnsOrder { get; set; }
         public int IndexCorrect
         {
@@ -30,19 +30,7 @@ namespace ExamSystem_Project.Models
                 return foundIndex;
             }
         }
-        public Question(int questionId, string text, List<OptionAns> options, int exam_Id, bool randomAnsOrder)
-        {
-            QuestionId = questionId;
-            Text = text;
-            Options = options;
-            Exam_Id = exam_Id;
-            RandomAnsOrder = randomAnsOrder;
-        }
-        public Question()
-        {
-                
-        }
-
+        public Question() { }
 
     }
 }
