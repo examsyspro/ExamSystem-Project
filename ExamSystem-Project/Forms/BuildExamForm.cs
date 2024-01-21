@@ -1,4 +1,5 @@
 ﻿using ExamSystem_Project.Helpers;
+using ExamSystem_Project.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,10 +17,12 @@ namespace ExamSystem_Project.Forms
     {
         private int textBoxCounter = 0;
         private int optionNameCounter = 1;
+        public Exam exam;
         public BuildExamForm()
         {
             InitializeComponent();
             InitializeAll();
+            exam = new Exam();
         }
 
 
@@ -202,6 +205,25 @@ namespace ExamSystem_Project.Forms
             }
 
             return topMargin;
+        }
+
+        private void button_SaveExamBuilder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string st = string.Format($"{textBox_hours_StartTime.Text}:{textBox_minutes_StartTime.Text}");
+                exam.ExamTitle = textBox_examTitle.Text;
+                exam.TeacherFullName = textBox_teacherName.Text; 
+                exam.ExamDateTime = DateTime.Parse($"{textBox_date.Text} {st}");
+                
+                
+
+
+            }
+            catch (Exception ex)
+            {
+              
+            }
         }
     }
 }
