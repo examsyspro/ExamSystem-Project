@@ -504,6 +504,7 @@
             // 
             // panel3
             // 
+            panel3.BackColor = SystemColors.Control;
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel4);
             panel3.Controls.Add(tabControl1);
