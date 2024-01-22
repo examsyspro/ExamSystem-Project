@@ -29,10 +29,10 @@ namespace ExamSystem_Project.Forms
 
         public void InitializeAll()
         {
-            comboBox_Course_Select.Items.Insert(0, "Click to select");
-            comboBox_Course_Select.SelectedIndex = 0;
-            comboBox_Course_Select.Items.Insert(1, Course_Enum.C_Sharp);
-            comboBox_Course_Select.Items.Insert(2, Course_Enum.JavaSctipt);
+            comboBox_Course_Select.Text = "Select Course";
+
+            comboBox_Course_Select.Items.Insert(0, Course_Enum.C_Sharp);
+            comboBox_Course_Select.Items.Insert(1, Course_Enum.JavaSctipt);
             tabControl1.TabPages.Remove(tabPage_step2);
             tabControl1.TabPages.Remove(tabPage_step3);
             dateTimePicker_examDate.MinDate = DateTime.Now;
@@ -48,6 +48,7 @@ namespace ExamSystem_Project.Forms
                     if (!tabControl1.TabPages.Contains(tabPage_step2))
                     {
                         tabControl1.TabPages.Add(tabPage_step2);
+                        tabControl1.TabPages.Remove(tabPage_step1);
                     }
                     tabControl1.SelectedTab = tabPage_step2;
                     break;
@@ -55,6 +56,7 @@ namespace ExamSystem_Project.Forms
                     if (!tabControl1.TabPages.Contains(tabPage_step3))
                     {
                         tabControl1.TabPages.Add(tabPage_step3);
+                        tabControl1.TabPages.Remove(tabPage_step2);
                     }
                     tabControl1.SelectedTab = tabPage_step3;
                     break;
@@ -75,9 +77,20 @@ namespace ExamSystem_Project.Forms
             switch (tabControl1.SelectedTab.Name)
             {
                 case "tabPage_step3":
+                    if (!tabControl1.TabPages.Contains(tabPage_step2))
+                    {
+                        tabControl1.TabPages.Add(tabPage_step2);
+                        tabControl1.TabPages.Remove(tabPage_step3);
+                    }
                     tabControl1.SelectedTab = tabPage_step2;
                     break;
                 case "tabPage_step2":
+                    if (!tabControl1.TabPages.Contains(tabPage_step1))
+                    {
+                        tabControl1.TabPages.Add(tabPage_step1);
+                        tabControl1.TabPages.Remove(tabPage_step2);
+                    }
+
                     tabControl1.SelectedTab = tabPage_step1;
                     break;
                 default:
@@ -109,7 +122,7 @@ namespace ExamSystem_Project.Forms
                 ForeColor = Color.FromArgb(0, 135, 209),
                 Text = "Option " + optionNameCounter + " :",
                 TextAlign = System.Drawing.ContentAlignment.MiddleLeft,
-                Location = new Point(label_question.Left, Convert.ToInt32(GetTopMargin())),
+                Location = new Point(label_question.Left + 92, Convert.ToInt32(GetTopMargin())),
                 AutoSize = true,
                 Tag = controlId // Set a unique identifier as the Tag
             };
@@ -120,7 +133,7 @@ namespace ExamSystem_Project.Forms
                 Width = 500,
                 Height = 26,
                 BorderStyle = BorderStyle.FixedSingle,
-                Location = new Point(dynamicLabel.Right + 50, dynamicLabel.Top),
+                Location = new Point(textBox_QuetionContent_BE.Left, dynamicLabel.Top),
                 Name = "TextBox" + optionNameCounter, // Unique name based on the counter
                 Tag = controlId, // Set the same unique identifier as the Tag
 
@@ -137,7 +150,7 @@ namespace ExamSystem_Project.Forms
                 BackColor = Color.FromArgb(0, 135, 209),
                 Height = 54,
                 AutoSize = true,
-                Location = new Point(dynamicTextBox.Right + 20, dynamicTextBox.Top - 4),// Use Location instead of Margin
+                Location = new Point(dynamicTextBox.Right + 30, dynamicTextBox.Top - 4),// Use Location instead of Margin
                 Tag = controlId // Set the same unique identifier as the Tag
             };
 
@@ -191,7 +204,7 @@ namespace ExamSystem_Project.Forms
 
         private double GetTopMargin()
         {
-            double topMargin = 10;
+            double topMargin = 50;
 
             // Find the last TextBox in panel_questions and adjust the top margin
             if (panel_questions.Controls.Count > 0)
@@ -214,7 +227,7 @@ namespace ExamSystem_Project.Forms
             {
                 string time = string.Format($"{textBox_hours_StartTime.Text}:{textBox_minutes_StartTime.Text}");
                 exam.ExamTitle = textBox_examTitle.Text;
-                exam.TeacherFullName = textBox_teacherName.Text; 
+                exam.TeacherFullName = textBox_teacherName.Text;
                 exam.ExamDateTime = DateTime.Parse($"{textBox_date.Text} {time}");
                 exam.TotalHours = int.Parse(textBox_hours_totalTime.Text);
                 string coursetype = comboBox_Course_Select.SelectedItem.ToString();
@@ -223,7 +236,7 @@ namespace ExamSystem_Project.Forms
             }
             catch (Exception ex)
             {
-              
+
             }
         }
     }
