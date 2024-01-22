@@ -29,19 +29,6 @@ namespace ExamSystem_Project.Forms
             dataGridView_StudentExam.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_StudentExam.ClearSelection();
 
-            StudentExam s1 = new StudentExam();
-            s1.StartTime = DateTime.Now;
-
-            StudentExam s2 = new StudentExam();
-            s2.StartTime = DateTime.Now;
-
-            List<StudentExam> hgfghf = new List<StudentExam>();
-            hgfghf.Add(s1);
-            hgfghf.Add(s2);
-
-            dataGridView_StudentExam.DataSource = hgfghf;
-
-
         }
 
         private void dataGridView_StudentExam_CellClick(object sender, DataGridViewCellEventArgs e)

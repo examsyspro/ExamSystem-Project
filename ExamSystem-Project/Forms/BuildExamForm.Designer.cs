@@ -54,7 +54,7 @@
             comboBox_Course_Select = new ComboBox();
             tabPage_step2 = new TabPage();
             panel_questions = new Panel();
-            panel_questionsList = new Panel();
+            questionBindingSource = new BindingSource(components);
             button_addOption = new Button();
             checkBox_OptionOrder = new CheckBox();
             textBox_QuetionContent_BE = new TextBox();
@@ -69,20 +69,15 @@
             button_Previous = new Button();
             panel4 = new Panel();
             label11 = new Label();
-            questionBindingSource = new BindingSource(components);
-            dataGridView1 = new DataGridView();
-            textDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tabControl1.SuspendLayout();
             tabPage_step1.SuspendLayout();
             panel1.SuspendLayout();
             tabPage_step2.SuspendLayout();
             panel_questions.SuspendLayout();
-            panel_questionsList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)questionBindingSource).BeginInit();
             panel3.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)questionBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -379,7 +374,6 @@
             // 
             // panel_questions
             // 
-            panel_questions.Controls.Add(panel_questionsList);
             panel_questions.Controls.Add(button_addOption);
             panel_questions.Controls.Add(checkBox_OptionOrder);
             panel_questions.Controls.Add(textBox_QuetionContent_BE);
@@ -393,13 +387,9 @@
             panel_questions.Size = new Size(1474, 843);
             panel_questions.TabIndex = 1;
             // 
-            // panel_questionsList
+            // questionBindingSource
             // 
-            panel_questionsList.Controls.Add(dataGridView1);
-            panel_questionsList.Location = new Point(-2, 0);
-            panel_questionsList.Name = "panel_questionsList";
-            panel_questionsList.Size = new Size(1475, 840);
-            panel_questionsList.TabIndex = 6;
+            questionBindingSource.DataSource = typeof(Models.Question);
             // 
             // button_addOption
             // 
@@ -586,32 +576,6 @@
             label11.TabIndex = 7;
             label11.Text = "Build Exam";
             // 
-            // questionBindingSource
-            // 
-            questionBindingSource.DataSource = typeof(Models.Question);
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { textDataGridViewTextBoxColumn });
-            dataGridView1.DataSource = questionBindingSource;
-            dataGridView1.Location = new Point(291, 200);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.RowTemplate.Height = 33;
-            dataGridView1.Size = new Size(766, 323);
-            dataGridView1.TabIndex = 0;
-         
-            // 
-            // textDataGridViewTextBoxColumn
-            // 
-            textDataGridViewTextBoxColumn.DataPropertyName = "Text";
-            textDataGridViewTextBoxColumn.HeaderText = "Text";
-            textDataGridViewTextBoxColumn.MinimumWidth = 8;
-            textDataGridViewTextBoxColumn.Name = "textDataGridViewTextBoxColumn";
-            textDataGridViewTextBoxColumn.Width = 700;
-            // 
             // BuildExamForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -630,13 +594,11 @@
             tabPage_step2.ResumeLayout(false);
             panel_questions.ResumeLayout(false);
             panel_questions.PerformLayout();
-            panel_questionsList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)questionBindingSource).EndInit();
             panel3.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)questionBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -681,9 +643,6 @@
         private CheckBox checkBox_QuestionOrder;
         private Button button_addOption;
         private TextBox textBox_QuetionContent_BE;
-        private Panel panel_questionsList;
         private BindingSource questionBindingSource;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn textDataGridViewTextBoxColumn;
     }
 }
