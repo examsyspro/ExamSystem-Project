@@ -130,7 +130,7 @@ namespace ExamSystem_Project.Forms
             // Create a new TextBox
             TextBox dynamicTextBox = new TextBox
             {
-                Width = 500,
+                Width = 600,
                 Height = 26,
                 BorderStyle = BorderStyle.FixedSingle,
                 Location = new Point(textBox_QuetionContent_BE.Left, dynamicLabel.Top),
@@ -239,5 +239,7 @@ namespace ExamSystem_Project.Forms
 
             }
         }
+
+
     }
 }

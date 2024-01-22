@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tabControl1 = new TabControl();
             tabPage_step1 = new TabPage();
             panel1 = new Panel();
@@ -53,6 +54,7 @@
             comboBox_Course_Select = new ComboBox();
             tabPage_step2 = new TabPage();
             panel_questions = new Panel();
+            panel_questionsList = new Panel();
             button_addOption = new Button();
             checkBox_OptionOrder = new CheckBox();
             textBox_QuetionContent_BE = new TextBox();
@@ -67,14 +69,20 @@
             button_Previous = new Button();
             panel4 = new Panel();
             label11 = new Label();
+            questionBindingSource = new BindingSource(components);
+            dataGridView1 = new DataGridView();
+            textDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tabControl1.SuspendLayout();
             tabPage_step1.SuspendLayout();
             panel1.SuspendLayout();
             tabPage_step2.SuspendLayout();
             panel_questions.SuspendLayout();
+            panel_questionsList.SuspendLayout();
             panel3.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)questionBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -83,11 +91,11 @@
             tabControl1.Controls.Add(tabPage_step2);
             tabControl1.Controls.Add(tabPage_step3);
             tabControl1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            tabControl1.Location = new Point(24, 105);
+            tabControl1.Location = new Point(11, 103);
             tabControl1.Margin = new Padding(2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1461, 876);
+            tabControl1.Size = new Size(1486, 898);
             tabControl1.TabIndex = 0;
             // 
             // tabPage_step1
@@ -99,7 +107,7 @@
             tabPage_step1.Margin = new Padding(2);
             tabPage_step1.Name = "tabPage_step1";
             tabPage_step1.Padding = new Padding(2);
-            tabPage_step1.Size = new Size(1453, 825);
+            tabPage_step1.Size = new Size(1478, 847);
             tabPage_step1.TabIndex = 0;
             tabPage_step1.Text = "Exam details";
             // 
@@ -364,13 +372,14 @@
             tabPage_step2.Margin = new Padding(2);
             tabPage_step2.Name = "tabPage_step2";
             tabPage_step2.Padding = new Padding(2);
-            tabPage_step2.Size = new Size(1453, 825);
+            tabPage_step2.Size = new Size(1478, 847);
             tabPage_step2.TabIndex = 1;
             tabPage_step2.Text = "Add questions";
             tabPage_step2.UseVisualStyleBackColor = true;
             // 
             // panel_questions
             // 
+            panel_questions.Controls.Add(panel_questionsList);
             panel_questions.Controls.Add(button_addOption);
             panel_questions.Controls.Add(checkBox_OptionOrder);
             panel_questions.Controls.Add(textBox_QuetionContent_BE);
@@ -381,8 +390,16 @@
             panel_questions.Location = new Point(2, 2);
             panel_questions.Margin = new Padding(4);
             panel_questions.Name = "panel_questions";
-            panel_questions.Size = new Size(1449, 821);
+            panel_questions.Size = new Size(1474, 843);
             panel_questions.TabIndex = 1;
+            // 
+            // panel_questionsList
+            // 
+            panel_questionsList.Controls.Add(dataGridView1);
+            panel_questionsList.Location = new Point(-2, 0);
+            panel_questionsList.Name = "panel_questionsList";
+            panel_questionsList.Size = new Size(1475, 840);
+            panel_questionsList.TabIndex = 6;
             // 
             // button_addOption
             // 
@@ -390,7 +407,7 @@
             button_addOption.FlatStyle = FlatStyle.Flat;
             button_addOption.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_addOption.ForeColor = Color.White;
-            button_addOption.Location = new Point(1206, 474);
+            button_addOption.Location = new Point(907, 145);
             button_addOption.Margin = new Padding(2);
             button_addOption.Name = "button_addOption";
             button_addOption.Size = new Size(172, 54);
@@ -405,7 +422,7 @@
             checkBox_OptionOrder.CheckAlign = ContentAlignment.MiddleRight;
             checkBox_OptionOrder.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox_OptionOrder.ForeColor = Color.FromArgb(0, 135, 209);
-            checkBox_OptionOrder.Location = new Point(1206, 564);
+            checkBox_OptionOrder.Location = new Point(907, 91);
             checkBox_OptionOrder.Margin = new Padding(4);
             checkBox_OptionOrder.Name = "checkBox_OptionOrder";
             checkBox_OptionOrder.Size = new Size(188, 34);
@@ -416,10 +433,11 @@
             // textBox_QuetionContent_BE
             // 
             textBox_QuetionContent_BE.BorderStyle = BorderStyle.FixedSingle;
-            textBox_QuetionContent_BE.Location = new Point(304, 63);
+            textBox_QuetionContent_BE.Location = new Point(249, 43);
             textBox_QuetionContent_BE.Margin = new Padding(4);
+            textBox_QuetionContent_BE.Multiline = true;
             textBox_QuetionContent_BE.Name = "textBox_QuetionContent_BE";
-            textBox_QuetionContent_BE.Size = new Size(657, 45);
+            textBox_QuetionContent_BE.Size = new Size(600, 156);
             textBox_QuetionContent_BE.TabIndex = 1;
             // 
             // button_AddQuestion
@@ -428,7 +446,7 @@
             button_AddQuestion.FlatStyle = FlatStyle.Flat;
             button_AddQuestion.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_AddQuestion.ForeColor = Color.White;
-            button_AddQuestion.Location = new Point(1206, 640);
+            button_AddQuestion.Location = new Point(26, 767);
             button_AddQuestion.Margin = new Padding(2);
             button_AddQuestion.Name = "button_AddQuestion";
             button_AddQuestion.Size = new Size(211, 54);
@@ -442,7 +460,7 @@
             label_question.AutoSize = true;
             label_question.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label_question.ForeColor = Color.FromArgb(0, 135, 209);
-            label_question.Location = new Point(63, 72);
+            label_question.Location = new Point(34, 43);
             label_question.Margin = new Padding(4, 0, 4, 0);
             label_question.Name = "label_question";
             label_question.Size = new Size(207, 30);
@@ -455,7 +473,7 @@
             button_SaveQuestion.FlatStyle = FlatStyle.Flat;
             button_SaveQuestion.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button_SaveQuestion.ForeColor = Color.White;
-            button_SaveQuestion.Location = new Point(1206, 730);
+            button_SaveQuestion.Location = new Point(1235, 767);
             button_SaveQuestion.Margin = new Padding(2);
             button_SaveQuestion.Name = "button_SaveQuestion";
             button_SaveQuestion.Size = new Size(211, 54);
@@ -469,7 +487,7 @@
             tabPage_step3.Margin = new Padding(4, 5, 4, 5);
             tabPage_step3.Name = "tabPage_step3";
             tabPage_step3.Padding = new Padding(4, 5, 4, 5);
-            tabPage_step3.Size = new Size(1453, 825);
+            tabPage_step3.Size = new Size(1478, 847);
             tabPage_step3.TabIndex = 2;
             tabPage_step3.Text = "Summary";
             tabPage_step3.UseVisualStyleBackColor = true;
@@ -514,7 +532,7 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1511, 1106);
+            panel3.Size = new Size(1508, 1106);
             panel3.TabIndex = 2;
             // 
             // panel5
@@ -526,7 +544,7 @@
             panel5.Location = new Point(0, 1015);
             panel5.Margin = new Padding(2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(1511, 91);
+            panel5.Size = new Size(1508, 91);
             panel5.TabIndex = 2;
             // 
             // button_Previous
@@ -552,7 +570,7 @@
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1511, 89);
+            panel4.Size = new Size(1508, 89);
             panel4.TabIndex = 1;
             // 
             // label11
@@ -567,6 +585,32 @@
             label11.Size = new Size(256, 60);
             label11.TabIndex = 7;
             label11.Text = "Build Exam";
+            // 
+            // questionBindingSource
+            // 
+            questionBindingSource.DataSource = typeof(Models.Question);
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { textDataGridViewTextBoxColumn });
+            dataGridView1.DataSource = questionBindingSource;
+            dataGridView1.Location = new Point(291, 200);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.RowTemplate.Height = 33;
+            dataGridView1.Size = new Size(766, 323);
+            dataGridView1.TabIndex = 0;
+         
+            // 
+            // textDataGridViewTextBoxColumn
+            // 
+            textDataGridViewTextBoxColumn.DataPropertyName = "Text";
+            textDataGridViewTextBoxColumn.HeaderText = "Text";
+            textDataGridViewTextBoxColumn.MinimumWidth = 8;
+            textDataGridViewTextBoxColumn.Name = "textDataGridViewTextBoxColumn";
+            textDataGridViewTextBoxColumn.Width = 700;
             // 
             // BuildExamForm
             // 
@@ -586,10 +630,13 @@
             tabPage_step2.ResumeLayout(false);
             panel_questions.ResumeLayout(false);
             panel_questions.PerformLayout();
+            panel_questionsList.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)questionBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -628,11 +675,15 @@
         private Button button_Previous;
         private Label label_question;
         private Panel panel_questions;
-        private TextBox textBox_QuetionContent_BE;
         private CheckBox checkBox_OptionOrder;
         private Button button_AddQuestion;
         private Button button_SaveQuestion;
         private CheckBox checkBox_QuestionOrder;
         private Button button_addOption;
+        private TextBox textBox_QuetionContent_BE;
+        private Panel panel_questionsList;
+        private BindingSource questionBindingSource;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn textDataGridViewTextBoxColumn;
     }
 }
