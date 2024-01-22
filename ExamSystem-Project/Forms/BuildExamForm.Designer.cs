@@ -87,7 +87,7 @@
             tabControl1.Margin = new Padding(2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1461, 876);
+            tabControl1.Size = new Size(1630, 1023);
             tabControl1.TabIndex = 0;
             // 
             // tabPage_step1
@@ -99,7 +99,7 @@
             tabPage_step1.Margin = new Padding(2);
             tabPage_step1.Name = "tabPage_step1";
             tabPage_step1.Padding = new Padding(2);
-            tabPage_step1.Size = new Size(1453, 825);
+            tabPage_step1.Size = new Size(1622, 972);
             tabPage_step1.TabIndex = 0;
             tabPage_step1.Text = "Exam details";
             // 
@@ -364,7 +364,7 @@
             tabPage_step2.Margin = new Padding(2);
             tabPage_step2.Name = "tabPage_step2";
             tabPage_step2.Padding = new Padding(2);
-            tabPage_step2.Size = new Size(1453, 825);
+            tabPage_step2.Size = new Size(1622, 972);
             tabPage_step2.TabIndex = 1;
             tabPage_step2.Text = "Add questions";
             tabPage_step2.UseVisualStyleBackColor = true;
@@ -381,7 +381,7 @@
             panel_questions.Location = new Point(2, 2);
             panel_questions.Margin = new Padding(4);
             panel_questions.Name = "panel_questions";
-            panel_questions.Size = new Size(1449, 821);
+            panel_questions.Size = new Size(1618, 968);
             panel_questions.TabIndex = 1;
             // 
             // button_addOption
@@ -469,7 +469,7 @@
             tabPage_step3.Margin = new Padding(4, 5, 4, 5);
             tabPage_step3.Name = "tabPage_step3";
             tabPage_step3.Padding = new Padding(4, 5, 4, 5);
-            tabPage_step3.Size = new Size(1453, 825);
+            tabPage_step3.Size = new Size(1622, 972);
             tabPage_step3.TabIndex = 2;
             tabPage_step3.Text = "Summary";
             tabPage_step3.UseVisualStyleBackColor = true;
@@ -514,7 +514,7 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1508, 1106);
+            panel3.Size = new Size(1687, 1249);
             panel3.TabIndex = 2;
             // 
             // panel5
@@ -523,10 +523,10 @@
             panel5.Controls.Add(button_Previous);
             panel5.Controls.Add(button_SaveExamBuilder);
             panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(0, 1015);
+            panel5.Location = new Point(0, 1158);
             panel5.Margin = new Padding(2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(1508, 91);
+            panel5.Size = new Size(1687, 91);
             panel5.TabIndex = 2;
             // 
             // button_Previous
@@ -552,7 +552,7 @@
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1508, 89);
+            panel4.Size = new Size(1687, 89);
             panel4.TabIndex = 1;
             // 
             // label11
@@ -573,7 +573,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(1508, 1106);
+            ClientSize = new Size(1687, 1249);
             Controls.Add(panel3);
             Margin = new Padding(2);
             Name = "BuildExamForm";
