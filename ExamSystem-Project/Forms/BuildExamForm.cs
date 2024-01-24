@@ -8,8 +8,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using form= System.Windows.Forms ;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace ExamSystem_Project.Forms
 {
@@ -17,12 +19,25 @@ namespace ExamSystem_Project.Forms
     {
         private int textBoxCounter = 0;
         private int optionNameCounter = 1;
+        public form.TextBox dynamicTextBox;
+        string[] strArr;
         public Exam exam;
+        public Question question;
+        public OptionAns optionAns;
+        public Label dynamicLabel;
+        public form.Button deleteButton;
+        public RadioButton radioButton;
+        public List<form.TextBox> textBoxesList;
+        public List<RadioButton> radioButtonList;
         public BuildExamForm()
         {
             InitializeComponent();
             InitializeAll();
             exam = new Exam();
+           
+            
+            textBoxesList = new List<form.TextBox>();
+            radioButtonList = new List<RadioButton>();
             exam.ExamStrId = Guid.NewGuid();
         }
 
@@ -116,49 +131,64 @@ namespace ExamSystem_Project.Forms
             string controlId = Guid.NewGuid().ToString();
 
             // Create a new Label
-            Label dynamicLabel = new Label
+            dynamicLabel = new Label
             {
                 Font = new Font("Segoe UI", 11, FontStyle.Bold), // Set Font to bold
                 ForeColor = Color.FromArgb(0, 135, 209),
                 Text = "Option " + optionNameCounter + " :",
                 TextAlign = System.Drawing.ContentAlignment.MiddleLeft,
-                Location = new Point(label_question.Left + 92, Convert.ToInt32(GetTopMargin())),
+                Location = new Point(label_question.Left + 60, Convert.ToInt32(GetTopMargin())),
                 AutoSize = true,
                 Tag = controlId // Set a unique identifier as the Tag
             };
 
             // Create a new TextBox
-            TextBox dynamicTextBox = new TextBox
+            dynamicTextBox = new form.TextBox
             {
                 Width = 600,
                 Height = 26,
                 BorderStyle = BorderStyle.FixedSingle,
-                Location = new Point(textBox_QuetionContent_BE.Left, dynamicLabel.Top),
-                Name = "TextBox" + optionNameCounter, // Unique name based on the counter
+                Location = new Point(textBox_QuetionContent.Left, dynamicLabel.Top),
+                Name = "textBox_option" + optionNameCounter, // Unique name based on the counter
                 Tag = controlId, // Set the same unique identifier as the Tag
 
             };
 
+            textBoxesList.Add(dynamicTextBox);
+           
+
             // Create a Delete button (trash icon)
-            Button deleteButton = new Button
-            {
+             deleteButton = new form.Button
+             {
                 Text = "Delete",
-                Width = 130,
-                Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Name = "Button_" + optionNameCounter,
+                Width = 107,
+                Font = new Font("Segoe UI", 11, FontStyle.Bold),
+                Name = "button_" + optionNameCounter,
                 ForeColor = Color.White,
                 BackColor = Color.FromArgb(0, 135, 209),
-                Height = 54,
+                Height = 40,
                 AutoSize = true,
-                Location = new Point(dynamicTextBox.Right + 30, dynamicTextBox.Top - 4),// Use Location instead of Margin
+                Location = new Point(dynamicTextBox.Right + 30, dynamicTextBox.Top - 7),// Use Location instead of Margin
                 Tag = controlId // Set the same unique identifier as the Tag
             };
 
+            radioButton = new RadioButton
+            {
+                Text = "Is Correct :",
+                Name = "radioButton_IsCorrect" + optionNameCounter,
+                AutoSize = true,
+                CheckAlign = System.Drawing.ContentAlignment.MiddleRight,
+                Font = new Font("Segoe UI", 11, FontStyle.Bold),
+                ForeColor = Color.FromArgb(0, 135, 209),
+                Location = new Point(deleteButton.Right, dynamicTextBox.Top - 4),
+                Tag = controlId
+            };
 
+            radioButtonList.Add(radioButton);
             // Attach a click event handler to the delete button
             deleteButton.Click += (deleteSender, deleteEventArgs) =>
             {
-                if (deleteSender is Button btn)
+                if (deleteSender is form.Button btn)
                 {
                     var arr = btn.Name.Split("_");
                     if (int.Parse(arr[1]) < textBoxCounter)
@@ -167,12 +197,13 @@ namespace ExamSystem_Project.Forms
                         return;
                     }
                 }
+
                 button_addOption.Enabled = textBoxCounter < 5;
                 textBoxCounter--;
                 optionNameCounter--;
 
 
-
+                
                 // Retrieve the unique identifier associated with the controls
                 string tag = deleteButton.Tag as string;
 
@@ -181,7 +212,8 @@ namespace ExamSystem_Project.Forms
                     .Cast<Control>()
                     .Where(control => control.Tag as string == tag)
                     .ToList();
-
+                textBoxesList.RemoveAll(x=>x.Tag == tag);
+                radioButtonList.RemoveAll(x => x.Tag == tag);
                 foreach (var control in controlsToRemove)
                 {
                     panel_questions.Controls.Remove(control);
@@ -193,6 +225,7 @@ namespace ExamSystem_Project.Forms
             panel_questions.Controls.Add(dynamicLabel);
             panel_questions.Controls.Add(dynamicTextBox);
             panel_questions.Controls.Add(deleteButton);
+            panel_questions.Controls.Add(radioButton);
 
             // Increment the counter for the next TextBox
 
@@ -211,9 +244,9 @@ namespace ExamSystem_Project.Forms
             {
                 foreach (Control control in panel_questions.Controls)
                 {
-                    if (control is TextBox textBox)
+                    if (control is form.TextBox textBox)
                     {
-                        topMargin += textBox.Height + 50; // Increase the space between TextBoxes
+                        topMargin += textBox.Height + 40; // Increase the space between TextBoxes
                     }
                 }
             }
@@ -240,6 +273,36 @@ namespace ExamSystem_Project.Forms
             }
         }
 
+        private void button_SaveQuestion_Click(object sender, EventArgs e)
+        {
+            question = new Question();
+            question.Text = textBox_QuetionContent.Text;
+            question.QuestionStrId = Guid.NewGuid();
+            question.Options = new List<OptionAns> ();
 
+
+
+            for (int i = 0; i < textBoxesList.Count; i++)
+            {
+                var box = textBoxesList[i];
+                var radioButton = radioButtonList[i];
+
+                if (!string.IsNullOrEmpty(box.Text))
+                {
+                    optionAns = new OptionAns();
+                    optionAns.QuestionStrId = question.QuestionStrId;
+                    optionAns.OptionAnsStrId = Guid.NewGuid();
+                    optionAns.OptionText = box.Text;
+                    optionAns.IsCorrect = radioButton.Checked;
+                    
+                    question.Options.Add(optionAns);
+                    
+                }
+            }
+           exam.questions.Add(question);
+            
+
+
+        }
     }
 }

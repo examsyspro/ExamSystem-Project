@@ -24,12 +24,13 @@ namespace ExamSystem_Project.Models
         public int TotalMinutes { get; set; } //Total exam Minutes duration 
         public bool RandomQuestionOrder { get; set; } //Random order of the questions
         public Course_Enum CourseType { get; set; }
+        public List<Question> questions { get; set; }
 
 
 
 
         #endregion
-        public Exam() { }
+        public Exam() { questions = new List<Question>(); }
         #region Methods 
 
         public bool AddNewExam(Exam e)
