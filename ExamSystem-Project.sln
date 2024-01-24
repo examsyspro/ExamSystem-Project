@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamSystem-Project", "ExamS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamSystem.ServerAPI", "ExamSystem.ServerAPI\ExamSystem.ServerAPI.csproj", "{4AF9EB1C-BBCE-4178-8379-3AB19245ABF1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamSystem.Client", "ExamSystem.Client\ExamSystem.Client.csproj", "{A0D829DC-EFBB-464D-9CEE-8CE03E6D3F51}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{4AF9EB1C-BBCE-4178-8379-3AB19245ABF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AF9EB1C-BBCE-4178-8379-3AB19245ABF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AF9EB1C-BBCE-4178-8379-3AB19245ABF1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A0D829DC-EFBB-464D-9CEE-8CE03E6D3F51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0D829DC-EFBB-464D-9CEE-8CE03E6D3F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0D829DC-EFBB-464D-9CEE-8CE03E6D3F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0D829DC-EFBB-464D-9CEE-8CE03E6D3F51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
