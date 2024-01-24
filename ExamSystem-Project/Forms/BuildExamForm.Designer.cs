@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             tabControl1 = new TabControl();
             tabPage_step1 = new TabPage();
+            button_Test = new Button();
             panel1 = new Panel();
             checkBox_QuestionOrder = new CheckBox();
             label5 = new Label();
@@ -54,6 +55,7 @@
             comboBox_Course_Select = new ComboBox();
             tabPage_step2 = new TabPage();
             panel_questions = new Panel();
+            button_testQuestions = new Button();
             button_AddQuestion = new Button();
             button_SaveQuestion = new Button();
             checkBox_OptionOrder = new CheckBox();
@@ -96,6 +98,7 @@
             // tabPage_step1
             // 
             tabPage_step1.BackColor = SystemColors.Window;
+            tabPage_step1.Controls.Add(button_Test);
             tabPage_step1.Controls.Add(panel1);
             tabPage_step1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tabPage_step1.Location = new Point(4, 40);
@@ -105,6 +108,16 @@
             tabPage_step1.Size = new Size(1181, 641);
             tabPage_step1.TabIndex = 0;
             tabPage_step1.Text = "Exam details";
+            // 
+            // button_Test
+            // 
+            button_Test.Location = new Point(967, 90);
+            button_Test.Name = "button_Test";
+            button_Test.Size = new Size(94, 29);
+            button_Test.TabIndex = 31;
+            button_Test.Text = "Test";
+            button_Test.UseVisualStyleBackColor = true;
+            button_Test.Click += button_Test_Click;
             // 
             // panel1
             // 
@@ -373,6 +386,7 @@
             // 
             // panel_questions
             // 
+            panel_questions.Controls.Add(button_testQuestions);
             panel_questions.Controls.Add(button_AddQuestion);
             panel_questions.Controls.Add(button_SaveQuestion);
             panel_questions.Controls.Add(checkBox_OptionOrder);
@@ -380,10 +394,21 @@
             panel_questions.Controls.Add(textBox_QuetionContent);
             panel_questions.Controls.Add(label_question);
             panel_questions.Dock = DockStyle.Fill;
+            panel_questions.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             panel_questions.Location = new Point(2, 2);
             panel_questions.Name = "panel_questions";
             panel_questions.Size = new Size(1177, 637);
             panel_questions.TabIndex = 1;
+            // 
+            // button_testQuestions
+            // 
+            button_testQuestions.Location = new Point(1043, 100);
+            button_testQuestions.Name = "button_testQuestions";
+            button_testQuestions.Size = new Size(94, 30);
+            button_testQuestions.TabIndex = 32;
+            button_testQuestions.Text = "Test";
+            button_testQuestions.UseVisualStyleBackColor = true;
+            button_testQuestions.Click += button_testQuestions_Click;
             // 
             // button_AddQuestion
             // 
@@ -640,5 +665,7 @@
         private Button button_addOption;
         private TextBox textBox_QuetionContent;
         private BindingSource questionBindingSource;
+        private Button button_Test;
+        private Button button_testQuestions;
     }
 }

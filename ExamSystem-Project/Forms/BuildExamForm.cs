@@ -9,8 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.VisualStyles;
-using form= System.Windows.Forms ;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Forms;
+
 
 
 namespace ExamSystem_Project.Forms
@@ -19,24 +19,24 @@ namespace ExamSystem_Project.Forms
     {
         private int textBoxCounter = 0;
         private int optionNameCounter = 1;
-        public form.TextBox dynamicTextBox;
+        public TextBox dynamicTextBox;
         string[] strArr;
         public Exam exam;
         public Question question;
         public OptionAns optionAns;
         public Label dynamicLabel;
-        public form.Button deleteButton;
         public RadioButton radioButton;
-        public List<form.TextBox> textBoxesList;
+        public List<TextBox> textBoxesList;
         public List<RadioButton> radioButtonList;
+
         public BuildExamForm()
         {
             InitializeComponent();
             InitializeAll();
             exam = new Exam();
-           
-            
-            textBoxesList = new List<form.TextBox>();
+
+
+            textBoxesList = new List<TextBox>();
             radioButtonList = new List<RadioButton>();
             exam.ExamStrId = Guid.NewGuid();
         }
@@ -143,7 +143,7 @@ namespace ExamSystem_Project.Forms
             };
 
             // Create a new TextBox
-            dynamicTextBox = new form.TextBox
+            dynamicTextBox = new TextBox
             {
                 Width = 600,
                 Height = 26,
@@ -155,11 +155,11 @@ namespace ExamSystem_Project.Forms
             };
 
             textBoxesList.Add(dynamicTextBox);
-           
+
 
             // Create a Delete button (trash icon)
-             deleteButton = new form.Button
-             {
+            Button deleteButton = new Button
+            {
                 Text = "Delete",
                 Width = 107,
                 Font = new Font("Segoe UI", 11, FontStyle.Bold),
@@ -188,7 +188,7 @@ namespace ExamSystem_Project.Forms
             // Attach a click event handler to the delete button
             deleteButton.Click += (deleteSender, deleteEventArgs) =>
             {
-                if (deleteSender is form.Button btn)
+                if (deleteSender is Button btn)
                 {
                     var arr = btn.Name.Split("_");
                     if (int.Parse(arr[1]) < textBoxCounter)
@@ -203,17 +203,19 @@ namespace ExamSystem_Project.Forms
                 optionNameCounter--;
 
 
-                
+
                 // Retrieve the unique identifier associated with the controls
                 string tag = deleteButton.Tag as string;
+
+                textBoxesList.RemoveAll(x => x.Tag == tag);
+                radioButtonList.RemoveAll(x => x.Tag == tag);
 
                 // Find and remove controls with the same unique identifier
                 var controlsToRemove = panel_questions.Controls
                     .Cast<Control>()
                     .Where(control => control.Tag as string == tag)
                     .ToList();
-                textBoxesList.RemoveAll(x=>x.Tag == tag);
-                radioButtonList.RemoveAll(x => x.Tag == tag);
+
                 foreach (var control in controlsToRemove)
                 {
                     panel_questions.Controls.Remove(control);
@@ -244,7 +246,7 @@ namespace ExamSystem_Project.Forms
             {
                 foreach (Control control in panel_questions.Controls)
                 {
-                    if (control is form.TextBox textBox)
+                    if (control is TextBox textBox)
                     {
                         topMargin += textBox.Height + 40; // Increase the space between TextBoxes
                     }
@@ -278,7 +280,7 @@ namespace ExamSystem_Project.Forms
             question = new Question();
             question.Text = textBox_QuetionContent.Text;
             question.QuestionStrId = Guid.NewGuid();
-            question.Options = new List<OptionAns> ();
+            question.Options = new List<OptionAns>();
 
 
 
@@ -294,13 +296,52 @@ namespace ExamSystem_Project.Forms
                     optionAns.OptionAnsStrId = Guid.NewGuid();
                     optionAns.OptionText = box.Text;
                     optionAns.IsCorrect = radioButton.Checked;
-                    
+
                     question.Options.Add(optionAns);
-                    
+
                 }
             }
-           exam.questions.Add(question);
-            
+            exam.questions.Add(question);
+
+
+
+        }
+
+        private void button_Test_Click(object sender, EventArgs e)
+        {
+            textBox_examTitle.Text = "test exam";
+            textBox_teacherName.Text = "test teacher";
+            textBox_date.Text = dateTimePicker_examDate.Value.ToString("dd/MM/yy");
+            textBox_hours_StartTime.Text = "10";
+            textBox_minutes_StartTime.Text = "00";
+            textBox_hours_totalTime.Text = "2";
+            textBox_minutes_totalTime.Text = "00";
+            comboBox_Course_Select.SelectedIndex = 0;
+            checkBox_QuestionOrder.Checked = true;
+
+
+        }
+
+        private void button_testQuestions_Click(object sender, EventArgs e)
+        {
+            if (textBoxCounter < 4)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    button_addOption_Click(sender, EventArgs.Empty);
+                }
+            }
+         
+
+
+            textBox_QuetionContent.Text = "what is the best text option?";
+
+            for (int i = 0; i < textBoxesList.Count; i++)
+            {
+                textBoxesList[i].Text = "test option" + (i + 1);
+                radioButtonList[i].Checked = true;
+            }
+
 
 
         }
