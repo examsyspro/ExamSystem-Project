@@ -30,7 +30,8 @@ namespace ExamSystem_Project.Models
                 return foundIndex;
             }
         }
-        public Question() 
+
+        public Question()
         {
             QuestionStrId = Guid.NewGuid();
             Options = new List<OptionAns>();

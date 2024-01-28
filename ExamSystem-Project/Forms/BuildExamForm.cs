@@ -42,8 +42,6 @@ namespace ExamSystem_Project.Forms
             deleteButtonList = new List<Button>();
             ControlsList = new List<Control>();
             labelList = new List<Label>();
-
-
         }
 
 
@@ -58,7 +56,6 @@ namespace ExamSystem_Project.Forms
             tabControl1.TabPages.Remove(tabPage_step3);
             dateTimePicker_examDate.MinDate = DateTime.Now;
             dateTimePicker_examDate.MaxDate = DateTime.Now.AddDays(60);
-
             panel_questions.SendToBack();
         }
 
@@ -168,7 +165,7 @@ namespace ExamSystem_Project.Forms
                     ForeColor = Color.FromArgb(0, 135, 209),
                     Text = "Option " + optionNameCounter + " :",
                     TextAlign = System.Drawing.ContentAlignment.MiddleLeft,
-                    Location = new Point(label_question.Left , Convert.ToInt32(GetTopMargin())),
+                    Location = new Point(label_question.Left, Convert.ToInt32(GetTopMargin())),
                     AutoSize = true,
                     Tag = controlId // Set a unique identifier as the Tag
                 };
@@ -180,7 +177,7 @@ namespace ExamSystem_Project.Forms
                     Width = 600,
                     Height = 26,
                     BorderStyle = BorderStyle.FixedSingle,
-                    Location = new Point(textBox_QuetionContent.Left-80, dynamicLabel.Top),
+                    Location = new Point(textBox_QuetionContent.Left - 80, dynamicLabel.Top),
                     Name = "textBox_option" + optionNameCounter, // Unique name based on the counter
                     Tag = controlId, // Set the same unique identifier as the Tag
 
@@ -340,8 +337,11 @@ namespace ExamSystem_Project.Forms
                     }
                 }
                 exam.questions.Add(question);
-
+                listBox_Questions.DataSource = null;
+                listBox_Questions.Items.Clear();
+                listBox_Questions.DataSource = exam.questions;
                 panel_questionList.BringToFront();
+
 
             }
             catch (Exception ex)
@@ -406,6 +406,43 @@ namespace ExamSystem_Project.Forms
             question = new Question();
 
 
+
+
+        }
+
+        private void listBox_Questions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var list = new List<string>();
+                var selectedItem = (Question)listBox_Questions.SelectedItem;
+                var item = exam.questions.Find(x => x.QuestionStrId == selectedItem.QuestionStrId);
+                listBox_opstionAns.DataSource = null;
+                listBox_opstionAns.Items.Clear();
+                listBox_opstionAns.DataSource = item.Options;
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
+
+        private void listBox_opstionAns_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+            }
 
 
         }

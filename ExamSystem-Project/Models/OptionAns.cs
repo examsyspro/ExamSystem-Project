@@ -13,11 +13,15 @@ namespace ExamSystem_Project.Models
         public Guid QuestionStrId { get; set; }
         public string OptionText { get; set; }
         public bool IsCorrect { get; set; }
-        public OptionAns() 
+        public OptionAns()
         {
             OptionAnsStrId = Guid.NewGuid();
         }
 
+        public override string? ToString()
+        {
+            return OptionText.ToString();
+        }
     }
 }
 

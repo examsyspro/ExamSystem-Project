@@ -58,6 +58,7 @@
             button_testQuestions = new Button();
             button_AddQuestion = new Button();
             panel_questionList = new Panel();
+            listBox_Questions = new ListBox();
             panel_questions = new Panel();
             button_SaveQuestion = new Button();
             checkBox_OptionOrder = new CheckBox();
@@ -65,6 +66,7 @@
             textBox_QuetionContent = new TextBox();
             label_question = new Label();
             tabPage_step3 = new TabPage();
+            questionBindingSource1 = new BindingSource(components);
             questionBindingSource = new BindingSource(components);
             button_SaveExamBuilder = new Button();
             button_next = new Button();
@@ -73,11 +75,14 @@
             button_Previous = new Button();
             panel4 = new Panel();
             label11 = new Label();
+            listBox_opstionAns = new ListBox();
             tabControl1.SuspendLayout();
             tabPage_step1.SuspendLayout();
             panel1.SuspendLayout();
             tabPage_step2.SuspendLayout();
+            panel_questionList.SuspendLayout();
             panel_questions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)questionBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)questionBindingSource).BeginInit();
             panel3.SuspendLayout();
             panel5.SuspendLayout();
@@ -91,7 +96,7 @@
             tabControl1.Controls.Add(tabPage_step3);
             tabControl1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             tabControl1.Location = new Point(9, 82);
-            tabControl1.Margin = new Padding(2, 2, 2, 2);
+            tabControl1.Margin = new Padding(2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1198, 686);
@@ -104,9 +109,9 @@
             tabPage_step1.Controls.Add(panel1);
             tabPage_step1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tabPage_step1.Location = new Point(4, 40);
-            tabPage_step1.Margin = new Padding(2, 2, 2, 2);
+            tabPage_step1.Margin = new Padding(2);
             tabPage_step1.Name = "tabPage_step1";
-            tabPage_step1.Padding = new Padding(2, 2, 2, 2);
+            tabPage_step1.Padding = new Padding(2);
             tabPage_step1.Size = new Size(1190, 642);
             tabPage_step1.TabIndex = 0;
             tabPage_step1.Text = "Exam details";
@@ -146,7 +151,7 @@
             panel1.Controls.Add(label3);
             panel1.Controls.Add(comboBox_Course_Select);
             panel1.Location = new Point(21, 18);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(867, 610);
             panel1.TabIndex = 30;
@@ -181,7 +186,7 @@
             // 
             dateTimePicker_examDate.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker_examDate.Location = new Point(173, 198);
-            dateTimePicker_examDate.Margin = new Padding(2, 2, 2, 2);
+            dateTimePicker_examDate.Margin = new Padding(2);
             dateTimePicker_examDate.Name = "dateTimePicker_examDate";
             dateTimePicker_examDate.Size = new Size(266, 32);
             dateTimePicker_examDate.TabIndex = 19;
@@ -216,7 +221,7 @@
             textBox_examTitle.BorderStyle = BorderStyle.FixedSingle;
             textBox_examTitle.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             textBox_examTitle.Location = new Point(160, 44);
-            textBox_examTitle.Margin = new Padding(2, 2, 2, 2);
+            textBox_examTitle.Margin = new Padding(2);
             textBox_examTitle.Name = "textBox_examTitle";
             textBox_examTitle.Size = new Size(234, 32);
             textBox_examTitle.TabIndex = 0;
@@ -226,7 +231,7 @@
             textBox_minutes_StartTime.BorderStyle = BorderStyle.FixedSingle;
             textBox_minutes_StartTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             textBox_minutes_StartTime.Location = new Point(263, 270);
-            textBox_minutes_StartTime.Margin = new Padding(2, 2, 2, 2);
+            textBox_minutes_StartTime.Margin = new Padding(2);
             textBox_minutes_StartTime.Name = "textBox_minutes_StartTime";
             textBox_minutes_StartTime.Size = new Size(80, 32);
             textBox_minutes_StartTime.TabIndex = 17;
@@ -248,7 +253,7 @@
             textBox_date.BorderStyle = BorderStyle.FixedSingle;
             textBox_date.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             textBox_date.Location = new Point(467, 198);
-            textBox_date.Margin = new Padding(2, 2, 2, 2);
+            textBox_date.Margin = new Padding(2);
             textBox_date.Name = "textBox_date";
             textBox_date.ReadOnly = true;
             textBox_date.Size = new Size(151, 32);
@@ -259,7 +264,7 @@
             textBox_hours_StartTime.BorderStyle = BorderStyle.FixedSingle;
             textBox_hours_StartTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             textBox_hours_StartTime.Location = new Point(160, 270);
-            textBox_hours_StartTime.Margin = new Padding(2, 2, 2, 2);
+            textBox_hours_StartTime.Margin = new Padding(2);
             textBox_hours_StartTime.Name = "textBox_hours_StartTime";
             textBox_hours_StartTime.Size = new Size(80, 32);
             textBox_hours_StartTime.TabIndex = 2;
@@ -293,7 +298,7 @@
             textBox_hours_totalTime.BorderStyle = BorderStyle.FixedSingle;
             textBox_hours_totalTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             textBox_hours_totalTime.Location = new Point(213, 356);
-            textBox_hours_totalTime.Margin = new Padding(2, 2, 2, 2);
+            textBox_hours_totalTime.Margin = new Padding(2);
             textBox_hours_totalTime.Name = "textBox_hours_totalTime";
             textBox_hours_totalTime.Size = new Size(80, 32);
             textBox_hours_totalTime.TabIndex = 22;
@@ -303,7 +308,7 @@
             textBox_teacherName.BorderStyle = BorderStyle.FixedSingle;
             textBox_teacherName.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             textBox_teacherName.Location = new Point(192, 120);
-            textBox_teacherName.Margin = new Padding(2, 2, 2, 2);
+            textBox_teacherName.Margin = new Padding(2);
             textBox_teacherName.Name = "textBox_teacherName";
             textBox_teacherName.Size = new Size(203, 32);
             textBox_teacherName.TabIndex = 3;
@@ -337,7 +342,7 @@
             textBox_minutes_totalTime.BorderStyle = BorderStyle.FixedSingle;
             textBox_minutes_totalTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             textBox_minutes_totalTime.Location = new Point(314, 356);
-            textBox_minutes_totalTime.Margin = new Padding(2, 2, 2, 2);
+            textBox_minutes_totalTime.Margin = new Padding(2);
             textBox_minutes_totalTime.Name = "textBox_minutes_totalTime";
             textBox_minutes_totalTime.Size = new Size(80, 32);
             textBox_minutes_totalTime.TabIndex = 23;
@@ -371,7 +376,7 @@
             comboBox_Course_Select.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox_Course_Select.FormattingEnabled = true;
             comboBox_Course_Select.Location = new Point(133, 446);
-            comboBox_Course_Select.Margin = new Padding(2, 2, 2, 2);
+            comboBox_Course_Select.Margin = new Padding(2);
             comboBox_Course_Select.Name = "comboBox_Course_Select";
             comboBox_Course_Select.Size = new Size(198, 33);
             comboBox_Course_Select.TabIndex = 24;
@@ -385,9 +390,9 @@
             tabPage_step2.Controls.Add(panel_questions);
             tabPage_step2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tabPage_step2.Location = new Point(4, 40);
-            tabPage_step2.Margin = new Padding(2, 2, 2, 2);
+            tabPage_step2.Margin = new Padding(2);
             tabPage_step2.Name = "tabPage_step2";
-            tabPage_step2.Padding = new Padding(2, 2, 2, 2);
+            tabPage_step2.Padding = new Padding(2);
             tabPage_step2.Size = new Size(1190, 642);
             tabPage_step2.TabIndex = 1;
             tabPage_step2.Text = "Add questions";
@@ -399,10 +404,10 @@
             button_ShowQuestions.FlatStyle = FlatStyle.Flat;
             button_ShowQuestions.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             button_ShowQuestions.ForeColor = Color.White;
-            button_ShowQuestions.Location = new Point(1025, 97);
-            button_ShowQuestions.Margin = new Padding(2, 2, 2, 2);
+            button_ShowQuestions.Location = new Point(1021, 97);
+            button_ShowQuestions.Margin = new Padding(2);
             button_ShowQuestions.Name = "button_ShowQuestions";
-            button_ShowQuestions.Size = new Size(151, 42);
+            button_ShowQuestions.Size = new Size(161, 42);
             button_ShowQuestions.TabIndex = 33;
             button_ShowQuestions.Text = "Show Questions";
             button_ShowQuestions.UseVisualStyleBackColor = false;
@@ -425,10 +430,10 @@
             button_AddQuestion.FlatStyle = FlatStyle.Flat;
             button_AddQuestion.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             button_AddQuestion.ForeColor = Color.White;
-            button_AddQuestion.Location = new Point(1025, 34);
-            button_AddQuestion.Margin = new Padding(2, 2, 2, 2);
+            button_AddQuestion.Location = new Point(1021, 37);
+            button_AddQuestion.Margin = new Padding(2);
             button_AddQuestion.Name = "button_AddQuestion";
-            button_AddQuestion.Size = new Size(151, 42);
+            button_AddQuestion.Size = new Size(161, 42);
             button_AddQuestion.TabIndex = 4;
             button_AddQuestion.Text = "Add Question";
             button_AddQuestion.UseVisualStyleBackColor = false;
@@ -437,11 +442,23 @@
             // panel_questionList
             // 
             panel_questionList.BackColor = SystemColors.InactiveBorder;
+            panel_questionList.Controls.Add(listBox_opstionAns);
+            panel_questionList.Controls.Add(listBox_Questions);
             panel_questionList.Location = new Point(5, 5);
-            panel_questionList.Margin = new Padding(2, 2, 2, 2);
+            panel_questionList.Margin = new Padding(2);
             panel_questionList.Name = "panel_questionList";
             panel_questionList.Size = new Size(1004, 635);
             panel_questionList.TabIndex = 6;
+            // 
+            // listBox_Questions
+            // 
+            listBox_Questions.FormattingEnabled = true;
+            listBox_Questions.ItemHeight = 20;
+            listBox_Questions.Location = new Point(21, 59);
+            listBox_Questions.Name = "listBox_Questions";
+            listBox_Questions.Size = new Size(392, 544);
+            listBox_Questions.TabIndex = 0;
+            listBox_Questions.SelectedIndexChanged += listBox_Questions_SelectedIndexChanged;
             // 
             // panel_questions
             // 
@@ -465,7 +482,7 @@
             button_SaveQuestion.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             button_SaveQuestion.ForeColor = Color.White;
             button_SaveQuestion.Location = new Point(845, 584);
-            button_SaveQuestion.Margin = new Padding(2, 2, 2, 2);
+            button_SaveQuestion.Margin = new Padding(2);
             button_SaveQuestion.Name = "button_SaveQuestion";
             button_SaveQuestion.Size = new Size(146, 42);
             button_SaveQuestion.TabIndex = 3;
@@ -494,7 +511,7 @@
             button_addOption.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             button_addOption.ForeColor = Color.White;
             button_addOption.Location = new Point(700, 30);
-            button_addOption.Margin = new Padding(2, 2, 2, 2);
+            button_addOption.Margin = new Padding(2);
             button_addOption.Name = "button_addOption";
             button_addOption.Size = new Size(125, 42);
             button_addOption.TabIndex = 5;
@@ -534,6 +551,10 @@
             tabPage_step3.Text = "Summary";
             tabPage_step3.UseVisualStyleBackColor = true;
             // 
+            // questionBindingSource1
+            // 
+            questionBindingSource1.DataSource = typeof(Models.Question);
+            // 
             // questionBindingSource
             // 
             questionBindingSource.DataSource = typeof(Models.Question);
@@ -545,7 +566,7 @@
             button_SaveExamBuilder.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             button_SaveExamBuilder.ForeColor = Color.White;
             button_SaveExamBuilder.Location = new Point(534, 14);
-            button_SaveExamBuilder.Margin = new Padding(2, 2, 2, 2);
+            button_SaveExamBuilder.Margin = new Padding(2);
             button_SaveExamBuilder.Name = "button_SaveExamBuilder";
             button_SaveExamBuilder.Size = new Size(145, 42);
             button_SaveExamBuilder.TabIndex = 2;
@@ -560,7 +581,7 @@
             button_next.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             button_next.ForeColor = Color.White;
             button_next.Location = new Point(1055, 14);
-            button_next.Margin = new Padding(2, 2, 2, 2);
+            button_next.Margin = new Padding(2);
             button_next.Name = "button_next";
             button_next.Size = new Size(107, 42);
             button_next.TabIndex = 3;
@@ -576,7 +597,7 @@
             panel3.Controls.Add(tabControl1);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 0);
-            panel3.Margin = new Padding(2, 2, 2, 2);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
             panel3.Size = new Size(1219, 844);
             panel3.TabIndex = 2;
@@ -588,7 +609,7 @@
             panel5.Controls.Add(button_SaveExamBuilder);
             panel5.Dock = DockStyle.Bottom;
             panel5.Location = new Point(0, 770);
-            panel5.Margin = new Padding(2, 2, 2, 2);
+            panel5.Margin = new Padding(2);
             panel5.Name = "panel5";
             panel5.Size = new Size(1219, 74);
             panel5.TabIndex = 2;
@@ -600,7 +621,7 @@
             button_Previous.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             button_Previous.ForeColor = Color.White;
             button_Previous.Location = new Point(45, 14);
-            button_Previous.Margin = new Padding(2, 2, 2, 2);
+            button_Previous.Margin = new Padding(2);
             button_Previous.Name = "button_Previous";
             button_Previous.Size = new Size(118, 42);
             button_Previous.TabIndex = 4;
@@ -614,7 +635,7 @@
             panel4.Controls.Add(label11);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
-            panel4.Margin = new Padding(2, 2, 2, 2);
+            panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
             panel4.Size = new Size(1219, 70);
             panel4.TabIndex = 1;
@@ -632,6 +653,16 @@
             label11.TabIndex = 7;
             label11.Text = "Build Exam";
             // 
+            // listBox_opstionAns
+            // 
+            listBox_opstionAns.FormattingEnabled = true;
+            listBox_opstionAns.ItemHeight = 20;
+            listBox_opstionAns.Location = new Point(488, 190);
+            listBox_opstionAns.Name = "listBox_opstionAns";
+            listBox_opstionAns.Size = new Size(468, 284);
+            listBox_opstionAns.TabIndex = 1;
+            listBox_opstionAns.SelectedIndexChanged += listBox_opstionAns_SelectedIndexChanged;
+            // 
             // BuildExamForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -639,7 +670,7 @@
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(1219, 844);
             Controls.Add(panel3);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "BuildExamForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BuildExamForm";
@@ -648,8 +679,10 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabPage_step2.ResumeLayout(false);
+            panel_questionList.ResumeLayout(false);
             panel_questions.ResumeLayout(false);
             panel_questions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)questionBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)questionBindingSource).EndInit();
             panel3.ResumeLayout(false);
             panel5.ResumeLayout(false);
@@ -704,5 +737,8 @@
         private Button button_testQuestions;
         private Panel panel_questionList;
         private Button button_ShowQuestions;
+        private ListBox listBox_Questions;
+        private BindingSource questionBindingSource1;
+        private ListBox listBox_opstionAns;
     }
 }
