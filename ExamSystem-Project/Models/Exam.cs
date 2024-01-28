@@ -30,7 +30,11 @@ namespace ExamSystem_Project.Models
 
 
         #endregion
-        public Exam() { questions = new List<Question>(); }
+        public Exam() 
+        { 
+            questions = new List<Question>();
+            ExamStrId = Guid.NewGuid();
+        }
         #region Methods 
 
         public bool AddNewExam(Exam e)

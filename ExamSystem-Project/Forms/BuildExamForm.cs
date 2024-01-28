@@ -34,11 +34,9 @@ namespace ExamSystem_Project.Forms
             InitializeComponent();
             InitializeAll();
             exam = new Exam();
-
-
             textBoxesList = new List<TextBox>();
             radioButtonList = new List<RadioButton>();
-            exam.ExamStrId = Guid.NewGuid();
+
         }
 
 
@@ -279,9 +277,6 @@ namespace ExamSystem_Project.Forms
         {
             question = new Question();
             question.Text = textBox_QuetionContent.Text;
-            question.QuestionStrId = Guid.NewGuid();
-            question.Options = new List<OptionAns>();
-
 
 
             for (int i = 0; i < textBoxesList.Count; i++)
@@ -293,12 +288,9 @@ namespace ExamSystem_Project.Forms
                 {
                     optionAns = new OptionAns();
                     optionAns.QuestionStrId = question.QuestionStrId;
-                    optionAns.OptionAnsStrId = Guid.NewGuid();
                     optionAns.OptionText = box.Text;
                     optionAns.IsCorrect = radioButton.Checked;
-
                     question.Options.Add(optionAns);
-
                 }
             }
             exam.questions.Add(question);
@@ -331,7 +323,7 @@ namespace ExamSystem_Project.Forms
                     button_addOption_Click(sender, EventArgs.Empty);
                 }
             }
-         
+
 
 
             textBox_QuetionContent.Text = "what is the best text option?";
