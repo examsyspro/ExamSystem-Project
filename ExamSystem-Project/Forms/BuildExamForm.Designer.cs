@@ -105,7 +105,7 @@
             tabPage_step1.Margin = new Padding(2);
             tabPage_step1.Name = "tabPage_step1";
             tabPage_step1.Padding = new Padding(2);
-            tabPage_step1.Size = new Size(1032, 476);
+            tabPage_step1.Size = new Size(1040, 476);
             tabPage_step1.TabIndex = 0;
             tabPage_step1.Text = "Exam details";
             // 
@@ -190,7 +190,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label8.ForeColor = SystemColors.GrayText;
-            label8.Location = new Point(276, 291);
+            label8.Location = new Point(275, 296);
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
             label8.Size = new Size(52, 15);
@@ -234,7 +234,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label9.ForeColor = SystemColors.GrayText;
-            label9.Location = new Point(186, 291);
+            label9.Location = new Point(186, 296);
             label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
             label9.Size = new Size(40, 15);
@@ -279,7 +279,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.GrayText;
-            label2.Location = new Point(232, 228);
+            label2.Location = new Point(230, 231);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(52, 15);
@@ -323,7 +323,7 @@
             label_teaStu.AutoSize = true;
             label_teaStu.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label_teaStu.ForeColor = SystemColors.GrayText;
-            label_teaStu.Location = new Point(140, 228);
+            label_teaStu.Location = new Point(140, 231);
             label_teaStu.Margin = new Padding(2, 0, 2, 0);
             label_teaStu.Name = "label_teaStu";
             label_teaStu.Size = new Size(40, 15);
@@ -499,7 +499,7 @@
             tabPage_step3.Location = new Point(4, 34);
             tabPage_step3.Name = "tabPage_step3";
             tabPage_step3.Padding = new Padding(3);
-            tabPage_step3.Size = new Size(1032, 476);
+            tabPage_step3.Size = new Size(1040, 476);
             tabPage_step3.TabIndex = 2;
             tabPage_step3.Text = "Summary";
             tabPage_step3.UseVisualStyleBackColor = true;
