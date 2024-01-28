@@ -168,7 +168,7 @@ namespace ExamSystem_Project.Forms
                     ForeColor = Color.FromArgb(0, 135, 209),
                     Text = "Option " + optionNameCounter + " :",
                     TextAlign = System.Drawing.ContentAlignment.MiddleLeft,
-                    Location = new Point(label_question.Left + 60, Convert.ToInt32(GetTopMargin())),
+                    Location = new Point(label_question.Left + 10, Convert.ToInt32(GetTopMargin())),
                     AutoSize = true,
                     Tag = controlId // Set a unique identifier as the Tag
                 };
