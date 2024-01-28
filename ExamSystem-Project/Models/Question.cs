@@ -36,6 +36,10 @@ namespace ExamSystem_Project.Models
             Options = new List<OptionAns>();
         }
 
+        public override string? ToString()
+        {
+            return Text.ToString();
+        }
     }
 }
 

@@ -30,7 +30,7 @@ namespace ExamSystem_Project.Forms
         public List<RadioButton> radioButtonList;
         public List<Button> deleteButtonList;
         public List<Label> labelList;
-        public List<Control> ControlsList;   
+        public List<Control> ControlsList;
 
         public BuildExamForm()
         {
@@ -141,7 +141,7 @@ namespace ExamSystem_Project.Forms
             optionNameCounter = 1;
 
 
-           
+
             textBox_QuetionContent.Text = string.Empty;
             textBoxesList = new List<TextBox>();
             radioButtonList = new List<RadioButton>();
@@ -236,7 +236,7 @@ namespace ExamSystem_Project.Forms
                     button_addOption.Enabled = textBoxCounter < 5;
                     textBoxCounter--;
                     optionNameCounter--;
-                    
+
 
 
                     // Retrieve the unique identifier associated with the controls
@@ -244,13 +244,13 @@ namespace ExamSystem_Project.Forms
 
                     textBoxesList.RemoveAll(x => x.Tag == tag);
                     radioButtonList.RemoveAll(x => x.Tag == tag);
-                    
+
                     // Find and remove controls with the same unique identifier
                     var controlsToRemove = panel_questions.Controls
                         .Cast<Control>()
                         .Where(control => control.Tag as string == tag)
                         .ToList();
-                    
+
                     foreach (var control in controlsToRemove)
                     {
                         panel_questions.Controls.Remove(control);
@@ -273,10 +273,10 @@ namespace ExamSystem_Project.Forms
             catch (Exception ex)
             {
 
-                
+
             }
 
-           
+
         }
 
 
@@ -347,9 +347,9 @@ namespace ExamSystem_Project.Forms
             catch (Exception ex)
             {
 
-    
+
             }
-   
+
 
 
 
@@ -406,7 +406,7 @@ namespace ExamSystem_Project.Forms
             question = new Question();
 
 
-          
+
 
         }
     }

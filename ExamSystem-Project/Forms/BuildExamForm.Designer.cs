@@ -57,13 +57,13 @@
             button_ShowQuestions = new Button();
             button_testQuestions = new Button();
             button_AddQuestion = new Button();
-            panel_questionList = new Panel();
             panel_questions = new Panel();
             button_SaveQuestion = new Button();
             checkBox_OptionOrder = new CheckBox();
             button_addOption = new Button();
             textBox_QuetionContent = new TextBox();
             label_question = new Label();
+            panel_questionList = new Panel();
             tabPage_step3 = new TabPage();
             questionBindingSource = new BindingSource(components);
             button_SaveExamBuilder = new Button();
@@ -359,8 +359,8 @@
             tabPage_step2.Controls.Add(button_ShowQuestions);
             tabPage_step2.Controls.Add(button_testQuestions);
             tabPage_step2.Controls.Add(button_AddQuestion);
-            tabPage_step2.Controls.Add(panel_questions);
             tabPage_step2.Controls.Add(panel_questionList);
+            tabPage_step2.Controls.Add(panel_questions);
             tabPage_step2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tabPage_step2.Location = new Point(4, 47);
             tabPage_step2.Name = "tabPage_step2";
@@ -408,14 +408,6 @@
             button_AddQuestion.Text = "Add Question";
             button_AddQuestion.UseVisualStyleBackColor = false;
             button_AddQuestion.Click += button_AddQuestion_Click;
-            // 
-            // panel_questionList
-            // 
-            panel_questionList.BackColor = SystemColors.InactiveBorder;
-            panel_questionList.Location = new Point(6, 6);
-            panel_questionList.Name = "panel_questionList";
-            panel_questionList.Size = new Size(1255, 794);
-            panel_questionList.TabIndex = 6;
             // 
             // panel_questions
             // 
@@ -495,6 +487,14 @@
             label_question.Size = new Size(207, 30);
             label_question.TabIndex = 0;
             label_question.Text = "Question Content :";
+            // 
+            // panel_questionList
+            // 
+            panel_questionList.BackColor = SystemColors.InactiveBorder;
+            panel_questionList.Location = new Point(6, 6);
+            panel_questionList.Name = "panel_questionList";
+            panel_questionList.Size = new Size(1255, 794);
+            panel_questionList.TabIndex = 6;
             // 
             // tabPage_step3
             // 
