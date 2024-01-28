@@ -168,7 +168,7 @@ namespace ExamSystem_Project.Forms
                     ForeColor = Color.FromArgb(0, 135, 209),
                     Text = "Option " + optionNameCounter + " :",
                     TextAlign = System.Drawing.ContentAlignment.MiddleLeft,
-                    Location = new Point(label_question.Left + 10, Convert.ToInt32(GetTopMargin())),
+                    Location = new Point(label_question.Left , Convert.ToInt32(GetTopMargin())),
                     AutoSize = true,
                     Tag = controlId // Set a unique identifier as the Tag
                 };
@@ -180,7 +180,7 @@ namespace ExamSystem_Project.Forms
                     Width = 600,
                     Height = 26,
                     BorderStyle = BorderStyle.FixedSingle,
-                    Location = new Point(textBox_QuetionContent.Left, dynamicLabel.Top),
+                    Location = new Point(textBox_QuetionContent.Left-80, dynamicLabel.Top),
                     Name = "textBox_option" + optionNameCounter, // Unique name based on the counter
                     Tag = controlId, // Set the same unique identifier as the Tag
 
@@ -200,7 +200,7 @@ namespace ExamSystem_Project.Forms
                     BackColor = Color.FromArgb(0, 135, 209),
                     Height = 40,
                     AutoSize = true,
-                    Location = new Point(dynamicTextBox.Right + 30, dynamicTextBox.Top - 7),// Use Location instead of Margin
+                    Location = new Point(dynamicTextBox.Right + 15, dynamicTextBox.Top - 7),// Use Location instead of Margin
                     Tag = controlId // Set the same unique identifier as the Tag
                 };
 
