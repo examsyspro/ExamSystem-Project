@@ -341,7 +341,7 @@ namespace ExamSystem_Project.Forms
                 listBox_Questions.Items.Clear();
                 listBox_Questions.DataSource = exam.questions;
                 panel_questionList.BringToFront();
-
+                
 
             }
             catch (Exception ex)
@@ -414,12 +414,16 @@ namespace ExamSystem_Project.Forms
         {
             try
             {
-                var list = new List<string>();
-                var selectedItem = (Question)listBox_Questions.SelectedItem;
-                var item = exam.questions.Find(x => x.QuestionStrId == selectedItem.QuestionStrId);
                 listBox_opstionAns.DataSource = null;
                 listBox_opstionAns.Items.Clear();
+               
+                var list = new List<string>();
+                
+                var selectedItem = (Question)listBox_Questions.SelectedItem;
+                
+                var item = exam.questions.Find(x => x.QuestionStrId == selectedItem.QuestionStrId);
                 listBox_opstionAns.DataSource = item.Options;
+
 
 
 
