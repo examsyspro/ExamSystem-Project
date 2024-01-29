@@ -417,7 +417,6 @@ namespace ExamSystem_Project.Forms
                 listBox_opstionAns.DataSource = null;
                 listBox_opstionAns.Items.Clear();
                
-                var list = new List<string>();
                 
                 var selectedItem = (Question)listBox_Questions.SelectedItem;
                 
