@@ -58,6 +58,7 @@
             button_testQuestions = new Button();
             button_AddQuestion = new Button();
             panel_questionList = new Panel();
+            listBox_opstionAns = new ListBox();
             listBox_Questions = new ListBox();
             panel_questions = new Panel();
             button_SaveQuestion = new Button();
@@ -75,7 +76,8 @@
             button_Previous = new Button();
             panel4 = new Panel();
             label11 = new Label();
-            listBox_opstionAns = new ListBox();
+            label10 = new Label();
+            label12 = new Label();
             tabControl1.SuspendLayout();
             tabPage_step1.SuspendLayout();
             panel1.SuspendLayout();
@@ -442,6 +444,8 @@
             // panel_questionList
             // 
             panel_questionList.BackColor = SystemColors.InactiveBorder;
+            panel_questionList.Controls.Add(label12);
+            panel_questionList.Controls.Add(label10);
             panel_questionList.Controls.Add(listBox_opstionAns);
             panel_questionList.Controls.Add(listBox_Questions);
             panel_questionList.Location = new Point(5, 5);
@@ -450,13 +454,23 @@
             panel_questionList.Size = new Size(1004, 635);
             panel_questionList.TabIndex = 6;
             // 
+            // listBox_opstionAns
+            // 
+            listBox_opstionAns.FormattingEnabled = true;
+            listBox_opstionAns.ItemHeight = 20;
+            listBox_opstionAns.Location = new Point(516, 157);
+            listBox_opstionAns.Name = "listBox_opstionAns";
+            listBox_opstionAns.Size = new Size(457, 324);
+            listBox_opstionAns.TabIndex = 1;
+            listBox_opstionAns.SelectedIndexChanged += listBox_opstionAns_SelectedIndexChanged;
+            // 
             // listBox_Questions
             // 
             listBox_Questions.FormattingEnabled = true;
             listBox_Questions.ItemHeight = 20;
-            listBox_Questions.Location = new Point(21, 59);
+            listBox_Questions.Location = new Point(29, 157);
             listBox_Questions.Name = "listBox_Questions";
-            listBox_Questions.Size = new Size(392, 544);
+            listBox_Questions.Size = new Size(436, 324);
             listBox_Questions.TabIndex = 0;
             listBox_Questions.SelectedIndexChanged += listBox_Questions_SelectedIndexChanged;
             // 
@@ -653,15 +667,29 @@
             label11.TabIndex = 7;
             label11.Text = "Build Exam";
             // 
-            // listBox_opstionAns
+            // label10
             // 
-            listBox_opstionAns.FormattingEnabled = true;
-            listBox_opstionAns.ItemHeight = 20;
-            listBox_opstionAns.Location = new Point(488, 190);
-            listBox_opstionAns.Name = "listBox_opstionAns";
-            listBox_opstionAns.Size = new Size(468, 284);
-            listBox_opstionAns.TabIndex = 1;
-            listBox_opstionAns.SelectedIndexChanged += listBox_opstionAns_SelectedIndexChanged;
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.ForeColor = Color.FromArgb(0, 135, 209);
+            label10.Location = new Point(29, 123);
+            label10.Margin = new Padding(2, 0, 2, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(115, 25);
+            label10.TabIndex = 12;
+            label10.Text = "Questions : ";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.ForeColor = Color.FromArgb(0, 135, 209);
+            label12.Location = new Point(516, 123);
+            label12.Margin = new Padding(2, 0, 2, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(97, 25);
+            label12.TabIndex = 13;
+            label12.Text = "Options : ";
             // 
             // BuildExamForm
             // 
@@ -680,6 +708,7 @@
             panel1.PerformLayout();
             tabPage_step2.ResumeLayout(false);
             panel_questionList.ResumeLayout(false);
+            panel_questionList.PerformLayout();
             panel_questions.ResumeLayout(false);
             panel_questions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)questionBindingSource1).EndInit();
@@ -740,5 +769,7 @@
         private ListBox listBox_Questions;
         private BindingSource questionBindingSource1;
         private ListBox listBox_opstionAns;
+        private Label label12;
+        private Label label10;
     }
 }

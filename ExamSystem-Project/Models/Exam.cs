@@ -16,7 +16,7 @@ namespace ExamSystem_Project.Models
         #region Properties
 
         public int ExamId { get; set; }  //AutoIncrement
-        public Guid ExamStrId { get; set; }  
+        public Guid ExamStrId { get; set; }
         public string ExamTitle { get; set; } //Title
         public DateTime ExamDateTime { get; set; } //available for execution
         public string TeacherFullName { get; set; } // when the thecher was logged on the name show automaticly
@@ -30,31 +30,12 @@ namespace ExamSystem_Project.Models
 
 
         #endregion
-        public Exam() 
-        { 
+        public Exam()
+        {
             questions = new List<Question>();
             ExamStrId = Guid.NewGuid();
         }
-        #region Methods 
 
-        public bool AddNewExam(Exam e)
-        {
-            try
-            {
-
-                return true;
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
-        }
-
-
-
-
-        #endregion
 
 
 

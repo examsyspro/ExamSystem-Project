@@ -33,8 +33,17 @@ namespace ExamSystem.ServerAPI.Repositories
         {
             await using (AppDbContext Db = new AppDbContext())
             {
-                Db.Exams.Add(exam);
-                return await Db.SaveChangesAsync() > 0;
+                try
+                {
+                    Db.Exams.Add(exam);
+                    return await Db.SaveChangesAsync() > 0;
+                }
+                catch (Exception ex)
+                {
+
+                    return false;
+                }
+
             }
         }
 

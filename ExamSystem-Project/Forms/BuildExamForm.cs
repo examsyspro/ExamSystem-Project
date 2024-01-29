@@ -18,7 +18,7 @@ namespace ExamSystem_Project.Forms
     public partial class BuildExamForm : Form
     {
         private int textBoxCounter = 0;
-        private int optionNameCounter = 1;
+        public int optionNameCounter = 1;
         public TextBox dynamicTextBox;
         string[] strArr;
         public Exam exam;
@@ -31,6 +31,7 @@ namespace ExamSystem_Project.Forms
         public List<Button> deleteButtonList;
         public List<Label> labelList;
         public List<Control> ControlsList;
+        public General gen;
 
         public BuildExamForm()
         {
@@ -42,6 +43,7 @@ namespace ExamSystem_Project.Forms
             deleteButtonList = new List<Button>();
             ControlsList = new List<Control>();
             labelList = new List<Label>();
+            gen = new General();
         }
 
 
@@ -296,7 +298,7 @@ namespace ExamSystem_Project.Forms
             return topMargin;
         }
 
-        private void button_SaveExamBuilder_Click(object sender, EventArgs e)
+        private async void button_SaveExamBuilder_Click(object sender, EventArgs e)
         {
             try
             {
@@ -308,6 +310,8 @@ namespace ExamSystem_Project.Forms
                 string coursetype = comboBox_Course_Select.SelectedItem.ToString();
                 exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
                 exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
+                bool resultExam = await General.mainRequestor.Request_NewPost<Exam>(exam, "api/exams/create");
+
             }
             catch (Exception ex)
             {
@@ -341,7 +345,7 @@ namespace ExamSystem_Project.Forms
                 listBox_Questions.Items.Clear();
                 listBox_Questions.DataSource = exam.questions;
                 panel_questionList.BringToFront();
-                
+
 
             }
             catch (Exception ex)
@@ -416,12 +420,15 @@ namespace ExamSystem_Project.Forms
             {
                 listBox_opstionAns.DataSource = null;
                 listBox_opstionAns.Items.Clear();
-               
-                
-                var selectedItem = (Question)listBox_Questions.SelectedItem;
-                
-                var item = exam.questions.Find(x => x.QuestionStrId == selectedItem.QuestionStrId);
-                listBox_opstionAns.DataSource = item.Options;
+
+
+                var index = listBox_Questions.SelectedIndex;
+                if (index != -1)
+                {
+                    Question q = exam.questions[index];
+                    listBox_opstionAns.DataSource = q.Options;
+                }
+
 
 
 

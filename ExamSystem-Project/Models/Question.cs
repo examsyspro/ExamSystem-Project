@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExamSystem_Project.Models
 {
-    public class Question
+    public class Question : Exam
     {
 
 
@@ -35,11 +35,12 @@ namespace ExamSystem_Project.Models
         {
             QuestionStrId = Guid.NewGuid();
             Options = new List<OptionAns>();
+
         }
 
         public override string? ToString()
         {
-            return Text.ToString();
+            return $"{Text}";
         }
     }
 }
