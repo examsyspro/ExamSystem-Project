@@ -19,7 +19,6 @@ namespace ExamSystem.ServerAPI
             builder.Configuration.AddJsonFile("appsettings.json");
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
-
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
