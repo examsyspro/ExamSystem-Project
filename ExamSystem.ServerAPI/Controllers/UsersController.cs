@@ -32,7 +32,7 @@ namespace ExamSystem.ServerAPI.Controllers
         [HttpGet("{id}")]
         public async Task<bool> GetUser(string id)
         {
-            return await _usersRepo.Check_ExistingUser(id);
+            return await _usersRepo.CheckExistingUser(id);
         }
 
         // POST api/<UsersController>

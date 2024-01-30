@@ -24,20 +24,21 @@ namespace ExamSystem.ServerAPI.Migrations
 
             modelBuilder.Entity("ExamSystem.ServerAPI.Models.Exam", b =>
                 {
+                    b.Property<Guid>("ExamStrId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("CourseType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ExamDateTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("ExamId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExamId"));
-
-                    b.Property<int>("CourseType")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ExamDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("ExamStrId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ExamTitle")
                         .IsRequired()
@@ -45,9 +46,6 @@ namespace ExamSystem.ServerAPI.Migrations
 
                     b.Property<bool>("RandomQuestionOrder")
                         .HasColumnType("bit");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("TeacherFullName")
                         .IsRequired()
@@ -59,53 +57,63 @@ namespace ExamSystem.ServerAPI.Migrations
                     b.Property<int>("TotalMinutes")
                         .HasColumnType("int");
 
-                    b.HasKey("ExamId");
+                    b.HasKey("ExamStrId");
 
                     b.ToTable("Exams");
                 });
 
             modelBuilder.Entity("ExamSystem.ServerAPI.Models.OptionAns", b =>
                 {
+                    b.Property<Guid>("OptionAnsStrId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsCorrect")
+                        .HasColumnType("bit");
+
                     b.Property<int>("OptionAnsId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OptionAnsId"));
 
-                    b.Property<bool>("IsCorrect")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid>("OptionAnsStrId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("OptionText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Question_Id")
-                        .HasColumnType("int");
+                    b.Property<Guid>("QuestionStrId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("OptionAnsId");
+                    b.Property<Guid?>("QuestionStrId1")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("OptionAnsStrId");
+
+                    b.HasIndex("QuestionStrId1");
 
                     b.ToTable("OptionAns");
                 });
 
             modelBuilder.Entity("ExamSystem.ServerAPI.Models.Question", b =>
                 {
+                    b.Property<Guid>("QuestionStrId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ExamStrId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ExamStrId1")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("IndexCorrect")
+                        .HasColumnType("int");
+
                     b.Property<int>("QuestionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionId"));
-
-                    b.Property<int>("Exam_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IndexCorrect")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("QuestionStrId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("RandomAnsOrder")
                         .HasColumnType("bit");
@@ -114,7 +122,9 @@ namespace ExamSystem.ServerAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("QuestionId");
+                    b.HasKey("QuestionStrId");
+
+                    b.HasIndex("ExamStrId1");
 
                     b.ToTable("Questions");
                 });
@@ -189,6 +199,30 @@ namespace ExamSystem.ServerAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ExamSystem.ServerAPI.Models.OptionAns", b =>
+                {
+                    b.HasOne("ExamSystem.ServerAPI.Models.Question", null)
+                        .WithMany("Options")
+                        .HasForeignKey("QuestionStrId1");
+                });
+
+            modelBuilder.Entity("ExamSystem.ServerAPI.Models.Question", b =>
+                {
+                    b.HasOne("ExamSystem.ServerAPI.Models.Exam", null)
+                        .WithMany("questions")
+                        .HasForeignKey("ExamStrId1");
+                });
+
+            modelBuilder.Entity("ExamSystem.ServerAPI.Models.Exam", b =>
+                {
+                    b.Navigation("questions");
+                });
+
+            modelBuilder.Entity("ExamSystem.ServerAPI.Models.Question", b =>
+                {
+                    b.Navigation("Options");
                 });
 #pragma warning restore 612, 618
         }

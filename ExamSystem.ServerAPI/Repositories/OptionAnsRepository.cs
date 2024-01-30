@@ -5,67 +5,55 @@ using ExamSystem.ServerAPI.DbModels;
 using ExamSystem.ServerAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
-
-
 namespace ExamSystem.ServerAPI.Repositories
 {
     public class OptionAnsRepository : IOptionAnsRepository
     {
+        private readonly AppDbContext _context;
+
+        public OptionAnsRepository(AppDbContext context)
+        {
+            _context = context;
+        }
+
         public async Task<List<OptionAns>> GetAllOptionAns()
         {
-            List<OptionAns> optionAnsList = new List<OptionAns>();
-            await using (AppDbContext Db = new AppDbContext())
-            {
-                optionAnsList = await Db.OptionAns.ToListAsync();
-            }
-            return optionAnsList;
+            return await _context.OptionAns.ToListAsync();
         }
 
         public async Task<OptionAns> GetOptionAnsById(int id)
         {
-            using (AppDbContext Db = new AppDbContext())
-            {
-                return await Db.OptionAns.FindAsync(id);
-            }
+            return await _context.OptionAns.FindAsync(id);
         }
 
         public async Task<bool> CreateOptionAns(OptionAns optionAns)
         {
-            await using (AppDbContext Db = new AppDbContext())
-            {
-                Db.OptionAns.Add(optionAns);
-                return await Db.SaveChangesAsync() > 0;
-            }
+            _context.OptionAns.Add(optionAns);
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public async Task<OptionAns> UpdateOptionAns(int id, OptionAns updatedOptionAns)
         {
-            using (AppDbContext Db = new AppDbContext())
+            var existingOptionAns = await _context.OptionAns.FindAsync(id);
+            if (existingOptionAns != null)
             {
-                var existingOptionAns = await Db.OptionAns.FindAsync(id);
-                if (existingOptionAns != null)
-                {
-                    // Update properties of existingOptionAns with values from updatedOptionAns
-                    // ...
+                // Update properties of existingOptionAns with values from updatedOptionAns
+                // ...
 
-                    await Db.SaveChangesAsync();
-                }
-                return existingOptionAns;
+                await _context.SaveChangesAsync();
             }
+            return existingOptionAns;
         }
 
         public async Task<bool> DeleteOptionAns(int id)
         {
-            using (AppDbContext Db = new AppDbContext())
+            var optionAnsToDelete = await _context.OptionAns.FindAsync(id);
+            if (optionAnsToDelete != null)
             {
-                var optionAnsToDelete = await Db.OptionAns.FindAsync(id);
-                if (optionAnsToDelete != null)
-                {
-                    Db.OptionAns.Remove(optionAnsToDelete);
-                    return await Db.SaveChangesAsync() > 0;
-                }
-                return false;
+                _context.OptionAns.Remove(optionAnsToDelete);
+                return await _context.SaveChangesAsync() > 0;
             }
+            return false;
         }
     }
 }

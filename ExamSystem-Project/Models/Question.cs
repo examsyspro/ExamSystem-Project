@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExamSystem_Project.Models
 {
-    public class Question : Exam
+    public class Question
     {
 
 
@@ -17,6 +17,7 @@ namespace ExamSystem_Project.Models
         public List<OptionAns> Options { get; set; }
         public Guid ExamStrId { get; set; }
         public bool RandomAnsOrder { get; set; }
+        public Exam exam { get; set; }
         public int IndexCorrect
         {
             get

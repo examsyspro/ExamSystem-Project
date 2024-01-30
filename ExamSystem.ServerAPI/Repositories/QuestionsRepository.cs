@@ -5,66 +5,57 @@ using ExamSystem.ServerAPI.DbModels;
 using ExamSystem.ServerAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace ExamSystem.ServerAPI.Repositories
 {
     public class QuestionsRepository : IQuestionsRepository
     {
+        private readonly AppDbContext _context;
+
+        public QuestionsRepository(AppDbContext context)
+        {
+            _context = context;
+        }
+
         public async Task<List<Question>> GetAllQuestions()
         {
-            List<Question> questions = new List<Question>();
-            await using (AppDbContext Db = new AppDbContext())
-            {
-                questions = await Db.Questions.ToListAsync();
-            }
-            return questions;
+            return await _context.Questions.ToListAsync();
         }
 
         public async Task<Question> GetQuestionById(int id)
         {
-            using (AppDbContext Db = new AppDbContext())
-            {
-                return await Db.Questions.FindAsync(id);
-            }
+
+            return await _context.Questions.FindAsync(id); ;
+
         }
 
         public async Task<bool> CreateQuestion(Question question)
         {
-            await using (AppDbContext Db = new AppDbContext())
-            {
-                Db.Questions.Add(question);
-                return await Db.SaveChangesAsync() > 0;
-            }
+            _context.Questions.Add(question);
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public async Task<Question> UpdateQuestion(int id, Question updatedQuestion)
         {
-            using (AppDbContext Db = new AppDbContext())
+            var existingQuestion = await _context.Questions.FindAsync(id);
+            if (existingQuestion != null)
             {
-                var existingQuestion = await Db.Questions.FindAsync(id);
-                if (existingQuestion != null)
-                {
-                    // Update properties of existingQuestion with values from updatedQuestion
-                    // ...
+                // Update properties of existingQuestion with values from updatedQuestion
+                // ...
 
-                    await Db.SaveChangesAsync();
-                }
-                return existingQuestion;
+                await _context.SaveChangesAsync();
             }
+            return existingQuestion;
         }
 
         public async Task<bool> DeleteQuestion(int id)
         {
-            using (AppDbContext Db = new AppDbContext())
+            var questionToDelete = await _context.Questions.FindAsync(id);
+            if (questionToDelete != null)
             {
-                var questionToDelete = await Db.Questions.FindAsync(id);
-                if (questionToDelete != null)
-                {
-                    Db.Questions.Remove(questionToDelete);
-                    return await Db.SaveChangesAsync() > 0;
-                }
-                return false;
+                _context.Questions.Remove(questionToDelete);
+                return await _context.SaveChangesAsync() > 0;
             }
+            return false;
         }
     }
 }

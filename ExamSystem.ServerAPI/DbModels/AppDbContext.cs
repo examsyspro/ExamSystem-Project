@@ -7,7 +7,7 @@ namespace ExamSystem.ServerAPI.DbModels
     {
         public AppDbContext()
         {
-
+           
         }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -24,7 +24,6 @@ namespace ExamSystem.ServerAPI.DbModels
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configure relationships, constraints, etc., if needed
             base.OnModelCreating(modelBuilder);
         }
 

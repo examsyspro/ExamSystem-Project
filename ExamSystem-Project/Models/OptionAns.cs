@@ -13,6 +13,7 @@ namespace ExamSystem_Project.Models
         public Guid QuestionStrId { get; set; }
         public string OptionText { get; set; }
         public bool IsCorrect { get; set; }
+        public Question question { get; set; }
         public OptionAns()
         {
             OptionAnsStrId = Guid.NewGuid();

@@ -10,6 +10,7 @@ using System.Windows;
 
 namespace ExamSystem_Project.Models
 {
+  
     public class Exam
     {
 
@@ -25,8 +26,8 @@ namespace ExamSystem_Project.Models
         public bool RandomQuestionOrder { get; set; } //Random order of the questions
         public Course_Enum CourseType { get; set; }
         public List<Question> questions { get; set; }
-
-
+        
+        
 
 
         #endregion

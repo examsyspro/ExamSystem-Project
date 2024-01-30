@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +13,10 @@ namespace ExamSystem.ServerAPI.Models
     {
         #region Properties
 
-        [Key]
+       
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ExamId { get; set; }  //AutoIncrement
+        [Key]
         public Guid ExamStrId { get; set; }
         public string ExamTitle { get; set; } //Title
         public DateTime ExamDateTime { get; set; } //available for execution
@@ -22,14 +25,11 @@ namespace ExamSystem.ServerAPI.Models
         public int TotalMinutes { get; set; } //Total exam Minutes duration 
         public bool RandomQuestionOrder { get; set; } //Random order of the questions
         public Course_Enum CourseType { get; set; }
-        //  public List<Question> questions { get; set; }
+        public List<Question> questions { get; set; }
         #endregion
 
 
-        public override string ToString()
-        {
-            return "";
-        }
+
 
     }
 }

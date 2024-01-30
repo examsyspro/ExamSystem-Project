@@ -408,7 +408,7 @@ namespace ExamSystem_Project.Forms
             panel_questions.BringToFront();
             ClearAllControls();
             question = new Question();
-
+            question.ExamStrId = exam.ExamStrId;
 
 
 
