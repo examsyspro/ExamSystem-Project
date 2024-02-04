@@ -50,37 +50,58 @@ namespace ExamSystem_Project.Forms
         public void InitializeAll()
         {
 
-
-            comboBox_Course_Select.Text = "Select Course";
-            comboBox_Course_Select.Items.Insert(0, Course_Enum.C_Sharp);
-            comboBox_Course_Select.Items.Insert(1, Course_Enum.JavaSctipt);
-            tabControl1.TabPages.Remove(tabPage_step2);
-            tabControl1.TabPages.Remove(tabPage_step3);
-            dateTimePicker_examDate.MinDate = DateTime.Now;
-            dateTimePicker_examDate.MaxDate = DateTime.Now.AddDays(60);
-            panel_questions.SendToBack();
-
-            for (int i = 0; i < 30; i++)
+            try
             {
-                comboBox_hours_StartTime.Items.Add(i);
-            }
+                comboBox_Course_Select.Text = "Select Course";
+                comboBox_Course_Select.Items.Insert(0, Course_Enum.C_Sharp);
+                comboBox_Course_Select.Items.Insert(1, Course_Enum.JavaSctipt);
+                tabControl1.TabPages.Remove(tabPage_step2);
+                tabControl1.TabPages.Remove(tabPage_step3);
+                dateTimePicker_examDate.MinDate = DateTime.Now;
+                dateTimePicker_examDate.MaxDate = DateTime.Now.AddDays(60);
+                panel_questions.SendToBack();
+                textBox_date.Text = string.Empty;
 
 
-            foreach (Control control in panel1.Controls)
-            {
-
-                if (control.Name.Contains("textBox"))
+                for (int i = 0; i < 60; i++)
                 {
-                    ExamButtonHandler(control as TextBox);
+                    if (i <= 6)
+                    {
+                        comboBox_hours_StartTime.Items.Add(i);
+                        comboBox_minutes_StartTime.Items.Add(i);
+
+                    }
+                    else
+                    {
+                        comboBox_minutes_StartTime.Items.Add(i);
+                    }
 
                 }
 
+
+                foreach (Control control in panel1.Controls)
+                {
+
+                    if (control.Name.Contains("textBox"))
+                    {
+                        ExamButtonHandler(control as TextBox);
+
+                    }
+
+                }
             }
+            catch (Exception ex)
+            {
+
+               
+            }
+
+
 
 
             //textBox_examTitle.Text = string.Empty;
             //textBox_teacherName.Text = string.Empty;
-            textBox_date.Text = string.Empty;
+            
             //textBox_hours_StartTime.Text = string.Empty;
             //textBox_minutes_StartTime.Text = string.Empty;
             //textBox_hours_totalTime.Text = string.Empty;

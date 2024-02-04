@@ -79,6 +79,7 @@
             button_Previous = new Button();
             panel4 = new Panel();
             label11 = new Label();
+            comboBox_minutes_StartTime = new ComboBox();
             tabControl1.SuspendLayout();
             tabPage_step1.SuspendLayout();
             panel1.SuspendLayout();
@@ -133,6 +134,7 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(comboBox_minutes_StartTime);
             panel1.Controls.Add(comboBox_hours_StartTime);
             panel1.Controls.Add(checkBox_QuestionOrder);
             panel1.Controls.Add(label5);
@@ -167,9 +169,9 @@
             comboBox_hours_StartTime.FormattingEnabled = true;
             comboBox_hours_StartTime.IntegralHeight = false;
             comboBox_hours_StartTime.ItemHeight = 30;
-            comboBox_hours_StartTime.Location = new Point(556, 337);
+            comboBox_hours_StartTime.Location = new Point(493, 338);
             comboBox_hours_StartTime.Name = "comboBox_hours_StartTime";
-            comboBox_hours_StartTime.Size = new Size(91, 38);
+            comboBox_hours_StartTime.Size = new Size(100, 38);
             comboBox_hours_StartTime.TabIndex = 30;
             // 
             // checkBox_QuestionOrder
@@ -715,6 +717,18 @@
             label11.TabIndex = 7;
             label11.Text = "Build Exam";
             // 
+            // comboBox_minutes_StartTime
+            // 
+            comboBox_minutes_StartTime.DropDownHeight = 100;
+            comboBox_minutes_StartTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox_minutes_StartTime.FormattingEnabled = true;
+            comboBox_minutes_StartTime.IntegralHeight = false;
+            comboBox_minutes_StartTime.ItemHeight = 30;
+            comboBox_minutes_StartTime.Location = new Point(627, 337);
+            comboBox_minutes_StartTime.Name = "comboBox_minutes_StartTime";
+            comboBox_minutes_StartTime.Size = new Size(100, 38);
+            comboBox_minutes_StartTime.TabIndex = 31;
+            // 
             // BuildExamForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -796,5 +810,6 @@
         private Label label12;
         private Label label10;
         private ComboBox comboBox_hours_StartTime;
+        private ComboBox comboBox_minutes_StartTime;
     }
 }
