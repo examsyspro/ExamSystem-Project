@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using ExamSystem.ServerAPI.DbModels;
 using ExamSystem.ServerAPI.Models;
@@ -35,10 +36,14 @@ namespace ExamSystem.ServerAPI.Repositories
 
         public async Task<Exam> GetExamById(int id)
         {
-            return await _context.Exams
-       .Include(e => e.questions) // Include the related Questions
-           .ThenInclude(q => q.Options) // Include the related OptionAns entities for each Question
-       .FirstOrDefaultAsync(e => e.ExamId == id);
+           
+                
+            var exam = await _context.Exams
+           .Include(e => e.questions)
+           .ThenInclude(q => q.Options)
+           .FirstOrDefaultAsync(e => e.ExamId == id);
+
+            return exam;
         }
 
         public async Task<bool> CreateExam(Exam exam)
@@ -57,42 +62,30 @@ namespace ExamSystem.ServerAPI.Repositories
 
         public async Task<Exam> UpdateExam(int id, Exam updatedExam)
         {
-            var existingExam = await _context.Exams.FindAsync(id);
-
-            if (existingExam != null)
+            try
             {
-                // Update the entire Exam object
-                _context.Entry(existingExam).CurrentValues.SetValues(updatedExam);
-
-                // Update or add new questions and their options
-                foreach (var updatedQuestion in updatedExam.questions)
+                updatedExam.ExamId = id;
+                var existingExam = await _context.Exams.FindAsync(id);
+                if (existingExam != null)
                 {
-                    var existingQuestion = existingExam.questions.FirstOrDefault(q => q.QuestionId == updatedQuestion.QuestionId);
-
-                    if (existingQuestion != null)
-                    {
-                        // Update properties of existingQuestion with values from updatedQuestion
-                        _context.Entry(existingQuestion).CurrentValues.SetValues(updatedQuestion);
-                    }
-                    else
-                    {
-                        // Add new Question to the existingExam
-                        existingExam.questions.Add(updatedQuestion);
-                    }
+                   
+                    _context.Entry(existingExam).CurrentValues.SetValues(updatedExam);
+                    await _context.SaveChangesAsync();
+                    return existingExam;
                 }
-
-                // Remove questions that are not present in the updatedExam
-                var questionsToRemove = existingExam.questions.Where(q => !updatedExam.questions.Any(uq => uq.QuestionId == q.QuestionId)).ToList();
-                foreach (var questionToRemove in questionsToRemove)
+                else
                 {
-                    existingExam.questions.Remove(questionToRemove);
+                   
+                    return null;
                 }
-
-                await _context.SaveChangesAsync();
             }
-
-            return existingExam;
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
+
+
 
         public async Task<bool> DeleteExam(int id)
         {

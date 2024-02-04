@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ExamSystem.ServerAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class v14 : Migration
+    public partial class v13 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,9 +15,9 @@ namespace ExamSystem.ServerAPI.Migrations
                 name: "Exams",
                 columns: table => new
                 {
-                    ExamStrId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ExamId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    ExamStrId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ExamTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ExamDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TeacherFullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -28,7 +28,7 @@ namespace ExamSystem.ServerAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Exams", x => x.ExamStrId);
+                    table.PrimaryKey("PK_Exams", x => x.ExamId);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,56 +73,56 @@ namespace ExamSystem.ServerAPI.Migrations
                 name: "Questions",
                 columns: table => new
                 {
-                    QuestionStrId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     QuestionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    QuestionStrId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ExamStrId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     RandomAnsOrder = table.Column<bool>(type: "bit", nullable: false),
                     IndexCorrect = table.Column<int>(type: "int", nullable: false),
-                    ExamStrId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    ExamId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Questions", x => x.QuestionStrId);
+                    table.PrimaryKey("PK_Questions", x => x.QuestionId);
                     table.ForeignKey(
-                        name: "FK_Questions_Exams_ExamStrId1",
-                        column: x => x.ExamStrId1,
+                        name: "FK_Questions_Exams_ExamId",
+                        column: x => x.ExamId,
                         principalTable: "Exams",
-                        principalColumn: "ExamStrId");
+                        principalColumn: "ExamId");
                 });
 
             migrationBuilder.CreateTable(
                 name: "OptionAns",
                 columns: table => new
                 {
-                    OptionAnsStrId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     OptionAnsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    OptionAnsStrId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     QuestionStrId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     OptionText = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsCorrect = table.Column<bool>(type: "bit", nullable: false),
-                    QuestionStrId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    QuestionId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OptionAns", x => x.OptionAnsStrId);
+                    table.PrimaryKey("PK_OptionAns", x => x.OptionAnsId);
                     table.ForeignKey(
-                        name: "FK_OptionAns_Questions_QuestionStrId1",
-                        column: x => x.QuestionStrId1,
+                        name: "FK_OptionAns_Questions_QuestionId",
+                        column: x => x.QuestionId,
                         principalTable: "Questions",
-                        principalColumn: "QuestionStrId");
+                        principalColumn: "QuestionId");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_OptionAns_QuestionStrId1",
+                name: "IX_OptionAns_QuestionId",
                 table: "OptionAns",
-                column: "QuestionStrId1");
+                column: "QuestionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Questions_ExamStrId1",
+                name: "IX_Questions_ExamId",
                 table: "Questions",
-                column: "ExamStrId1");
+                column: "ExamId");
         }
 
         /// <inheritdoc />

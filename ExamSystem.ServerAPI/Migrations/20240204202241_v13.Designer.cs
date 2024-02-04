@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExamSystem.ServerAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240130201838_v14")]
-    partial class v14
+    [Migration("20240204202241_v13")]
+    partial class v13
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,9 +27,11 @@ namespace ExamSystem.ServerAPI.Migrations
 
             modelBuilder.Entity("ExamSystem.ServerAPI.Models.Exam", b =>
                 {
-                    b.Property<Guid>("ExamStrId")
+                    b.Property<int>("ExamId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExamId"));
 
                     b.Property<int>("CourseType")
                         .HasColumnType("int");
@@ -37,11 +39,8 @@ namespace ExamSystem.ServerAPI.Migrations
                     b.Property<DateTime>("ExamDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ExamId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExamId"));
+                    b.Property<Guid>("ExamStrId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ExamTitle")
                         .IsRequired()
@@ -60,63 +59,61 @@ namespace ExamSystem.ServerAPI.Migrations
                     b.Property<int>("TotalMinutes")
                         .HasColumnType("int");
 
-                    b.HasKey("ExamStrId");
+                    b.HasKey("ExamId");
 
                     b.ToTable("Exams");
                 });
 
             modelBuilder.Entity("ExamSystem.ServerAPI.Models.OptionAns", b =>
                 {
-                    b.Property<Guid>("OptionAnsStrId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsCorrect")
-                        .HasColumnType("bit");
-
                     b.Property<int>("OptionAnsId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OptionAnsId"));
 
+                    b.Property<bool>("IsCorrect")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("OptionAnsStrId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("OptionText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionId")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("QuestionStrId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("QuestionStrId1")
-                        .HasColumnType("uniqueidentifier");
+                    b.HasKey("OptionAnsId");
 
-                    b.HasKey("OptionAnsStrId");
-
-                    b.HasIndex("QuestionStrId1");
+                    b.HasIndex("QuestionId");
 
                     b.ToTable("OptionAns");
                 });
 
             modelBuilder.Entity("ExamSystem.ServerAPI.Models.Question", b =>
                 {
-                    b.Property<Guid>("QuestionStrId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ExamStrId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ExamStrId1")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("IndexCorrect")
-                        .HasColumnType("int");
-
                     b.Property<int>("QuestionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionId"));
+
+                    b.Property<int?>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("ExamStrId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("IndexCorrect")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("QuestionStrId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("RandomAnsOrder")
                         .HasColumnType("bit");
@@ -125,9 +122,9 @@ namespace ExamSystem.ServerAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("QuestionStrId");
+                    b.HasKey("QuestionId");
 
-                    b.HasIndex("ExamStrId1");
+                    b.HasIndex("ExamId");
 
                     b.ToTable("Questions");
                 });
@@ -208,14 +205,14 @@ namespace ExamSystem.ServerAPI.Migrations
                 {
                     b.HasOne("ExamSystem.ServerAPI.Models.Question", null)
                         .WithMany("Options")
-                        .HasForeignKey("QuestionStrId1");
+                        .HasForeignKey("QuestionId");
                 });
 
             modelBuilder.Entity("ExamSystem.ServerAPI.Models.Question", b =>
                 {
                     b.HasOne("ExamSystem.ServerAPI.Models.Exam", null)
                         .WithMany("questions")
-                        .HasForeignKey("ExamStrId1");
+                        .HasForeignKey("ExamId");
                 });
 
             modelBuilder.Entity("ExamSystem.ServerAPI.Models.Exam", b =>

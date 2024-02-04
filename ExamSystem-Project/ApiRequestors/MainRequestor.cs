@@ -120,7 +120,7 @@ namespace ExamSystem_Project.ApiRequestors
 
 
 
-        public async Task<T> Request_Put<T>(T obj, string strId, string apiStr)
+        public async Task<T> Request_Put<T>(int id, T obj, string apiStr)
         {
             try
             {
@@ -128,7 +128,7 @@ namespace ExamSystem_Project.ApiRequestors
 
                 using StringContent dataContent = new StringContent(jsonData, Encoding.UTF8, @"application/json");
 
-                using HttpResponseMessage response = await httpClient.PutAsync($"{apiStr}/{strId}", dataContent);
+                using HttpResponseMessage response = await httpClient.PutAsync($"{apiStr}/{id}", dataContent);
 
                 response.EnsureSuccessStatusCode(); // 200 OK
 

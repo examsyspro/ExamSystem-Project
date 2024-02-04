@@ -37,7 +37,7 @@ namespace ExamSystem.ServerAPI.Controllers
             return await _examsRepo.CreateExam(exam);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         public async Task<Exam> UpdateExam(int id, [FromBody] Exam updatedExam)
         {
             return await _examsRepo.UpdateExam(id, updatedExam);

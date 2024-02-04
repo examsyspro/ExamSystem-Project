@@ -59,6 +59,34 @@ namespace ExamSystem_Project.Forms
             dateTimePicker_examDate.MinDate = DateTime.Now;
             dateTimePicker_examDate.MaxDate = DateTime.Now.AddDays(60);
             panel_questions.SendToBack();
+
+            for (int i = 0; i < 30; i++)
+            {
+                comboBox_hours_StartTime.Items.Add(i);
+            }
+
+
+            foreach (Control control in panel1.Controls)
+            {
+
+                if (control.Name.Contains("textBox"))
+                {
+                    ExamButtonHandler(control as TextBox);
+
+                }
+
+            }
+
+
+            //textBox_examTitle.Text = string.Empty;
+            //textBox_teacherName.Text = string.Empty;
+            textBox_date.Text = string.Empty;
+            //textBox_hours_StartTime.Text = string.Empty;
+            //textBox_minutes_StartTime.Text = string.Empty;
+            //textBox_hours_totalTime.Text = string.Empty;
+            //textBox_minutes_totalTime.Text = string.Empty;
+
+
         }
 
         private void button_next_Click(object sender, EventArgs e)
@@ -298,26 +326,7 @@ namespace ExamSystem_Project.Forms
             return topMargin;
         }
 
-        private async void button_SaveExamBuilder_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string time = string.Format($"{textBox_hours_StartTime.Text}:{textBox_minutes_StartTime.Text}");
-                exam.ExamTitle = textBox_examTitle.Text;
-                exam.TeacherFullName = textBox_teacherName.Text;
-                exam.ExamDateTime = DateTime.Parse($"{textBox_date.Text} {time}");
-                exam.TotalHours = int.Parse(textBox_hours_totalTime.Text);
-                string coursetype = comboBox_Course_Select.SelectedItem.ToString();
-                exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
-                exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
-                bool resultExam = await General.mainRequestor.Request_NewPost<Exam>(exam, "api/exams/create");
 
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
 
         private void button_SaveQuestion_Click(object sender, EventArgs e)
         {
@@ -358,6 +367,39 @@ namespace ExamSystem_Project.Forms
 
 
         }
+
+        public void ExamButtonHandler(TextBox text)
+        {
+
+            if (text.Text == string.Empty)
+            {
+                text.BackColor = Color.MistyRose;
+            }
+            else
+            {
+                text.BackColor = Color.White;
+            }
+
+
+            if (string.IsNullOrEmpty(textBox_examTitle.Text) ||
+              string.IsNullOrEmpty(textBox_teacherName.Text) ||
+              string.IsNullOrEmpty(textBox_date.Text) ||
+              string.IsNullOrEmpty(textBox_hours_StartTime.Text) ||
+              string.IsNullOrEmpty(textBox_minutes_StartTime.Text) ||
+              string.IsNullOrEmpty(textBox_hours_totalTime.Text) ||
+              string.IsNullOrEmpty(textBox_minutes_totalTime.Text) ||
+              comboBox_Course_Select.SelectedIndex == -1)
+            {
+                button_next.Enabled = false;
+            }
+            else
+            {
+                button_next.Enabled = true;
+            }
+        }
+
+
+
 
         private void button_Test_Click(object sender, EventArgs e)
         {
@@ -455,6 +497,64 @@ namespace ExamSystem_Project.Forms
             }
 
 
+        }
+
+
+        private async void button_SaveExamBuilder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string time = string.Format($"{textBox_hours_StartTime.Text}:{textBox_minutes_StartTime.Text}");
+                exam.ExamTitle = textBox_examTitle.Text;
+                exam.TeacherFullName = textBox_teacherName.Text;
+                exam.ExamDateTime = DateTime.Parse($"{textBox_date.Text} {time}");
+                exam.TotalHours = int.Parse(textBox_hours_totalTime.Text);
+                string coursetype = comboBox_Course_Select.SelectedItem.ToString();
+                exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
+                exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
+                bool resultExam = await General.mainRequestor.Request_NewPost<Exam>(exam, "api/exams/create");
+                // var resultExam = await General.mainRequestor.Request_Put<Exam>(1,exam, "api/exams/update");
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void textBox_examTitle_TextChanged(object sender, EventArgs e)
+        {
+            ExamButtonHandler(textBox_examTitle);
+        }
+
+        private void textBox_teacherName_TextChanged(object sender, EventArgs e)
+        {
+            ExamButtonHandler(textBox_teacherName);
+        }
+
+        private void textBox_date_TextChanged(object sender, EventArgs e)
+        {
+            ExamButtonHandler(textBox_date);
+        }
+
+        private void textBox_hours_StartTime_TextChanged(object sender, EventArgs e)
+        {
+            ExamButtonHandler(textBox_hours_StartTime);
+        }
+
+        private void textBox_minutes_StartTime_TextChanged(object sender, EventArgs e)
+        {
+            ExamButtonHandler(textBox_minutes_StartTime);
+        }
+
+        private void textBox_hours_totalTime_TextChanged(object sender, EventArgs e)
+        {
+            ExamButtonHandler(textBox_hours_totalTime);
+        }
+
+        private void textBox_minutes_totalTime_TextChanged(object sender, EventArgs e)
+        {
+            ExamButtonHandler(textBox_minutes_totalTime);
         }
     }
 }

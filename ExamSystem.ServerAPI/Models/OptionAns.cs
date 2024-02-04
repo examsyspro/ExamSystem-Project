@@ -12,8 +12,8 @@ namespace ExamSystem.ServerAPI.Models
     {
         
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int OptionAnsId { get; set; }
         [Key]
+        public int OptionAnsId { get; set; }
         public Guid OptionAnsStrId { get; set; }
         public Guid QuestionStrId { get; set; }
         public string OptionText { get; set; }
