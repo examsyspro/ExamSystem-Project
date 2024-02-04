@@ -22,6 +22,7 @@ namespace ExamSystem.ServerAPI.Models
         public bool RandomAnsOrder { get; set; }
         public int IndexCorrect { get; set; }
        
+      
 
 
     }
