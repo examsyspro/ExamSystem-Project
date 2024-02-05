@@ -32,7 +32,7 @@ namespace ExamSystem_Project.Forms
         public List<Label> labelList;
         public List<Control> ControlsList;
         public General gen;
-
+        private readonly int[] numbersArr = { 1, 2, 3, 4, 5, 6, 7 };
         public BuildExamForm()
         {
             InitializeComponent();
@@ -44,6 +44,7 @@ namespace ExamSystem_Project.Forms
             ControlsList = new List<Control>();
             labelList = new List<Label>();
             gen = new General();
+
         }
 
 
@@ -61,19 +62,31 @@ namespace ExamSystem_Project.Forms
                 dateTimePicker_examDate.MaxDate = DateTime.Now.AddDays(60);
                 panel_questions.SendToBack();
                 textBox_date.Text = string.Empty;
+                button_SaveExamBuilder.Enabled = false;
+
 
 
                 for (int i = 0; i < 60; i++)
                 {
-                    if (i <= 6)
+                    if (i <= 20)
                     {
-                        comboBox_hours_StartTime.Items.Add(i);
-                        comboBox_minutes_StartTime.Items.Add(i);
+                        if (!numbersArr.Contains(i))
+                        {
+                            comboBox_hours_StartTime.Items.Add(i.ToString("00"));
+                        }
+                        if (i <= 4)
+                        {
+                            comboBox_hours_totalTime.Items.Add(i.ToString("00"));
+                        }
+                        comboBox_minutes_StartTime.Items.Add(i.ToString("00"));
+                        comboBox_minutes_totalTime.Items.Add(i.ToString("00"));
+
 
                     }
                     else
                     {
-                        comboBox_minutes_StartTime.Items.Add(i);
+                        comboBox_minutes_totalTime.Items.Add(i.ToString("00"));
+                        comboBox_minutes_StartTime.Items.Add(i.ToString("00"));
                     }
 
                 }
@@ -82,7 +95,7 @@ namespace ExamSystem_Project.Forms
                 foreach (Control control in panel1.Controls)
                 {
 
-                    if (control.Name.Contains("textBox"))
+                    if (control is TextBox)
                     {
                         ExamButtonHandler(control as TextBox);
 
@@ -93,19 +106,11 @@ namespace ExamSystem_Project.Forms
             catch (Exception ex)
             {
 
-               
+
             }
 
 
 
-
-            //textBox_examTitle.Text = string.Empty;
-            //textBox_teacherName.Text = string.Empty;
-            
-            //textBox_hours_StartTime.Text = string.Empty;
-            //textBox_minutes_StartTime.Text = string.Empty;
-            //textBox_hours_totalTime.Text = string.Empty;
-            //textBox_minutes_totalTime.Text = string.Empty;
 
 
         }
@@ -121,6 +126,7 @@ namespace ExamSystem_Project.Forms
                         tabControl1.TabPages.Add(tabPage_step2);
                         tabControl1.TabPages.Remove(tabPage_step1);
                     }
+                    button_next.Enabled = false;
                     tabControl1.SelectedTab = tabPage_step2;
                     break;
                 case "tabPage_step2":
@@ -130,6 +136,7 @@ namespace ExamSystem_Project.Forms
                         tabControl1.TabPages.Remove(tabPage_step2);
                     }
                     tabControl1.SelectedTab = tabPage_step3;
+                    button_SaveExamBuilder.Enabled = true;
                     break;
                 default:
                     break;
@@ -232,6 +239,10 @@ namespace ExamSystem_Project.Forms
                     Name = "textBox_option" + optionNameCounter, // Unique name based on the counter
                     Tag = controlId, // Set the same unique identifier as the Tag
 
+                };
+                dynamicTextBox.TextChanged += (dynamicTextBox, textBoxEventArgs) =>
+                {
+                    OptionsButtonHandler(dynamicTextBox as TextBox, textBoxEventArgs);
                 };
 
                 textBoxesList.Add(dynamicTextBox);
@@ -377,6 +388,12 @@ namespace ExamSystem_Project.Forms
                 panel_questionList.BringToFront();
 
 
+
+                if (exam.questions.Count >= 4)
+                {
+                    button_next.Enabled = true;
+                }
+
             }
             catch (Exception ex)
             {
@@ -405,34 +422,62 @@ namespace ExamSystem_Project.Forms
             if (string.IsNullOrEmpty(textBox_examTitle.Text) ||
               string.IsNullOrEmpty(textBox_teacherName.Text) ||
               string.IsNullOrEmpty(textBox_date.Text) ||
-              string.IsNullOrEmpty(textBox_hours_StartTime.Text) ||
-              string.IsNullOrEmpty(textBox_minutes_StartTime.Text) ||
-              string.IsNullOrEmpty(textBox_hours_totalTime.Text) ||
-              string.IsNullOrEmpty(textBox_minutes_totalTime.Text) ||
-              comboBox_Course_Select.SelectedIndex == -1)
+              comboBox_hours_totalTime.SelectedItem == null ||
+              comboBox_minutes_totalTime.SelectedItem == null ||
+              comboBox_Course_Select.SelectedIndex == -1 ||
+              comboBox_hours_StartTime.SelectedItem == null ||
+              comboBox_minutes_StartTime.SelectedItem == null)
             {
                 button_next.Enabled = false;
+                label_filedsReq.Visible = true;
             }
             else
             {
                 button_next.Enabled = true;
+                label_filedsReq.Visible = false;
             }
         }
 
 
+        public void OptionsButtonHandler(TextBox text, EventArgs e)
+        {
 
+            if (text.Text == string.Empty)
+            {
+                text.BackColor = Color.MistyRose;
+            }
+            else
+            {
+                text.BackColor = Color.White;
+            }
+
+
+            bool res = true;
+            foreach (Control item in panel_questions.Controls)
+            {
+                if (item is TextBox)
+                {
+                    if (string.IsNullOrEmpty(item.Text))
+                    {
+                        res = false;
+                        break; 
+                    }
+                }
+            }
+            button_SaveQuestion.Enabled = res;
+        }
 
         private void button_Test_Click(object sender, EventArgs e)
         {
             textBox_examTitle.Text = "test exam";
             textBox_teacherName.Text = "test teacher";
             textBox_date.Text = dateTimePicker_examDate.Value.ToString("dd/MM/yy");
-            textBox_hours_StartTime.Text = "10";
-            textBox_minutes_StartTime.Text = "00";
-            textBox_hours_totalTime.Text = "2";
-            textBox_minutes_totalTime.Text = "00";
             comboBox_Course_Select.SelectedIndex = 0;
             checkBox_QuestionOrder.Checked = true;
+            comboBox_hours_StartTime.SelectedIndex = 1;
+            comboBox_minutes_StartTime.SelectedIndex = 0;
+            comboBox_hours_totalTime.SelectedIndex = 1;
+            comboBox_minutes_totalTime.SelectedIndex = 0;
 
 
         }
@@ -468,10 +513,12 @@ namespace ExamSystem_Project.Forms
 
         private void button_AddQuestion_Click(object sender, EventArgs e)
         {
+
             panel_questions.BringToFront();
             ClearAllControls();
             question = new Question();
             question.ExamStrId = exam.ExamStrId;
+            textBox_QuetionContent.Invoke(()=> OptionsButtonHandler(textBox_QuetionContent, EventArgs.Empty));
 
 
 
@@ -525,11 +572,12 @@ namespace ExamSystem_Project.Forms
         {
             try
             {
-                string time = string.Format($"{textBox_hours_StartTime.Text}:{textBox_minutes_StartTime.Text}");
+                string time = string.Format($"{comboBox_hours_StartTime.SelectedItem}:{comboBox_minutes_StartTime.SelectedItem}");
                 exam.ExamTitle = textBox_examTitle.Text;
                 exam.TeacherFullName = textBox_teacherName.Text;
                 exam.ExamDateTime = DateTime.Parse($"{textBox_date.Text} {time}");
-                exam.TotalHours = int.Parse(textBox_hours_totalTime.Text);
+                exam.TotalHours = int.Parse(comboBox_hours_totalTime.SelectedItem.ToString());
+                exam.TotalMinutes = int.Parse(comboBox_minutes_totalTime.SelectedItem.ToString());
                 string coursetype = comboBox_Course_Select.SelectedItem.ToString();
                 exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
                 exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
@@ -558,24 +606,36 @@ namespace ExamSystem_Project.Forms
             ExamButtonHandler(textBox_date);
         }
 
-        private void textBox_hours_StartTime_TextChanged(object sender, EventArgs e)
+
+
+        private void comboBox_hours_StartTime_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ExamButtonHandler(textBox_hours_StartTime);
+            ExamButtonHandler(new TextBox());
         }
 
-        private void textBox_minutes_StartTime_TextChanged(object sender, EventArgs e)
+        private void comboBox_minutes_StartTime_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ExamButtonHandler(textBox_minutes_StartTime);
+            ExamButtonHandler(new TextBox());
         }
 
-        private void textBox_hours_totalTime_TextChanged(object sender, EventArgs e)
+        private void comboBox_Course_Select_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ExamButtonHandler(textBox_hours_totalTime);
+            ExamButtonHandler(new TextBox());
         }
 
-        private void textBox_minutes_totalTime_TextChanged(object sender, EventArgs e)
+        private void comboBox_hours_totalTime_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ExamButtonHandler(textBox_minutes_totalTime);
+            ExamButtonHandler(new TextBox());
+        }
+
+        private void comboBox_minutes_totalTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ExamButtonHandler(new TextBox());
+        }
+
+        private void textBox_QuetionContent_TextChanged(object sender, EventArgs e)
+        {
+            OptionsButtonHandler(textBox_QuetionContent,e);
         }
     }
 }

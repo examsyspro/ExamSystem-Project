@@ -31,8 +31,12 @@
             components = new System.ComponentModel.Container();
             tabControl1 = new TabControl();
             tabPage_step1 = new TabPage();
+            label_filedsReq = new Label();
             button_Test = new Button();
             panel1 = new Panel();
+            comboBox_minutes_totalTime = new ComboBox();
+            comboBox_hours_totalTime = new ComboBox();
+            comboBox_minutes_StartTime = new ComboBox();
             comboBox_hours_StartTime = new ComboBox();
             checkBox_QuestionOrder = new CheckBox();
             label5 = new Label();
@@ -40,17 +44,13 @@
             label8 = new Label();
             label7 = new Label();
             textBox_examTitle = new TextBox();
-            textBox_minutes_StartTime = new TextBox();
             label9 = new Label();
             textBox_date = new TextBox();
-            textBox_hours_StartTime = new TextBox();
             label6 = new Label();
             label2 = new Label();
-            textBox_hours_totalTime = new TextBox();
             textBox_teacherName = new TextBox();
             label4 = new Label();
             label_teaStu = new Label();
-            textBox_minutes_totalTime = new TextBox();
             label1 = new Label();
             label3 = new Label();
             comboBox_Course_Select = new ComboBox();
@@ -79,7 +79,6 @@
             button_Previous = new Button();
             panel4 = new Panel();
             label11 = new Label();
-            comboBox_minutes_StartTime = new ComboBox();
             tabControl1.SuspendLayout();
             tabPage_step1.SuspendLayout();
             panel1.SuspendLayout();
@@ -109,6 +108,7 @@
             // tabPage_step1
             // 
             tabPage_step1.BackColor = SystemColors.Window;
+            tabPage_step1.Controls.Add(label_filedsReq);
             tabPage_step1.Controls.Add(button_Test);
             tabPage_step1.Controls.Add(panel1);
             tabPage_step1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -119,6 +119,17 @@
             tabPage_step1.Size = new Size(1490, 807);
             tabPage_step1.TabIndex = 0;
             tabPage_step1.Text = "Exam details";
+            // 
+            // label_filedsReq
+            // 
+            label_filedsReq.AutoSize = true;
+            label_filedsReq.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label_filedsReq.ForeColor = Color.Red;
+            label_filedsReq.Location = new Point(1209, 22);
+            label_filedsReq.Name = "label_filedsReq";
+            label_filedsReq.Size = new Size(256, 32);
+            label_filedsReq.TabIndex = 32;
+            label_filedsReq.Text = "* all fields are required";
             // 
             // button_Test
             // 
@@ -134,6 +145,8 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(comboBox_minutes_totalTime);
+            panel1.Controls.Add(comboBox_hours_totalTime);
             panel1.Controls.Add(comboBox_minutes_StartTime);
             panel1.Controls.Add(comboBox_hours_StartTime);
             panel1.Controls.Add(checkBox_QuestionOrder);
@@ -142,17 +155,13 @@
             panel1.Controls.Add(label8);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(textBox_examTitle);
-            panel1.Controls.Add(textBox_minutes_StartTime);
             panel1.Controls.Add(label9);
             panel1.Controls.Add(textBox_date);
-            panel1.Controls.Add(textBox_hours_StartTime);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label2);
-            panel1.Controls.Add(textBox_hours_totalTime);
             panel1.Controls.Add(textBox_teacherName);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label_teaStu);
-            panel1.Controls.Add(textBox_minutes_totalTime);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(comboBox_Course_Select);
@@ -162,17 +171,63 @@
             panel1.Size = new Size(1084, 762);
             panel1.TabIndex = 30;
             // 
+            // comboBox_minutes_totalTime
+            // 
+            comboBox_minutes_totalTime.DropDownHeight = 100;
+            comboBox_minutes_totalTime.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_minutes_totalTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox_minutes_totalTime.FormattingEnabled = true;
+            comboBox_minutes_totalTime.IntegralHeight = false;
+            comboBox_minutes_totalTime.ItemHeight = 30;
+            comboBox_minutes_totalTime.Location = new Point(395, 448);
+            comboBox_minutes_totalTime.Name = "comboBox_minutes_totalTime";
+            comboBox_minutes_totalTime.Size = new Size(100, 38);
+            comboBox_minutes_totalTime.TabIndex = 33;
+            comboBox_minutes_totalTime.SelectedIndexChanged += comboBox_minutes_totalTime_SelectedIndexChanged;
+            // 
+            // comboBox_hours_totalTime
+            // 
+            comboBox_hours_totalTime.BackColor = SystemColors.Window;
+            comboBox_hours_totalTime.DropDownHeight = 100;
+            comboBox_hours_totalTime.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_hours_totalTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox_hours_totalTime.FormattingEnabled = true;
+            comboBox_hours_totalTime.IntegralHeight = false;
+            comboBox_hours_totalTime.ItemHeight = 30;
+            comboBox_hours_totalTime.Location = new Point(266, 448);
+            comboBox_hours_totalTime.Name = "comboBox_hours_totalTime";
+            comboBox_hours_totalTime.Size = new Size(100, 38);
+            comboBox_hours_totalTime.TabIndex = 32;
+            comboBox_hours_totalTime.SelectedIndexChanged += comboBox_hours_totalTime_SelectedIndexChanged;
+            // 
+            // comboBox_minutes_StartTime
+            // 
+            comboBox_minutes_StartTime.DropDownHeight = 100;
+            comboBox_minutes_StartTime.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_minutes_StartTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox_minutes_StartTime.FormattingEnabled = true;
+            comboBox_minutes_StartTime.IntegralHeight = false;
+            comboBox_minutes_StartTime.ItemHeight = 30;
+            comboBox_minutes_StartTime.Location = new Point(329, 338);
+            comboBox_minutes_StartTime.Name = "comboBox_minutes_StartTime";
+            comboBox_minutes_StartTime.Size = new Size(100, 38);
+            comboBox_minutes_StartTime.TabIndex = 31;
+            comboBox_minutes_StartTime.SelectedIndexChanged += comboBox_minutes_StartTime_SelectedIndexChanged;
+            // 
             // comboBox_hours_StartTime
             // 
+            comboBox_hours_StartTime.BackColor = SystemColors.Window;
             comboBox_hours_StartTime.DropDownHeight = 100;
+            comboBox_hours_StartTime.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_hours_StartTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox_hours_StartTime.FormattingEnabled = true;
             comboBox_hours_StartTime.IntegralHeight = false;
             comboBox_hours_StartTime.ItemHeight = 30;
-            comboBox_hours_StartTime.Location = new Point(493, 338);
+            comboBox_hours_StartTime.Location = new Point(200, 338);
             comboBox_hours_StartTime.Name = "comboBox_hours_StartTime";
             comboBox_hours_StartTime.Size = new Size(100, 38);
             comboBox_hours_StartTime.TabIndex = 30;
+            comboBox_hours_StartTime.SelectedIndexChanged += comboBox_hours_StartTime_SelectedIndexChanged;
             // 
             // checkBox_QuestionOrder
             // 
@@ -245,17 +300,6 @@
             textBox_examTitle.TabIndex = 0;
             textBox_examTitle.TextChanged += textBox_examTitle_TextChanged;
             // 
-            // textBox_minutes_StartTime
-            // 
-            textBox_minutes_StartTime.BorderStyle = BorderStyle.FixedSingle;
-            textBox_minutes_StartTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_minutes_StartTime.Location = new Point(329, 338);
-            textBox_minutes_StartTime.Margin = new Padding(2);
-            textBox_minutes_StartTime.Name = "textBox_minutes_StartTime";
-            textBox_minutes_StartTime.Size = new Size(100, 37);
-            textBox_minutes_StartTime.TabIndex = 17;
-            textBox_minutes_StartTime.TextChanged += textBox_minutes_StartTime_TextChanged;
-            // 
             // label9
             // 
             label9.AutoSize = true;
@@ -280,17 +324,6 @@
             textBox_date.TabIndex = 21;
             textBox_date.TextChanged += textBox_date_TextChanged;
             // 
-            // textBox_hours_StartTime
-            // 
-            textBox_hours_StartTime.BorderStyle = BorderStyle.FixedSingle;
-            textBox_hours_StartTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_hours_StartTime.Location = new Point(200, 338);
-            textBox_hours_StartTime.Margin = new Padding(2);
-            textBox_hours_StartTime.Name = "textBox_hours_StartTime";
-            textBox_hours_StartTime.Size = new Size(100, 37);
-            textBox_hours_StartTime.TabIndex = 2;
-            textBox_hours_StartTime.TextChanged += textBox_hours_StartTime_TextChanged;
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -314,17 +347,6 @@
             label2.Size = new Size(81, 25);
             label2.TabIndex = 26;
             label2.Text = "Minutes";
-            // 
-            // textBox_hours_totalTime
-            // 
-            textBox_hours_totalTime.BorderStyle = BorderStyle.FixedSingle;
-            textBox_hours_totalTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_hours_totalTime.Location = new Point(266, 445);
-            textBox_hours_totalTime.Margin = new Padding(2);
-            textBox_hours_totalTime.Name = "textBox_hours_totalTime";
-            textBox_hours_totalTime.Size = new Size(100, 37);
-            textBox_hours_totalTime.TabIndex = 22;
-            textBox_hours_totalTime.TextChanged += textBox_hours_totalTime_TextChanged;
             // 
             // textBox_teacherName
             // 
@@ -361,17 +383,6 @@
             label_teaStu.TabIndex = 25;
             label_teaStu.Text = "Hours";
             // 
-            // textBox_minutes_totalTime
-            // 
-            textBox_minutes_totalTime.BorderStyle = BorderStyle.FixedSingle;
-            textBox_minutes_totalTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox_minutes_totalTime.Location = new Point(392, 445);
-            textBox_minutes_totalTime.Margin = new Padding(2);
-            textBox_minutes_totalTime.Name = "textBox_minutes_totalTime";
-            textBox_minutes_totalTime.Size = new Size(100, 37);
-            textBox_minutes_totalTime.TabIndex = 23;
-            textBox_minutes_totalTime.TextChanged += textBox_minutes_totalTime_TextChanged;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -405,14 +416,15 @@
             comboBox_Course_Select.Name = "comboBox_Course_Select";
             comboBox_Course_Select.Size = new Size(246, 38);
             comboBox_Course_Select.TabIndex = 24;
+            comboBox_Course_Select.SelectedIndexChanged += comboBox_Course_Select_SelectedIndexChanged;
             // 
             // tabPage_step2
             // 
             tabPage_step2.Controls.Add(button_ShowQuestions);
             tabPage_step2.Controls.Add(button_testQuestions);
             tabPage_step2.Controls.Add(button_AddQuestion);
-            tabPage_step2.Controls.Add(panel_questionList);
             tabPage_step2.Controls.Add(panel_questions);
+            tabPage_step2.Controls.Add(panel_questionList);
             tabPage_step2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tabPage_step2.Location = new Point(4, 47);
             tabPage_step2.Margin = new Padding(2);
@@ -591,6 +603,7 @@
             textBox_QuetionContent.Name = "textBox_QuetionContent";
             textBox_QuetionContent.Size = new Size(600, 100);
             textBox_QuetionContent.TabIndex = 1;
+            textBox_QuetionContent.TextChanged += textBox_QuetionContent_TextChanged;
             // 
             // label_question
             // 
@@ -717,18 +730,6 @@
             label11.TabIndex = 7;
             label11.Text = "Build Exam";
             // 
-            // comboBox_minutes_StartTime
-            // 
-            comboBox_minutes_StartTime.DropDownHeight = 100;
-            comboBox_minutes_StartTime.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox_minutes_StartTime.FormattingEnabled = true;
-            comboBox_minutes_StartTime.IntegralHeight = false;
-            comboBox_minutes_StartTime.ItemHeight = 30;
-            comboBox_minutes_StartTime.Location = new Point(627, 337);
-            comboBox_minutes_StartTime.Name = "comboBox_minutes_StartTime";
-            comboBox_minutes_StartTime.Size = new Size(100, 38);
-            comboBox_minutes_StartTime.TabIndex = 31;
-            // 
             // BuildExamForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -742,6 +743,7 @@
             Text = "BuildExamForm";
             tabControl1.ResumeLayout(false);
             tabPage_step1.ResumeLayout(false);
+            tabPage_step1.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabPage_step2.ResumeLayout(false);
@@ -765,19 +767,15 @@
         private TabPage tabPage_step2;
         private TabPage tabPage_step3;
         private TextBox textBox_teacherName;
-        private TextBox textBox_hours_StartTime;
         private TextBox textBox_examTitle;
         private Label label6;
         private Label label4;
         private Label label3;
         private Label label1;
         private Label label5;
-        private TextBox textBox_minutes_StartTime;
         private DateTimePicker dateTimePicker_examDate;
         private TextBox textBox_date;
         private Label label7;
-        private TextBox textBox_minutes_totalTime;
-        private TextBox textBox_hours_totalTime;
         private ComboBox comboBox_Course_Select;
         private Label label_teaStu;
         private Label label2;
@@ -811,5 +809,8 @@
         private Label label10;
         private ComboBox comboBox_hours_StartTime;
         private ComboBox comboBox_minutes_StartTime;
+        private Label label_filedsReq;
+        private ComboBox comboBox_minutes_totalTime;
+        private ComboBox comboBox_hours_totalTime;
     }
 }
