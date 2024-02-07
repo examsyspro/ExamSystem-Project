@@ -47,7 +47,6 @@ namespace ExamSystem_Project.Forms
 
         }
 
-
         public void InitializeAll()
         {
 
@@ -123,18 +122,22 @@ namespace ExamSystem_Project.Forms
                 case "tabPage_step1":
                     if (!tabControl1.TabPages.Contains(tabPage_step2))
                     {
+                        CheckQuestionListSize();
                         tabControl1.TabPages.Add(tabPage_step2);
                         tabControl1.TabPages.Remove(tabPage_step1);
                     }
-                    button_next.Enabled = false;
+
                     tabControl1.SelectedTab = tabPage_step2;
                     break;
                 case "tabPage_step2":
+
                     if (!tabControl1.TabPages.Contains(tabPage_step3))
                     {
+
                         tabControl1.TabPages.Add(tabPage_step3);
                         tabControl1.TabPages.Remove(tabPage_step2);
                     }
+                    ExamButtonHandler(new TextBox());
                     tabControl1.SelectedTab = tabPage_step3;
                     button_SaveExamBuilder.Enabled = true;
                     break;
@@ -143,11 +146,6 @@ namespace ExamSystem_Project.Forms
             }
 
 
-        }
-
-        private void dateTimePicker_examDate_ValueChanged(object sender, EventArgs e)
-        {
-            textBox_date.Text = dateTimePicker_examDate.Value.ToString("dd/MM/yy");
         }
 
         private void button_Previous_Click(object sender, EventArgs e)
@@ -165,6 +163,7 @@ namespace ExamSystem_Project.Forms
                 case "tabPage_step2":
                     if (!tabControl1.TabPages.Contains(tabPage_step1))
                     {
+                        ExamButtonHandler(new TextBox());
                         tabControl1.TabPages.Add(tabPage_step1);
                         tabControl1.TabPages.Remove(tabPage_step2);
                     }
@@ -180,7 +179,10 @@ namespace ExamSystem_Project.Forms
 
 
 
-
+        private void dateTimePicker_examDate_ValueChanged(object sender, EventArgs e)
+        {
+            textBox_date.Text = dateTimePicker_examDate.Value.ToString("dd/MM/yy");
+        }
 
 
         public void ClearAllControls()
@@ -205,7 +207,6 @@ namespace ExamSystem_Project.Forms
 
             button_addOption.Enabled = textBoxCounter == 0 ? true : false;
         }
-
 
         private void button_addOption_Click(object sender, EventArgs e)
         {
@@ -338,7 +339,6 @@ namespace ExamSystem_Project.Forms
 
         }
 
-
         private double GetTopMargin()
         {
             double topMargin = 50;
@@ -357,8 +357,6 @@ namespace ExamSystem_Project.Forms
 
             return topMargin;
         }
-
-
 
         private void button_SaveQuestion_Click(object sender, EventArgs e)
         {
@@ -387,12 +385,9 @@ namespace ExamSystem_Project.Forms
                 listBox_Questions.DataSource = exam.questions;
                 panel_questionList.BringToFront();
 
+                CheckQuestionListSize();
 
 
-                if (exam.questions.Count >= 4)
-                {
-                    button_next.Enabled = true;
-                }
 
             }
             catch (Exception ex)
@@ -406,66 +401,75 @@ namespace ExamSystem_Project.Forms
 
         }
 
-        public void ExamButtonHandler(TextBox text)
+        public bool CheckEmptyPanelControls(Panel panel)
         {
-
-            if (text.Text == string.Empty)
-            {
-                text.BackColor = Color.MistyRose;
-            }
-            else
-            {
-                text.BackColor = Color.White;
-            }
-
-
-            if (string.IsNullOrEmpty(textBox_examTitle.Text) ||
-              string.IsNullOrEmpty(textBox_teacherName.Text) ||
-              string.IsNullOrEmpty(textBox_date.Text) ||
-              comboBox_hours_totalTime.SelectedItem == null ||
-              comboBox_minutes_totalTime.SelectedItem == null ||
-              comboBox_Course_Select.SelectedIndex == -1 ||
-              comboBox_hours_StartTime.SelectedItem == null ||
-              comboBox_minutes_StartTime.SelectedItem == null)
-            {
-                button_next.Enabled = false;
-                label_filedsReq.Visible = true;
-            }
-            else
-            {
-                button_next.Enabled = true;
-                label_filedsReq.Visible = false;
-            }
-        }
-
-
-        public void OptionsButtonHandler(TextBox text, EventArgs e)
-        {
-
-            if (text.Text == string.Empty)
-            {
-                text.BackColor = Color.MistyRose;
-            }
-            else
-            {
-                text.BackColor = Color.White;
-            }
-
-
             bool res = true;
-            foreach (Control item in panel_questions.Controls)
+            foreach (Control item in panel.Controls)
             {
-                if (item is TextBox)
+                if (item is TextBox t)
                 {
-                    if (string.IsNullOrEmpty(item.Text))
+                    if (string.IsNullOrEmpty(t.Text))
+                    {
+
+                        res = false;
+                        break;
+                    }
+                }
+                if (item is ComboBox c)
+                {
+                    if (c.SelectedItem == null || c.SelectedIndex == -1)
                     {
                         res = false;
-                        break; 
+                        break;
                     }
                 }
             }
+
+            return res;
+        }
+
+        public void ExamButtonHandler(TextBox text)
+        {
+            ChangeTextBoxColor(text);
+            bool res = CheckEmptyPanelControls(panel1);
+            button_next.Enabled = res;
+            label_filedsReq.Visible = !res;
+        }
+
+
+        public void CheckQuestionListSize()
+        {
+
+            if (exam.questions.Count >= 4)
+            {
+                button_next.Enabled = true;
+            }
+            else
+            {
+                button_next.Enabled = false;
+            }
+        }
+
+
+        public void ChangeTextBoxColor(TextBox text)
+        {
+            if (text.Text == string.Empty)
+            {
+                text.BackColor = Color.MistyRose;
+            }
+            else
+            {
+                text.BackColor = Color.White;
+            }
+        }
+
+        public void OptionsButtonHandler(TextBox text, EventArgs e)
+        {
+            ChangeTextBoxColor(text);
+            bool res = CheckEmptyPanelControls(panel_questions);
             button_SaveQuestion.Enabled = res;
         }
+
 
         private void button_Test_Click(object sender, EventArgs e)
         {
@@ -518,7 +522,7 @@ namespace ExamSystem_Project.Forms
             ClearAllControls();
             question = new Question();
             question.ExamStrId = exam.ExamStrId;
-            textBox_QuetionContent.Invoke(()=> OptionsButtonHandler(textBox_QuetionContent, EventArgs.Empty));
+            textBox_QuetionContent.Invoke(() => OptionsButtonHandler(textBox_QuetionContent, EventArgs.Empty));
 
 
 
@@ -549,22 +553,6 @@ namespace ExamSystem_Project.Forms
 
 
             }
-        }
-
-        private void listBox_opstionAns_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-
-
-
-
-            }
-            catch (Exception ex)
-            {
-            }
-
-
         }
 
 
@@ -606,8 +594,6 @@ namespace ExamSystem_Project.Forms
             ExamButtonHandler(textBox_date);
         }
 
-
-
         private void comboBox_hours_StartTime_SelectedIndexChanged(object sender, EventArgs e)
         {
             ExamButtonHandler(new TextBox());
@@ -635,7 +621,7 @@ namespace ExamSystem_Project.Forms
 
         private void textBox_QuetionContent_TextChanged(object sender, EventArgs e)
         {
-            OptionsButtonHandler(textBox_QuetionContent,e);
+            OptionsButtonHandler(textBox_QuetionContent, e);
         }
     }
 }

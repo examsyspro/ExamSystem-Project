@@ -522,7 +522,7 @@
             listBox_opstionAns.Name = "listBox_opstionAns";
             listBox_opstionAns.Size = new Size(570, 404);
             listBox_opstionAns.TabIndex = 1;
-            listBox_opstionAns.SelectedIndexChanged += listBox_opstionAns_SelectedIndexChanged;
+
             // 
             // listBox_Questions
             // 
