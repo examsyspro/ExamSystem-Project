@@ -79,13 +79,13 @@
             button_Previous = new Button();
             panel4 = new Panel();
             label11 = new Label();
-            checkBox1 = new CheckBox();
-            label13 = new Label();
-            label14 = new Label();
-            label15 = new Label();
-            label16 = new Label();
-            label17 = new Label();
-            label18 = new Label();
+            checkBox_rendomQuesOrder_S = new CheckBox();
+            label_examTitle_S = new Label();
+            label_examDate_S = new Label();
+            label_totalExamTime_S = new Label();
+            label_course_S = new Label();
+            label_TeacherName_S = new Label();
+            label_startTime_S = new Label();
             tabControl1.SuspendLayout();
             tabPage_step1.SuspendLayout();
             panel1.SuspendLayout();
@@ -628,13 +628,13 @@
             // 
             // tabPage_step3
             // 
-            tabPage_step3.Controls.Add(checkBox1);
-            tabPage_step3.Controls.Add(label13);
-            tabPage_step3.Controls.Add(label14);
-            tabPage_step3.Controls.Add(label15);
-            tabPage_step3.Controls.Add(label16);
-            tabPage_step3.Controls.Add(label17);
-            tabPage_step3.Controls.Add(label18);
+            tabPage_step3.Controls.Add(checkBox_rendomQuesOrder_S);
+            tabPage_step3.Controls.Add(label_examTitle_S);
+            tabPage_step3.Controls.Add(label_examDate_S);
+            tabPage_step3.Controls.Add(label_totalExamTime_S);
+            tabPage_step3.Controls.Add(label_course_S);
+            tabPage_step3.Controls.Add(label_TeacherName_S);
+            tabPage_step3.Controls.Add(label_startTime_S);
             tabPage_step3.Location = new Point(4, 40);
             tabPage_step3.Margin = new Padding(3, 4, 3, 4);
             tabPage_step3.Name = "tabPage_step3";
@@ -746,91 +746,91 @@
             label11.TabIndex = 7;
             label11.Text = "Build Exam";
             // 
-            // checkBox1
+            // checkBox_rendomQuesOrder_S
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.CheckAlign = ContentAlignment.MiddleRight;
-            checkBox1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox1.ForeColor = Color.FromArgb(0, 135, 209);
-            checkBox1.Location = new Point(34, 498);
-            checkBox1.Margin = new Padding(3, 2, 3, 2);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(251, 29);
-            checkBox1.TabIndex = 36;
-            checkBox1.Text = "Random Question Order :";
-            checkBox1.UseVisualStyleBackColor = true;
+            checkBox_rendomQuesOrder_S.AutoSize = true;
+            checkBox_rendomQuesOrder_S.CheckAlign = ContentAlignment.MiddleRight;
+            checkBox_rendomQuesOrder_S.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_rendomQuesOrder_S.ForeColor = Color.FromArgb(0, 135, 209);
+            checkBox_rendomQuesOrder_S.Location = new Point(32, 408);
+            checkBox_rendomQuesOrder_S.Margin = new Padding(3, 2, 3, 2);
+            checkBox_rendomQuesOrder_S.Name = "checkBox_rendomQuesOrder_S";
+            checkBox_rendomQuesOrder_S.Size = new Size(251, 29);
+            checkBox_rendomQuesOrder_S.TabIndex = 36;
+            checkBox_rendomQuesOrder_S.Text = "Random Question Order :";
+            checkBox_rendomQuesOrder_S.UseVisualStyleBackColor = true;
             // 
-            // label13
+            // label_examTitle_S
             // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.ForeColor = Color.FromArgb(0, 135, 209);
-            label13.Location = new Point(32, 26);
-            label13.Margin = new Padding(2, 0, 2, 0);
-            label13.Name = "label13";
-            label13.Size = new Size(113, 25);
-            label13.TabIndex = 30;
-            label13.Text = "Exam Title :";
+            label_examTitle_S.AutoSize = true;
+            label_examTitle_S.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_examTitle_S.ForeColor = Color.FromArgb(0, 135, 209);
+            label_examTitle_S.Location = new Point(32, 26);
+            label_examTitle_S.Margin = new Padding(2, 0, 2, 0);
+            label_examTitle_S.Name = "label_examTitle_S";
+            label_examTitle_S.Size = new Size(113, 25);
+            label_examTitle_S.TabIndex = 30;
+            label_examTitle_S.Text = "Exam Title :";
             // 
-            // label14
+            // label_examDate_S
             // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label14.ForeColor = Color.FromArgb(0, 135, 209);
-            label14.Location = new Point(34, 178);
-            label14.Margin = new Padding(2, 0, 2, 0);
-            label14.Name = "label14";
-            label14.Size = new Size(116, 25);
-            label14.TabIndex = 35;
-            label14.Text = "Exam Date :";
+            label_examDate_S.AutoSize = true;
+            label_examDate_S.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_examDate_S.ForeColor = Color.FromArgb(0, 135, 209);
+            label_examDate_S.Location = new Point(32, 144);
+            label_examDate_S.Margin = new Padding(2, 0, 2, 0);
+            label_examDate_S.Name = "label_examDate_S";
+            label_examDate_S.Size = new Size(116, 25);
+            label_examDate_S.TabIndex = 35;
+            label_examDate_S.Text = "Exam Date :";
             // 
-            // label15
+            // label_totalExamTime_S
             // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label15.ForeColor = Color.FromArgb(0, 135, 209);
-            label15.Location = new Point(32, 338);
-            label15.Margin = new Padding(2, 0, 2, 0);
-            label15.Name = "label15";
-            label15.Size = new Size(171, 25);
-            label15.TabIndex = 34;
-            label15.Text = "Total Exam Time : ";
+            label_totalExamTime_S.AutoSize = true;
+            label_totalExamTime_S.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_totalExamTime_S.ForeColor = Color.FromArgb(0, 135, 209);
+            label_totalExamTime_S.Location = new Point(32, 276);
+            label_totalExamTime_S.Margin = new Padding(2, 0, 2, 0);
+            label_totalExamTime_S.Name = "label_totalExamTime_S";
+            label_totalExamTime_S.Size = new Size(171, 25);
+            label_totalExamTime_S.TabIndex = 34;
+            label_totalExamTime_S.Text = "Total Exam Time : ";
             // 
-            // label16
+            // label_course_S
             // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label16.ForeColor = Color.FromArgb(0, 135, 209);
-            label16.Location = new Point(32, 426);
-            label16.Margin = new Padding(2, 0, 2, 0);
-            label16.Name = "label16";
-            label16.Size = new Size(84, 25);
-            label16.TabIndex = 33;
-            label16.Text = "Course :";
+            label_course_S.AutoSize = true;
+            label_course_S.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_course_S.ForeColor = Color.FromArgb(0, 135, 209);
+            label_course_S.Location = new Point(32, 342);
+            label_course_S.Margin = new Padding(2, 0, 2, 0);
+            label_course_S.Name = "label_course_S";
+            label_course_S.Size = new Size(84, 25);
+            label_course_S.TabIndex = 33;
+            label_course_S.Text = "Course :";
             // 
-            // label17
+            // label_TeacherName_S
             // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label17.ForeColor = Color.FromArgb(0, 135, 209);
-            label17.Location = new Point(34, 102);
-            label17.Margin = new Padding(2, 0, 2, 0);
-            label17.Name = "label17";
-            label17.Size = new Size(146, 25);
-            label17.TabIndex = 31;
-            label17.Text = "Teacher Name :";
+            label_TeacherName_S.AutoSize = true;
+            label_TeacherName_S.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_TeacherName_S.ForeColor = Color.FromArgb(0, 135, 209);
+            label_TeacherName_S.Location = new Point(32, 82);
+            label_TeacherName_S.Margin = new Padding(2, 0, 2, 0);
+            label_TeacherName_S.Name = "label_TeacherName_S";
+            label_TeacherName_S.Size = new Size(146, 25);
+            label_TeacherName_S.TabIndex = 31;
+            label_TeacherName_S.Text = "Teacher Name :";
             // 
-            // label18
+            // label_startTime_S
             // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label18.ForeColor = Color.FromArgb(0, 135, 209);
-            label18.Location = new Point(34, 250);
-            label18.Margin = new Padding(2, 0, 2, 0);
-            label18.Name = "label18";
-            label18.Size = new Size(114, 25);
-            label18.TabIndex = 32;
-            label18.Text = "Start Time :";
+            label_startTime_S.AutoSize = true;
+            label_startTime_S.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_startTime_S.ForeColor = Color.FromArgb(0, 135, 209);
+            label_startTime_S.Location = new Point(32, 207);
+            label_startTime_S.Margin = new Padding(2, 0, 2, 0);
+            label_startTime_S.Name = "label_startTime_S";
+            label_startTime_S.Size = new Size(114, 25);
+            label_startTime_S.TabIndex = 32;
+            label_startTime_S.Text = "Start Time :";
             // 
             // BuildExamForm
             // 
@@ -916,12 +916,12 @@
         private Label label_filedsReq;
         private ComboBox comboBox_minutes_totalTime;
         private ComboBox comboBox_hours_totalTime;
-        private CheckBox checkBox1;
-        private Label label13;
-        private Label label14;
-        private Label label15;
-        private Label label16;
-        private Label label17;
-        private Label label18;
+        private CheckBox checkBox_rendomQuesOrder_S;
+        private Label label_examTitle_S;
+        private Label label_examDate_S;
+        private Label label_totalExamTime_S;
+        private Label label_course_S;
+        private Label label_TeacherName_S;
+        private Label label_startTime_S;
     }
 }
