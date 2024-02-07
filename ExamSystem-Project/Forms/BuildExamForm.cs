@@ -17,6 +17,8 @@ namespace ExamSystem_Project.Forms
 {
     public partial class BuildExamForm : Form
     {
+
+
         private int textBoxCounter = 0;
         public int optionNameCounter = 1;
         public TextBox dynamicTextBox;
@@ -133,11 +135,11 @@ namespace ExamSystem_Project.Forms
 
                     if (!tabControl1.TabPages.Contains(tabPage_step3))
                     {
-
+                        CreateSummeryPage();
                         tabControl1.TabPages.Add(tabPage_step3);
                         tabControl1.TabPages.Remove(tabPage_step2);
                     }
-                    ExamButtonHandler(new TextBox());
+                    // ExamButtonHandler(new TextBox());
                     tabControl1.SelectedTab = tabPage_step3;
                     button_SaveExamBuilder.Enabled = true;
                     break;
@@ -440,7 +442,7 @@ namespace ExamSystem_Project.Forms
         public void CheckQuestionListSize()
         {
 
-            if (exam.questions.Count >= 4)
+            if (exam.questions.Count >= 0)
             {
                 button_next.Enabled = true;
             }
@@ -624,6 +626,36 @@ namespace ExamSystem_Project.Forms
             OptionsButtonHandler(textBox_QuetionContent, e);
         }
 
- 
+        public void CreateSummeryPage()
+        {
+            try
+            {
+
+                label_examTitle_S.Text = textBox_examTitle.Text;
+                label_TeacherName_S.Text = textBox_teacherName.Text;
+                label_examDate_S.Text = textBox_date.Text;
+                label_startTime_S.Text = string.Format($"{comboBox_hours_StartTime.SelectedItem}:{comboBox_minutes_StartTime.SelectedItem}");
+                label_totalExamTime_S.Text = $"{comboBox_hours_totalTime.SelectedItem}:{comboBox_minutes_totalTime.SelectedItem}";
+                label_course_S.Text = comboBox_Course_Select.SelectedItem.ToString();
+                label_randomQuesOrder_S.Text = checkBox_QuestionOrder.Checked.ToString();
+                label_pointQuestion_S.Text = (100 / listBox_Questions.Items.Count).ToString("00");
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+
+            //exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
+            //exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
+
+
+
+
+
+        }
+
+
     }
 }
