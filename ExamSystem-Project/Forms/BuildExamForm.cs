@@ -469,9 +469,22 @@ namespace ExamSystem_Project.Forms
         {
             ChangeTextBoxColor(text);
             bool res = CheckEmptyPanelControls(panel_questions);
+         
+            if (!res || textBoxesList.Count<2)
+            {
+                res = false ;
+            }
+            else
+            {
+                res = true;
+            }
+            
+
             button_SaveQuestion.Enabled = res;
+            
         }
 
+        
 
         private void button_Test_Click(object sender, EventArgs e)
         {
@@ -639,6 +652,10 @@ namespace ExamSystem_Project.Forms
                 label_course_S.Text = comboBox_Course_Select.SelectedItem.ToString();
                 label_randomQuesOrder_S.Text = checkBox_QuestionOrder.Checked.ToString();
                 label_pointQuestion_S.Text = (100 / listBox_Questions.Items.Count).ToString("00");
+                listBox_questionList_S.DataSource = null;
+                listBox_questionList_S.Items.Clear();
+                listBox_questionList_S.DataSource = exam.questions;
+
             }
             catch (Exception ex)
             {
