@@ -523,7 +523,6 @@ namespace ExamSystem_Project.Forms
             }
 
 
-
             textBox_QuetionContent.Text = "what is the best text option?";
 
             for (int i = 0; i < textBoxesList.Count; i++)
@@ -531,8 +530,6 @@ namespace ExamSystem_Project.Forms
                 textBoxesList[i].Text = "test option" + (i + 1);
                 radioButtonList[i].Checked = true;
             }
-
-
 
         }
 
