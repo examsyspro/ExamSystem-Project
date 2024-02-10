@@ -210,8 +210,6 @@ namespace ExamSystem_Project.Forms
             textBoxCounter = 0;
             optionNameCounter = 1;
 
-
-
             textBox_QuetionContent.Text = string.Empty;
             textBoxesList = new List<TextBox>();
             radioButtonList = new List<RadioButton>();
@@ -223,7 +221,6 @@ namespace ExamSystem_Project.Forms
 
         private void button_addOption_Click(object sender, EventArgs e)
         {
-
 
             try
             {
@@ -399,9 +396,6 @@ namespace ExamSystem_Project.Forms
                 panel_questionList.BringToFront();
 
                 CheckQuestionListSize();
-
-
-
             }
             catch (Exception ex)
             {
@@ -508,8 +502,6 @@ namespace ExamSystem_Project.Forms
             comboBox_minutes_StartTime.SelectedIndex = 0;
             comboBox_hours_totalTime.SelectedIndex = 1;
             comboBox_minutes_totalTime.SelectedIndex = 0;
-
-
         }
 
         private void button_testQuestions_Click(object sender, EventArgs e)
@@ -521,8 +513,6 @@ namespace ExamSystem_Project.Forms
                     button_addOption_Click(sender, EventArgs.Empty);
                 }
             }
-
-
             textBox_QuetionContent.Text = "what is the best text option?";
 
             for (int i = 0; i < textBoxesList.Count; i++)
@@ -530,7 +520,6 @@ namespace ExamSystem_Project.Forms
                 textBoxesList[i].Text = "test option" + (i + 1);
                 radioButtonList[i].Checked = true;
             }
-
         }
 
         private void button_ShowQuestions_Click(object sender, EventArgs e)
@@ -546,9 +535,6 @@ namespace ExamSystem_Project.Forms
             question = new Question();
             question.ExamStrId = exam.ExamStrId;
             textBox_QuetionContent.Invoke(() => OptionsButtonHandler(textBox_QuetionContent, EventArgs.Empty));
-
-
-
         }
 
         private void listBox_Questions_SelectedIndexChanged(object sender, EventArgs e)
@@ -565,11 +551,6 @@ namespace ExamSystem_Project.Forms
                     Question q = exam.questions[index];
                     listBox_opstionAns.DataSource = q.Options;
                 }
-
-
-
-
-
             }
             catch (Exception ex)
             {
@@ -598,8 +579,6 @@ namespace ExamSystem_Project.Forms
                 {
                     MessageBox.Show(Constants.BuildSuccess);
                 }
-                
-
             }
             catch (Exception ex)
             {
@@ -656,7 +635,6 @@ namespace ExamSystem_Project.Forms
         {
             try
             {
-
                 label_examTitle_S.Text = textBox_examTitle.Text;
                 label_TeacherName_S.Text = textBox_teacherName.Text;
                 label_examDate_S.Text = textBox_date.Text;
@@ -668,22 +646,14 @@ namespace ExamSystem_Project.Forms
                 listBox_questionList_S.DataSource = null;
                 listBox_questionList_S.Items.Clear();
                 listBox_questionList_S.DataSource = exam.questions;
-
             }
             catch (Exception ex)
             {
 
-
             }
-
 
             //exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
             //exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
-
-
-
-
-
         }
 
 
