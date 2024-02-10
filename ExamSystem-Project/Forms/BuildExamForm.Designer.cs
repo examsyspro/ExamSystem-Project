@@ -58,17 +58,17 @@
             button_ShowQuestions = new Button();
             button_testQuestions = new Button();
             button_AddQuestion = new Button();
+            panel_questionList = new Panel();
+            label12 = new Label();
+            label10 = new Label();
+            listBox_opstionAns = new ListBox();
+            listBox_Questions = new ListBox();
             panel_questions = new Panel();
             button_SaveQuestion = new Button();
             checkBox_OptionOrder = new CheckBox();
             button_addOption = new Button();
             textBox_QuetionContent = new TextBox();
             label_question = new Label();
-            panel_questionList = new Panel();
-            label12 = new Label();
-            label10 = new Label();
-            listBox_opstionAns = new ListBox();
-            listBox_Questions = new ListBox();
             tabPage_step3 = new TabPage();
             label13 = new Label();
             label14 = new Label();
@@ -101,8 +101,8 @@
             tabPage_step1.SuspendLayout();
             panel1.SuspendLayout();
             tabPage_step2.SuspendLayout();
-            panel_questions.SuspendLayout();
             panel_questionList.SuspendLayout();
+            panel_questions.SuspendLayout();
             tabPage_step3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)questionBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)questionBindingSource).BeginInit();
@@ -447,8 +447,8 @@
             tabPage_step2.Controls.Add(button_ShowQuestions);
             tabPage_step2.Controls.Add(button_testQuestions);
             tabPage_step2.Controls.Add(button_AddQuestion);
-            tabPage_step2.Controls.Add(panel_questions);
             tabPage_step2.Controls.Add(panel_questionList);
+            tabPage_step2.Controls.Add(panel_questions);
             tabPage_step2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tabPage_step2.Location = new Point(4, 47);
             tabPage_step2.Margin = new Padding(2);
@@ -499,6 +499,64 @@
             button_AddQuestion.Text = "Add Question";
             button_AddQuestion.UseVisualStyleBackColor = false;
             button_AddQuestion.Click += button_AddQuestion_Click;
+            // 
+            // panel_questionList
+            // 
+            panel_questionList.BackColor = SystemColors.InactiveBorder;
+            panel_questionList.Controls.Add(label12);
+            panel_questionList.Controls.Add(label10);
+            panel_questionList.Controls.Add(listBox_opstionAns);
+            panel_questionList.Controls.Add(listBox_Questions);
+            panel_questionList.Location = new Point(6, 6);
+            panel_questionList.Margin = new Padding(2);
+            panel_questionList.Name = "panel_questionList";
+            panel_questionList.Size = new Size(1255, 794);
+            panel_questionList.TabIndex = 6;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.ForeColor = Color.FromArgb(0, 135, 209);
+            label12.Location = new Point(636, 36);
+            label12.Margin = new Padding(2, 0, 2, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(113, 30);
+            label12.TabIndex = 13;
+            label12.Text = "Options : ";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.ForeColor = Color.FromArgb(0, 135, 209);
+            label10.Location = new Point(27, 36);
+            label10.Margin = new Padding(2, 0, 2, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(134, 30);
+            label10.TabIndex = 12;
+            label10.Text = "Questions : ";
+            // 
+            // listBox_opstionAns
+            // 
+            listBox_opstionAns.FormattingEnabled = true;
+            listBox_opstionAns.ItemHeight = 25;
+            listBox_opstionAns.Location = new Point(636, 78);
+            listBox_opstionAns.Margin = new Padding(4);
+            listBox_opstionAns.Name = "listBox_opstionAns";
+            listBox_opstionAns.Size = new Size(570, 404);
+            listBox_opstionAns.TabIndex = 1;
+            // 
+            // listBox_Questions
+            // 
+            listBox_Questions.FormattingEnabled = true;
+            listBox_Questions.ItemHeight = 25;
+            listBox_Questions.Location = new Point(27, 78);
+            listBox_Questions.Margin = new Padding(4);
+            listBox_Questions.Name = "listBox_Questions";
+            listBox_Questions.Size = new Size(544, 404);
+            listBox_Questions.TabIndex = 0;
+            listBox_Questions.SelectedIndexChanged += listBox_Questions_SelectedIndexChanged;
             // 
             // panel_questions
             // 
@@ -581,64 +639,6 @@
             label_question.Size = new Size(207, 30);
             label_question.TabIndex = 0;
             label_question.Text = "Question Content :";
-            // 
-            // panel_questionList
-            // 
-            panel_questionList.BackColor = SystemColors.InactiveBorder;
-            panel_questionList.Controls.Add(label12);
-            panel_questionList.Controls.Add(label10);
-            panel_questionList.Controls.Add(listBox_opstionAns);
-            panel_questionList.Controls.Add(listBox_Questions);
-            panel_questionList.Location = new Point(6, 6);
-            panel_questionList.Margin = new Padding(2);
-            panel_questionList.Name = "panel_questionList";
-            panel_questionList.Size = new Size(1255, 794);
-            panel_questionList.TabIndex = 6;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.ForeColor = Color.FromArgb(0, 135, 209);
-            label12.Location = new Point(645, 154);
-            label12.Margin = new Padding(2, 0, 2, 0);
-            label12.Name = "label12";
-            label12.Size = new Size(113, 30);
-            label12.TabIndex = 13;
-            label12.Text = "Options : ";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.ForeColor = Color.FromArgb(0, 135, 209);
-            label10.Location = new Point(36, 154);
-            label10.Margin = new Padding(2, 0, 2, 0);
-            label10.Name = "label10";
-            label10.Size = new Size(134, 30);
-            label10.TabIndex = 12;
-            label10.Text = "Questions : ";
-            // 
-            // listBox_opstionAns
-            // 
-            listBox_opstionAns.FormattingEnabled = true;
-            listBox_opstionAns.ItemHeight = 25;
-            listBox_opstionAns.Location = new Point(645, 196);
-            listBox_opstionAns.Margin = new Padding(4);
-            listBox_opstionAns.Name = "listBox_opstionAns";
-            listBox_opstionAns.Size = new Size(570, 404);
-            listBox_opstionAns.TabIndex = 1;
-            // 
-            // listBox_Questions
-            // 
-            listBox_Questions.FormattingEnabled = true;
-            listBox_Questions.ItemHeight = 25;
-            listBox_Questions.Location = new Point(36, 196);
-            listBox_Questions.Margin = new Padding(4);
-            listBox_Questions.Name = "listBox_Questions";
-            listBox_Questions.Size = new Size(544, 404);
-            listBox_Questions.TabIndex = 0;
-            listBox_Questions.SelectedIndexChanged += listBox_Questions_SelectedIndexChanged;
             // 
             // tabPage_step3
             // 
@@ -898,7 +898,7 @@
             button_SaveExamBuilder.FlatStyle = FlatStyle.Flat;
             button_SaveExamBuilder.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             button_SaveExamBuilder.ForeColor = Color.White;
-            button_SaveExamBuilder.Location = new Point(668, 18);
+            button_SaveExamBuilder.Location = new Point(1299, 18);
             button_SaveExamBuilder.Margin = new Padding(2);
             button_SaveExamBuilder.Name = "button_SaveExamBuilder";
             button_SaveExamBuilder.Size = new Size(181, 52);
@@ -1003,10 +1003,10 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabPage_step2.ResumeLayout(false);
-            panel_questions.ResumeLayout(false);
-            panel_questions.PerformLayout();
             panel_questionList.ResumeLayout(false);
             panel_questionList.PerformLayout();
+            panel_questions.ResumeLayout(false);
+            panel_questions.PerformLayout();
             tabPage_step3.ResumeLayout(false);
             tabPage_step3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)questionBindingSource1).EndInit();

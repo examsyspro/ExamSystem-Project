@@ -33,7 +33,7 @@ namespace ExamSystem_Project.Forms
         public List<Label> labelList;
         public List<Control> ControlsList;
         public General gen;
-   
+
         private readonly int[] numbersArr = { 1, 2, 3, 4, 5, 6, 7 };
         public BuildExamForm()
         {
@@ -102,6 +102,9 @@ namespace ExamSystem_Project.Forms
                     }
 
                 }
+
+                button_SaveExamBuilder.Visible = false;
+                button_next.Visible = true;
             }
             catch (Exception ex)
             {
@@ -123,6 +126,7 @@ namespace ExamSystem_Project.Forms
                 case "tabPage_step1":
                     if (!tabControl1.TabPages.Contains(tabPage_step2))
                     {
+
                         CheckQuestionListSize();
                         tabControl1.TabPages.Add(tabPage_step2);
                         tabControl1.TabPages.Remove(tabPage_step1);
@@ -134,12 +138,14 @@ namespace ExamSystem_Project.Forms
 
                     if (!tabControl1.TabPages.Contains(tabPage_step3))
                     {
+                        button_next.Visible = false;
                         CreateSummeryPage();
                         tabControl1.TabPages.Add(tabPage_step3);
                         tabControl1.TabPages.Remove(tabPage_step2);
                     }
                     // ExamButtonHandler(new TextBox());
                     tabControl1.SelectedTab = tabPage_step3;
+                    button_SaveExamBuilder.Visible = true;
                     button_SaveExamBuilder.Enabled = true;
                     break;
                 default:
@@ -211,7 +217,7 @@ namespace ExamSystem_Project.Forms
 
         private void button_addOption_Click(object sender, EventArgs e)
         {
-            
+
 
             try
             {
