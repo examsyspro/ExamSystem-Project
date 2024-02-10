@@ -33,7 +33,7 @@ namespace ExamSystem_Project.Forms
         public List<Label> labelList;
         public List<Control> ControlsList;
         public General gen;
-        BuildExamModel buildExamModel;
+        
 
         private readonly int[] numbersArr = { 1, 2, 3, 4, 5, 6, 7 };
         public BuildExamForm()
@@ -47,7 +47,8 @@ namespace ExamSystem_Project.Forms
             ControlsList = new List<Control>();
             labelList = new List<Label>();
             gen = new General();
-            buildExamModel = new BuildExamModel();
+            
+
         }
 
         public void InitializeAll()
@@ -595,14 +596,12 @@ namespace ExamSystem_Project.Forms
                 string coursetype = comboBox_Course_Select.SelectedItem.ToString();
                 exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
                 exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
-                res = await buildExamModel.Build_Exam(exam);
+                res = await General.buildExam.Build_Exam(exam);
                 if (res) 
                 {
                     MessageBox.Show(Constants.BuildSuccess);
                 }
                 
-                //bool resultExam = await General.mainRequestor.Request_NewPost<Exam>(exam, "api/exams/create");
-                // var resultExam = await General.mainRequestor.Request_Put<Exam>(1,exam, "api/exams/update");
 
             }
             catch (Exception ex)

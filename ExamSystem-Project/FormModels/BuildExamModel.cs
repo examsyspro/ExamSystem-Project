@@ -13,6 +13,11 @@ namespace ExamSystem_Project.FormModels
 {
     public class BuildExamModel
     {
+   
+        public BuildExamModel()
+        {
+
+        }
 
         public async Task<bool> Build_Exam(Exam exam)
         {
@@ -27,5 +32,8 @@ namespace ExamSystem_Project.FormModels
 
             return resultExam;
         }
+
+
+
     }
 }
