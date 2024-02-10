@@ -211,6 +211,8 @@ namespace ExamSystem_Project.Forms
 
         private void button_addOption_Click(object sender, EventArgs e)
         {
+            
+
             try
             {
                 button_addOption.Enabled = textBoxCounter == 4 ? true : false;
@@ -466,7 +468,7 @@ namespace ExamSystem_Project.Forms
         {
             ChangeTextBoxColor(text);
             bool res = CheckEmptyPanelControls(panel_questions);
-         
+
             if (!res || textBoxesList.Count < 2)
             {
                 res = false;
@@ -475,13 +477,13 @@ namespace ExamSystem_Project.Forms
             {
                 res = true;
             }
-            
+
 
             button_SaveQuestion.Enabled = res;
-            
+
         }
 
-        
+
 
         private void button_Test_Click(object sender, EventArgs e)
         {
