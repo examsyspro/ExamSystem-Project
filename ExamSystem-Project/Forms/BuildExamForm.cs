@@ -12,7 +12,6 @@ using System.Windows.Forms.VisualStyles;
 using System.Windows.Forms;
 
 
-
 namespace ExamSystem_Project.Forms
 {
     public partial class BuildExamForm : Form
@@ -22,7 +21,7 @@ namespace ExamSystem_Project.Forms
         private int textBoxCounter = 0;
         public int optionNameCounter = 1;
         public TextBox dynamicTextBox;
-        string[] strArr;
+        public string[] strArr;
         public Exam exam;
         public Question question;
         public OptionAns optionAns;
@@ -34,6 +33,7 @@ namespace ExamSystem_Project.Forms
         public List<Label> labelList;
         public List<Control> ControlsList;
         public General gen;
+   
         private readonly int[] numbersArr = { 1, 2, 3, 4, 5, 6, 7 };
         public BuildExamForm()
         {
@@ -46,7 +46,6 @@ namespace ExamSystem_Project.Forms
             ControlsList = new List<Control>();
             labelList = new List<Label>();
             gen = new General();
-
         }
 
         public void InitializeAll()
@@ -337,8 +336,6 @@ namespace ExamSystem_Project.Forms
 
 
             }
-
-
         }
 
         private double GetTopMargin()
@@ -470,9 +467,9 @@ namespace ExamSystem_Project.Forms
             ChangeTextBoxColor(text);
             bool res = CheckEmptyPanelControls(panel_questions);
          
-            if (!res || textBoxesList.Count<2)
+            if (!res || textBoxesList.Count < 2)
             {
-                res = false ;
+                res = false;
             }
             else
             {
