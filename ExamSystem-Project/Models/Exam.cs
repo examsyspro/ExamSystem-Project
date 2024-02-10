@@ -2,11 +2,14 @@
 using ExamSystem_Project.Helpers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms.VisualStyles;
 
 namespace ExamSystem_Project.Models
 {
@@ -36,11 +39,6 @@ namespace ExamSystem_Project.Models
             questions = new List<Question>();
             ExamStrId = Guid.NewGuid();
         }
-
-
-
-
-
 
 
 

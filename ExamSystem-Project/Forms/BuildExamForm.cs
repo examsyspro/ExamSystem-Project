@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.VisualStyles;
 using System.Windows.Forms;
-
+using ExamSystem_Project.FormModels;
 
 namespace ExamSystem_Project.Forms
 {
@@ -33,6 +33,7 @@ namespace ExamSystem_Project.Forms
         public List<Label> labelList;
         public List<Control> ControlsList;
         public General gen;
+        BuildExamModel buildExamModel;
 
         private readonly int[] numbersArr = { 1, 2, 3, 4, 5, 6, 7 };
         public BuildExamForm()
@@ -46,6 +47,7 @@ namespace ExamSystem_Project.Forms
             ControlsList = new List<Control>();
             labelList = new List<Label>();
             gen = new General();
+            buildExamModel = new BuildExamModel();
         }
 
         public void InitializeAll()
@@ -164,6 +166,9 @@ namespace ExamSystem_Project.Forms
                     {
                         tabControl1.TabPages.Add(tabPage_step2);
                         tabControl1.TabPages.Remove(tabPage_step3);
+                        button_SaveExamBuilder.Visible = false;
+                        button_SaveExamBuilder.Enabled = false;
+                        button_next.Visible = true;
                     }
                     tabControl1.SelectedTab = tabPage_step2;
                     break;
@@ -580,6 +585,7 @@ namespace ExamSystem_Project.Forms
         {
             try
             {
+                bool res = false;
                 string time = string.Format($"{comboBox_hours_StartTime.SelectedItem}:{comboBox_minutes_StartTime.SelectedItem}");
                 exam.ExamTitle = textBox_examTitle.Text;
                 exam.TeacherFullName = textBox_teacherName.Text;
@@ -589,7 +595,13 @@ namespace ExamSystem_Project.Forms
                 string coursetype = comboBox_Course_Select.SelectedItem.ToString();
                 exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
                 exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
-                bool resultExam = await General.mainRequestor.Request_NewPost<Exam>(exam, "api/exams/create");
+                res = await buildExamModel.Build_Exam(exam);
+                if (res) 
+                {
+                    MessageBox.Show(Constants.BuildSuccess);
+                }
+                
+                //bool resultExam = await General.mainRequestor.Request_NewPost<Exam>(exam, "api/exams/create");
                 // var resultExam = await General.mainRequestor.Request_Put<Exam>(1,exam, "api/exams/update");
 
             }

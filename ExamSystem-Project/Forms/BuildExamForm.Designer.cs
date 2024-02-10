@@ -993,6 +993,7 @@
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(1524, 1055);
             Controls.Add(panel3);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(2);
             Name = "BuildExamForm";
             StartPosition = FormStartPosition.CenterScreen;
