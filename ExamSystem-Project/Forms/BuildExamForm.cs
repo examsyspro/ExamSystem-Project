@@ -33,7 +33,8 @@ namespace ExamSystem_Project.Forms
         public List<Label> labelList;
         public List<Control> ControlsList;
         public General gen;
-        
+        Random rand;
+
 
         private readonly int[] numbersArr = { 1, 2, 3, 4, 5, 6, 7 };
         public BuildExamForm()
@@ -47,7 +48,7 @@ namespace ExamSystem_Project.Forms
             ControlsList = new List<Control>();
             labelList = new List<Label>();
             gen = new General();
-            
+
 
         }
 
@@ -197,7 +198,6 @@ namespace ExamSystem_Project.Forms
             textBox_date.Text = dateTimePicker_examDate.Value.ToString("dd/MM/yy");
         }
 
-
         public void ClearAllControls()
         {
             for (int i = 0; i < radioButtonList.Count; i++)
@@ -309,7 +309,7 @@ namespace ExamSystem_Project.Forms
                     textBoxCounter--;
                     optionNameCounter--;
 
-
+                    
 
                     // Retrieve the unique identifier associated with the controls
                     string tag = deleteButton.Tag as string;
@@ -328,6 +328,7 @@ namespace ExamSystem_Project.Forms
                         panel_questions.Controls.Remove(control);
                     }
                     button_addOption.Enabled = textBoxCounter < 5;
+                    OptionsButtonHandler(new TextBox(), EventArgs.Empty);
                 };
 
                 // Add Label, TextBox, and Delete button to the panel_questions
@@ -341,6 +342,7 @@ namespace ExamSystem_Project.Forms
                 textBoxCounter++;
                 optionNameCounter++;
                 button_addOption.Enabled = textBoxCounter < 5;
+
             }
             catch (Exception ex)
             {
@@ -387,6 +389,12 @@ namespace ExamSystem_Project.Forms
                         optionAns.OptionText = box.Text;
                         optionAns.IsCorrect = radioButton.Checked;
                         question.Options.Add(optionAns);
+
+                        if(checkBox_OptionOrder.Checked)
+                        {
+                            RandomOptionsOrder();
+
+                        }
                     }
                 }
                 exam.questions.Add(question);
@@ -457,7 +465,6 @@ namespace ExamSystem_Project.Forms
             }
         }
 
-
         public void ChangeTextBoxColor(TextBox text)
         {
             if (text.Text == string.Empty)
@@ -488,8 +495,6 @@ namespace ExamSystem_Project.Forms
             button_SaveQuestion.Enabled = res;
 
         }
-
-
 
         private void button_Test_Click(object sender, EventArgs e)
         {
@@ -575,7 +580,7 @@ namespace ExamSystem_Project.Forms
                 exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
                 exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
                 res = await General.buildExam.Build_Exam(exam);
-                if (res) 
+                if (res)
                 {
                     MessageBox.Show(Constants.BuildSuccess);
                 }
@@ -646,6 +651,13 @@ namespace ExamSystem_Project.Forms
                 listBox_questionList_S.DataSource = null;
                 listBox_questionList_S.Items.Clear();
                 listBox_questionList_S.DataSource = exam.questions;
+
+                if (checkBox_QuestionOrder.Checked)
+                {
+                    RandomQuestionOrder();
+                }
+
+
             }
             catch (Exception ex)
             {
@@ -655,6 +667,27 @@ namespace ExamSystem_Project.Forms
             //exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
             //exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
         }
+
+        public void RandomQuestionOrder()
+        {
+
+            rand = new Random();
+      
+                exam.questions = exam.questions.OrderBy(q => rand.Next()).ToList();
+                listBox_Questions.DataSource = null;
+                listBox_Questions.Items.Clear();
+                listBox_Questions.DataSource = exam.questions;
+        }
+
+        public void RandomOptionsOrder()
+        {
+            rand = new Random();
+            question.Options = question.Options.OrderBy(o => rand.Next()).ToList();
+            listBox_opstionAns.DataSource = null;
+            listBox_opstionAns.Items.Clear();
+            listBox_opstionAns.DataSource = question.Options;
+        }
+
 
 
     }

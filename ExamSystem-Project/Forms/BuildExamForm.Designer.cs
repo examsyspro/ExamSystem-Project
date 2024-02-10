@@ -58,17 +58,17 @@
             button_ShowQuestions = new Button();
             button_testQuestions = new Button();
             button_AddQuestion = new Button();
-            panel_questionList = new Panel();
-            label12 = new Label();
-            label10 = new Label();
-            listBox_opstionAns = new ListBox();
-            listBox_Questions = new ListBox();
             panel_questions = new Panel();
             button_SaveQuestion = new Button();
             checkBox_OptionOrder = new CheckBox();
             button_addOption = new Button();
             textBox_QuetionContent = new TextBox();
             label_question = new Label();
+            panel_questionList = new Panel();
+            label12 = new Label();
+            label10 = new Label();
+            listBox_opstionAns = new ListBox();
+            listBox_Questions = new ListBox();
             tabPage_step3 = new TabPage();
             label13 = new Label();
             label14 = new Label();
@@ -101,8 +101,8 @@
             tabPage_step1.SuspendLayout();
             panel1.SuspendLayout();
             tabPage_step2.SuspendLayout();
-            panel_questionList.SuspendLayout();
             panel_questions.SuspendLayout();
+            panel_questionList.SuspendLayout();
             tabPage_step3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)questionBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)questionBindingSource).BeginInit();
@@ -447,8 +447,8 @@
             tabPage_step2.Controls.Add(button_ShowQuestions);
             tabPage_step2.Controls.Add(button_testQuestions);
             tabPage_step2.Controls.Add(button_AddQuestion);
-            tabPage_step2.Controls.Add(panel_questionList);
             tabPage_step2.Controls.Add(panel_questions);
+            tabPage_step2.Controls.Add(panel_questionList);
             tabPage_step2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tabPage_step2.Location = new Point(4, 47);
             tabPage_step2.Margin = new Padding(2);
@@ -499,6 +499,89 @@
             button_AddQuestion.Text = "Add Question";
             button_AddQuestion.UseVisualStyleBackColor = false;
             button_AddQuestion.Click += button_AddQuestion_Click;
+            // 
+            // panel_questions
+            // 
+            panel_questions.BackColor = SystemColors.InactiveBorder;
+            panel_questions.Controls.Add(button_SaveQuestion);
+            panel_questions.Controls.Add(checkBox_OptionOrder);
+            panel_questions.Controls.Add(button_addOption);
+            panel_questions.Controls.Add(textBox_QuetionContent);
+            panel_questions.Controls.Add(label_question);
+            panel_questions.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            panel_questions.Location = new Point(8, 6);
+            panel_questions.Margin = new Padding(4, 2, 4, 2);
+            panel_questions.Name = "panel_questions";
+            panel_questions.Size = new Size(1255, 794);
+            panel_questions.TabIndex = 1;
+            // 
+            // button_SaveQuestion
+            // 
+            button_SaveQuestion.BackColor = Color.FromArgb(0, 135, 209);
+            button_SaveQuestion.FlatStyle = FlatStyle.Flat;
+            button_SaveQuestion.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button_SaveQuestion.ForeColor = Color.White;
+            button_SaveQuestion.Location = new Point(1056, 730);
+            button_SaveQuestion.Margin = new Padding(2);
+            button_SaveQuestion.Name = "button_SaveQuestion";
+            button_SaveQuestion.Size = new Size(182, 52);
+            button_SaveQuestion.TabIndex = 3;
+            button_SaveQuestion.Text = "Save Question";
+            button_SaveQuestion.UseVisualStyleBackColor = false;
+            button_SaveQuestion.Click += button_SaveQuestion_Click;
+            // 
+            // checkBox_OptionOrder
+            // 
+            checkBox_OptionOrder.AutoSize = true;
+            checkBox_OptionOrder.CheckAlign = ContentAlignment.MiddleRight;
+            checkBox_OptionOrder.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox_OptionOrder.ForeColor = Color.FromArgb(0, 135, 209);
+            checkBox_OptionOrder.Location = new Point(875, 100);
+            checkBox_OptionOrder.Margin = new Padding(4, 2, 4, 2);
+            checkBox_OptionOrder.Name = "checkBox_OptionOrder";
+            checkBox_OptionOrder.Size = new Size(188, 34);
+            checkBox_OptionOrder.TabIndex = 2;
+            checkBox_OptionOrder.Text = "Options Order";
+            checkBox_OptionOrder.UseVisualStyleBackColor = true;
+            
+            // 
+            // button_addOption
+            // 
+            button_addOption.BackColor = Color.FromArgb(0, 135, 209);
+            button_addOption.FlatStyle = FlatStyle.Flat;
+            button_addOption.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button_addOption.ForeColor = Color.White;
+            button_addOption.Location = new Point(875, 38);
+            button_addOption.Margin = new Padding(2);
+            button_addOption.Name = "button_addOption";
+            button_addOption.Size = new Size(156, 52);
+            button_addOption.TabIndex = 5;
+            button_addOption.Text = "Add Option";
+            button_addOption.UseVisualStyleBackColor = false;
+            button_addOption.Click += button_addOption_Click;
+            // 
+            // textBox_QuetionContent
+            // 
+            textBox_QuetionContent.BorderStyle = BorderStyle.FixedSingle;
+            textBox_QuetionContent.Location = new Point(258, 38);
+            textBox_QuetionContent.Margin = new Padding(4, 2, 4, 2);
+            textBox_QuetionContent.Multiline = true;
+            textBox_QuetionContent.Name = "textBox_QuetionContent";
+            textBox_QuetionContent.Size = new Size(600, 100);
+            textBox_QuetionContent.TabIndex = 1;
+            textBox_QuetionContent.TextChanged += textBox_QuetionContent_TextChanged;
+            // 
+            // label_question
+            // 
+            label_question.AutoSize = true;
+            label_question.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_question.ForeColor = Color.FromArgb(0, 135, 209);
+            label_question.Location = new Point(25, 40);
+            label_question.Margin = new Padding(4, 0, 4, 0);
+            label_question.Name = "label_question";
+            label_question.Size = new Size(207, 30);
+            label_question.TabIndex = 0;
+            label_question.Text = "Question Content :";
             // 
             // panel_questionList
             // 
@@ -557,88 +640,6 @@
             listBox_Questions.Size = new Size(544, 404);
             listBox_Questions.TabIndex = 0;
             listBox_Questions.SelectedIndexChanged += listBox_Questions_SelectedIndexChanged;
-            // 
-            // panel_questions
-            // 
-            panel_questions.BackColor = SystemColors.InactiveBorder;
-            panel_questions.Controls.Add(button_SaveQuestion);
-            panel_questions.Controls.Add(checkBox_OptionOrder);
-            panel_questions.Controls.Add(button_addOption);
-            panel_questions.Controls.Add(textBox_QuetionContent);
-            panel_questions.Controls.Add(label_question);
-            panel_questions.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            panel_questions.Location = new Point(8, 6);
-            panel_questions.Margin = new Padding(4, 2, 4, 2);
-            panel_questions.Name = "panel_questions";
-            panel_questions.Size = new Size(1255, 794);
-            panel_questions.TabIndex = 1;
-            // 
-            // button_SaveQuestion
-            // 
-            button_SaveQuestion.BackColor = Color.FromArgb(0, 135, 209);
-            button_SaveQuestion.FlatStyle = FlatStyle.Flat;
-            button_SaveQuestion.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button_SaveQuestion.ForeColor = Color.White;
-            button_SaveQuestion.Location = new Point(1056, 730);
-            button_SaveQuestion.Margin = new Padding(2);
-            button_SaveQuestion.Name = "button_SaveQuestion";
-            button_SaveQuestion.Size = new Size(182, 52);
-            button_SaveQuestion.TabIndex = 3;
-            button_SaveQuestion.Text = "Save Question";
-            button_SaveQuestion.UseVisualStyleBackColor = false;
-            button_SaveQuestion.Click += button_SaveQuestion_Click;
-            // 
-            // checkBox_OptionOrder
-            // 
-            checkBox_OptionOrder.AutoSize = true;
-            checkBox_OptionOrder.CheckAlign = ContentAlignment.MiddleRight;
-            checkBox_OptionOrder.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox_OptionOrder.ForeColor = Color.FromArgb(0, 135, 209);
-            checkBox_OptionOrder.Location = new Point(875, 100);
-            checkBox_OptionOrder.Margin = new Padding(4, 2, 4, 2);
-            checkBox_OptionOrder.Name = "checkBox_OptionOrder";
-            checkBox_OptionOrder.Size = new Size(188, 34);
-            checkBox_OptionOrder.TabIndex = 2;
-            checkBox_OptionOrder.Text = "Options Order";
-            checkBox_OptionOrder.UseVisualStyleBackColor = true;
-            // 
-            // button_addOption
-            // 
-            button_addOption.BackColor = Color.FromArgb(0, 135, 209);
-            button_addOption.FlatStyle = FlatStyle.Flat;
-            button_addOption.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button_addOption.ForeColor = Color.White;
-            button_addOption.Location = new Point(875, 38);
-            button_addOption.Margin = new Padding(2);
-            button_addOption.Name = "button_addOption";
-            button_addOption.Size = new Size(156, 52);
-            button_addOption.TabIndex = 5;
-            button_addOption.Text = "Add Option";
-            button_addOption.UseVisualStyleBackColor = false;
-            button_addOption.Click += button_addOption_Click;
-            // 
-            // textBox_QuetionContent
-            // 
-            textBox_QuetionContent.BorderStyle = BorderStyle.FixedSingle;
-            textBox_QuetionContent.Location = new Point(258, 38);
-            textBox_QuetionContent.Margin = new Padding(4, 2, 4, 2);
-            textBox_QuetionContent.Multiline = true;
-            textBox_QuetionContent.Name = "textBox_QuetionContent";
-            textBox_QuetionContent.Size = new Size(600, 100);
-            textBox_QuetionContent.TabIndex = 1;
-            textBox_QuetionContent.TextChanged += textBox_QuetionContent_TextChanged;
-            // 
-            // label_question
-            // 
-            label_question.AutoSize = true;
-            label_question.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label_question.ForeColor = Color.FromArgb(0, 135, 209);
-            label_question.Location = new Point(25, 40);
-            label_question.Margin = new Padding(4, 0, 4, 0);
-            label_question.Name = "label_question";
-            label_question.Size = new Size(207, 30);
-            label_question.TabIndex = 0;
-            label_question.Text = "Question Content :";
             // 
             // tabPage_step3
             // 
@@ -1004,10 +1005,10 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabPage_step2.ResumeLayout(false);
-            panel_questionList.ResumeLayout(false);
-            panel_questionList.PerformLayout();
             panel_questions.ResumeLayout(false);
             panel_questions.PerformLayout();
+            panel_questionList.ResumeLayout(false);
+            panel_questionList.PerformLayout();
             tabPage_step3.ResumeLayout(false);
             tabPage_step3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)questionBindingSource1).EndInit();
