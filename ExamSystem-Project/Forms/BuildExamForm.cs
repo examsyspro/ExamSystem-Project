@@ -672,7 +672,6 @@ namespace ExamSystem_Project.Forms
         {
 
             rand = new Random();
-      
                 exam.questions = exam.questions.OrderBy(q => rand.Next()).ToList();
                 listBox_Questions.DataSource = null;
                 listBox_Questions.Items.Clear();
