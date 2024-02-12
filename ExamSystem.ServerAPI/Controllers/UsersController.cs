@@ -30,9 +30,9 @@ namespace ExamSystem.ServerAPI.Controllers
         //    return "value";
         //}
         [HttpGet("{id}")]
-        public async Task<bool> GetUser(string id)
+        public async Task<User> GetUser(string id)
         {
-            return await _usersRepo.CheckExistingUser(id);
+            return await _usersRepo.GetUserByUserId(id);
         }
 
         // POST api/<UsersController>

@@ -29,10 +29,15 @@ namespace ExamSystem.ServerAPI.Repositories
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> CheckExistingUser(string userId)
+        public async Task<User> GetUserByUserId(string userId)
         {
             User user = await _context.Users.FirstOrDefaultAsync(x => x.UserId == userId);
-            return user != null;
+            if (user == null)
+            {
+                return new User();
+            }
+
+            return user;
         }
 
         public async Task<User> ValidateUser(string password, string userId)

@@ -18,7 +18,6 @@ namespace ExamSystem_Project.UserControls
     public partial class Register : UserControl
     {
 
-        private UserRequestor userRequestor;
         public bool success;
         public string selectedItem;
         public UserType_Enum userType;
@@ -27,13 +26,11 @@ namespace ExamSystem_Project.UserControls
         public string userid;
         public User user;
         public string password;
-
-
-        public Register()
+        MainForm main;
+        public Register(MainForm form)
         {
             InitializeComponent();
-            userRequestor = new UserRequestor();
-
+            this.main = form;
             success = false;
             selectedItem = string.Empty;
             userType = new UserType_Enum();
@@ -47,12 +44,14 @@ namespace ExamSystem_Project.UserControls
             label_cour.Visible = false;
             label_teaStu.Visible = false;
             label_id.Visible = false;
+           
+            
 
         }
 
         private void label_LoginNow_Click(object sender, EventArgs e)
         {
-            MainForm.main.UISwitch("Login");
+            main.UISwitch("Login");
         }
 
         private async void button_Register_Click(object sender, EventArgs e)
@@ -104,15 +103,15 @@ namespace ExamSystem_Project.UserControls
 
                     user = new User() { TypeOfUser = userType.ToString(), FullName = fullname, UserId = userid, CourseType = courseType, PassWord = password };
 
-
-                    if (!await userRequestor.Request_ExistingUser(userid))
+                    User rtnUser = await General.mainRequestor.Request_GetById<User>(userid, $"api/users");
+                    if (rtnUser.UserId == null)
                     {
 
-                        success = await userRequestor.Request_RegisterAsync(user);
+                        success = await General.mainRequestor.Request_NewPost(user, "api/users/register");
                         if (success)
                         {
                             MessageBox.Show(Helpers.Constants.successReg);
-                            MainForm.main.UISwitch("Login");
+                            main.UISwitch("Login");
 
 
                         }

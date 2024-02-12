@@ -119,7 +119,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Form1"; 
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

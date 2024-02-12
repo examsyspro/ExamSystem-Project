@@ -32,7 +32,6 @@ namespace ExamSystem_Project.Forms
         public List<Button> deleteButtonList;
         public List<Label> labelList;
         public List<Control> ControlsList;
-        public General gen;
         Random rand;
 
 
@@ -47,7 +46,7 @@ namespace ExamSystem_Project.Forms
             deleteButtonList = new List<Button>();
             ControlsList = new List<Control>();
             labelList = new List<Label>();
-            gen = new General();
+         
 
 
         }

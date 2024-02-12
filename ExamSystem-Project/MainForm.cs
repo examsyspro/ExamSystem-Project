@@ -1,6 +1,5 @@
-
+using ExamSystem_Project.Helpers;
 using ExamSystem_Project.UserControls;
-
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms.VisualStyles;
@@ -10,24 +9,15 @@ namespace ExamSystem_Project
 {
     public partial class MainForm : Form
     {
-        public static MainForm main = new MainForm();
-
-
-
-
+        General gen;
         public MainForm()
         {
 
             InitializeComponent();
-
-            main = this;
-            panel1_main.Controls.Add(new Register());
-            panel1_main.Controls.Add(new Login());
+            panel1_main.Controls.Add(new Register(this));
+            panel1_main.Controls.Add(new Login(this));
+            gen = new General();
             UISwitch("Login");
-
-
-
-
 
         }
 

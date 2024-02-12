@@ -7,7 +7,7 @@ namespace ExamSystem.ServerAPI.Repositories
     public interface IUsersRepository
     {
         Task<bool> UserRegister(User user);
-        Task<bool> CheckExistingUser(string userId);
+        Task<User> GetUserByUserId(string userId);
         Task<User> ValidateUser(string password, string userId);
         Task<List<User>> GetAllUsers();
     }

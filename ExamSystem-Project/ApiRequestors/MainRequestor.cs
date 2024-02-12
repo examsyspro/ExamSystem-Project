@@ -57,6 +57,8 @@ namespace ExamSystem_Project.ApiRequestors
             //bool resultExam = await Request_NewPost<Exam>(examObject, "yourApiEndpoint");
             //bool resultQuestion = await Request_NewPost<Question>(questionObject, "yourApiEndpoint");
             //bool resultOptionAns = await Request_NewPost<OptionAns>(optionAnsObject, "yourApiEndpoint");
+           // bool resultUser = await Request_NewPost<User>(userObject, string apiStr);
+
         }
 
 
@@ -87,7 +89,32 @@ namespace ExamSystem_Project.ApiRequestors
             //User user = await Request_GetById<User>("yourId", "yourApiEndpoint");
         }
 
+        public async Task<User> Request_LoginAsync(User credentials)
+        {
+            try
+            {
+                //3.1) Convert credentials Object to JSON
+                string jsonLoginData = JsonSerializer.Serialize<User>(credentials);
+                using StringContent LoginContent = new StringContent(jsonLoginData, Encoding.UTF8, @"application/json");
 
+                //3.2 Get response 
+                using HttpResponseMessage response =
+                    await httpClient.PostAsync("api/users/login", LoginContent);
+
+                response.EnsureSuccessStatusCode();//201
+
+                //3.3 Get Json Data From Server Result
+                User userResponse =
+                    await response.Content.ReadFromJsonAsync<User>();
+
+                return userResponse;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
 
         public async Task<List<T>> Request_GetAll<T>(string apiStr)
         {
