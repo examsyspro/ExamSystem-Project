@@ -83,11 +83,6 @@ namespace ExamSystem_Project.UserControls
                             student = new StudentForm(userResponse);
                             student.Show();
 
-                           
-                            //Window mainWindow = Window.GetWindow(this);
-                            //StudentWindow student = new StudentWindow(userResponse);
-                            //student.Show();
-                            //mainWindow.Close();
 
 
                         }
