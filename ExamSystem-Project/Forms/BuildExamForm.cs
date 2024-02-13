@@ -280,18 +280,7 @@ namespace ExamSystem_Project.Forms
         }
 
 
-        public void CheckQuestionListSize()
-        {
 
-            if (exam.questions.Count >= 0)
-            {
-                button_next.Enabled = true;
-            }
-            else
-            {
-                button_next.Enabled = false;
-            }
-        }
 
         public void ChangeTextBoxColor(TextBox text)
         {
@@ -759,18 +748,25 @@ namespace ExamSystem_Project.Forms
                 question = exam.questions[index];
                 exam.questions.Remove(question);
                 RefreshQuestionsListBox();
-                if (exam.questions.Count > 0)
-                {
-                    listBox_Questions.SelectedIndex = 0;
-                    button_removeQuestion.Enabled = true;
-                }
-
+                CheckQuestionListSize();
+                
             }
             catch (Exception ex)
             {
 
+            }
+        }
 
-
+        public void CheckQuestionListSize()
+        {
+            bool res = exam.questions.Count >0;
+         
+                button_next.Enabled = res;
+                button_removeQuestion.Enabled = res;
+                button_updateQuestion.Enabled = res;
+          if (res) 
+            {
+                listBox_Questions.SelectedIndex = 0;
             }
         }
     }
