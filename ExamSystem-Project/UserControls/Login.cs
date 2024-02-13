@@ -79,7 +79,6 @@ namespace ExamSystem_Project.UserControls
                         if (userResponse.TypeOfUser == "Student")
                         {
 
-
                             student = new StudentForm(userResponse);
                             student.Show();
 
