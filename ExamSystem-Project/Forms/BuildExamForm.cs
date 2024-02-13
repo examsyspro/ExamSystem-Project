@@ -33,8 +33,6 @@ namespace ExamSystem_Project.Forms
         public List<Label> labelList;
         public List<Control> ControlsList;
         Random rand;
-
-
         private readonly int[] numbersArr = { 1, 2, 3, 4, 5, 6, 7 };
         public BuildExamForm()
         {
@@ -46,9 +44,6 @@ namespace ExamSystem_Project.Forms
             deleteButtonList = new List<Button>();
             ControlsList = new List<Control>();
             labelList = new List<Label>();
-         
-
-
         }
 
         public void InitializeAll()
@@ -220,134 +215,7 @@ namespace ExamSystem_Project.Forms
 
         private void button_addOption_Click(object sender, EventArgs e)
         {
-
-            try
-            {
-                button_addOption.Enabled = textBoxCounter == 4 ? true : false;
-
-                // Create a unique identifier for the dynamic controls
-                string controlId = Guid.NewGuid().ToString();
-
-                // Create a new Label
-                dynamicLabel = new Label
-                {
-                    Font = new Font("Segoe UI", 11, FontStyle.Bold), // Set Font to bold
-                    ForeColor = Color.FromArgb(0, 135, 209),
-                    Text = "Option " + optionNameCounter + " :",
-                    TextAlign = System.Drawing.ContentAlignment.MiddleLeft,
-                    Location = new Point(label_question.Left, Convert.ToInt32(GetTopMargin())),
-                    AutoSize = true,
-                    Tag = controlId // Set a unique identifier as the Tag
-                };
-
-                labelList.Add(dynamicLabel);
-                // Create a new TextBox
-                dynamicTextBox = new TextBox
-                {
-                    Width = 600,
-                    Height = 26,
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Location = new Point(textBox_QuetionContent.Left - 80, dynamicLabel.Top),
-                    Name = "textBox_option" + optionNameCounter, // Unique name based on the counter
-                    Tag = controlId, // Set the same unique identifier as the Tag
-
-                };
-                dynamicTextBox.TextChanged += (dynamicTextBox, textBoxEventArgs) =>
-                {
-                    OptionsButtonHandler(dynamicTextBox as TextBox, textBoxEventArgs);
-                };
-
-                textBoxesList.Add(dynamicTextBox);
-
-
-                // Create a Delete button (trash icon)
-                Button deleteButton = new Button
-                {
-                    Text = "Delete",
-                    Width = 107,
-                    Font = new Font("Segoe UI", 11, FontStyle.Bold),
-                    Name = "button_" + optionNameCounter,
-                    ForeColor = Color.White,
-                    BackColor = Color.FromArgb(0, 135, 209),
-                    Height = 40,
-                    AutoSize = true,
-                    Location = new Point(dynamicTextBox.Right + 15, dynamicTextBox.Top - 7),// Use Location instead of Margin
-                    Tag = controlId // Set the same unique identifier as the Tag
-                };
-
-                deleteButtonList.Add(deleteButton);
-
-                radioButton = new RadioButton
-                {
-                    Text = "Is Correct :",
-                    Name = "radioButton_IsCorrect" + optionNameCounter,
-                    AutoSize = true,
-                    CheckAlign = System.Drawing.ContentAlignment.MiddleRight,
-                    Font = new Font("Segoe UI", 11, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(0, 135, 209),
-                    Location = new Point(deleteButton.Right, dynamicTextBox.Top - 4),
-                    Tag = controlId
-                };
-
-                radioButtonList.Add(radioButton);
-
-                // Attach a click event handler to the delete button
-                deleteButton.Click += (deleteSender, deleteEventArgs) =>
-                {
-                    if (deleteSender is Button btn)
-                    {
-                        var arr = btn.Name.Split("_");
-                        if (int.Parse(arr[1]) < textBoxCounter)
-                        {
-                            MessageBox.Show($"Delete Option {textBoxCounter} first");
-                            return;
-                        }
-                    }
-
-                    button_addOption.Enabled = textBoxCounter < 5;
-                    textBoxCounter--;
-                    optionNameCounter--;
-
-                    
-
-                    // Retrieve the unique identifier associated with the controls
-                    string tag = deleteButton.Tag as string;
-
-                    textBoxesList.RemoveAll(x => x.Tag == tag);
-                    radioButtonList.RemoveAll(x => x.Tag == tag);
-
-                    // Find and remove controls with the same unique identifier
-                    var controlsToRemove = panel_questions.Controls
-                        .Cast<Control>()
-                        .Where(control => control.Tag as string == tag)
-                        .ToList();
-
-                    foreach (var control in controlsToRemove)
-                    {
-                        panel_questions.Controls.Remove(control);
-                    }
-                    button_addOption.Enabled = textBoxCounter < 5;
-                    OptionsButtonHandler(new TextBox(), EventArgs.Empty);
-                };
-
-                // Add Label, TextBox, and Delete button to the panel_questions
-                panel_questions.Controls.Add(dynamicLabel);
-                panel_questions.Controls.Add(dynamicTextBox);
-                panel_questions.Controls.Add(deleteButton);
-                panel_questions.Controls.Add(radioButton);
-
-                // Increment the counter for the next TextBox
-
-                textBoxCounter++;
-                optionNameCounter++;
-                button_addOption.Enabled = textBoxCounter < 5;
-
-            }
-            catch (Exception ex)
-            {
-
-
-            }
+            CreateDynamicOptions();
         }
 
         private double GetTopMargin()
@@ -371,46 +239,7 @@ namespace ExamSystem_Project.Forms
 
         private void button_SaveQuestion_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //question = new Question();
-                question.Text = textBox_QuetionContent.Text;
-
-                for (int i = 0; i < textBoxesList.Count; i++)
-                {
-                    var box = textBoxesList[i];
-                    var radioButton = radioButtonList[i];
-
-                    if (!string.IsNullOrEmpty(box.Text))
-                    {
-                        optionAns = new OptionAns();
-                        optionAns.QuestionStrId = question.QuestionStrId;
-                        optionAns.OptionText = box.Text;
-                        optionAns.IsCorrect = radioButton.Checked;
-                        question.Options.Add(optionAns);
-
-                        if(checkBox_OptionOrder.Checked)
-                        {
-                            RandomOptionsOrder();
-
-                        }
-                    }
-                }
-                exam.questions.Add(question);
-                listBox_Questions.DataSource = null;
-                listBox_Questions.Items.Clear();
-                listBox_Questions.DataSource = exam.questions;
-                panel_questionList.BringToFront();
-
-                CheckQuestionListSize();
-            }
-            catch (Exception ex)
-            {
-
-
-            }
-
-
+            QuestionUpdate();
 
 
         }
@@ -514,7 +343,7 @@ namespace ExamSystem_Project.Forms
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    button_addOption_Click(sender, EventArgs.Empty);
+                    CreateDynamicOptions();
                 }
             }
             textBox_QuetionContent.Text = "what is the best text option?";
@@ -671,10 +500,10 @@ namespace ExamSystem_Project.Forms
         {
 
             rand = new Random();
-                exam.questions = exam.questions.OrderBy(q => rand.Next()).ToList();
-                listBox_Questions.DataSource = null;
-                listBox_Questions.Items.Clear();
-                listBox_Questions.DataSource = exam.questions;
+            exam.questions = exam.questions.OrderBy(q => rand.Next()).ToList();
+            listBox_Questions.DataSource = null;
+            listBox_Questions.Items.Clear();
+            listBox_Questions.DataSource = exam.questions;
         }
 
         public void RandomOptionsOrder()
@@ -687,6 +516,262 @@ namespace ExamSystem_Project.Forms
         }
 
 
+        public void CreateDynamicOptions()
+        {
 
+            try
+            {
+                button_addOption.Enabled = textBoxCounter == 4 ? true : false;
+
+                // Create a unique identifier for the dynamic controls
+                string controlId = Guid.NewGuid().ToString();
+
+                // Create a new Label
+                dynamicLabel = new Label
+                {
+                    Font = new Font("Segoe UI", 11, FontStyle.Bold), // Set Font to bold
+                    ForeColor = Color.FromArgb(0, 135, 209),
+                    Text = "Option " + optionNameCounter + " :",
+                    TextAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                    Location = new Point(label_question.Left, Convert.ToInt32(GetTopMargin())),
+                    AutoSize = true,
+                    Tag = controlId // Set a unique identifier as the Tag
+                };
+
+                labelList.Add(dynamicLabel);
+                // Create a new TextBox
+                dynamicTextBox = new TextBox
+                {
+                    Width = 600,
+                    Height = 26,
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Location = new Point(textBox_QuetionContent.Left - 80, dynamicLabel.Top),
+                    Name = "textBox_option" + optionNameCounter, // Unique name based on the counter
+                    Tag = controlId, // Set the same unique identifier as the Tag
+
+                };
+                dynamicTextBox.TextChanged += (dynamicTextBox, textBoxEventArgs) =>
+                {
+                    OptionsButtonHandler(dynamicTextBox as TextBox, textBoxEventArgs);
+                };
+
+                textBoxesList.Add(dynamicTextBox);
+
+
+                // Create a Delete button (trash icon)
+                Button deleteButton = new Button
+                {
+                    Text = "Delete",
+                    Width = 107,
+                    Font = new Font("Segoe UI", 11, FontStyle.Bold),
+                    Name = "button_" + optionNameCounter,
+                    ForeColor = Color.White,
+                    BackColor = Color.FromArgb(0, 135, 209),
+                    Height = 40,
+                    AutoSize = true,
+                    Location = new Point(dynamicTextBox.Right + 15, dynamicTextBox.Top - 7),// Use Location instead of Margin
+                    Tag = controlId // Set the same unique identifier as the Tag
+                };
+
+                deleteButtonList.Add(deleteButton);
+
+                radioButton = new RadioButton
+                {
+                    Text = "Is Correct :",
+                    Name = "radioButton_IsCorrect" + optionNameCounter,
+                    AutoSize = true,
+                    CheckAlign = System.Drawing.ContentAlignment.MiddleRight,
+                    Font = new Font("Segoe UI", 11, FontStyle.Bold),
+                    ForeColor = Color.FromArgb(0, 135, 209),
+                    Location = new Point(deleteButton.Right, dynamicTextBox.Top - 4),
+                    Tag = controlId
+                };
+
+                radioButtonList.Add(radioButton);
+
+                // Attach a click event handler to the delete button
+                deleteButton.Click += (deleteSender, deleteEventArgs) =>
+                {
+                    if (deleteSender is Button btn)
+                    {
+                        var arr = btn.Name.Split("_");
+                        if (int.Parse(arr[1]) < textBoxCounter)
+                        {
+                            MessageBox.Show($"Delete Option {textBoxCounter} first");
+                            return;
+                        }
+                    }
+
+                    button_addOption.Enabled = textBoxCounter < 5;
+                    textBoxCounter--;
+                    optionNameCounter--;
+
+
+
+                    // Retrieve the unique identifier associated with the controls
+                    string tag = deleteButton.Tag as string;
+
+                    textBoxesList.RemoveAll(x => x.Tag == tag);
+                    radioButtonList.RemoveAll(x => x.Tag == tag);
+
+                    // Find and remove controls with the same unique identifier
+                    var controlsToRemove = panel_questions.Controls
+                        .Cast<Control>()
+                        .Where(control => control.Tag as string == tag)
+                        .ToList();
+
+                    foreach (var control in controlsToRemove)
+                    {
+                        panel_questions.Controls.Remove(control);
+                    }
+                    button_addOption.Enabled = textBoxCounter < 5;
+                    OptionsButtonHandler(new TextBox(), EventArgs.Empty);
+                };
+
+                // Add Label, TextBox, and Delete button to the panel_questions
+                panel_questions.Controls.Add(dynamicLabel);
+                panel_questions.Controls.Add(dynamicTextBox);
+                panel_questions.Controls.Add(deleteButton);
+                panel_questions.Controls.Add(radioButton);
+
+                // Increment the counter for the next TextBox
+
+                textBoxCounter++;
+                optionNameCounter++;
+                button_addOption.Enabled = textBoxCounter < 5;
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
+
+        public void CreateDynamicFullFields()
+        {
+            textBox_QuetionContent.Text = question.Text;
+            for (int i = 0; i < question.Options.Count; i++)
+            {
+                CreateDynamicOptions();
+                textBoxesList[i].Text = question.Options[i].ToString();
+                radioButtonList[i].Checked = question.Options[i].IsCorrect;
+            }
+
+
+
+        }
+
+        private void button_updateQuestion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var index = listBox_Questions.SelectedIndex;
+                question = exam.questions[index];
+                ClearAllControls();
+                CreateDynamicFullFields();
+
+                panel_questionList.SendToBack();
+            }
+            catch (Exception ex)
+            {
+
+
+
+            }
+
+
+
+        }
+
+
+        public void QuestionUpdate()
+        {
+
+            try
+            {
+
+                question.Text = textBox_QuetionContent.Text;
+
+                for (int i = 0; i < textBoxesList.Count; i++)
+                {
+                    var box = textBoxesList[i];
+                    var radioButton = radioButtonList[i];
+
+                    if (!string.IsNullOrEmpty(box.Text))
+                    {
+                        if (exam.questions.Contains(question))
+                        {
+                            optionAns = question.Options[i];
+                            optionAns.QuestionStrId = question.QuestionStrId;
+                            optionAns.OptionText = box.Text;
+                            optionAns.IsCorrect = radioButton.Checked;
+                        }
+                        else
+                        {
+                            optionAns = new OptionAns();
+                            optionAns.QuestionStrId = question.QuestionStrId;
+                            optionAns.OptionText = box.Text;
+                            optionAns.IsCorrect = radioButton.Checked;
+                            question.Options.Add(optionAns);
+                        }
+
+
+
+                    }
+                }
+
+                if (checkBox_OptionOrder.Checked)
+                {
+                    RandomOptionsOrder();
+
+                }
+                if (!exam.questions.Contains(question))
+                {
+                    exam.questions.Add(question);
+                }
+
+                RefreshQuestionsListBox();
+                panel_questionList.BringToFront();
+
+                CheckQuestionListSize();
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+        }
+
+        public void RefreshQuestionsListBox()
+        {
+            listBox_Questions.DataSource = null;
+            listBox_Questions.Items.Clear();
+            listBox_Questions.DataSource = exam.questions;
+        }
+
+        private void button_removeQuestion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var index = listBox_Questions.SelectedIndex;
+                question = exam.questions[index];
+                exam.questions.Remove(question);
+                RefreshQuestionsListBox();
+                if (exam.questions.Count > 0)
+                {
+                    listBox_Questions.SelectedIndex = 0;
+                    button_removeQuestion.Enabled = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+
+
+            }
+        }
     }
 }
