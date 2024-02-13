@@ -26,11 +26,11 @@ namespace ExamSystem_Project.UserControls
         public string userid;
         public User user;
         public string password;
-        MainForm main;
-        public Register(MainForm form)
+      
+        public Register()
         {
             InitializeComponent();
-            this.main = form;
+          
             success = false;
             selectedItem = string.Empty;
             userType = new UserType_Enum();
@@ -51,7 +51,7 @@ namespace ExamSystem_Project.UserControls
 
         private void label_LoginNow_Click(object sender, EventArgs e)
         {
-            main.UISwitch("Login");
+            MainForm.main.UISwitch("Login");
         }
 
         private async void button_Register_Click(object sender, EventArgs e)
@@ -111,7 +111,7 @@ namespace ExamSystem_Project.UserControls
                         if (success)
                         {
                             MessageBox.Show(Helpers.Constants.successReg);
-                            main.UISwitch("Login");
+                            MainForm.main.UISwitch("Login");
 
 
                         }

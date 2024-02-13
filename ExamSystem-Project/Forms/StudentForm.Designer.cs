@@ -33,11 +33,6 @@
             textBox1 = new TextBox();
             label1 = new Label();
             dataGridView_StudentExam = new DataGridView();
-            studentExamBindingSource1 = new BindingSource(components);
-            studentExamBindingSource = new BindingSource(components);
-            panel4 = new Panel();
-            label11 = new Label();
-            panel5 = new Panel();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
@@ -49,6 +44,11 @@
             dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
             dataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
             StartExam = new DataGridViewButtonColumn();
+            studentExamBindingSource1 = new BindingSource(components);
+            studentExamBindingSource = new BindingSource(components);
+            panel4 = new Panel();
+            label11 = new Label();
+            panel5 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridView_StudentExam).BeginInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).BeginInit();
@@ -100,43 +100,6 @@
             dataGridView_StudentExam.Size = new Size(1033, 559);
             dataGridView_StudentExam.TabIndex = 4;
             dataGridView_StudentExam.CellClick += dataGridView_StudentExam_CellClick;
-            // 
-            // studentExamBindingSource1
-            // 
-            studentExamBindingSource1.DataSource = typeof(Models.StudentExam);
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.FromArgb(0, 135, 209);
-            panel4.Controls.Add(label11);
-            panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 0);
-            panel4.Margin = new Padding(2);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(1508, 89);
-            panel4.TabIndex = 5;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.Transparent;
-            label11.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.ForeColor = SystemColors.Window;
-            label11.Location = new Point(610, 9);
-            label11.Margin = new Padding(0);
-            label11.Name = "label11";
-            label11.Size = new Size(314, 60);
-            label11.TabIndex = 7;
-            label11.Text = "Student Panel";
-            // 
-            // panel5
-            // 
-            panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(0, 1015);
-            panel5.Margin = new Padding(2);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(1508, 91);
-            panel5.TabIndex = 6;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -231,6 +194,43 @@
             StartExam.UseColumnTextForButtonValue = true;
             StartExam.Width = 150;
             // 
+            // studentExamBindingSource1
+            // 
+            studentExamBindingSource1.DataSource = typeof(Models.StudentExam);
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.FromArgb(0, 135, 209);
+            panel4.Controls.Add(label11);
+            panel4.Dock = DockStyle.Top;
+            panel4.Location = new Point(0, 0);
+            panel4.Margin = new Padding(2);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(1508, 89);
+            panel4.TabIndex = 5;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.ForeColor = SystemColors.Window;
+            label11.Location = new Point(610, 9);
+            label11.Margin = new Padding(0);
+            label11.Name = "label11";
+            label11.Size = new Size(314, 60);
+            label11.TabIndex = 7;
+            label11.Text = "Student Panel";
+            // 
+            // panel5
+            // 
+            panel5.Dock = DockStyle.Bottom;
+            panel5.Location = new Point(0, 1015);
+            panel5.Margin = new Padding(2);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(1508, 91);
+            panel5.TabIndex = 6;
+            // 
             // StudentForm
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
@@ -246,6 +246,7 @@
             Name = "StudentForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "StudentForm";
+            Shown += StudentForm_Shown;
             ((System.ComponentModel.ISupportInitialize)dataGridView_StudentExam).EndInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).EndInit();

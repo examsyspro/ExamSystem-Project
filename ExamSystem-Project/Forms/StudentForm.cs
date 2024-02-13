@@ -20,6 +20,7 @@ namespace ExamSystem_Project.Forms
             InitializeComponent();
             InitializeAll();
             this.User = user1;
+
         }
 
 
@@ -40,6 +41,11 @@ namespace ExamSystem_Project.Forms
             {
                 MessageBox.Show(e.ColumnIndex.ToString());
             }
+        }
+
+        private void StudentForm_Shown(object sender, EventArgs e)
+        {
+          
         }
     }
 }

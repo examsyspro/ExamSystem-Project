@@ -25,10 +25,9 @@ namespace ExamSystem_Project.UserControls
         public string password;
         public User? userResponse;
         public User user;
-        MainForm main;
         StudentForm student;
 
-        public Login(MainForm form)
+        public Login()
         {
             InitializeComponent();
             //button_loginStart.Enabled = false;
@@ -36,12 +35,13 @@ namespace ExamSystem_Project.UserControls
             password = string.Empty;
             user = new User();
             userResponse = new User();
-            this.main = form;
+            
+          
         }
 
         private void label_registerNow_Click(object sender, EventArgs e)
         {
-           main.UISwitch("Register");
+           MainForm.main.UISwitch("Register");
         }
 
 
@@ -83,6 +83,7 @@ namespace ExamSystem_Project.UserControls
                             student = new StudentForm(userResponse);
                             student.Show();
 
+                            MainForm.main.Hide();
 
 
                         }

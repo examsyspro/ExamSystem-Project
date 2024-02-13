@@ -9,15 +9,17 @@ namespace ExamSystem_Project
 {
     public partial class MainForm : Form
     {
+        public static MainForm main;
         General gen;
         public MainForm()
         {
 
             InitializeComponent();
-            panel1_main.Controls.Add(new Register(this));
-            panel1_main.Controls.Add(new Login(this));
+            panel1_main.Controls.Add(new Register());
+            panel1_main.Controls.Add(new Login());
             gen = new General();
             UISwitch("Login");
+            main = this;
 
         }
 
