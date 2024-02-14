@@ -43,13 +43,6 @@ namespace ExamSystem_Project.FormModels
             
         }
 
-        public async Task<bool> Build_Exam(Exam exam)
-        {
-            bool resultExam = await General.mainRequestor.Request_NewPost<Exam>(exam, "api/exams/create");
-
-            return resultExam;
-        }
-
         public async Task<Exam> Update_Exam(Exam exam)
         {
              var resultExam = await General.mainRequestor.Request_Put<Exam>(1,exam, "api/exams/update");
@@ -405,7 +398,7 @@ namespace ExamSystem_Project.FormModels
                 string coursetype = buildExam.comboBox_Course_Select.SelectedItem.ToString();
                 exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
                 exam.RandomQuestionOrder = buildExam.checkBox_QuestionOrder.Checked;
-                res = await Build_Exam(exam);
+                res = await General.mainRequestor.Request_NewPost<Exam>(exam, "api/exams/create");
                 if (res)
                 {
                     MessageBox.Show(Constants.BuildSuccess);
