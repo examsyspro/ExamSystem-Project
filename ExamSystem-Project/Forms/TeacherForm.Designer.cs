@@ -101,7 +101,7 @@
             dataGridView_teacherExams.RowHeadersWidth = 51;
             dataGridView_teacherExams.RowTemplate.Height = 29;
             dataGridView_teacherExams.ScrollBars = ScrollBars.Vertical;
-            dataGridView_teacherExams.Size = new Size(1412, 559);
+            dataGridView_teacherExams.Size = new Size(1403, 559);
             dataGridView_teacherExams.TabIndex = 5;
             dataGridView_teacherExams.CellClick += dataGridView_teacherExams_CellClick;
             // 
@@ -190,7 +190,7 @@
             ShowExam.Name = "ShowExam";
             ShowExam.Text = "Open";
             ShowExam.UseColumnTextForButtonValue = true;
-            ShowExam.Width = 150;
+            ShowExam.Width = 140;
             // 
             // TeacherForm
             // 
