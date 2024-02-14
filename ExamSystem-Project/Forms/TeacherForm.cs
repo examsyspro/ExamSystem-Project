@@ -43,11 +43,13 @@ namespace ExamSystem_Project.Forms
             // Calculate and set the position and size of the form
             Rectangle screen = Screen.FromPoint(Cursor.Position).WorkingArea;
 
-            // Set a maximum width for the form
+            // Set maximum width and height for the form
             int maxWidth = screen.Width - 100; // Adjust this value as needed
-            int w = Math.Min(Width, maxWidth);
+            int maxHeight = screen.Height - 100; // Adjust this value as needed
 
-            int h = Height >= screen.Height ? screen.Height : (screen.Height + Height) / 2;
+            int w = Math.Min(Width, maxWidth);
+            int h = Math.Min(Height, maxHeight);
+
             Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
             Size = new Size(w, h);
 
@@ -55,6 +57,7 @@ namespace ExamSystem_Project.Forms
             dataGridView_teacherExams.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView_teacherExams.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView_teacherExams.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right);
+
 
         }
 
