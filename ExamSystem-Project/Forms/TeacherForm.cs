@@ -15,13 +15,13 @@ namespace ExamSystem_Project.Forms
     {
         BuildExamForm buildExamForm;
         TeacherFormModel teacherModel;
-       
+
         public TeacherForm()
         {
             InitializeComponent();
             teacherModel = new TeacherFormModel(this);
             InitializeAll();
-            
+
         }
 
         public void InitializeAll()
@@ -33,6 +33,8 @@ namespace ExamSystem_Project.Forms
             dataGridView_teacherExams.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_teacherExams.ClearSelection();
             dataGridView_teacherExams.AllowUserToResizeColumns = false;
+            dataGridView_teacherExams.RowTemplate.Height = 40;
+
 
         }
 
@@ -58,6 +60,6 @@ namespace ExamSystem_Project.Forms
             }
         }
 
-    
+
     }
 }

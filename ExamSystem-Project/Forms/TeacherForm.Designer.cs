@@ -203,7 +203,6 @@
             Margin = new Padding(4);
             Name = "TeacherForm";
             Text = "TeacherForm";
-            
             ((System.ComponentModel.ISupportInitialize)dataGridView_teacherExams).EndInit();
             ((System.ComponentModel.ISupportInitialize)examBindingSource).EndInit();
             ResumeLayout(false);

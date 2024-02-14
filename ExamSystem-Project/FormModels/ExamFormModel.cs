@@ -48,11 +48,7 @@ namespace ExamSystem_Project.FormModels
             
         }
 
-        public async Task<Exam> Update_Exam(Exam exam)
-        {
-            var resultExam = 
-            return resultExam;
-        }
+
 
         public void CheckExamFromDT()
         {
@@ -430,8 +426,9 @@ namespace ExamSystem_Project.FormModels
                 else
                 {
                     res = await General.mainRequestor.Request_NewPost<Exam>(exam, "api/exams/create");
+
                 }
-                
+
                 if (res)
                 {
                     MessageBox.Show(Constants.BuildSuccess);
