@@ -56,7 +56,9 @@ namespace ExamSystem_Project.FormModels
             {
                 isExist = true;
                 exam = dtExam;
+                FillAllExamFields();
                 
+
             }
             else
             {
@@ -229,15 +231,24 @@ namespace ExamSystem_Project.FormModels
 
         public void CheckQuestionListSize()
         {
-            bool res = exam.questions.Count > 0;
-
-            buildExam.button_next.Enabled = res;
-            buildExam.button_removeQuestion.Enabled = res;
-            buildExam.button_updateQuestion.Enabled = res;
-            if (res)
+            try
             {
-                buildExam.listBox_Questions.SelectedIndex = 0;
+                bool res = exam.questions.Count > 0;
+
+                buildExam.button_next.Enabled = res;
+                buildExam.button_removeQuestion.Enabled = res;
+                buildExam.button_updateQuestion.Enabled = res;
+                if (res && dtExam == null)
+                {
+                    buildExam.listBox_Questions.SelectedIndex = 0;
+                }
             }
+            catch (Exception ex )
+            {
+
+                
+            }
+
         }
 
         public void CreateDynamicFullFields()
@@ -421,7 +432,7 @@ namespace ExamSystem_Project.FormModels
                 exam.RandomQuestionOrder = buildExam.checkBox_QuestionOrder.Checked;
                 if (isExist)
                 {
-                   res =  await General.mainRequestor.Request_Put<Exam>(1, exam, "api/exams/update");
+                   res =  await General.mainRequestor.Request_Put<Exam>(exam.ExamId, exam, "api/exams/update");
                 }
                 else
                 {
@@ -432,6 +443,8 @@ namespace ExamSystem_Project.FormModels
                 if (res)
                 {
                     MessageBox.Show(Constants.BuildSuccess);
+                    buildExam.Close();
+                    TeacherFormModel.teacherFormModel.GetAllExams();
                 }
             }
             catch (Exception ex)
@@ -466,6 +479,24 @@ namespace ExamSystem_Project.FormModels
             }
 
             return topMargin;
+        }
+
+        public void FillAllExamFields()
+        {
+            buildExam.textBox_examTitle.Text = exam.ExamTitle;
+            buildExam.textBox_teacherName.Text = exam.TeacherFullName;
+            buildExam.textBox_date.Text = exam.ExamDateTime.ToString("dd/MM/yy");
+            buildExam.comboBox_Course_Select.Text = exam.CourseType.ToString();
+            buildExam.checkBox_QuestionOrder.Checked = exam.RandomQuestionOrder;
+            buildExam.comboBox_hours_StartTime.Text = exam.ExamDateTime.Hour.ToString("00");
+            buildExam.comboBox_minutes_StartTime.Text = exam.ExamDateTime.Minute.ToString("00");
+            buildExam.comboBox_hours_totalTime.Text = exam.TotalHours.ToString("00");
+            buildExam.comboBox_minutes_totalTime.Text = exam.TotalMinutes.ToString("00");
+
+            RefreshQuestionsListBox();
+            
+
+
         }
 
         public void ClearAllControls()

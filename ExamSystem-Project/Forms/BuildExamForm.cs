@@ -109,7 +109,7 @@ namespace ExamSystem_Project.Forms
                     case "tabPage_step1":
                         if (!tabControl1.TabPages.Contains(tabPage_step2))
                         {
-
+                            
                             examModel.CheckQuestionListSize();
                             tabControl1.TabPages.Add(tabPage_step2);
                             tabControl1.TabPages.Remove(tabPage_step1);

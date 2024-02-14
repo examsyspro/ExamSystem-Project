@@ -18,6 +18,7 @@ namespace ExamSystem_Project.FormModels
        public List<Exam> exams;
        public TeacherForm teacher;
        public  General gen = new General();
+        public static TeacherFormModel teacherFormModel;
 
         BuildExamForm buildExam;
         public TeacherFormModel(TeacherForm teacherForm)
@@ -25,6 +26,7 @@ namespace ExamSystem_Project.FormModels
             exam = new Exam();
                  exams = new List<Exam>();
                  this.teacher = teacherForm;
+            teacherFormModel = this;
                 GetAllExams();
                 
         }

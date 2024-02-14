@@ -95,13 +95,13 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView_teacherExams.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView_teacherExams.EnableHeadersVisualStyles = false;
-            dataGridView_teacherExams.Location = new Point(108, 430);
+            dataGridView_teacherExams.Location = new Point(72, 446);
             dataGridView_teacherExams.Margin = new Padding(4, 2, 4, 2);
             dataGridView_teacherExams.Name = "dataGridView_teacherExams";
             dataGridView_teacherExams.RowHeadersWidth = 51;
             dataGridView_teacherExams.RowTemplate.Height = 29;
             dataGridView_teacherExams.ScrollBars = ScrollBars.Vertical;
-            dataGridView_teacherExams.Size = new Size(1405, 559);
+            dataGridView_teacherExams.Size = new Size(1430, 559);
             dataGridView_teacherExams.TabIndex = 5;
             dataGridView_teacherExams.CellClick += dataGridView_teacherExams_CellClick;
             // 
@@ -137,7 +137,7 @@
             examDateTimeDataGridViewTextBoxColumn.HeaderText = "Exam Date";
             examDateTimeDataGridViewTextBoxColumn.MinimumWidth = 8;
             examDateTimeDataGridViewTextBoxColumn.Name = "examDateTimeDataGridViewTextBoxColumn";
-            examDateTimeDataGridViewTextBoxColumn.Width = 150;
+            examDateTimeDataGridViewTextBoxColumn.Width = 180;
             // 
             // teacherFullNameDataGridViewTextBoxColumn
             // 
@@ -196,7 +196,7 @@
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(1778, 1099);
+            ClientSize = new Size(1578, 1099);
             Controls.Add(dataGridView_teacherExams);
             Controls.Add(button_getAllExams);
             Controls.Add(button_createExam);

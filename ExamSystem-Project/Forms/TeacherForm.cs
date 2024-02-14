@@ -16,10 +16,13 @@ namespace ExamSystem_Project.Forms
         BuildExamForm buildExamForm;
         TeacherFormModel teacherModel;
 
+
+
         public TeacherForm()
         {
             InitializeComponent();
             teacherModel = new TeacherFormModel(this);
+
             InitializeAll();
 
         }
@@ -49,6 +52,9 @@ namespace ExamSystem_Project.Forms
             int desiredFormWidth = 1650; // Set your desired form width
             int w = Math.Min(desiredFormWidth, maxWidth);
             int h = Math.Min(Height, maxHeight);
+
+            int dataGridViewWidth = 1500; // Set your desired width
+            dataGridView_teacherExams.Width = dataGridViewWidth;
 
             Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
             Size = new Size(w, h);
@@ -83,6 +89,9 @@ namespace ExamSystem_Project.Forms
             }
         }
 
+        private void TeacherForm_Enter(object sender, EventArgs e)
+        {
 
+        }
     }
 }
