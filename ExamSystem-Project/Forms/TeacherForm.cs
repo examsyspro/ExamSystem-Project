@@ -47,6 +47,11 @@ namespace ExamSystem_Project.Forms
             int h = Height >= screen.Height ? screen.Height : (screen.Height + Height) / 2;
             Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
             Size = new Size(w, h);
+
+            // Set DataGridView properties
+            dataGridView_teacherExams.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView_teacherExams.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView_teacherExams.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right);
         }
 
 
