@@ -34,6 +34,7 @@
             button_createExam = new Button();
             button_getAllExams = new Button();
             dataGridView_teacherExams = new DataGridView();
+            examBindingSource = new BindingSource(components);
             examIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             examStrIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             examTitleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -44,7 +45,6 @@
             randomQuestionOrderDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             courseTypeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ShowExam = new DataGridViewButtonColumn();
-            examBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView_teacherExams).BeginInit();
             ((System.ComponentModel.ISupportInitialize)examBindingSource).BeginInit();
             SuspendLayout();
@@ -77,7 +77,7 @@
             dataGridView_teacherExams.BackgroundColor = Color.WhiteSmoke;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 135, 209);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 135, 209);
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -104,6 +104,10 @@
             dataGridView_teacherExams.Size = new Size(1566, 559);
             dataGridView_teacherExams.TabIndex = 5;
             dataGridView_teacherExams.CellClick += dataGridView_teacherExams_CellClick;
+            // 
+            // examBindingSource
+            // 
+            examBindingSource.DataSource = typeof(Models.Exam);
             // 
             // examIdDataGridViewTextBoxColumn
             // 
@@ -137,7 +141,7 @@
             examDateTimeDataGridViewTextBoxColumn.HeaderText = "Exam Date";
             examDateTimeDataGridViewTextBoxColumn.MinimumWidth = 8;
             examDateTimeDataGridViewTextBoxColumn.Name = "examDateTimeDataGridViewTextBoxColumn";
-            examDateTimeDataGridViewTextBoxColumn.Width = 200;
+            examDateTimeDataGridViewTextBoxColumn.Width = 150;
             // 
             // teacherFullNameDataGridViewTextBoxColumn
             // 
@@ -188,10 +192,6 @@
             ShowExam.UseColumnTextForButtonValue = true;
             ShowExam.Width = 150;
             // 
-            // examBindingSource
-            // 
-            examBindingSource.DataSource = typeof(Models.Exam);
-            // 
             // TeacherForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -213,6 +213,7 @@
         private Button button_createExam;
         private Button button_getAllExams;
         private BindingSource examBindingSource;
+        public DataGridView dataGridView_teacherExams;
         private DataGridViewTextBoxColumn examIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn examStrIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn examTitleDataGridViewTextBoxColumn;
@@ -223,6 +224,5 @@
         private DataGridViewCheckBoxColumn randomQuestionOrderDataGridViewCheckBoxColumn;
         private DataGridViewTextBoxColumn courseTypeDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn ShowExam;
-        public DataGridView dataGridView_teacherExams;
     }
 }
