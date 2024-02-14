@@ -149,7 +149,7 @@
             teacherFullNameDataGridViewTextBoxColumn.HeaderText = "Teacher Name";
             teacherFullNameDataGridViewTextBoxColumn.MinimumWidth = 8;
             teacherFullNameDataGridViewTextBoxColumn.Name = "teacherFullNameDataGridViewTextBoxColumn";
-            teacherFullNameDataGridViewTextBoxColumn.Width = 200;
+            teacherFullNameDataGridViewTextBoxColumn.Width = 170;
             // 
             // totalHoursDataGridViewTextBoxColumn
             // 
