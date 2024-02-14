@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.VisualStyles;
@@ -32,8 +33,10 @@ namespace ExamSystem_Project.FormModels
         Random rand;
         public Exam dtExam;
         public BuildExamForm buildExam;
+        public bool isExist = false;
         public ExamFormModel(Exam examFromDT)
         {
+            
             this.buildExam = BuildExamForm.buildExam;
             dtExam = examFromDT;
             CheckExamFromDT();
@@ -47,8 +50,7 @@ namespace ExamSystem_Project.FormModels
 
         public async Task<Exam> Update_Exam(Exam exam)
         {
-             var resultExam = await General.mainRequestor.Request_Put<Exam>(1,exam, "api/exams/update");
-
+            var resultExam = 
             return resultExam;
         }
 
@@ -56,12 +58,14 @@ namespace ExamSystem_Project.FormModels
         {
             if (dtExam != null)
             {
+                isExist = true;
                 exam = dtExam;
-
+                
             }
             else
             {
                 exam = new Exam();
+
             }
         }
 
@@ -419,7 +423,15 @@ namespace ExamSystem_Project.FormModels
                 string coursetype = buildExam.comboBox_Course_Select.SelectedItem.ToString();
                 exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
                 exam.RandomQuestionOrder = buildExam.checkBox_QuestionOrder.Checked;
-                res = await General.mainRequestor.Request_NewPost<Exam>(exam, "api/exams/create");
+                if (isExist)
+                {
+                   res =  await General.mainRequestor.Request_Put<Exam>(1, exam, "api/exams/update");
+                }
+                else
+                {
+                    res = await General.mainRequestor.Request_NewPost<Exam>(exam, "api/exams/create");
+                }
+                
                 if (res)
                 {
                     MessageBox.Show(Constants.BuildSuccess);

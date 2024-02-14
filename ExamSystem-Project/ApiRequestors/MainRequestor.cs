@@ -147,7 +147,7 @@ namespace ExamSystem_Project.ApiRequestors
 
 
 
-        public async Task<T> Request_Put<T>(int id, T obj, string apiStr)
+        public async Task<bool> Request_Put<T>(int id, T obj, string apiStr)
         {
             try
             {
@@ -160,9 +160,9 @@ namespace ExamSystem_Project.ApiRequestors
                 response.EnsureSuccessStatusCode(); // 200 OK
 
                 // Get Json Data From Server Result
-                T updatedObject = await response.Content.ReadFromJsonAsync<T>();
+                bool isOkResponse = await response.Content.ReadFromJsonAsync<bool>();
 
-                return updatedObject;
+                return isOkResponse;
             }
             catch (Exception ex)
             {
