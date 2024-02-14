@@ -19,13 +19,15 @@ namespace ExamSystem_Project.Forms
 
         private readonly int[] numbersArr = { 1, 2, 3, 4, 5, 6, 7 };
         public ExamFormModel examModel;
+        public static BuildExamForm buildExam;
 
-        public BuildExamForm()
+        public BuildExamForm(Exam exam)
         {
             InitializeComponent();
             InitializeAll();
-            examModel = new ExamFormModel(this);
-
+            buildExam = this;
+            examModel = new ExamFormModel(exam);
+           
         }
 
         public void InitializeAll()

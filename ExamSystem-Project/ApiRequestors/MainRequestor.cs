@@ -121,7 +121,7 @@ namespace ExamSystem_Project.ApiRequestors
             try
             {
                 // Get response
-                using HttpResponseMessage response = await httpClient.GetAsync($"{apiStr}/getall");
+                using HttpResponseMessage response = await httpClient.GetAsync(apiStr);
 
                 response.EnsureSuccessStatusCode(); // 201
 

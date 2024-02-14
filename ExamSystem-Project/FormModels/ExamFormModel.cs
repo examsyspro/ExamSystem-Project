@@ -30,11 +30,13 @@ namespace ExamSystem_Project.FormModels
         public List<Label> labelList;
         public List<Control> ControlsList;
         Random rand;
+        public Exam dtExam;
         public BuildExamForm buildExam;
-        public ExamFormModel(BuildExamForm buildExamForm)
+        public ExamFormModel(Exam examFromDT)
         {
-            this.buildExam = buildExamForm;
-            exam = new Exam();
+            this.buildExam = BuildExamForm.buildExam;
+            dtExam = examFromDT;
+            CheckExamFromDT();
             textBoxesList = new List<TextBox>();
             radioButtonList = new List<RadioButton>();
             deleteButtonList = new List<Button>();
@@ -48,6 +50,19 @@ namespace ExamSystem_Project.FormModels
              var resultExam = await General.mainRequestor.Request_Put<Exam>(1,exam, "api/exams/update");
 
             return resultExam;
+        }
+
+        public void CheckExamFromDT()
+        {
+            if (dtExam != null)
+            {
+                exam = dtExam;
+
+            }
+            else
+            {
+                exam = new Exam();
+            }
         }
 
         public void Questions_SelectedIndex()
@@ -183,20 +198,27 @@ namespace ExamSystem_Project.FormModels
 
         public void RefreshQuestionsListBox()
         {
-            buildExam.listBox_Questions.DataSource = null;
-            buildExam.listBox_Questions.Items.Clear();
-            buildExam.listBox_Questions.DataSource = exam.questions;
+                buildExam.listBox_Questions.DataSource = null;
+                buildExam.listBox_Questions.Items.Clear();
+                if (exam.questions.Count > 0)
+                {
+                buildExam.listBox_Questions.DataSource = exam.questions;
+                }
+
         }
 
         public void RemoveQuestion()
         {
             try
             {
-                var index = buildExam.listBox_Questions.SelectedIndex;
-                question = exam.questions[index];
-                exam.questions.Remove(question);
-                RefreshQuestionsListBox();
-                CheckQuestionListSize();
+
+                    var index = buildExam.listBox_Questions.SelectedIndex;
+                    question = exam.questions[index];
+                    exam.questions.Remove(question);
+                    RefreshQuestionsListBox();
+                    CheckQuestionListSize();
+            
+               
 
             }
             catch (Exception ex)
@@ -250,7 +272,6 @@ namespace ExamSystem_Project.FormModels
             buildExam.listBox_opstionAns.Items.Clear();
             buildExam.listBox_opstionAns.DataSource = question.Options;
         }
-
 
         public void CreateDynamicOptions()
         {
@@ -418,12 +439,6 @@ namespace ExamSystem_Project.FormModels
             question.ExamStrId = exam.ExamStrId;
             buildExam.textBox_QuetionContent.Invoke(() => buildExam.OptionsButtonHandler(buildExam.textBox_QuetionContent, EventArgs.Empty));
         }
-
-        
-
-        
-
-
 
         private double GetTopMargin()
         {
