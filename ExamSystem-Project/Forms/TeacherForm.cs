@@ -35,6 +35,7 @@ namespace ExamSystem_Project.Forms
             dataGridView_teacherExams.AllowUserToResizeColumns = false;
             dataGridView_teacherExams.RowTemplate.Height = 40;
             this.AutoScaleMode = AutoScaleMode.Dpi;
+            dataGridView_teacherExams.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right);
 
         }
 
