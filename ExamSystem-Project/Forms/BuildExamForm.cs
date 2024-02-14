@@ -17,33 +17,15 @@ namespace ExamSystem_Project.Forms
     public partial class BuildExamForm : Form
     {
 
-
-        private int textBoxCounter = 0;
-        public int optionNameCounter = 1;
-        public TextBox dynamicTextBox;
-        public string[] strArr;
-        public Exam exam;
-        public Question question;
-        public OptionAns optionAns;
-        public Label dynamicLabel;
-        public RadioButton radioButton;
-        public List<TextBox> textBoxesList;
-        public List<RadioButton> radioButtonList;
-        public List<Button> deleteButtonList;
-        public List<Label> labelList;
-        public List<Control> ControlsList;
-        Random rand;
         private readonly int[] numbersArr = { 1, 2, 3, 4, 5, 6, 7 };
+        public ExamFormModel examModel;
+
         public BuildExamForm()
         {
             InitializeComponent();
             InitializeAll();
-            exam = new Exam();
-            textBoxesList = new List<TextBox>();
-            radioButtonList = new List<RadioButton>();
-            deleteButtonList = new List<Button>();
-            ControlsList = new List<Control>();
-            labelList = new List<Label>();
+            examModel = new ExamFormModel(this);
+
         }
 
         public void InitializeAll()
@@ -125,7 +107,7 @@ namespace ExamSystem_Project.Forms
                     if (!tabControl1.TabPages.Contains(tabPage_step2))
                     {
 
-                        CheckQuestionListSize();
+                        examModel.CheckQuestionListSize();
                         tabControl1.TabPages.Add(tabPage_step2);
                         tabControl1.TabPages.Remove(tabPage_step1);
                     }
@@ -137,7 +119,7 @@ namespace ExamSystem_Project.Forms
                     if (!tabControl1.TabPages.Contains(tabPage_step3))
                     {
                         button_next.Visible = false;
-                        CreateSummeryPage();
+                        examModel.CreateSummeryPage();
                         tabControl1.TabPages.Add(tabPage_step3);
                         tabControl1.TabPages.Remove(tabPage_step2);
                     }
@@ -184,66 +166,13 @@ namespace ExamSystem_Project.Forms
         }
 
 
-
-
-
-        private void dateTimePicker_examDate_ValueChanged(object sender, EventArgs e)
+        public void ExamButtonHandler(TextBox text)
         {
-            textBox_date.Text = dateTimePicker_examDate.Value.ToString("dd/MM/yy");
+            ChangeTextBoxColor(text);
+            bool res = CheckEmptyPanelControls(panel1);
+           button_next.Enabled = res;
+           label_filedsReq.Visible = !res;
         }
-
-        public void ClearAllControls()
-        {
-            for (int i = 0; i < radioButtonList.Count; i++)
-            {
-                panel_questions.Controls.Remove(labelList[i]);
-                panel_questions.Controls.Remove(textBoxesList[i]);
-                panel_questions.Controls.Remove(radioButtonList[i]);
-                panel_questions.Controls.Remove(deleteButtonList[i]);
-            }
-            textBoxCounter = 0;
-            optionNameCounter = 1;
-
-            textBox_QuetionContent.Text = string.Empty;
-            textBoxesList = new List<TextBox>();
-            radioButtonList = new List<RadioButton>();
-            deleteButtonList = new List<Button>();
-            labelList = new List<Label>();
-
-            button_addOption.Enabled = textBoxCounter == 0 ? true : false;
-        }
-
-        private void button_addOption_Click(object sender, EventArgs e)
-        {
-            CreateDynamicOptions();
-        }
-
-        private double GetTopMargin()
-        {
-            double topMargin = 50;
-
-            // Find the last TextBox in panel_questions and adjust the top margin
-            if (panel_questions.Controls.Count > 0)
-            {
-                foreach (Control control in panel_questions.Controls)
-                {
-                    if (control is TextBox textBox)
-                    {
-                        topMargin += textBox.Height + 40; // Increase the space between TextBoxes
-                    }
-                }
-            }
-
-            return topMargin;
-        }
-
-        private void button_SaveQuestion_Click(object sender, EventArgs e)
-        {
-            QuestionUpdate();
-
-
-        }
-
         public bool CheckEmptyPanelControls(Panel panel)
         {
             bool res = true;
@@ -270,18 +199,6 @@ namespace ExamSystem_Project.Forms
 
             return res;
         }
-
-        public void ExamButtonHandler(TextBox text)
-        {
-            ChangeTextBoxColor(text);
-            bool res = CheckEmptyPanelControls(panel1);
-            button_next.Enabled = res;
-            label_filedsReq.Visible = !res;
-        }
-
-
-
-
         public void ChangeTextBoxColor(TextBox text)
         {
             if (text.Text == string.Empty)
@@ -293,13 +210,12 @@ namespace ExamSystem_Project.Forms
                 text.BackColor = Color.White;
             }
         }
-
         public void OptionsButtonHandler(TextBox text, EventArgs e)
         {
             ChangeTextBoxColor(text);
             bool res = CheckEmptyPanelControls(panel_questions);
 
-            if (!res || textBoxesList.Count < 2)
+            if (!res || examModel.textBoxesList.Count < 2)
             {
                 res = false;
             }
@@ -310,7 +226,22 @@ namespace ExamSystem_Project.Forms
 
 
             button_SaveQuestion.Enabled = res;
+        }
 
+        private void dateTimePicker_examDate_ValueChanged(object sender, EventArgs e)
+        {
+            textBox_date.Text = dateTimePicker_examDate.Value.ToString("dd/MM/yy");
+        }
+
+        private void button_addOption_Click(object sender, EventArgs e)
+        {
+            examModel.CreateDynamicOptions();
+        }
+
+        private void button_SaveQuestion_Click(object sender, EventArgs e)
+        {
+            examModel.SaveQuestion();
+            panel_questionList.BringToFront();
         }
 
         private void button_Test_Click(object sender, EventArgs e)
@@ -328,19 +259,19 @@ namespace ExamSystem_Project.Forms
 
         private void button_testQuestions_Click(object sender, EventArgs e)
         {
-            if (textBoxCounter < 4)
+            if (examModel.textBoxCounter < 4)
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    CreateDynamicOptions();
+                    examModel.CreateDynamicOptions();
                 }
             }
             textBox_QuetionContent.Text = "what is the best text option?";
 
-            for (int i = 0; i < textBoxesList.Count; i++)
+            for (int i = 0; i < examModel.textBoxesList.Count; i++)
             {
-                textBoxesList[i].Text = "test option" + (i + 1);
-                radioButtonList[i].Checked = true;
+                examModel.textBoxesList[i].Text = "test option" + (i + 1);
+                examModel.radioButtonList[i].Checked = true;
             }
         }
 
@@ -351,61 +282,18 @@ namespace ExamSystem_Project.Forms
 
         private void button_AddQuestion_Click(object sender, EventArgs e)
         {
-
             panel_questions.BringToFront();
-            ClearAllControls();
-            question = new Question();
-            question.ExamStrId = exam.ExamStrId;
-            textBox_QuetionContent.Invoke(() => OptionsButtonHandler(textBox_QuetionContent, EventArgs.Empty));
+            examModel.AddQuestion();
         }
 
         private void listBox_Questions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                listBox_opstionAns.DataSource = null;
-                listBox_opstionAns.Items.Clear();
-
-
-                var index = listBox_Questions.SelectedIndex;
-                if (index != -1)
-                {
-                    Question q = exam.questions[index];
-                    listBox_opstionAns.DataSource = q.Options;
-                }
-            }
-            catch (Exception ex)
-            {
-
-
-            }
+            examModel.Questions_SelectedIndex();
         }
 
-
-        private async void button_SaveExamBuilder_Click(object sender, EventArgs e)
+        private void button_SaveExamBuilder_Click(object sender, EventArgs e)
         {
-            try
-            {
-                bool res = false;
-                string time = string.Format($"{comboBox_hours_StartTime.SelectedItem}:{comboBox_minutes_StartTime.SelectedItem}");
-                exam.ExamTitle = textBox_examTitle.Text;
-                exam.TeacherFullName = textBox_teacherName.Text;
-                exam.ExamDateTime = DateTime.Parse($"{textBox_date.Text} {time}");
-                exam.TotalHours = int.Parse(comboBox_hours_totalTime.SelectedItem.ToString());
-                exam.TotalMinutes = int.Parse(comboBox_minutes_totalTime.SelectedItem.ToString());
-                string coursetype = comboBox_Course_Select.SelectedItem.ToString();
-                exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
-                exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
-                res = await General.buildExam.Build_Exam(exam);
-                if (res)
-                {
-                    MessageBox.Show(Constants.BuildSuccess);
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
+            examModel.SaveExam();
         }
 
         private void textBox_examTitle_TextChanged(object sender, EventArgs e)
@@ -453,321 +341,17 @@ namespace ExamSystem_Project.Forms
             OptionsButtonHandler(textBox_QuetionContent, e);
         }
 
-        public void CreateSummeryPage()
-        {
-            try
-            {
-                label_examTitle_S.Text = textBox_examTitle.Text;
-                label_TeacherName_S.Text = textBox_teacherName.Text;
-                label_examDate_S.Text = textBox_date.Text;
-                label_startTime_S.Text = string.Format($"{comboBox_hours_StartTime.SelectedItem}:{comboBox_minutes_StartTime.SelectedItem}");
-                label_totalExamTime_S.Text = $"{comboBox_hours_totalTime.SelectedItem}:{comboBox_minutes_totalTime.SelectedItem}";
-                label_course_S.Text = comboBox_Course_Select.SelectedItem.ToString();
-                label_randomQuesOrder_S.Text = checkBox_QuestionOrder.Checked.ToString();
-                label_pointQuestion_S.Text = (100 / listBox_Questions.Items.Count).ToString("00");
-                listBox_questionList_S.DataSource = null;
-                listBox_questionList_S.Items.Clear();
-                listBox_questionList_S.DataSource = exam.questions;
-
-                if (checkBox_QuestionOrder.Checked)
-                {
-                    RandomQuestionOrder();
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-            //exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
-            //exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
-        }
-
-        public void RandomQuestionOrder()
-        {
-
-            rand = new Random();
-            exam.questions = exam.questions.OrderBy(q => rand.Next()).ToList();
-            listBox_Questions.DataSource = null;
-            listBox_Questions.Items.Clear();
-            listBox_Questions.DataSource = exam.questions;
-        }
-
-        public void RandomOptionsOrder()
-        {
-            rand = new Random();
-            question.Options = question.Options.OrderBy(o => rand.Next()).ToList();
-            listBox_opstionAns.DataSource = null;
-            listBox_opstionAns.Items.Clear();
-            listBox_opstionAns.DataSource = question.Options;
-        }
-
-
-        public void CreateDynamicOptions()
-        {
-
-            try
-            {
-                button_addOption.Enabled = textBoxCounter == 4 ? true : false;
-
-                // Create a unique identifier for the dynamic controls
-                string controlId = Guid.NewGuid().ToString();
-
-                // Create a new Label
-                dynamicLabel = new Label
-                {
-                    Font = new Font("Segoe UI", 11, FontStyle.Bold), // Set Font to bold
-                    ForeColor = Color.FromArgb(0, 135, 209),
-                    Text = "Option " + optionNameCounter + " :",
-                    TextAlign = System.Drawing.ContentAlignment.MiddleLeft,
-                    Location = new Point(label_question.Left, Convert.ToInt32(GetTopMargin())),
-                    AutoSize = true,
-                    Tag = controlId // Set a unique identifier as the Tag
-                };
-
-                labelList.Add(dynamicLabel);
-                // Create a new TextBox
-                dynamicTextBox = new TextBox
-                {
-                    Width = 600,
-                    Height = 26,
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Location = new Point(textBox_QuetionContent.Left - 80, dynamicLabel.Top),
-                    Name = "textBox_option" + optionNameCounter, // Unique name based on the counter
-                    Tag = controlId, // Set the same unique identifier as the Tag
-
-                };
-                dynamicTextBox.TextChanged += (dynamicTextBox, textBoxEventArgs) =>
-                {
-                    OptionsButtonHandler(dynamicTextBox as TextBox, textBoxEventArgs);
-                };
-
-                textBoxesList.Add(dynamicTextBox);
-
-
-                // Create a Delete button (trash icon)
-                Button deleteButton = new Button
-                {
-                    Text = "Delete",
-                    Width = 107,
-                    Font = new Font("Segoe UI", 11, FontStyle.Bold),
-                    Name = "button_" + optionNameCounter,
-                    ForeColor = Color.White,
-                    BackColor = Color.FromArgb(0, 135, 209),
-                    Height = 40,
-                    AutoSize = true,
-                    Location = new Point(dynamicTextBox.Right + 15, dynamicTextBox.Top - 7),// Use Location instead of Margin
-                    Tag = controlId // Set the same unique identifier as the Tag
-                };
-
-                deleteButtonList.Add(deleteButton);
-
-                radioButton = new RadioButton
-                {
-                    Text = "Is Correct :",
-                    Name = "radioButton_IsCorrect" + optionNameCounter,
-                    AutoSize = true,
-                    CheckAlign = System.Drawing.ContentAlignment.MiddleRight,
-                    Font = new Font("Segoe UI", 11, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(0, 135, 209),
-                    Location = new Point(deleteButton.Right, dynamicTextBox.Top - 4),
-                    Tag = controlId
-                };
-
-                radioButtonList.Add(radioButton);
-
-                // Attach a click event handler to the delete button
-                deleteButton.Click += (deleteSender, deleteEventArgs) =>
-                {
-                    if (deleteSender is Button btn)
-                    {
-                        var arr = btn.Name.Split("_");
-                        if (int.Parse(arr[1]) < textBoxCounter)
-                        {
-                            MessageBox.Show($"Delete Option {textBoxCounter} first");
-                            return;
-                        }
-                    }
-
-                    button_addOption.Enabled = textBoxCounter < 5;
-                    textBoxCounter--;
-                    optionNameCounter--;
-
-
-
-                    // Retrieve the unique identifier associated with the controls
-                    string tag = deleteButton.Tag as string;
-
-                    textBoxesList.RemoveAll(x => x.Tag == tag);
-                    radioButtonList.RemoveAll(x => x.Tag == tag);
-
-                    // Find and remove controls with the same unique identifier
-                    var controlsToRemove = panel_questions.Controls
-                        .Cast<Control>()
-                        .Where(control => control.Tag as string == tag)
-                        .ToList();
-
-                    foreach (var control in controlsToRemove)
-                    {
-                        panel_questions.Controls.Remove(control);
-                    }
-                    button_addOption.Enabled = textBoxCounter < 5;
-                    OptionsButtonHandler(new TextBox(), EventArgs.Empty);
-                };
-
-                // Add Label, TextBox, and Delete button to the panel_questions
-                panel_questions.Controls.Add(dynamicLabel);
-                panel_questions.Controls.Add(dynamicTextBox);
-                panel_questions.Controls.Add(deleteButton);
-                panel_questions.Controls.Add(radioButton);
-
-                // Increment the counter for the next TextBox
-
-                textBoxCounter++;
-                optionNameCounter++;
-                button_addOption.Enabled = textBoxCounter < 5;
-
-            }
-            catch (Exception ex)
-            {
-
-
-            }
-        }
-
-        public void CreateDynamicFullFields()
-        {
-            textBox_QuetionContent.Text = question.Text;
-            for (int i = 0; i < question.Options.Count; i++)
-            {
-                CreateDynamicOptions();
-                textBoxesList[i].Text = question.Options[i].ToString();
-                radioButtonList[i].Checked = question.Options[i].IsCorrect;
-            }
-
-
-
-        }
-
-        private void button_updateQuestion_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var index = listBox_Questions.SelectedIndex;
-                question = exam.questions[index];
-                ClearAllControls();
-                CreateDynamicFullFields();
-
-                panel_questionList.SendToBack();
-            }
-            catch (Exception ex)
-            {
-
-
-
-            }
-
-
-
-        }
-
-
-        public void QuestionUpdate()
-        {
-
-            try
-            {
-
-                question.Text = textBox_QuetionContent.Text;
-
-                for (int i = 0; i < textBoxesList.Count; i++)
-                {
-                    var box = textBoxesList[i];
-                    var radioButton = radioButtonList[i];
-
-                    if (!string.IsNullOrEmpty(box.Text))
-                    {
-                        if (exam.questions.Contains(question))
-                        {
-                            optionAns = question.Options[i];
-                            optionAns.QuestionStrId = question.QuestionStrId;
-                            optionAns.OptionText = box.Text;
-                            optionAns.IsCorrect = radioButton.Checked;
-                        }
-                        else
-                        {
-                            optionAns = new OptionAns();
-                            optionAns.QuestionStrId = question.QuestionStrId;
-                            optionAns.OptionText = box.Text;
-                            optionAns.IsCorrect = radioButton.Checked;
-                            question.Options.Add(optionAns);
-                        }
-
-
-
-                    }
-                }
-
-                if (checkBox_OptionOrder.Checked)
-                {
-                    RandomOptionsOrder();
-
-                }
-                if (!exam.questions.Contains(question))
-                {
-                    exam.questions.Add(question);
-                }
-
-                RefreshQuestionsListBox();
-                panel_questionList.BringToFront();
-
-                CheckQuestionListSize();
-            }
-            catch (Exception ex)
-            {
-
-
-            }
-
-        }
-
-        public void RefreshQuestionsListBox()
-        {
-            listBox_Questions.DataSource = null;
-            listBox_Questions.Items.Clear();
-            listBox_Questions.DataSource = exam.questions;
-        }
-
         private void button_removeQuestion_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var index = listBox_Questions.SelectedIndex;
-                question = exam.questions[index];
-                exam.questions.Remove(question);
-                RefreshQuestionsListBox();
-                CheckQuestionListSize();
-                
-            }
-            catch (Exception ex)
-            {
-
-            }
+            examModel.RemoveQuestion();
         }
-
-        public void CheckQuestionListSize()
+        private void button_updateQuestion_Click(object sender, EventArgs e)
         {
-            bool res = exam.questions.Count >0;
-         
-                button_next.Enabled = res;
-                button_removeQuestion.Enabled = res;
-                button_updateQuestion.Enabled = res;
-          if (res) 
-            {
-                listBox_Questions.SelectedIndex = 0;
-            }
+
+            examModel.UpdateQuestion();
+            panel_questionList.SendToBack();
         }
+
+
     }
 }
