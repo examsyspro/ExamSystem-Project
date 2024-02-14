@@ -39,7 +39,7 @@ namespace ExamSystem_Project.Forms
             this.AutoScaleMode = AutoScaleMode.Dpi;
 
             // Set StartPosition to Manual
-            StartPosition = FormStartPosition.Manual;
+            StartPosition = FormStartPosition.CenterScreen;
 
             // Calculate and set the position and size of the form
             Rectangle screen = Screen.FromPoint(Cursor.Position).WorkingArea;
