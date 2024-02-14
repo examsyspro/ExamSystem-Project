@@ -45,15 +45,18 @@
             courseTypeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ShowExam = new DataGridViewButtonColumn();
             examBindingSource = new BindingSource(components);
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridView_teacherExams).BeginInit();
             ((System.ComponentModel.ISupportInitialize)examBindingSource).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // button_createExam
             // 
-            button_createExam.Location = new Point(60, 132);
+            button_createExam.Location = new Point(72, 158);
+            button_createExam.Margin = new Padding(4, 4, 4, 4);
             button_createExam.Name = "button_createExam";
-            button_createExam.Size = new Size(200, 71);
+            button_createExam.Size = new Size(240, 85);
             button_createExam.TabIndex = 0;
             button_createExam.Text = "Create Exam";
             button_createExam.UseVisualStyleBackColor = true;
@@ -61,9 +64,10 @@
             // 
             // button_getAllExams
             // 
-            button_getAllExams.Location = new Point(495, 132);
+            button_getAllExams.Location = new Point(594, 158);
+            button_getAllExams.Margin = new Padding(4, 4, 4, 4);
             button_getAllExams.Name = "button_getAllExams";
-            button_getAllExams.Size = new Size(171, 71);
+            button_getAllExams.Size = new Size(205, 85);
             button_getAllExams.TabIndex = 2;
             button_getAllExams.Text = "getallexams";
             button_getAllExams.UseVisualStyleBackColor = true;
@@ -93,13 +97,13 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView_teacherExams.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView_teacherExams.EnableHeadersVisualStyles = false;
-            dataGridView_teacherExams.Location = new Point(35, 398);
-            dataGridView_teacherExams.Margin = new Padding(3, 2, 3, 2);
+            dataGridView_teacherExams.Location = new Point(34, 160);
+            dataGridView_teacherExams.Margin = new Padding(4, 2, 4, 2);
             dataGridView_teacherExams.Name = "dataGridView_teacherExams";
             dataGridView_teacherExams.RowHeadersWidth = 51;
             dataGridView_teacherExams.RowTemplate.Height = 29;
             dataGridView_teacherExams.ScrollBars = ScrollBars.Vertical;
-            dataGridView_teacherExams.Size = new Size(1405, 466);
+            dataGridView_teacherExams.Size = new Size(1405, 559);
             dataGridView_teacherExams.TabIndex = 5;
             dataGridView_teacherExams.CellClick += dataGridView_teacherExams_CellClick;
             // 
@@ -190,19 +194,29 @@
             // 
             examBindingSource.DataSource = typeof(Models.Exam);
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(dataGridView_teacherExams);
+            panel1.Location = new Point(99, 295);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1490, 770);
+            panel1.TabIndex = 6;
+            // 
             // TeacherForm
             // 
-            AutoScaleDimensions = new SizeF(120F, 120F);
+            AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(1482, 916);
-            Controls.Add(dataGridView_teacherExams);
+            ClientSize = new Size(1778, 1099);
+            Controls.Add(panel1);
             Controls.Add(button_getAllExams);
             Controls.Add(button_createExam);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(4, 4, 4, 4);
             Name = "TeacherForm";
             Text = "TeacherForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView_teacherExams).EndInit();
             ((System.ComponentModel.ISupportInitialize)examBindingSource).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -222,5 +236,6 @@
         private DataGridViewCheckBoxColumn randomQuestionOrderDataGridViewCheckBoxColumn;
         private DataGridViewTextBoxColumn courseTypeDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn ShowExam;
+        private Panel panel1;
     }
 }
