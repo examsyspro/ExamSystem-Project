@@ -34,7 +34,7 @@ namespace ExamSystem_Project.Forms
             dataGridView_teacherExams.ClearSelection();
             dataGridView_teacherExams.AllowUserToResizeColumns = false;
             dataGridView_teacherExams.RowTemplate.Height = 40;
-
+            this.AutoScaleMode = AutoScaleMode.Dpi;
 
         }
 
