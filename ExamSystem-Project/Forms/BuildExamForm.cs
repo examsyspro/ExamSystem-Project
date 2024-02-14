@@ -182,7 +182,6 @@ namespace ExamSystem_Project.Forms
  
         }
 
-
         public void ExamButtonHandler(TextBox text)
         {
             ChangeTextBoxColor(text);
@@ -190,6 +189,7 @@ namespace ExamSystem_Project.Forms
            button_next.Enabled = res;
            label_filedsReq.Visible = !res;
         }
+
         public bool CheckEmptyPanelControls(Panel panel)
         {
             bool res = true;
@@ -216,6 +216,7 @@ namespace ExamSystem_Project.Forms
 
             return res;
         }
+
         public void ChangeTextBoxColor(TextBox text)
         {
             if (text.Text == string.Empty)
@@ -227,6 +228,7 @@ namespace ExamSystem_Project.Forms
                 text.BackColor = Color.White;
             }
         }
+
         public void OptionsButtonHandler(TextBox text, EventArgs e)
         {
             ChangeTextBoxColor(text);
@@ -362,6 +364,7 @@ namespace ExamSystem_Project.Forms
         {
             examModel.RemoveQuestion();
         }
+
         private void button_updateQuestion_Click(object sender, EventArgs e)
         {
 
