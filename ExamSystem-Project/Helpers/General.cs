@@ -11,12 +11,12 @@ namespace ExamSystem_Project.Helpers
     public class General
     {
         public static MainRequestor mainRequestor;
-        public static BuildExamModel buildExam;
+        public static BuildExamFormModel buildExam;
 
         public General()
         {
             mainRequestor = new MainRequestor();
-            buildExam = new BuildExamModel();
+            buildExam = new BuildExamFormModel();
         }
 
 
