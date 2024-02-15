@@ -27,7 +27,7 @@ namespace ExamSystem_Project.Forms
             InitializeAll();
             buildExam = this;
             examModel = new ExamFormModel(exam);
-           
+
         }
 
         public void InitializeAll()
@@ -45,6 +45,25 @@ namespace ExamSystem_Project.Forms
                 panel_questions.SendToBack();
                 textBox_date.Text = string.Empty;
                 button_SaveExamBuilder.Enabled = false;
+
+                // Set DPI Awareness
+                this.AutoScaleMode = AutoScaleMode.Dpi;
+
+                // Set StartPosition to Manual
+                StartPosition = FormStartPosition.CenterScreen;
+
+                // Calculate and set the position and size of the form
+                Rectangle screen = Screen.FromPoint(Cursor.Position).WorkingArea;
+
+                // Set maximum width and height for the form
+                int maxWidth = screen.Width - 100; // Adjust this value as needed
+                int maxHeight = screen.Height - 100; // Adjust this value as needed
+                int desiredFormWidth = 1546; // Set your desired form width
+                int w = Math.Min(desiredFormWidth, maxWidth);
+                int h = Math.Min(Height, maxHeight);
+
+                Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
+                Size = new Size(w, h);
 
 
 
@@ -109,10 +128,11 @@ namespace ExamSystem_Project.Forms
                     case "tabPage_step1":
                         if (!tabControl1.TabPages.Contains(tabPage_step2))
                         {
-                            
+
                             examModel.CheckQuestionListSize();
                             tabControl1.TabPages.Add(tabPage_step2);
                             tabControl1.TabPages.Remove(tabPage_step1);
+                            examModel.RefreshQuestionsListBox();
                         }
 
                         tabControl1.SelectedTab = tabPage_step2;
@@ -138,9 +158,9 @@ namespace ExamSystem_Project.Forms
             catch (Exception ex)
             {
 
-             
+
             }
-         
+
 
 
         }
@@ -179,17 +199,17 @@ namespace ExamSystem_Project.Forms
             catch (Exception ex)
             {
 
-              
+
             }
- 
+
         }
 
         public void ExamButtonHandler(TextBox text)
         {
             ChangeTextBoxColor(text);
             bool res = CheckEmptyPanelControls(panel1);
-           button_next.Enabled = res;
-           label_filedsReq.Visible = !res;
+            button_next.Enabled = res;
+            label_filedsReq.Visible = !res;
         }
 
         public bool CheckEmptyPanelControls(Panel panel)

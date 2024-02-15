@@ -238,10 +238,11 @@ namespace ExamSystem_Project.FormModels
                 buildExam.button_next.Enabled = res;
                 buildExam.button_removeQuestion.Enabled = res;
                 buildExam.button_updateQuestion.Enabled = res;
-                if (res && dtExam == null)
+                if (res)
                 {
                     buildExam.listBox_Questions.SelectedIndex = 0;
                 }
+
             }
             catch (Exception ex )
             {

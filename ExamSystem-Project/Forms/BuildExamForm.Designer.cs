@@ -1032,8 +1032,6 @@
             Name = "BuildExamForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BuildExamForm";
-            
-            
             tabControl1.ResumeLayout(false);
             tabPage_step1.ResumeLayout(false);
             tabPage_step1.PerformLayout();
