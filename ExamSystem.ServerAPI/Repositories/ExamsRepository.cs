@@ -60,7 +60,7 @@ namespace ExamSystem.ServerAPI.Repositories
             }
         }
 
-        public async Task<bool> UpdateExam(int examId, Exam updatedExam)
+        public async Task<bool> UpdateExam( Exam updatedExam)
         {
             try
             {

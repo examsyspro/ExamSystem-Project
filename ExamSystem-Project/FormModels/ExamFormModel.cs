@@ -439,7 +439,7 @@ namespace ExamSystem_Project.FormModels
                 exam.RandomQuestionOrder = buildExam.checkBox_QuestionOrder.Checked;
                 if (isExist)
                 {
-                   res =  await General.mainRequestor.Request_Put<Exam>(exam.ExamId, exam, "api/exams/update");
+                   res =  await General.mainRequestor.Request_Put<Exam>( exam, "api/exams/update");
                 }
                 else
                 {
