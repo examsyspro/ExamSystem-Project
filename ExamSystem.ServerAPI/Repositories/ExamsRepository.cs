@@ -20,16 +20,10 @@ namespace ExamSystem.ServerAPI.Repositories
 
         public async Task<List<Exam>> GetAllExams()
         {
-            List<Exam> exams = await _context.Exams.ToListAsync();
-
-            foreach (var exam in exams)
-            {
-                await _context.Entry(exam)
-                    .Collection(e => e.questions) // Include the related Questions
-                    .Query()
-                    .Include(q => q.Options) // Include the related OptionAns entities for each Question
-                    .LoadAsync();
-            }
+            List<Exam> exams = await _context.Exams
+                .Include(e => e.questions)
+                    .ThenInclude(q => q.Options)
+                .ToListAsync();
 
             return exams;
         }
