@@ -64,8 +64,13 @@ namespace ExamSystem.ServerAPI.Repositories
         {
             try
             {
-                updatedExam.ExamId = id;
-                var existingExam = await _context.Exams.FindAsync(id);
+
+               // updatedExam.ExamId = id;
+                var existingExam = await _context.Exams
+                .Include(e => e.questions)
+                .ThenInclude(q => q.Options)
+                .FirstOrDefaultAsync(e => e.ExamId == id);
+
 
                 if (existingExam != null)
                 {

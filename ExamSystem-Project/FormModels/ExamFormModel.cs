@@ -56,6 +56,7 @@ namespace ExamSystem_Project.FormModels
             {
                 isExist = true;
                 exam = dtExam;
+                  
                 FillAllExamFields();
                 
 
@@ -182,6 +183,11 @@ namespace ExamSystem_Project.FormModels
                 if (!exam.questions.Contains(question))
                 {
                     exam.questions.Add(question);
+                }
+                else
+                {
+                   int index = exam.questions.FindIndex(q=>q.QuestionStrId == question.QuestionStrId);
+                   exam.questions[index]= question;
                 }
 
                 RefreshQuestionsListBox();
