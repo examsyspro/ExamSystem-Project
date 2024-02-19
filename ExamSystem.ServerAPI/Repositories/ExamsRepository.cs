@@ -60,36 +60,21 @@ namespace ExamSystem.ServerAPI.Repositories
             }
         }
 
-        public async Task<bool> UpdateExam(int id, Exam updatedExam)
+        public async Task<bool> UpdateExam(int examId, Exam updatedExam)
         {
             try
             {
-
-               // updatedExam.ExamId = id;
-                var existingExam = await _context.Exams
-                .Include(e => e.questions)
-                .ThenInclude(q => q.Options)
-                .FirstOrDefaultAsync(e => e.ExamId == id);
-
-
-                if (existingExam != null)
-                {
-                    _context.Entry(existingExam).CurrentValues.SetValues(updatedExam);
-                    await _context.SaveChangesAsync();
-                    return true; // Return true indicating successful update
-                }
-                else
-                {
-                    return false; // Return false if the exam with the specified ID is not found
-                }
+                _context.Exams.Update(updatedExam);
+                return await _context.SaveChangesAsync() > 0; 
+                
             }
             catch (Exception ex)
             {
-                // Log the exception or handle it as appropriate for your application
-                Console.WriteLine($"An error occurred: {ex.Message}");
-                return false; // Return false in case of an exception
+              
+                return false;
             }
         }
+
 
 
 
