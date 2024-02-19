@@ -21,8 +21,6 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Services.AddScoped<IExamsRepository, ExamsRepository>();
-        builder.Services.AddScoped<IQuestionsRepository, QuestionsRepository>();
-        builder.Services.AddScoped<IOptionAnsRepository, OptionAnsRepository>();
         builder.Services.AddScoped<IUsersRepository, UsersRepository>();
         builder.Services.AddScoped<IStudentExamRepository, StudentExamRepository>();
 
