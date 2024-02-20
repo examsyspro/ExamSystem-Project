@@ -8,46 +8,71 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ExamSystem_Project.FormModels
 {
-    
+
     public class TeacherFormModel
     {
         public Exam exam;
-       public List<Exam> exams;
-       public TeacherForm teacher;
-       public  General gen = new General();
+        public List<Exam> exams;
+        public TeacherForm teacher;
+        public General gen = new General();
         public static TeacherFormModel teacherFormModel;
+        public DataTable dataTable;
 
         BuildExamForm buildExam;
         public TeacherFormModel(TeacherForm teacherForm)
         {
             exam = new Exam();
-                 exams = new List<Exam>();
-                 this.teacher = teacherForm;
+            exams = new List<Exam>();
+            this.teacher = teacherForm;
             teacherFormModel = this;
-                GetAllExams();
-                
+
+            GetAllExams();
+
         }
         public async void GetAllExams()
         {
             try
             {
-                    exams = await General.mainRequestor.Request_GetAll<Exam>("api/exams/getallexams");
-                    if (exams.Count > 0)
-                    {
+                exams = await General.mainRequestor.Request_GetAll<Exam>("api/exams/getallexams");
+                if (exams.Count > 0)
+                {
+
                     teacher.dataGridView_teacherExams.DataSource = exams;
-                    }
+                }
             }
             catch (Exception ex)
             {
 
-               
+
             }
         }
 
-        
+        public void FilterRows(string filterValue)
+        {
+            try
+            {
+                if (exams.Count > 0)
+                {
+                    List<Exam> filteredList = exams
+                         .Where(item => item.ExamTitle.ToLower().Contains(filterValue))
+                         .ToList();
+                    teacher.dataGridView_teacherExams.DataSource = null;
+                    teacher.dataGridView_teacherExams.DataSource = filteredList;
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+
+
+        }
 
         public void OpenExistExam()
         {
@@ -62,9 +87,9 @@ namespace ExamSystem_Project.FormModels
             catch (Exception ex)
             {
 
-             
+
             }
-         
+
 
         }
 
@@ -73,6 +98,6 @@ namespace ExamSystem_Project.FormModels
             buildExam = new BuildExamForm(null);
             buildExam.ShowDialog();
         }
-        
+
     }
 }

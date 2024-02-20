@@ -93,5 +93,15 @@ namespace ExamSystem_Project.Forms
         {
 
         }
+
+        private void textBox_filter_TextChanged(object sender, EventArgs e)
+        {
+
+            teacherModel.FilterRows(textBox_filter.Text);
+
+
+        }
+
     }
 }
+

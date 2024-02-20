@@ -32,7 +32,6 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             button_createExam = new Button();
-            button_getAllExams = new Button();
             dataGridView_teacherExams = new DataGridView();
             examIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             examStrIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -45,31 +44,25 @@
             courseTypeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ShowExam = new DataGridViewButtonColumn();
             examBindingSource = new BindingSource(components);
+            button_statistic = new Button();
+            textBox_filter = new TextBox();
+            label_searchExam = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView_teacherExams).BeginInit();
             ((System.ComponentModel.ISupportInitialize)examBindingSource).BeginInit();
             SuspendLayout();
             // 
             // button_createExam
             // 
-            button_createExam.Location = new Point(72, 158);
-            button_createExam.Margin = new Padding(4);
+            button_createExam.BackColor = Color.FromArgb(0, 135, 209);
+            button_createExam.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button_createExam.ForeColor = Color.White;
+            button_createExam.Location = new Point(60, 135);
             button_createExam.Name = "button_createExam";
-            button_createExam.Size = new Size(240, 85);
+            button_createExam.Size = new Size(200, 71);
             button_createExam.TabIndex = 0;
             button_createExam.Text = "Create Exam";
-            button_createExam.UseVisualStyleBackColor = true;
+            button_createExam.UseVisualStyleBackColor = false;
             button_createExam.Click += button_createExam_Click;
-            // 
-            // button_getAllExams
-            // 
-            button_getAllExams.Location = new Point(594, 158);
-            button_getAllExams.Margin = new Padding(4);
-            button_getAllExams.Name = "button_getAllExams";
-            button_getAllExams.Size = new Size(205, 85);
-            button_getAllExams.TabIndex = 2;
-            button_getAllExams.Text = "getallexams";
-            button_getAllExams.UseVisualStyleBackColor = true;
-            button_getAllExams.Click += button_getAllExams_Click;
             // 
             // dataGridView_teacherExams
             // 
@@ -95,13 +88,13 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView_teacherExams.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView_teacherExams.EnableHeadersVisualStyles = false;
-            dataGridView_teacherExams.Location = new Point(72, 446);
-            dataGridView_teacherExams.Margin = new Padding(4, 2, 4, 2);
+            dataGridView_teacherExams.Location = new Point(60, 372);
+            dataGridView_teacherExams.Margin = new Padding(3, 2, 3, 2);
             dataGridView_teacherExams.Name = "dataGridView_teacherExams";
             dataGridView_teacherExams.RowHeadersWidth = 51;
             dataGridView_teacherExams.RowTemplate.Height = 29;
             dataGridView_teacherExams.ScrollBars = ScrollBars.Vertical;
-            dataGridView_teacherExams.Size = new Size(1430, 559);
+            dataGridView_teacherExams.Size = new Size(1192, 466);
             dataGridView_teacherExams.TabIndex = 5;
             dataGridView_teacherExams.CellClick += dataGridView_teacherExams_CellClick;
             // 
@@ -192,27 +185,61 @@
             // 
             examBindingSource.DataSource = typeof(Models.Exam);
             // 
+            // button_statistic
+            // 
+            button_statistic.BackColor = Color.FromArgb(0, 135, 209);
+            button_statistic.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button_statistic.ForeColor = Color.White;
+            button_statistic.Location = new Point(283, 135);
+            button_statistic.Name = "button_statistic";
+            button_statistic.Size = new Size(200, 71);
+            button_statistic.TabIndex = 6;
+            button_statistic.Text = "Student Statistic";
+            button_statistic.UseVisualStyleBackColor = false;
+            // 
+            // textBox_filter
+            // 
+            textBox_filter.BorderStyle = BorderStyle.FixedSingle;
+            textBox_filter.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox_filter.Location = new Point(225, 320);
+            textBox_filter.Name = "textBox_filter";
+            textBox_filter.Size = new Size(409, 30);
+            textBox_filter.TabIndex = 7;
+            textBox_filter.TextChanged += textBox_filter_TextChanged;
+            // 
+            // label_searchExam
+            // 
+            label_searchExam.AutoSize = true;
+            label_searchExam.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_searchExam.ForeColor = Color.FromArgb(0, 135, 209);
+            label_searchExam.Location = new Point(80, 325);
+            label_searchExam.Name = "label_searchExam";
+            label_searchExam.Size = new Size(139, 25);
+            label_searchExam.TabIndex = 8;
+            label_searchExam.Text = "Search Exam : ";
+            // 
             // TeacherForm
             // 
-            AutoScaleDimensions = new SizeF(144F, 144F);
+            AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(1578, 1099);
+            ClientSize = new Size(1315, 916);
+            Controls.Add(label_searchExam);
+            Controls.Add(textBox_filter);
+            Controls.Add(button_statistic);
             Controls.Add(dataGridView_teacherExams);
-            Controls.Add(button_getAllExams);
             Controls.Add(button_createExam);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(4);
             Name = "TeacherForm";
             Text = "TeacherForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView_teacherExams).EndInit();
             ((System.ComponentModel.ISupportInitialize)examBindingSource).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button button_createExam;
-        private Button button_getAllExams;
         private BindingSource examBindingSource;
         public DataGridView dataGridView_teacherExams;
         private DataGridViewTextBoxColumn examIdDataGridViewTextBoxColumn;
@@ -225,5 +252,8 @@
         private DataGridViewCheckBoxColumn randomQuestionOrderDataGridViewCheckBoxColumn;
         private DataGridViewTextBoxColumn courseTypeDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn ShowExam;
+        private Button button_statistic;
+        private TextBox textBox_filter;
+        private Label label_searchExam;
     }
 }
