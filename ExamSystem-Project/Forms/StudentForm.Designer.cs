@@ -246,7 +246,6 @@
             Name = "StudentForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "StudentForm";
-            Shown += StudentForm_Shown;
             ((System.ComponentModel.ISupportInitialize)dataGridView_StudentExam).EndInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).EndInit();
