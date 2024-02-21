@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace ExamSystem_Project.Models
 {
-    public class Error
+    public class Errors
     {
        
     }
