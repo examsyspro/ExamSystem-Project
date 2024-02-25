@@ -30,29 +30,31 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             textBox1 = new TextBox();
             label1 = new Label();
-            dataGridView_StudentExam = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
-            dataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
-            StartExam = new DataGridViewButtonColumn();
             studentExamBindingSource1 = new BindingSource(components);
             studentExamBindingSource = new BindingSource(components);
             panel4 = new Panel();
             label11 = new Label();
             panel5 = new Panel();
-            ((System.ComponentModel.ISupportInitialize)dataGridView_StudentExam).BeginInit();
+            dataGridView_StudentExam = new DataGridView();
+            examBindingSource = new BindingSource(components);
+            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
+            examStrIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
+            examDateTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            teacherFullNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            totalHoursDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            totalMinutesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            randomQuestionOrderDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
+            ShowExam = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).BeginInit();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_StudentExam).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)examBindingSource).BeginInit();
             SuspendLayout();
             // 
             // textBox1
@@ -74,125 +76,6 @@
             label1.Size = new Size(263, 32);
             label1.TabIndex = 1;
             label1.Text = "Search for exam in DB :";
-            // 
-            // dataGridView_StudentExam
-            // 
-            dataGridView_StudentExam.AutoGenerateColumns = false;
-            dataGridView_StudentExam.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 135, 209);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 135, 209);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView_StudentExam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView_StudentExam.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_StudentExam.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewCheckBoxColumn1, StartExam });
-            dataGridView_StudentExam.DataSource = studentExamBindingSource1;
-            dataGridView_StudentExam.EnableHeadersVisualStyles = false;
-            dataGridView_StudentExam.Location = new Point(61, 221);
-            dataGridView_StudentExam.Margin = new Padding(4, 3, 4, 3);
-            dataGridView_StudentExam.Name = "dataGridView_StudentExam";
-            dataGridView_StudentExam.RowHeadersWidth = 51;
-            dataGridView_StudentExam.RowTemplate.Height = 29;
-            dataGridView_StudentExam.ScrollBars = ScrollBars.Vertical;
-            dataGridView_StudentExam.Size = new Size(1033, 559);
-            dataGridView_StudentExam.TabIndex = 4;
-            dataGridView_StudentExam.CellClick += dataGridView_StudentExam_CellClick;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "StudentExamId";
-            dataGridViewTextBoxColumn1.HeaderText = "StudentExamId";
-            dataGridViewTextBoxColumn1.MinimumWidth = 8;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.Visible = false;
-            dataGridViewTextBoxColumn1.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "ExamId";
-            dataGridViewTextBoxColumn2.HeaderText = "ExamId";
-            dataGridViewTextBoxColumn2.MinimumWidth = 8;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.Visible = false;
-            dataGridViewTextBoxColumn2.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "UserId";
-            dataGridViewTextBoxColumn3.HeaderText = "UserId";
-            dataGridViewTextBoxColumn3.MinimumWidth = 8;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.Visible = false;
-            dataGridViewTextBoxColumn3.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "ExamTitle";
-            dataGridViewTextBoxColumn4.HeaderText = "Exam Title";
-            dataGridViewTextBoxColumn4.MinimumWidth = 8;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.Width = 140;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "ExamDate";
-            dataGridViewTextBoxColumn5.HeaderText = "Exam Date";
-            dataGridViewTextBoxColumn5.MinimumWidth = 8;
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.DataPropertyName = "StartTime";
-            dataGridViewTextBoxColumn6.HeaderText = "Start Time";
-            dataGridViewTextBoxColumn6.MinimumWidth = 8;
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewTextBoxColumn7.DataPropertyName = "TotalTime";
-            dataGridViewTextBoxColumn7.HeaderText = "Total Time";
-            dataGridViewTextBoxColumn7.MinimumWidth = 8;
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            dataGridViewTextBoxColumn8.DataPropertyName = "CourseType";
-            dataGridViewTextBoxColumn8.HeaderText = "Course Type";
-            dataGridViewTextBoxColumn8.MinimumWidth = 8;
-            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            dataGridViewTextBoxColumn8.Visible = false;
-            dataGridViewTextBoxColumn8.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            dataGridViewTextBoxColumn9.DataPropertyName = "Grade";
-            dataGridViewTextBoxColumn9.HeaderText = "Grade";
-            dataGridViewTextBoxColumn9.MinimumWidth = 8;
-            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            dataGridViewTextBoxColumn9.Width = 150;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            dataGridViewCheckBoxColumn1.DataPropertyName = "isFinished";
-            dataGridViewCheckBoxColumn1.HeaderText = "Is Finished";
-            dataGridViewCheckBoxColumn1.MinimumWidth = 8;
-            dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            dataGridViewCheckBoxColumn1.Width = 150;
-            // 
-            // StartExam
-            // 
-            StartExam.HeaderText = "Start Exam";
-            StartExam.MinimumWidth = 6;
-            StartExam.Name = "StartExam";
-            StartExam.Text = "Start Exam";
-            StartExam.UseColumnTextForButtonValue = true;
-            StartExam.Width = 150;
             // 
             // studentExamBindingSource1
             // 
@@ -231,14 +114,136 @@
             panel5.Size = new Size(1508, 91);
             panel5.TabIndex = 6;
             // 
+            // dataGridView_StudentExam
+            // 
+            dataGridView_StudentExam.AutoGenerateColumns = false;
+            dataGridView_StudentExam.BackgroundColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 135, 209);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 135, 209);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView_StudentExam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView_StudentExam.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView_StudentExam.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn10, examStrIdDataGridViewTextBoxColumn, dataGridViewTextBoxColumn11, examDateTimeDataGridViewTextBoxColumn, teacherFullNameDataGridViewTextBoxColumn, totalHoursDataGridViewTextBoxColumn, totalMinutesDataGridViewTextBoxColumn, randomQuestionOrderDataGridViewCheckBoxColumn, dataGridViewTextBoxColumn12, ShowExam });
+            dataGridView_StudentExam.DataSource = examBindingSource;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView_StudentExam.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView_StudentExam.EnableHeadersVisualStyles = false;
+            dataGridView_StudentExam.Location = new Point(61, 278);
+            dataGridView_StudentExam.Margin = new Padding(4, 2, 4, 2);
+            dataGridView_StudentExam.Name = "dataGridView_StudentExam";
+            dataGridView_StudentExam.RowHeadersWidth = 51;
+            dataGridView_StudentExam.RowTemplate.Height = 29;
+            dataGridView_StudentExam.ScrollBars = ScrollBars.Vertical;
+            dataGridView_StudentExam.Size = new Size(943, 559);
+            dataGridView_StudentExam.TabIndex = 7;
+            // 
+            // examBindingSource
+            // 
+            examBindingSource.DataSource = typeof(Models.Exam);
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            dataGridViewTextBoxColumn10.DataPropertyName = "ExamId";
+            dataGridViewTextBoxColumn10.HeaderText = "ExamId";
+            dataGridViewTextBoxColumn10.MinimumWidth = 8;
+            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            dataGridViewTextBoxColumn10.Visible = false;
+            dataGridViewTextBoxColumn10.Width = 150;
+            // 
+            // examStrIdDataGridViewTextBoxColumn
+            // 
+            examStrIdDataGridViewTextBoxColumn.DataPropertyName = "ExamStrId";
+            examStrIdDataGridViewTextBoxColumn.HeaderText = "ExamStrId";
+            examStrIdDataGridViewTextBoxColumn.MinimumWidth = 8;
+            examStrIdDataGridViewTextBoxColumn.Name = "examStrIdDataGridViewTextBoxColumn";
+            examStrIdDataGridViewTextBoxColumn.Visible = false;
+            examStrIdDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            dataGridViewTextBoxColumn11.DataPropertyName = "ExamTitle";
+            dataGridViewTextBoxColumn11.HeaderText = "Exam Title";
+            dataGridViewTextBoxColumn11.MinimumWidth = 8;
+            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            dataGridViewTextBoxColumn11.Width = 150;
+            // 
+            // examDateTimeDataGridViewTextBoxColumn
+            // 
+            examDateTimeDataGridViewTextBoxColumn.DataPropertyName = "ExamDateTime";
+            examDateTimeDataGridViewTextBoxColumn.HeaderText = "Exam Date";
+            examDateTimeDataGridViewTextBoxColumn.MinimumWidth = 8;
+            examDateTimeDataGridViewTextBoxColumn.Name = "examDateTimeDataGridViewTextBoxColumn";
+            examDateTimeDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // teacherFullNameDataGridViewTextBoxColumn
+            // 
+            teacherFullNameDataGridViewTextBoxColumn.DataPropertyName = "TeacherFullName";
+            teacherFullNameDataGridViewTextBoxColumn.HeaderText = "TeacherFullName";
+            teacherFullNameDataGridViewTextBoxColumn.MinimumWidth = 8;
+            teacherFullNameDataGridViewTextBoxColumn.Name = "teacherFullNameDataGridViewTextBoxColumn";
+            teacherFullNameDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // totalHoursDataGridViewTextBoxColumn
+            // 
+            totalHoursDataGridViewTextBoxColumn.DataPropertyName = "TotalHours";
+            totalHoursDataGridViewTextBoxColumn.HeaderText = "Total Hours";
+            totalHoursDataGridViewTextBoxColumn.MinimumWidth = 8;
+            totalHoursDataGridViewTextBoxColumn.Name = "totalHoursDataGridViewTextBoxColumn";
+            totalHoursDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // totalMinutesDataGridViewTextBoxColumn
+            // 
+            totalMinutesDataGridViewTextBoxColumn.DataPropertyName = "TotalMinutes";
+            totalMinutesDataGridViewTextBoxColumn.HeaderText = "Total Minutes";
+            totalMinutesDataGridViewTextBoxColumn.MinimumWidth = 8;
+            totalMinutesDataGridViewTextBoxColumn.Name = "totalMinutesDataGridViewTextBoxColumn";
+            totalMinutesDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // randomQuestionOrderDataGridViewCheckBoxColumn
+            // 
+            randomQuestionOrderDataGridViewCheckBoxColumn.DataPropertyName = "RandomQuestionOrder";
+            randomQuestionOrderDataGridViewCheckBoxColumn.HeaderText = "RandomQuestionOrder";
+            randomQuestionOrderDataGridViewCheckBoxColumn.MinimumWidth = 8;
+            randomQuestionOrderDataGridViewCheckBoxColumn.Name = "randomQuestionOrderDataGridViewCheckBoxColumn";
+            randomQuestionOrderDataGridViewCheckBoxColumn.Visible = false;
+            randomQuestionOrderDataGridViewCheckBoxColumn.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            dataGridViewTextBoxColumn12.DataPropertyName = "CourseType";
+            dataGridViewTextBoxColumn12.HeaderText = "CourseType";
+            dataGridViewTextBoxColumn12.MinimumWidth = 8;
+            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            dataGridViewTextBoxColumn12.Visible = false;
+            dataGridViewTextBoxColumn12.Width = 150;
+            // 
+            // ShowExam
+            // 
+            ShowExam.HeaderText = "Start Exam";
+            ShowExam.MinimumWidth = 8;
+            ShowExam.Name = "ShowExam";
+            ShowExam.Text = "Open";
+            ShowExam.UseColumnTextForButtonValue = true;
+            ShowExam.Width = 140;
+            // 
             // StudentForm
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(1508, 1106);
+            Controls.Add(dataGridView_StudentExam);
             Controls.Add(panel5);
             Controls.Add(panel4);
-            Controls.Add(dataGridView_StudentExam);
             Controls.Add(label1);
             Controls.Add(textBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -246,11 +251,12 @@
             Name = "StudentForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "StudentForm";
-            ((System.ComponentModel.ISupportInitialize)dataGridView_StudentExam).EndInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_StudentExam).EndInit();
+            ((System.ComponentModel.ISupportInitialize)examBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -286,5 +292,17 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private DataGridViewButtonColumn StartExam;
+        public DataGridView dataGridView_teacherExams;
+        private BindingSource examBindingSource;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private DataGridViewTextBoxColumn examStrIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private DataGridViewTextBoxColumn examDateTimeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn teacherFullNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn totalHoursDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn totalMinutesDataGridViewTextBoxColumn;
+        private DataGridViewCheckBoxColumn randomQuestionOrderDataGridViewCheckBoxColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private DataGridViewButtonColumn ShowExam;
     }
 }

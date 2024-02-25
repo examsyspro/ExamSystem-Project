@@ -22,7 +22,7 @@ public class Program
         builder.Services.AddSwaggerGen();
         builder.Services.AddScoped<IExamsRepository, ExamsRepository>();
         builder.Services.AddScoped<IUsersRepository, UsersRepository>();
-        builder.Services.AddScoped<IStudentExamRepository, StudentExamRepository>();
+       
 
         builder.Services.AddCors(options =>
         {

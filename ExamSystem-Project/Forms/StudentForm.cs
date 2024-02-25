@@ -64,13 +64,18 @@ namespace ExamSystem_Project.Forms
 
         private void dataGridView_StudentExam_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 10)
+            if (e.ColumnIndex == 9)
             {
                 MessageBox.Show(e.ColumnIndex.ToString());
             }
         }
 
         private void StudentForm_Shown(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

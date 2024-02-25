@@ -12,8 +12,8 @@ namespace ExamSystem_Project.Models
         public string Student_Id { get; set; }
         public string Student_Name { get; set; }
         public int Exam_Id { get; set; }
-        public int Grade { get; set; }
-        public bool IsExpired { get; set; }
+        public float Grade { get; set; }
+
 
 
     }

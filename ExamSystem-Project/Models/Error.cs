@@ -7,15 +7,17 @@ using System.Threading;
 
 namespace ExamSystem_Project.Models
 {
-    public class Errors
+    public class Error
     {
         public int ErrorId { get; set; } 
-        public string  { get; set; }
         public string QuestionContent { get; set; }
         public string CorrecteAnswer { get; set; }
         public string StudentAnswer { get; set; }
-        public Errors() { }
+        public int ParticipationId { get; set; }
 
-       
+
+
+
+
     }
 }
