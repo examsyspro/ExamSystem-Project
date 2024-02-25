@@ -14,8 +14,9 @@ namespace ExamSystem.ServerAPI.Models
         [Key]
         public int ErrorId { get; set; }
         public string QuestionContent { get; set; }
-        public string CorrecteAnswer { get; set; }
+        public string CorrectAnswer { get; set; }
         public string StudentAnswer { get; set; }
         public int ParticipationId { get; set; }
+        public Participation participation { get; set; }
     }
 }

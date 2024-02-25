@@ -22,8 +22,9 @@ namespace ExamSystem.ServerAPI.Models
         public Guid ExamStrId { get; set; }
         public bool RandomAnsOrder { get; set; }
         public int IndexCorrect { get; set; }
-       
-      
+        public Exam exam { get; set; }
+
+
 
 
     }

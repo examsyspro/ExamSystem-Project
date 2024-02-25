@@ -12,8 +12,6 @@ namespace ExamSystem.ServerAPI.Models
     public class Exam
     {
         #region Properties
-
-       
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int ExamId { get; set; }  //AutoIncrement

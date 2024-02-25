@@ -79,7 +79,7 @@
             // 
             // studentExamBindingSource1
             // 
-            studentExamBindingSource1.DataSource = typeof(Models.StudentExam);
+            
             // 
             // panel4
             // 
