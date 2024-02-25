@@ -9,8 +9,9 @@ namespace ExamSystem_Project.Models
 {
     public class StudentExam
     {
-        public int StudentExamId { get; set; }
-        public int ExamId { get; set; }  //AutoIncrement
+        
+        public int StudentExamId { get; set; } //AutoIncrement
+        public int ExamId { get; set; }
         public string UserId { get; set; } //Student id
         public string ExamTitle { get; set; } //Title
         public DateTime ExamDate { get; set; }//available for execution (Date)

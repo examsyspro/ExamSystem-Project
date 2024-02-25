@@ -36,7 +36,7 @@
             // button_startExam
             // 
             button_startExam.Location = new Point(961, 0);
-            button_startExam.Margin = new Padding(2, 2, 2, 2);
+            button_startExam.Margin = new Padding(2);
             button_startExam.Name = "button_startExam";
             button_startExam.Size = new Size(276, 118);
             button_startExam.TabIndex = 0;
@@ -72,7 +72,7 @@
             Controls.Add(label_clock);
             Controls.Add(label_timer);
             Controls.Add(button_startExam);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "ExamRunForm";
             Text = "ExamRunForm";
             FormClosing += ExamRunForm_FormClosing;
