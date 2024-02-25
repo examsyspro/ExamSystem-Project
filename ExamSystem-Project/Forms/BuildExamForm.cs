@@ -46,6 +46,7 @@ namespace ExamSystem_Project.Forms
                 panel_questions.SendToBack();
                 textBox_date.Text = string.Empty;
                 button_SaveExamBuilder.Enabled = false;
+               
 
                 // Set DPI Awareness
                 this.AutoScaleMode = AutoScaleMode.Dpi;
