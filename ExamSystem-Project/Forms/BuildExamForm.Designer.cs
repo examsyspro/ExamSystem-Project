@@ -381,6 +381,7 @@
             textBox_teacherName.Location = new Point(240, 150);
             textBox_teacherName.Margin = new Padding(2);
             textBox_teacherName.Name = "textBox_teacherName";
+            textBox_teacherName.ReadOnly = true;
             textBox_teacherName.Size = new Size(253, 37);
             textBox_teacherName.TabIndex = 3;
             textBox_teacherName.TextChanged += textBox_teacherName_TextChanged;
