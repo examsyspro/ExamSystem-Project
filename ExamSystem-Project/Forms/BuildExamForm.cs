@@ -28,7 +28,7 @@ namespace ExamSystem_Project.Forms
             InitializeAll();
             buildExam = this;
             examModel = new ExamFormModel(exam);
-            
+
         }
 
         public void InitializeAll()
@@ -116,7 +116,7 @@ namespace ExamSystem_Project.Forms
             }
 
 
-            
+
 
 
         }
