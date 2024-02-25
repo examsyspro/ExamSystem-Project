@@ -26,6 +26,7 @@ namespace ExamSystem_Project.UserControls
         public User? userResponse;
         public User user;
         StudentForm student;
+        TeacherForm teacher;
 
         public Login()
         {
@@ -88,8 +89,11 @@ namespace ExamSystem_Project.UserControls
                         }
                         else if (userResponse.TypeOfUser == "Teacher")
                         {
+                            teacher = new TeacherForm(userResponse);
+                            teacher.Show();
 
-                            MessageBox.Show("Teacher");
+                            MainForm.main.Hide();
+                           
                         }
                     }
                     else

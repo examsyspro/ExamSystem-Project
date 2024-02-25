@@ -1,4 +1,5 @@
 ﻿using ExamSystem_Project.FormModels;
+using ExamSystem_Project.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,14 +16,14 @@ namespace ExamSystem_Project.Forms
     {
         BuildExamForm buildExamForm;
         TeacherFormModel teacherModel;
+        public User user;
 
 
-
-        public TeacherForm()
+        public TeacherForm(User user1)
         {
             InitializeComponent();
             teacherModel = new TeacherFormModel(this);
-
+            this.user = user1;
             InitializeAll();
 
         }
@@ -64,14 +65,14 @@ namespace ExamSystem_Project.Forms
             dataGridView_teacherExams.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView_teacherExams.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right);
 
-
+            
         }
 
 
 
         private void button_createExam_Click(object sender, EventArgs e)
         {
-            teacherModel.CreateNewExam();
+            teacherModel.CreateNewExam(user);
         }
 
         private void button_getAllExams_Click(object sender, EventArgs e)
@@ -84,7 +85,7 @@ namespace ExamSystem_Project.Forms
         {
             if (e.ColumnIndex == 9)
             {
-                teacherModel.OpenExistExam();
+                teacherModel.OpenExistExam(user);
 
             }
         }

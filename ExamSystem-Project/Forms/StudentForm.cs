@@ -13,13 +13,13 @@ namespace ExamSystem_Project.Forms
 {
     public partial class StudentForm : Form
     {
-        User User { get; set; }
+        User user { get; set; }
 
         public StudentForm(User user1)
         {
             InitializeComponent();
             InitializeAll();
-            this.User = user1;
+            this.user = user1;
 
         }
 

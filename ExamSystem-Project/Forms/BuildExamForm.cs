@@ -20,14 +20,15 @@ namespace ExamSystem_Project.Forms
         private readonly int[] numbersArr = { 1, 2, 3, 4, 5, 6, 7 };
         public ExamFormModel examModel;
         public static BuildExamForm buildExam;
-
-        public BuildExamForm(Exam exam)
+        public User user;
+        public BuildExamForm(Exam exam, User user1)
         {
             InitializeComponent();
+            this.user = user1;
             InitializeAll();
             buildExam = this;
             examModel = new ExamFormModel(exam);
-
+            
         }
 
         public void InitializeAll()
@@ -106,6 +107,7 @@ namespace ExamSystem_Project.Forms
 
                 button_SaveExamBuilder.Visible = false;
                 button_next.Visible = true;
+                textBox_teacherName.Text = user.FullName;
             }
             catch (Exception ex)
             {
@@ -114,7 +116,7 @@ namespace ExamSystem_Project.Forms
             }
 
 
-
+            
 
 
         }

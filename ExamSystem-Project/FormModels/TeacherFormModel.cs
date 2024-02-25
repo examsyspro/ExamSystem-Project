@@ -74,13 +74,13 @@ namespace ExamSystem_Project.FormModels
 
         }
 
-        public void OpenExistExam()
+        public void OpenExistExam(User user)
         {
             try
             {
                 int index = teacher.dataGridView_teacherExams.SelectedRows[0].Index;
                 exam = exams[index];
-                buildExam = new BuildExamForm(exam);
+                buildExam = new BuildExamForm(exam, user);
                 buildExam.ShowDialog();
 
             }
@@ -93,9 +93,9 @@ namespace ExamSystem_Project.FormModels
 
         }
 
-        public void CreateNewExam()
+        public void CreateNewExam(User user)
         {
-            buildExam = new BuildExamForm(null);
+            buildExam = new BuildExamForm(null,user);
             buildExam.ShowDialog();
         }
 
