@@ -75,7 +75,7 @@ namespace ExamSystem.ServerAPI.Migrations
                     ExamStrId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     RandomAnsOrder = table.Column<bool>(type: "bit", nullable: false),
                     IndexCorrect = table.Column<int>(type: "int", nullable: false),
-                    ExamId = table.Column<int>(type: "int", nullable: false)
+                    ExamId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -84,8 +84,7 @@ namespace ExamSystem.ServerAPI.Migrations
                         name: "FK_Questions_Exams_ExamId",
                         column: x => x.ExamId,
                         principalTable: "Exams",
-                        principalColumn: "ExamId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ExamId");
                 });
 
             migrationBuilder.CreateTable(

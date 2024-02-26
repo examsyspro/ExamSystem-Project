@@ -157,7 +157,7 @@ namespace ExamSystem.ServerAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionId"));
 
-                    b.Property<int>("ExamId")
+                    b.Property<int?>("ExamId")
                         .HasColumnType("int");
 
                     b.Property<Guid>("ExamStrId")
@@ -233,13 +233,9 @@ namespace ExamSystem.ServerAPI.Migrations
 
             modelBuilder.Entity("ExamSystem.ServerAPI.Models.Question", b =>
                 {
-                    b.HasOne("ExamSystem.ServerAPI.Models.Exam", "exam")
+                    b.HasOne("ExamSystem.ServerAPI.Models.Exam", null)
                         .WithMany("questions")
-                        .HasForeignKey("ExamId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("exam");
+                        .HasForeignKey("ExamId");
                 });
 
             modelBuilder.Entity("ExamSystem.ServerAPI.Models.Exam", b =>
