@@ -9,15 +9,11 @@ namespace ExamSystem_Project.Models
 {
     public class Error
     {
-        public int ErrorId { get; set; } 
+        public int ErrorId { get; set; }
         public string QuestionContent { get; set; }
         public string CorrectAnswer { get; set; }
         public string StudentAnswer { get; set; }
         public int ParticipationId { get; set; }
-
-
-
-
 
     }
 }

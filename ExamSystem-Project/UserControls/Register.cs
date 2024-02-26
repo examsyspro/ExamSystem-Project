@@ -26,11 +26,11 @@ namespace ExamSystem_Project.UserControls
         public string userid;
         public User user;
         public string password;
-      
+
         public Register()
         {
             InitializeComponent();
-          
+
             success = false;
             selectedItem = string.Empty;
             userType = new UserType_Enum();
@@ -44,8 +44,8 @@ namespace ExamSystem_Project.UserControls
             label_cour.Visible = false;
             label_teaStu.Visible = false;
             label_id.Visible = false;
-           
-            
+
+
 
         }
 

@@ -11,22 +11,16 @@ namespace ExamSystem.ServerAPI.Models
 {
     public class Question
     {
-        
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int QuestionId { get; set; }
-     
         public Guid QuestionStrId { get; set; }
         public string Text { get; set; }
         public List<OptionAns> Options { get; set; }
         public Guid ExamStrId { get; set; }
         public bool RandomAnsOrder { get; set; }
         public int IndexCorrect { get; set; }
-        //public Exam exam { get; set; }
-
-
-
-
     }
 }
 

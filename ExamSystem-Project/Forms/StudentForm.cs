@@ -1,4 +1,5 @@
-﻿using ExamSystem_Project.Models;
+﻿using ExamSystem_Project.FormModels;
+using ExamSystem_Project.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +14,14 @@ namespace ExamSystem_Project.Forms
 {
     public partial class StudentForm : Form
     {
-        User user { get; set; }
-
+        public User user { get; set; }
+        public StudentFormModel StudentModel;
         public StudentForm(User user1)
         {
             InitializeComponent();
             InitializeAll();
             this.user = user1;
-
+            StudentModel = new StudentFormModel(this);
         }
 
 
@@ -66,7 +67,7 @@ namespace ExamSystem_Project.Forms
         {
             if (e.ColumnIndex == 9)
             {
-                MessageBox.Show(e.ColumnIndex.ToString());
+                StudentModel.OpenExam(user);
             }
         }
 
@@ -79,5 +80,7 @@ namespace ExamSystem_Project.Forms
         {
 
         }
+
+
     }
 }
