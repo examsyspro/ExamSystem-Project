@@ -38,7 +38,6 @@ namespace ExamSystem_Project.FormModels
 
         public RunExamFormModel(Exam examFromSt)
         {
-
             this.runExam = ExamRunForm2.runExam;
             this.exam = examFromSt;
             FillAllExamFields();
@@ -47,7 +46,6 @@ namespace ExamSystem_Project.FormModels
             deleteButtonList = new List<Button>();
             ControlsList = new List<Control>();
             labelList = new List<Label>();
-
         }
 
 
