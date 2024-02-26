@@ -75,35 +75,6 @@ namespace ExamSystem_Project.FormModels
             }
         }
 
-        public void CreateSummeryPage()
-        {
-            try
-            {
-                runExam.label_examTitle_S.Text = exam.ExamTitle;
-                runExam.label_TeacherName_S.Text = exam.TeacherFullName;
-                // runExam.label_examDate_S.Text = runExam.textBox_date.Text;
-                // runExam.label_startTime_S.Text = string.Format($"{runExam.comboBox_hours_StartTime.SelectedItem}:{runExam.comboBox_minutes_StartTime.SelectedItem}");
-                runExam.label_totalExamTime_S.Text = $"{exam.TotalHours:00}:{exam.TotalMinutes:00}";
-                runExam.label_course_S.Text = exam.CourseType.ToString();
-                //runExam.label_randomQuesOrder_S.Text = runExam.checkBox_QuestionOrder.Checked.ToString();
-                runExam.label_pointQuestion_S.Text = (100 / runExam.listBox_Questions.Items.Count).ToString("00");
-                // runExam.listBox_questionList_S.DataSource = null;
-                // runExam.listBox_questionList_S.Items.Clear();
-                // runExam.listBox_questionList_S.DataSource = exam.questions;
-
-
-
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-            //exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
-            //exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
-        }
-
         public void UpdateQuestion()
         {
             try
@@ -473,17 +444,13 @@ namespace ExamSystem_Project.FormModels
         public void FillAllExamFields()
         {
 
-            //runExam.textBox_examTitle.Text = exam.ExamTitle;
-            //runExam.textBox_teacherName.Text = exam.TeacherFullName;
-            //runExam.textBox_date.Text = exam.ExamDateTime.ToString("dd/MM/yy");
-            //runExam.comboBox_Course_Select.Text = exam.CourseType.ToString();
-            //runExam.checkBox_QuestionOrder.Checked = exam.RandomQuestionOrder;
-            //runExam.comboBox_hours_StartTime.Text = exam.ExamDateTime.Hour.ToString("00");
-            //runExam.comboBox_minutes_StartTime.Text = exam.ExamDateTime.Minute.ToString("00");
-            //runExam.comboBox_hours_totalTime.Text = exam.TotalHours.ToString("00");
-            //runExam.comboBox_minutes_totalTime.Text = exam.TotalMinutes.ToString("00");
+            runExam.label_examTitle_S.Text = exam.ExamTitle;
+            runExam.label_TeacherName_S.Text = exam.TeacherFullName;
+            runExam.label_totalExamTime_S.Text = $"{exam.TotalHours:00}:{exam.TotalMinutes:00}";
+            runExam.label_course_S.Text = exam.CourseType.ToString();
+            runExam.label_pointQuestion_S.Text = (100 / exam.questions.Count).ToString("00");
 
-            RefreshQuestionsListBox();
+            //   RefreshQuestionsListBox();
 
 
 

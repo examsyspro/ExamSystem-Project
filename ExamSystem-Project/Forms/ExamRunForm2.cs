@@ -115,7 +115,6 @@ namespace ExamSystem_Project.Forms
                         if (!tabControl1.TabPages.Contains(tabPage_step3))
                         {
                             button_next.Visible = false;
-                            examModel.CreateSummeryPage();
                             tabControl1.TabPages.Add(tabPage_step3);
                             tabControl1.TabPages.Remove(tabPage_step2);
                         }
