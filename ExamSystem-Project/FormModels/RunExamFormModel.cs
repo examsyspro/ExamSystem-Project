@@ -446,7 +446,7 @@ namespace ExamSystem_Project.FormModels
             runExam.label_TeacherName_S.Text = exam.TeacherFullName;
             runExam.label_totalExamTime_S.Text = $"{exam.TotalHours:00}:{exam.TotalMinutes:00}";
             runExam.label_course_S.Text = exam.CourseType.ToString();
-            runExam.label_pointQuestion_S.Text = (100.0 / exam.questions.Count).ToString("F2"); //runExam.label_pointQuestion_S.Text = (100.0 / 3.0).ToString("F2");
+            runExam.label_pointQuestion_S.Text = (100.0 / exam.questions.Count).ToString("F2"); 
 
             //   RefreshQuestionsListBox();
 
