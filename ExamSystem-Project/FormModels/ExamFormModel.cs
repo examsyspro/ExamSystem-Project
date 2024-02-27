@@ -101,7 +101,7 @@ namespace ExamSystem_Project.FormModels
                 buildExam.label_totalExamTime_S.Text = $"{buildExam.comboBox_hours_totalTime.SelectedItem}:{buildExam.comboBox_minutes_totalTime.SelectedItem}";
                 buildExam.label_course_S.Text = buildExam.comboBox_Course_Select.SelectedItem.ToString();
                 buildExam.label_randomQuesOrder_S.Text = buildExam.checkBox_QuestionOrder.Checked.ToString();
-                buildExam.label_pointQuestion_S.Text = (100 / buildExam.listBox_Questions.Items.Count).ToString("00");
+                buildExam.label_pointQuestion_S.Text = (100.0 / buildExam.listBox_Questions.Items.Count).ToString("F2");
                 buildExam.listBox_questionList_S.DataSource = null;
                 buildExam.listBox_questionList_S.Items.Clear();
                 buildExam.listBox_questionList_S.DataSource = exam.questions;
