@@ -53,7 +53,7 @@ namespace ExamSystem_Project.Forms
                 // Set maximum width and height for the form
                 int maxWidth = screen.Width - 100; // Adjust this value as needed
                 int maxHeight = screen.Height - 100; // Adjust this value as needed
-                int desiredFormWidth = 1546; // Set your desired form width
+                int desiredFormWidth = 1237; // Set your desired form width
                 int w = Math.Min(desiredFormWidth, maxWidth);
                 int h = Math.Min(Height, maxHeight);
 
@@ -65,16 +65,7 @@ namespace ExamSystem_Project.Forms
 
 
 
-                foreach (Control control in panel1.Controls)
-                {
 
-                    if (control is TextBox)
-                    {
-                        ExamButtonHandler(control as TextBox);
-
-                    }
-
-                }
 
                 button_SaveExamBuilder.Visible = false;
                 button_next.Visible = true;
@@ -157,7 +148,6 @@ namespace ExamSystem_Project.Forms
                     case "tabPage_step2":
                         if (!tabControl1.TabPages.Contains(tabPage_step1))
                         {
-                            ExamButtonHandler(new TextBox());
                             tabControl1.TabPages.Add(tabPage_step1);
                             tabControl1.TabPages.Remove(tabPage_step2);
                         }
@@ -176,7 +166,7 @@ namespace ExamSystem_Project.Forms
 
         }
 
-        public void ExamButtonHandler(TextBox text)
+        public void ExamButtonHandler(Label text)
         {
             ChangeTextBoxColor(text);
             bool res = CheckEmptyPanelControls(panel1);
@@ -211,7 +201,7 @@ namespace ExamSystem_Project.Forms
             return res;
         }
 
-        public void ChangeTextBoxColor(TextBox text)
+        public void ChangeTextBoxColor(Label text)
         {
             if (text.Text == string.Empty)
             {
@@ -223,23 +213,7 @@ namespace ExamSystem_Project.Forms
             }
         }
 
-        public void OptionsButtonHandler(TextBox text, EventArgs e)
-        {
-            ChangeTextBoxColor(text);
-            bool res = CheckEmptyPanelControls(panel_questions);
 
-            if (!res || examModel.textBoxesList.Count < 2)
-            {
-                res = false;
-            }
-            else
-            {
-                res = true;
-            }
-
-
-            button_SaveQuestion.Enabled = res;
-        }
 
 
 
@@ -250,7 +224,7 @@ namespace ExamSystem_Project.Forms
 
         private void button_SaveQuestion_Click(object sender, EventArgs e)
         {
-            examModel.SaveQuestion();
+
             panel_questionList.BringToFront();
         }
 
@@ -267,23 +241,7 @@ namespace ExamSystem_Project.Forms
             //comboBox_minutes_totalTime.SelectedIndex = 0;
         }
 
-        private void button_testQuestions_Click(object sender, EventArgs e)
-        {
-            if (examModel.textBoxCounter < 4)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    examModel.CreateDynamicOptions();
-                }
-            }
-            textBox_QuetionContent.Text = "what is the best text option?";
 
-            for (int i = 0; i < examModel.textBoxesList.Count; i++)
-            {
-                examModel.textBoxesList[i].Text = "test option" + (i + 1);
-                examModel.radioButtonList[i].Checked = true;
-            }
-        }
 
         private void button_ShowQuestions_Click(object sender, EventArgs e)
         {
@@ -293,7 +251,7 @@ namespace ExamSystem_Project.Forms
         private void button_AddQuestion_Click(object sender, EventArgs e)
         {
             panel_questions.BringToFront();
-            examModel.AddQuestion();
+
         }
 
         private void listBox_Questions_SelectedIndexChanged(object sender, EventArgs e)
@@ -308,35 +266,11 @@ namespace ExamSystem_Project.Forms
 
 
 
-        private void comboBox_hours_StartTime_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ExamButtonHandler(new TextBox());
-        }
 
-        private void comboBox_minutes_StartTime_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ExamButtonHandler(new TextBox());
-        }
 
-        private void comboBox_Course_Select_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ExamButtonHandler(new TextBox());
-        }
 
-        private void comboBox_hours_totalTime_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ExamButtonHandler(new TextBox());
-        }
 
-        private void comboBox_minutes_totalTime_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ExamButtonHandler(new TextBox());
-        }
 
-        private void textBox_QuetionContent_TextChanged(object sender, EventArgs e)
-        {
-            OptionsButtonHandler(textBox_QuetionContent, e);
-        }
 
         private void button_removeQuestion_Click(object sender, EventArgs e)
         {
@@ -350,6 +284,9 @@ namespace ExamSystem_Project.Forms
             panel_questionList.SendToBack();
         }
 
-
+        private void button_start_Click(object sender, EventArgs e)
+        {
+            examModel.CreateQuestions();
+        }
     }
 }
