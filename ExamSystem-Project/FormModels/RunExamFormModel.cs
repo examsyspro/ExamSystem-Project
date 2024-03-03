@@ -288,7 +288,11 @@ namespace ExamSystem_Project.FormModels
             foreach (var item in radioButtonList)
             {
                 int index = radioButtonList.FindIndex(x => x.Checked == true);
-                checekdList.Add(index);
+                if (index >= 0)
+                {
+                    checekdList.Add(index);
+                }
+
             }
         }
 
