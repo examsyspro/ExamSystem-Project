@@ -247,7 +247,7 @@ namespace ExamSystem_Project.FormModels
                     case 1:
                         if (questionIndex <= exam.questions.Count - 1)
                         {
-                            SaveMarkedIndex();
+                            // SaveMarkedIndex();
                             questionIndex++;
                         }
                         break;
