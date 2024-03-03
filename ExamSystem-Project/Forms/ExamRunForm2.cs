@@ -87,36 +87,15 @@ namespace ExamSystem_Project.Forms
         {
             try
             {
-                switch (tabControl1.SelectedTab.Name)
+
+                if (examModel.questionIndex != examModel.exam.questions.Count - 1)
                 {
-                    case "tabPage_step1":
-                        if (!tabControl1.TabPages.Contains(tabPage_step2))
-                        {
+                    examModel.ClearAllControls();
+                    examModel.CreateDynamicFullFields(1);
 
-                            examModel.CheckQuestionListSize();
-                            tabControl1.TabPages.Add(tabPage_step2);
-                            tabControl1.TabPages.Remove(tabPage_step1);
-                            examModel.RefreshQuestionsListBox();
-                        }
-
-                        tabControl1.SelectedTab = tabPage_step2;
-                        break;
-                    case "tabPage_step2":
-
-                        if (!tabControl1.TabPages.Contains(tabPage_step3))
-                        {
-                            button_next.Visible = false;
-                            tabControl1.TabPages.Add(tabPage_step3);
-                            tabControl1.TabPages.Remove(tabPage_step2);
-                        }
-                        // ExamButtonHandler(new TextBox());
-                        tabControl1.SelectedTab = tabPage_step3;
-                        button_SaveExamBuilder.Visible = true;
-                        button_SaveExamBuilder.Enabled = true;
-                        break;
-                    default:
-                        break;
                 }
+
+
             }
             catch (Exception ex)
             {
@@ -132,30 +111,11 @@ namespace ExamSystem_Project.Forms
         {
             try
             {
-                switch (tabControl1.SelectedTab.Name)
-                {
-                    case "tabPage_step3":
-                        if (!tabControl1.TabPages.Contains(tabPage_step2))
-                        {
-                            tabControl1.TabPages.Add(tabPage_step2);
-                            tabControl1.TabPages.Remove(tabPage_step3);
-                            button_SaveExamBuilder.Visible = false;
-                            button_SaveExamBuilder.Enabled = false;
-                            button_next.Visible = true;
-                        }
-                        tabControl1.SelectedTab = tabPage_step2;
-                        break;
-                    case "tabPage_step2":
-                        if (!tabControl1.TabPages.Contains(tabPage_step1))
-                        {
-                            tabControl1.TabPages.Add(tabPage_step1);
-                            tabControl1.TabPages.Remove(tabPage_step2);
-                        }
 
-                        tabControl1.SelectedTab = tabPage_step1;
-                        break;
-                    default:
-                        break;
+                if (examModel.questionIndex > 0)
+                {
+                    examModel.ClearAllControls();
+                    examModel.CreateDynamicFullFields(2);
                 }
             }
             catch (Exception ex)

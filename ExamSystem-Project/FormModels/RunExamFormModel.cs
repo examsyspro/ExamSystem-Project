@@ -33,6 +33,7 @@ namespace ExamSystem_Project.FormModels
         public List<Control> ControlsList;
         Random rand;
         public int questionIndex = 0;
+        List<int> checekdList;
         public ExamRunForm2 runExam;
         public bool isExist = false;
 
@@ -47,6 +48,7 @@ namespace ExamSystem_Project.FormModels
             labelListOptions = new List<Label>();
             ControlsList = new List<Control>();
             labelList = new List<Label>();
+            checekdList = new List<int>();
         }
 
 
@@ -81,7 +83,7 @@ namespace ExamSystem_Project.FormModels
                 var index = runExam.listBox_Questions.SelectedIndex;
                 question = exam.questions[index];
                 ClearAllControls();
-                CreateDynamicFullFields();
+                // CreateDynamicFullFields();
             }
             catch (Exception ex)
             {
@@ -236,26 +238,60 @@ namespace ExamSystem_Project.FormModels
 
         }
 
-        public void CreateDynamicFullFields()
+        public void CreateDynamicFullFields(int val)
         {
-
-            runExam.textBox_QuetionContent.Text = exam.questions[questionIndex].Text;
-            question = exam.questions[questionIndex];
-            for (int i = 0; i < question.Options.Count; i++)
+            try
             {
-                CreateDynamicOptions();
-                labelListOptions[i].Text = question.Options[i].ToString();
+                switch (val)
+                {
+                    case 1:
+                        if (questionIndex <= exam.questions.Count - 1)
+                        {
+                            SaveMarkedIndex();
+                            questionIndex++;
+                        }
+                        break;
+                    case 2:
+                        if (questionIndex >= 0)
+                        {
+                            questionIndex--;
+                        }
+                        break;
+                    default:
+                        break;
+                }
 
-                //radioButtonList[i].Checked = question.Options[i].IsCorrect;
+                runExam.textBox_QuetionContent.Text = exam.questions[questionIndex].Text;
+                question = exam.questions[questionIndex];
+                for (int i = 0; i < question.Options.Count; i++)
+                {
+                    CreateDynamicOptions();
+                    labelListOptions[i].Text = question.Options[i].ToString();
+
+                    //radioButtonList[i].Checked = question.Options[i].IsCorrect;
+                }
+
+
+
+
             }
-            if (exam.questions.Count >= questionIndex)
+            catch (Exception ex)
             {
-                questionIndex++;
+
+
             }
-
-
 
         }
+
+        public void SaveMarkedIndex()
+        {
+            foreach (var item in radioButtonList)
+            {
+                int index = radioButtonList.FindIndex(x => x.Checked == true);
+                checekdList.Add(index);
+            }
+        }
+
 
         public void RandomQuestionOrder()
         {
@@ -284,14 +320,7 @@ namespace ExamSystem_Project.FormModels
             {
                 bool res = false;
                 string time = string.Format($"{""}:{""}");
-                // exam.ExamTitle = runExam.textBox_examTitle.Text;
-                //  exam.TeacherFullName = runExam.textBox_teacherName.Text;
-                // exam.ExamDateTime = DateTime.Parse($"{runExam.textBox_date.Text} {time}");
-                //   exam.TotalHours = int.Parse(runExam.comboBox_hours_totalTime.SelectedItem.ToString());
-                // exam.TotalMinutes = int.Parse(runExam.comboBox_minutes_totalTime.SelectedItem.ToString());
-                // string coursetype = runExam.comboBox_Course_Select.SelectedItem.ToString();
-                // exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
-                //  exam.RandomQuestionOrder = runExam.checkBox_QuestionOrder.Checked;
+
                 if (isExist)
                 {
                     res = await General.mainRequestor.Request_Put<Exam>(exam, "api/exams/update");
@@ -384,7 +413,7 @@ namespace ExamSystem_Project.FormModels
                 runExam.tabControl1.TabPages.Add(runExam.tabPage_step2);
                 runExam.tabControl1.TabPages.Remove(runExam.tabPage_step1);
                 ClearAllControls();
-                CreateDynamicFullFields();
+                CreateDynamicFullFields(0);
             }
             catch (Exception ex)
             {

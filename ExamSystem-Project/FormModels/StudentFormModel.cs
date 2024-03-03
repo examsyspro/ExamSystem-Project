@@ -30,10 +30,10 @@ namespace ExamSystem_Project.FormModels
         {
             try
             {
-                exams = await General.mainRequestor.Request_GetAll<Exam>("api/exams/getallexams");
+                exams = (await General.mainRequestor.Request_GetAll<Exam>("api/exams/getallexams")).Where(c => c.CourseType == student.user.CourseType).ToList(); ;
                 if (exams.Count > 0)
                 {
-                    student.dataGridView_StudentExam.DataSource = exams.Where(c => c.CourseType == student.user.CourseType).ToList();
+                    student.dataGridView_StudentExam.DataSource = exams;
 
                 }
             }

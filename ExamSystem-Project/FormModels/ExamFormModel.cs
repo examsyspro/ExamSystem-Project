@@ -15,7 +15,7 @@ namespace ExamSystem_Project.FormModels
 {
     public class ExamFormModel
     {
-        
+
         public int textBoxCounter = 0;
         public int optionNameCounter = 1;
         public TextBox dynamicTextBox;
@@ -36,7 +36,7 @@ namespace ExamSystem_Project.FormModels
         public bool isExist = false;
         public ExamFormModel(Exam examFromDT)
         {
-            
+
             this.buildExam = BuildExamForm.buildExam;
             dtExam = examFromDT;
             CheckExamFromDT();
@@ -45,7 +45,7 @@ namespace ExamSystem_Project.FormModels
             deleteButtonList = new List<Button>();
             ControlsList = new List<Control>();
             labelList = new List<Label>();
-            
+
         }
 
 
@@ -56,9 +56,9 @@ namespace ExamSystem_Project.FormModels
             {
                 isExist = true;
                 exam = dtExam;
-                  
+
                 FillAllExamFields();
-                
+
 
             }
             else
@@ -139,12 +139,18 @@ namespace ExamSystem_Project.FormModels
             }
         }
 
-        public void SaveQuestion()
+        public bool SaveQuestion()
         {
 
             try
             {
 
+                var temp = radioButtonList.Find(x => x.Checked == true);
+                if (temp == null)
+                {
+                    MessageBox.Show("Please select the currect answer");
+                    return false;
+                }
                 question.Text = buildExam.textBox_QuetionContent.Text;
 
                 for (int i = 0; i < textBoxesList.Count; i++)
@@ -170,8 +176,6 @@ namespace ExamSystem_Project.FormModels
                             question.Options.Add(optionAns);
                         }
 
-
-
                     }
                 }
 
@@ -186,32 +190,33 @@ namespace ExamSystem_Project.FormModels
                 }
                 else
                 {
-                   int index = exam.questions.FindIndex(q=>q.QuestionStrId == question.QuestionStrId);
-                   exam.questions[index]= question;
+                    int index = exam.questions.FindIndex(q => q.QuestionStrId == question.QuestionStrId);
+                    exam.questions[index] = question;
                 }
 
                 RefreshQuestionsListBox();
 
 
                 CheckQuestionListSize();
+                return true;
 
             }
             catch (Exception ex)
             {
 
-
+                return false;
             }
 
         }
 
         public void RefreshQuestionsListBox()
         {
-                buildExam.listBox_Questions.DataSource = null;
-                buildExam.listBox_Questions.Items.Clear();
-                if (exam.questions.Count > 0)
-                {
+            buildExam.listBox_Questions.DataSource = null;
+            buildExam.listBox_Questions.Items.Clear();
+            if (exam.questions.Count > 0)
+            {
                 buildExam.listBox_Questions.DataSource = exam.questions;
-                }
+            }
 
         }
 
@@ -220,13 +225,13 @@ namespace ExamSystem_Project.FormModels
             try
             {
 
-                    var index = buildExam.listBox_Questions.SelectedIndex;
-                    question = exam.questions[index];
-                    exam.questions.Remove(question);
-                    RefreshQuestionsListBox();
-                    CheckQuestionListSize();
-            
-               
+                var index = buildExam.listBox_Questions.SelectedIndex;
+                question = exam.questions[index];
+                exam.questions.Remove(question);
+                RefreshQuestionsListBox();
+                CheckQuestionListSize();
+
+
 
             }
             catch (Exception ex)
@@ -250,10 +255,10 @@ namespace ExamSystem_Project.FormModels
                 }
 
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
 
-                
+
             }
 
         }
@@ -330,6 +335,7 @@ namespace ExamSystem_Project.FormModels
                     buildExam.OptionsButtonHandler(dynamicTextBox as TextBox, textBoxEventArgs);
                 };
 
+
                 textBoxesList.Add(dynamicTextBox);
 
 
@@ -401,6 +407,7 @@ namespace ExamSystem_Project.FormModels
                     }
                     buildExam.button_addOption.Enabled = textBoxCounter < 5;
                     buildExam.OptionsButtonHandler(new TextBox(), EventArgs.Empty);
+
                 };
 
                 // Add Label, TextBox, and Delete button to the panel_questions
@@ -414,7 +421,9 @@ namespace ExamSystem_Project.FormModels
                 textBoxCounter++;
                 optionNameCounter++;
                 buildExam.button_addOption.Enabled = textBoxCounter < 5;
-
+                dynamicTextBox.Text = " ";
+                dynamicTextBox.Text = string.Empty;
+                radioButtonList[0].Checked = true;
             }
             catch (Exception ex)
             {
@@ -439,7 +448,7 @@ namespace ExamSystem_Project.FormModels
                 exam.RandomQuestionOrder = buildExam.checkBox_QuestionOrder.Checked;
                 if (isExist)
                 {
-                   res =  await General.mainRequestor.Request_Put<Exam>( exam, "api/exams/update");
+                    res = await General.mainRequestor.Request_Put<Exam>(exam, "api/exams/update");
                 }
                 else
                 {
@@ -501,7 +510,7 @@ namespace ExamSystem_Project.FormModels
             buildExam.comboBox_minutes_totalTime.Text = exam.TotalMinutes.ToString("00");
 
             RefreshQuestionsListBox();
-            
+
 
 
         }
