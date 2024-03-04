@@ -33,7 +33,7 @@ namespace ExamSystem_Project.FormModels
         public List<Label> labelListOptions;
         public List<Control> ControlsList;
         public int questionIndex = 0;
-        List<int> checekdList;
+        List<int> checkedList;
         public ExamRunForm2 runExam;
         public bool isExist = false;
 
@@ -47,7 +47,7 @@ namespace ExamSystem_Project.FormModels
             labelListOptions = new List<Label>();
             ControlsList = new List<Control>();
             labelList = new List<Label>();
-            checekdList = new List<int>();
+            checkedList = new List<int>();
         }
 
 
@@ -167,16 +167,17 @@ namespace ExamSystem_Project.FormModels
                     CreateDynamicOptions();
                     labelListOptions[i].Text = question.Options[i].ToString();
 
-
                     if (val == 1 || val == 2)
-                    {
-                      
-                            if (checekdList[questionIndex] == i)
+                    {              
+                        if (questionIndex >= 0 && questionIndex < checkedList.Count)
+                        {
+                            if (checkedList[questionIndex] == i)
+                            {
                                 radioButtonList[i].Checked = true;
-                     
-                      
+                            }      
+                        }
                     }
-                     // = question.Options[i].IsCorrect;
+                    // = question.Options[i].IsCorrect;
 
                 }
 
@@ -185,6 +186,11 @@ namespace ExamSystem_Project.FormModels
 
                     runExam.button_SaveExamBuilder.Visible = true;
                     runExam.button_next.Visible = false;
+                }
+                else
+                {
+                    runExam.button_SaveExamBuilder.Visible = false;
+                    runExam.button_next.Visible = true;
                 }
 
 
@@ -204,7 +210,7 @@ namespace ExamSystem_Project.FormModels
                 int index = radioButtonList.FindIndex(x => x.Checked == true);
                 if (index >= 0)
                 {
-                    checekdList.Add(index);
+                checkedList.Add(index);
                 }
 
          

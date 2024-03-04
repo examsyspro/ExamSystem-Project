@@ -90,15 +90,6 @@ namespace ExamSystem_Project.Forms
                     examModel.CreateDynamicFullFields(1);
 
                 }
-                //else
-                //{
-
-                //    examModel.SaveMarkedIndex();
-
-                //}
-
-
-
 
             }
             catch (Exception ex)
