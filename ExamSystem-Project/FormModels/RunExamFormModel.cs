@@ -170,11 +170,10 @@ namespace ExamSystem_Project.FormModels
 
                     if (val == 1 || val == 2)
                     {
-                        if (checekdList[i]== i)
-                        {
-                         ///   if (checekdList[questionIndex] == i)
+                      
+                            if (checekdList[questionIndex] == i)
                                 radioButtonList[i].Checked = true;
-                        }
+                     
                       
                     }
                      // = question.Options[i].IsCorrect;
