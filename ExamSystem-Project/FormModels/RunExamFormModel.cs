@@ -167,7 +167,17 @@ namespace ExamSystem_Project.FormModels
                     CreateDynamicOptions();
                     labelListOptions[i].Text = question.Options[i].ToString();
 
-                     radioButtonList[i].Checked = question.Options[i].IsCorrect;
+
+                    if (val == 1 || val == 2)
+                    {
+                        if (checekdList[i]== i)
+                        {
+                         ///   if (checekdList[questionIndex] == i)
+                                radioButtonList[i].Checked = true;
+                        }
+                      
+                    }
+                     // = question.Options[i].IsCorrect;
 
                 }
 
@@ -183,7 +193,7 @@ namespace ExamSystem_Project.FormModels
             }
             catch (Exception ex)
             {
-
+             
 
             }
 
