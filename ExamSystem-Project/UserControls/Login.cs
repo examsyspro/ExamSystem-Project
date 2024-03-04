@@ -36,6 +36,8 @@ namespace ExamSystem_Project.UserControls
             password = string.Empty;
             user = new User();
             userResponse = new User();
+            textBox_userId.Text = "300884335";
+            textBox_password.Text = "Roei1234";
             
           
         }

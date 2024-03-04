@@ -39,7 +39,7 @@ namespace ExamSystem_Project.Forms
                 tabControl1.TabPages.Remove(tabPage_step2);
                 tabControl1.TabPages.Remove(tabPage_step3);
                 panel_questions.SendToBack();
-                button_SaveExamBuilder.Enabled = false;
+
 
                 // Set DPI Awareness
                 this.AutoScaleMode = AutoScaleMode.Dpi;
@@ -59,11 +59,6 @@ namespace ExamSystem_Project.Forms
 
                 Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
                 Size = new Size(w, h);
-
-
-
-
-
 
 
 
@@ -95,6 +90,14 @@ namespace ExamSystem_Project.Forms
                     examModel.CreateDynamicFullFields(1);
 
                 }
+                //else
+                //{
+
+                //    examModel.SaveMarkedIndex();
+
+                //}
+
+
 
 
             }
@@ -178,16 +181,9 @@ namespace ExamSystem_Project.Forms
 
 
 
-        private void button_addOption_Click(object sender, EventArgs e)
-        {
-            examModel.CreateDynamicOptions();
-        }
+    
 
-        private void button_SaveQuestion_Click(object sender, EventArgs e)
-        {
-
-            panel_questionList.BringToFront();
-        }
+ 
 
         private void button_Test_Click(object sender, EventArgs e)
         {
@@ -204,21 +200,11 @@ namespace ExamSystem_Project.Forms
 
 
 
-        private void button_ShowQuestions_Click(object sender, EventArgs e)
-        {
-            panel_questions.SendToBack();
-        }
 
-        private void button_AddQuestion_Click(object sender, EventArgs e)
-        {
-            panel_questions.BringToFront();
 
-        }
 
-        private void listBox_Questions_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            examModel.Questions_SelectedIndex();
-        }
+
+   
 
         private void button_SaveExamBuilder_Click(object sender, EventArgs e)
         {
@@ -233,17 +219,9 @@ namespace ExamSystem_Project.Forms
 
 
 
-        private void button_removeQuestion_Click(object sender, EventArgs e)
-        {
-            examModel.RemoveQuestion();
-        }
+     
 
-        private void button_updateQuestion_Click(object sender, EventArgs e)
-        {
-
-            examModel.UpdateQuestion();
-            panel_questionList.SendToBack();
-        }
+   
 
         private void button_start_Click(object sender, EventArgs e)
         {
