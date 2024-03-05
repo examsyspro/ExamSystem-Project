@@ -17,6 +17,6 @@ namespace ExamSystem.ServerAPI.Models
         public string CorrectAnswer { get; set; }
         public string StudentAnswer { get; set; }
         public int ParticipationId { get; set; }
-        public Participation participation { get; set; }
+       // public Participation participation { get; set; }
     }
 }

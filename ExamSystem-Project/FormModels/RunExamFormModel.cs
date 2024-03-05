@@ -352,7 +352,7 @@ namespace ExamSystem_Project.FormModels
                     GetExamAnswers();
                     CreatePaticipation();
 
-                    res = await General.mainRequestor.Request_NewPost<Participation>(participation, "api/Participations/create");
+                    res = await General.mainRequestor.Request_NewPost<Participation>(participation, "api/participations/create");
                     if (res)
                     {
                         MessageBox.Show(Constants.SendSuccess);
