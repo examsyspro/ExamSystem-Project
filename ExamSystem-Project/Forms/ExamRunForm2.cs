@@ -85,10 +85,8 @@ namespace ExamSystem_Project.Forms
 
                 if (examModel.questionIndex != examModel.exam.questions.Count - 1)
                 {
-                    examModel.SaveMarkedIndex();
                     examModel.ClearAllControls();
                     examModel.CreateDynamicFullFields(1);
-
                 }
 
             }

@@ -20,6 +20,7 @@ namespace ExamSystem_Project.FormModels
 
         public int textBoxCounter = 0;
         public int optionNameCounter = 1;
+        public int CurrectAnswerCount = 0;
         public Label dynamicText;
         public string[] strArr;
         public Exam exam;
@@ -33,9 +34,12 @@ namespace ExamSystem_Project.FormModels
         public List<Label> labelListOptions;
         public List<Control> ControlsList;
         public int questionIndex = 0;
-        List<int> checkedList;
         public ExamRunForm2 runExam;
         public bool isExist = false;
+        public Dictionary<int,int>  checkedDictionary;
+        public Participation participation;
+        public Error error;
+
 
 
         public RunExamFormModel(Exam examFromSt)
@@ -47,7 +51,8 @@ namespace ExamSystem_Project.FormModels
             labelListOptions = new List<Label>();
             ControlsList = new List<Control>();
             labelList = new List<Label>();
-            checkedList = new List<int>();
+            checkedDictionary = new Dictionary<int, int>(); 
+            participation = new Participation();
         }
 
 
@@ -62,7 +67,6 @@ namespace ExamSystem_Project.FormModels
 
             try
             {
-               
 
                 // Create a unique identifier for the dynamic controls
                 string controlId = Guid.NewGuid().ToString();
@@ -107,7 +111,12 @@ namespace ExamSystem_Project.FormModels
                     Tag = controlId
                 };
 
+                radioButton.CheckedChanged += (object sender, EventArgs e) =>
+                {
+                    SaveMarkedIndex(sender,e);
+                };
                 radioButtonList.Add(radioButton);
+
 
 
                 // Add Label, TextBox, and Delete button to the panel_questions
@@ -146,7 +155,6 @@ namespace ExamSystem_Project.FormModels
                     case 1:
                         if (questionIndex <= exam.questions.Count - 1)
                         {
-                           // SaveMarkedIndex();
                             questionIndex++;
                         }
                         break;
@@ -169,9 +177,9 @@ namespace ExamSystem_Project.FormModels
 
                     if (val == 1 || val == 2)
                     {              
-                        if (questionIndex >= 0 && questionIndex < checkedList.Count)
+                        if (questionIndex >= 0 && questionIndex < checkedDictionary.Count)
                         {
-                            if (checkedList[questionIndex] == i)
+                            if (checkedDictionary[questionIndex] == i)
                             {
                                 radioButtonList[i].Checked = true;
                             }      
@@ -204,45 +212,157 @@ namespace ExamSystem_Project.FormModels
 
         }
 
-        public void SaveMarkedIndex()
+        public void SaveMarkedIndex(object sender,EventArgs e)
         {
           
                 int index = radioButtonList.FindIndex(x => x.Checked == true);
-                if (index >= 0)
+                if (index >= 0 && !checkedDictionary.ContainsKey(questionIndex))
                 {
-                checkedList.Add(index);
-                }
+                checkedDictionary.Add(questionIndex,index);
+                } 
+                else
+                checkedDictionary[questionIndex] = index;
 
          
         }
 
+        public bool DialogMsgBox()
+        {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("Do you want to send the exam?", "Confirmation", MessageBoxButtons.YesNo);
 
+                if (dialogResult == DialogResult.Yes)
+                {
+                    return true;
+                }
+                else
+                {
+            return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+           
+            }
+        }
+
+        public void GetExamAnswers()
+        {
+            try
+            {
+                string questionContent = string.Empty;
+                string currectAns = string.Empty;
+                string worngAns = string.Empty;
+                int indexCur = 0;
+                int indexWorng = 0; 
+
+
+                for (int i = 0; i < exam.questions.Count; i++)
+                {
+                  
+                 if (exam.questions[i].IndexCorrect == checkedDictionary[i])
+                 {
+                        CurrectAnswerCount++;
+                 }
+                 else
+                 {
+                        questionContent = exam.questions[i].Text;
+                        indexCur = exam.questions[i].IndexCorrect;
+                        currectAns = exam.questions[i].Options[indexCur].OptionText;
+                        indexWorng = checkedDictionary[i];
+                        worngAns = exam.questions[i].Options[indexWorng].OptionText;
+                        AddError(questionContent, currectAns, worngAns);
+                    }  
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+               
+            }
+        }
+
+        public void AddError(string questionContent, string currectAns,string worngAns)
+        {
+            try
+            {
+                error = new Error();
+                error.QuestionContent = questionContent;
+                error.CorrectAnswer = currectAns;
+                error.StudentAnswer = worngAns;
+                participation.errors.Add(error);
+
+            }
+            catch (Exception ex)
+            {
+
+                
+            }
+        }
+
+
+        public void CreatePaticipation()
+        {
+            try
+            {
+                
+                participation.Exam_Id = exam.ExamId;
+                participation.Student_Id= runExam.user.UserId;
+                participation.Student_Name= runExam.user.FullName;
+                participation.Grade = CalculateExamGrade();
+            }
+            catch (Exception ex)
+            { 
+
+            }
+        }
+
+        public float CalculateExamGrade()
+        {
+           
+            try
+            {
+                float grade = 0;
+                float scorePerAns = (float)(100.0 / exam.questions.Count);
+                grade =CurrectAnswerCount * scorePerAns;
+                grade = (float)Math.Round((double)grade);
+
+                return grade;
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
+        }
 
         public async void SaveExam()
         {
             try
             {
+                bool res = false;
 
-                SaveMarkedIndex();
-            //    bool res = false;
-            //    string time = string.Format($"{""}:{""}");
+                res = DialogMsgBox();
+                if (res) 
+                {
+                    GetExamAnswers();
+                    CreatePaticipation();
 
-            //    if (isExist)
-            //    {
-            //        res = await General.mainRequestor.Request_Put<Exam>(exam, "api/exams/update");
-            //    }
-            //    else
-            //    {
-            //        res = await General.mainRequestor.Request_NewPost<Exam>(exam, "api/exams/create");
+                    res = await General.mainRequestor.Request_NewPost<Participation>(participation, "api/Participations/create");
+                    if (res)
+                    {
+                        MessageBox.Show(Constants.SendSuccess);
+                        runExam.Close();
+                       
+                    }
+                }
 
-            //    }
 
-            //    if (res)
-            //    {
-            //        MessageBox.Show(Constants.BuildSuccess);
-            //        runExam.Close();
-            //        TeacherFormModel.teacherFormModel.GetAllExams();
-            //    }
+
             }
             catch (Exception ex)
             {

@@ -24,7 +24,8 @@ namespace ExamSystem_Project.Helpers
                     "- Minimum length of 8 characters";
         public const string About = "The Exam System is a comprehensive platform designed to facilitate the creation, administration, and evaluation of exams.\n\n"
                 + "It serves both educators (teachers) and students, providing a seamless and efficient process for conducting assessments.";
-        public const string BuildSuccess = "Build Exam Success";
+        public const string BuildSuccess = "Build Exam Successfully";
+        public const string SendSuccess = "Send Exam Successfully";
     }
 }
 
