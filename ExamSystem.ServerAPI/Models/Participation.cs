@@ -17,7 +17,7 @@ namespace ExamSystem.ServerAPI.Models
         public string Student_Name { get; set; }
         public int Exam_Id { get; set; }
         public float Grade { get; set; }
-        List <Error> errors { get; set; }   
+        public List<Error> errors { get; set; }
 
 
     }
