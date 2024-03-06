@@ -30,12 +30,13 @@ namespace ExamSystem_Project.FormModels
         {
             try
             {
-                exams = (await General.mainRequestor.Request_GetAll<Exam>("api/exams/getallexams")).Where(c => c.CourseType == student.user.CourseType).ToList(); ;
+                exams = (await General.mainRequestor.Request_GetAll<Exam>("api/exams/getallexams")).Where(c => c.CourseType == student.user.CourseType).ToList();
                 if (exams.Count > 0)
                 {
                     student.dataGridView_StudentExam.DataSource = exams;
 
                 }
+
             }
             catch (Exception ex)
             {
@@ -50,7 +51,7 @@ namespace ExamSystem_Project.FormModels
             {
                 int index = student.dataGridView_StudentExam.SelectedRows[0].Index;
                 exam = exams[index];
-                examRun = new ExamRunForm2(exam, user);
+                examRun = new ExamRunForm2(exam, user, studentFormModel);
                 examRun.ShowDialog();
 
             }

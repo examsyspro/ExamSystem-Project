@@ -20,14 +20,16 @@ namespace ExamSystem_Project.Forms
         private readonly int[] numbersArr = { 1, 2, 3, 4, 5, 6, 7 };
         public RunExamFormModel examModel;
         public static ExamRunForm2 runExam;
+        public StudentFormModel studentModel;
         public User user;
-        public ExamRunForm2(Exam exam, User user1)
+        public ExamRunForm2(Exam exam, User user1, StudentFormModel stu)
         {
             InitializeComponent();
             this.user = user1;
             InitializeAll();
             runExam = this;
             examModel = new RunExamFormModel(exam);
+            this.studentModel = stu;
 
         }
 
@@ -170,9 +172,9 @@ namespace ExamSystem_Project.Forms
 
 
 
-    
 
- 
+
+
 
         private void button_Test_Click(object sender, EventArgs e)
         {
@@ -193,7 +195,7 @@ namespace ExamSystem_Project.Forms
 
 
 
-   
+
 
         private void button_SaveExamBuilder_Click(object sender, EventArgs e)
         {
@@ -208,13 +210,15 @@ namespace ExamSystem_Project.Forms
 
 
 
-     
 
-   
+
+
 
         private void button_start_Click(object sender, EventArgs e)
         {
             examModel.CreateQuestions();
         }
+
+
     }
 }

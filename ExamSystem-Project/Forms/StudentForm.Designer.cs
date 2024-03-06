@@ -247,6 +247,7 @@
             Name = "StudentForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "StudentForm";
+
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).EndInit();
             panel4.ResumeLayout(false);

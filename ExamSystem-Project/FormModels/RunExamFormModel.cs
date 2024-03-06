@@ -36,7 +36,7 @@ namespace ExamSystem_Project.FormModels
         public int questionIndex = 0;
         public ExamRunForm2 runExam;
         public bool isExist = false;
-        public Dictionary<int,int>  checkedDictionary;
+        public Dictionary<int, int> checkedDictionary;
         public Participation participation;
         public Error error;
 
@@ -51,7 +51,7 @@ namespace ExamSystem_Project.FormModels
             labelListOptions = new List<Label>();
             ControlsList = new List<Control>();
             labelList = new List<Label>();
-            checkedDictionary = new Dictionary<int, int>(); 
+            checkedDictionary = new Dictionary<int, int>();
             participation = new Participation();
         }
 
@@ -113,7 +113,7 @@ namespace ExamSystem_Project.FormModels
 
                 radioButton.CheckedChanged += (object sender, EventArgs e) =>
                 {
-                    SaveMarkedIndex(sender,e);
+                    SaveMarkedIndex(sender, e);
                 };
                 radioButtonList.Add(radioButton);
 
@@ -128,7 +128,7 @@ namespace ExamSystem_Project.FormModels
 
                 textBoxCounter++;
                 optionNameCounter++;
-               
+
 
             }
             catch (Exception ex)
@@ -140,7 +140,7 @@ namespace ExamSystem_Project.FormModels
 
 
 
-  
+
 
 
 
@@ -176,13 +176,13 @@ namespace ExamSystem_Project.FormModels
                     labelListOptions[i].Text = question.Options[i].ToString();
 
                     if (val == 1 || val == 2)
-                    {              
+                    {
                         if (questionIndex >= 0 && questionIndex < checkedDictionary.Count)
                         {
                             if (checkedDictionary[questionIndex] == i)
                             {
                                 radioButtonList[i].Checked = true;
-                            }      
+                            }
                         }
                     }
                     // = question.Options[i].IsCorrect;
@@ -206,24 +206,24 @@ namespace ExamSystem_Project.FormModels
             }
             catch (Exception ex)
             {
-             
+
 
             }
 
         }
 
-        public void SaveMarkedIndex(object sender,EventArgs e)
+        public void SaveMarkedIndex(object sender, EventArgs e)
         {
-          
-                int index = radioButtonList.FindIndex(x => x.Checked == true);
-                if (index >= 0 && !checkedDictionary.ContainsKey(questionIndex))
-                {
-                checkedDictionary.Add(questionIndex,index);
-                } 
-                else
+
+            int index = radioButtonList.FindIndex(x => x.Checked == true);
+            if (index >= 0 && !checkedDictionary.ContainsKey(questionIndex))
+            {
+                checkedDictionary.Add(questionIndex, index);
+            }
+            else
                 checkedDictionary[questionIndex] = index;
 
-         
+
         }
 
         public bool DialogMsgBox()
@@ -238,13 +238,13 @@ namespace ExamSystem_Project.FormModels
                 }
                 else
                 {
-            return false;
+                    return false;
                 }
             }
             catch (Exception ex)
             {
                 return false;
-           
+
             }
         }
 
@@ -256,36 +256,36 @@ namespace ExamSystem_Project.FormModels
                 string currectAns = string.Empty;
                 string worngAns = string.Empty;
                 int indexCur = 0;
-                int indexWorng = 0; 
+                int indexWorng = 0;
 
 
                 for (int i = 0; i < exam.questions.Count; i++)
                 {
-                  
-                 if (exam.questions[i].IndexCorrect == checkedDictionary[i])
-                 {
+
+                    if (exam.questions[i].IndexCorrect == checkedDictionary[i])
+                    {
                         CurrectAnswerCount++;
-                 }
-                 else
-                 {
+                    }
+                    else
+                    {
                         questionContent = exam.questions[i].Text;
                         indexCur = exam.questions[i].IndexCorrect;
                         currectAns = exam.questions[i].Options[indexCur].OptionText;
                         indexWorng = checkedDictionary[i];
                         worngAns = exam.questions[i].Options[indexWorng].OptionText;
                         AddError(questionContent, currectAns, worngAns);
-                    }  
+                    }
 
                 }
             }
             catch (Exception ex)
             {
 
-               
+
             }
         }
 
-        public void AddError(string questionContent, string currectAns,string worngAns)
+        public void AddError(string questionContent, string currectAns, string worngAns)
         {
             try
             {
@@ -299,7 +299,7 @@ namespace ExamSystem_Project.FormModels
             catch (Exception ex)
             {
 
-                
+
             }
         }
 
@@ -308,26 +308,26 @@ namespace ExamSystem_Project.FormModels
         {
             try
             {
-                
+
                 participation.Exam_Id = exam.ExamId;
-                participation.Student_Id= runExam.user.UserId;
-                participation.Student_Name= runExam.user.FullName;
+                participation.Student_Id = runExam.user.UserId;
+                participation.Student_Name = runExam.user.FullName;
                 participation.Grade = CalculateExamGrade();
             }
             catch (Exception ex)
-            { 
+            {
 
             }
         }
 
         public float CalculateExamGrade()
         {
-           
+
             try
             {
                 float grade = 0;
                 float scorePerAns = (float)(100.0 / exam.questions.Count);
-                grade =CurrectAnswerCount * scorePerAns;
+                grade = CurrectAnswerCount * scorePerAns;
                 grade = (float)Math.Round((double)grade);
 
                 return grade;
@@ -347,7 +347,7 @@ namespace ExamSystem_Project.FormModels
                 bool res = false;
 
                 res = DialogMsgBox();
-                if (res) 
+                if (res)
                 {
                     GetExamAnswers();
                     CreatePaticipation();
@@ -357,7 +357,9 @@ namespace ExamSystem_Project.FormModels
                     {
                         MessageBox.Show(Constants.SendSuccess);
                         runExam.Close();
-                       
+                        runExam.studentModel.GetAllExams();
+
+
                     }
                 }
 
@@ -422,7 +424,7 @@ namespace ExamSystem_Project.FormModels
             labelListOptions = new List<Label>();
             radioButtonList = new List<RadioButton>();
             labelList = new List<Label>();
- 
+
         }
 
 
