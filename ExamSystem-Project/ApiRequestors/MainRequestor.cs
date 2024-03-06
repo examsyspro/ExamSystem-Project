@@ -1,4 +1,5 @@
-﻿using ExamSystem_Project.Models;
+﻿using ExamSystem_Project.Helpers;
+using ExamSystem_Project.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +58,7 @@ namespace ExamSystem_Project.ApiRequestors
             //bool resultExam = await Request_NewPost<Exam>(examObject, "yourApiEndpoint");
             //bool resultQuestion = await Request_NewPost<Question>(questionObject, "yourApiEndpoint");
             //bool resultOptionAns = await Request_NewPost<OptionAns>(optionAnsObject, "yourApiEndpoint");
-           // bool resultUser = await Request_NewPost<User>(userObject, string apiStr);
+            // bool resultUser = await Request_NewPost<User>(userObject, string apiStr);
 
         }
 
@@ -116,6 +117,37 @@ namespace ExamSystem_Project.ApiRequestors
 
         }
 
+        public async Task<List<Exam>> Request_GetExamsByCourseType(Course_Enum courseType)
+        {
+            try
+            {
+                // Get exams by course type
+                List<Exam> exams = await httpClient.GetFromJsonAsync<List<Exam>>($"api/exams/getbycoursetype/{courseType}");
+
+                return exams;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<bool> Request_GetByStudentAndExamId(string studentId, int examId)
+        {
+            try
+            {
+                UriBuilder builder = new UriBuilder(httpClient.BaseAddress);
+                builder.Path = "api/participations/bystudentandexam";
+                builder.Query = $"studentId={studentId}&examId={examId}";
+
+                return await httpClient.GetFromJsonAsync<bool>(builder.Uri.ToString());
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public async Task<List<T>> Request_GetAll<T>(string apiStr)
         {
             try
@@ -141,13 +173,13 @@ namespace ExamSystem_Project.ApiRequestors
             }
             catch (Exception)
             {
-                 throw; // Return false in case of an exception.
+                throw; // Return false in case of an exception.
             }
         }
 
 
 
-        public async Task<bool> Request_Put<T>( T obj, string apiStr)
+        public async Task<bool> Request_Put<T>(T obj, string apiStr)
         {
             try
             {

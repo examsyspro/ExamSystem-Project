@@ -61,13 +61,29 @@ namespace ExamSystem.ServerAPI.Repositories
 
         public async Task<bool> DeleteParticipation(int id)
         {
-            var participationToDelete = await _context.Participations.FindAsync(id);
-            if (participationToDelete != null)
+            try
             {
-                _context.Participations.Remove(participationToDelete);
-                return await _context.SaveChangesAsync() > 0;
+                var participationToDelete = await _context.Participations.FindAsync(id);
+                if (participationToDelete != null)
+                {
+                    _context.Participations.Remove(participationToDelete);
+                    return await _context.SaveChangesAsync() > 0;
+                }
+                return false;
             }
-            return false;
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+
+
+        }
+
+        public async Task<bool> GetByStudentAndExamId(string studentId, int examId)
+        {
+            return await _context.Participations
+           .AnyAsync(p => p.Student_Id == studentId && p.Exam_Id == examId);
         }
     }
 }

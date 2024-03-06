@@ -1,4 +1,5 @@
-﻿using ExamSystem_Project.Forms;
+﻿using ExamSystem_Project.ApiRequestors;
+using ExamSystem_Project.Forms;
 using ExamSystem_Project.Helpers;
 using ExamSystem_Project.Models;
 using System;
@@ -30,10 +31,27 @@ namespace ExamSystem_Project.FormModels
         {
             try
             {
-                exams = (await General.mainRequestor.Request_GetAll<Exam>("api/exams/getallexams")).Where(c => c.CourseType == student.user.CourseType).ToList();
+                exams = await General.mainRequestor.Request_GetExamsByCourseType(student.user.CourseType.Value);
+
                 if (exams.Count > 0)
                 {
-                    student.dataGridView_StudentExam.DataSource = exams;
+                    for (int i = 0; i < exams.Count; i++)
+                    {
+                        bool res = await General.mainRequestor.Request_GetByStudentAndExamId(student.user.UserId, exams[i].ExamId);
+                        if (res)
+                        {
+                            student.dataGridView_StudentExam.DataSource = exams;
+                            // Button b = new Button();
+                            //student.dataGridView_StudentExam.Rows[i].Cells[9].Selected = false;
+                            student.dataGridView_StudentExam.Rows[i].Cells[9] = new DataGridViewTextBoxCell();
+                            //b.but
+                            // b.Enabled = false;
+
+
+                        }
+
+                    }
+
 
                 }
 

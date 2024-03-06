@@ -30,8 +30,8 @@ namespace ExamSystem.ServerAPI.Repositories
 
         public async Task<Exam> GetExamById(int id)
         {
-           
-                
+
+
             var exam = await _context.Exams
            .Include(e => e.questions)
            .ThenInclude(q => q.Options)
@@ -54,23 +54,32 @@ namespace ExamSystem.ServerAPI.Repositories
             }
         }
 
-        public async Task<bool> UpdateExam( Exam updatedExam)
+        public async Task<bool> UpdateExam(Exam updatedExam)
         {
             try
             {
                 _context.Exams.Update(updatedExam);
-                return await _context.SaveChangesAsync() > 0; 
-                
+                return await _context.SaveChangesAsync() > 0;
+
             }
             catch (Exception ex)
             {
-              
+
                 return false;
             }
         }
 
 
+        public async Task<List<Exam>> GetExamsByCourseType(Course_Enum courseType)
+        {
+            var exam = await _context.Exams
+                .Include(e => e.questions)
+                    .ThenInclude(q => q.Options)
+                .Where(e => e.CourseType == courseType)
+                .ToListAsync();
 
+            return exam;
+        }
 
         public async Task<bool> DeleteExam(int id)
         {

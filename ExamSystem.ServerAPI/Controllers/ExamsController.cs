@@ -31,6 +31,12 @@ namespace ExamSystem.ServerAPI.Controllers
             return await _examsRepo.GetExamById(id);
         }
 
+        [HttpGet("getbycoursetype/{courseType}")]
+        public async Task<List<Exam>> GetExamsByCourseType(Course_Enum courseType)
+        {
+            return await _examsRepo.GetExamsByCourseType(courseType);
+        }
+
         [HttpPost("create")]
         public async Task<bool> CreateExam([FromBody] Exam exam)
         {
@@ -38,9 +44,9 @@ namespace ExamSystem.ServerAPI.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<bool> UpdateExam( [FromBody] Exam updatedExam)
+        public async Task<bool> UpdateExam([FromBody] Exam updatedExam)
         {
-            return await _examsRepo.UpdateExam( updatedExam);
+            return await _examsRepo.UpdateExam(updatedExam);
         }
 
         [HttpDelete("{id}")]

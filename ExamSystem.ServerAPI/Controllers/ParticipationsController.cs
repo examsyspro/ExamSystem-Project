@@ -46,5 +46,11 @@ namespace ExamSystem.ServerAPI.Controllers
         {
             return await _participationRepo.DeleteParticipation(id);
         }
+
+        [HttpGet("bystudentandexam")]
+        public async Task<bool> GetByStudentAndExamId(string studentId, int examId)
+        {
+            return await _participationRepo.GetByStudentAndExamId(studentId, examId);
+        }
     }
 }

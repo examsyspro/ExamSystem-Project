@@ -12,7 +12,9 @@ namespace ExamSystem.ServerAPI.Repositories
         Task<List<Exam>> GetAllExams();
         Task<Exam> GetExamById(int id);
         Task<bool> CreateExam(Exam exam);
-        Task<bool> UpdateExam( Exam updatedExam);
+        Task<bool> UpdateExam(Exam updatedExam);
         Task<bool> DeleteExam(int id);
+        Task<List<Exam>> GetExamsByCourseType(Course_Enum courseType);
+
     }
 }
