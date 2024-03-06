@@ -67,7 +67,12 @@ namespace ExamSystem_Project.Forms
         {
             if (e.ColumnIndex == 9)
             {
-                StudentModel.OpenExam(user);
+                var x = (int)dataGridView_StudentExam.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag;
+                if (x != 1)
+                {
+                    StudentModel.OpenExam(user);
+                }
+
             }
         }
 
