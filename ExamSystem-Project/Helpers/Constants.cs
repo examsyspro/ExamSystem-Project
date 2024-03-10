@@ -26,6 +26,7 @@ namespace ExamSystem_Project.Helpers
                 + "It serves both educators (teachers) and students, providing a seamless and efficient process for conducting assessments.";
         public const string BuildSuccess = "Build Exam Successfully";
         public const string SendSuccess = "Send Exam Successfully";
+        public const string ExpierdMsg = "Time expired";
     }
 }
 

@@ -5,10 +5,10 @@ namespace ExamSystem.Client.Helpers
     public class TimerClass
     {
         #region consts_msg
-         const string Msg_start ="starting";
-         const string Msg_Err = "An error occurred: ";
-         const string Msg_Expired = "Timer expired: ";
-         const string Msg_Remaining = "Time remaining: ";
+        public const string Msg_start ="starting";
+        public const string Msg_Err = "An error occurred: ";
+        public const string Msg_Expired = "Timer expired: ";
+        public const string Msg_Remaining = "Time remaining: ";
         #endregion
         
         public event EventHandler<MyTimerEventArgs> TimeUpdater;

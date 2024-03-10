@@ -113,8 +113,8 @@ namespace ExamSystem_Project.Forms
 
         private void StudentForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            clock.Stop();
-           // Environment.Exit(0);
+           // clock.Stop();
+            Environment.Exit(0);
         }
     }
 }

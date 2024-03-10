@@ -23,7 +23,7 @@ namespace ExamSystem_Project.Forms
         public static ExamRunForm2 runExam;
         public StudentFormModel studentModel;
         public User user;
-        TimerClass timer;
+        public TimerClass timer;
     
 
         public ExamRunForm2(Exam exam, User user1, StudentFormModel stu)
@@ -35,7 +35,8 @@ namespace ExamSystem_Project.Forms
             examModel = new RunExamFormModel(exam);
             this.studentModel = stu;
 
-            timer = new TimerClass(exam.TotalHours, exam.TotalMinutes, 00);
+            //timer = new TimerClass(exam.TotalHours, exam.TotalMinutes, 00);
+            timer = new TimerClass(00, 00, 10);
             timer.TimeUpdater += Timer_Update;
 
 
@@ -100,7 +101,9 @@ namespace ExamSystem_Project.Forms
                 label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
             else
             {
-                label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
+                examModel.SaveExam(false);
+               // label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
+                
             }
         }
 
@@ -223,7 +226,7 @@ namespace ExamSystem_Project.Forms
 
         private void button_SaveExamBuilder_Click(object sender, EventArgs e)
         {
-            examModel.SaveExam();
+            examModel.SaveExam(true);
         }
 
 
@@ -254,6 +257,7 @@ namespace ExamSystem_Project.Forms
         private void ExamRunForm2_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer.Stop();
+            
         }
     }
 }

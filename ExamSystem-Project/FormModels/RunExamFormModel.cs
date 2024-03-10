@@ -350,12 +350,11 @@ namespace ExamSystem_Project.FormModels
 
         }
 
-        public async void SaveExam()
+        public async void SaveExam(bool saveOk)
         {
             try
             {
                 bool res = false;
-
                 res = DialogMsgBox();
                 if (res)
                 {
@@ -365,6 +364,7 @@ namespace ExamSystem_Project.FormModels
                     res = await General.mainRequestor.Request_NewPost<Participation>(participation, "api/participations/create");
                     if (res)
                     {
+                   
                         MessageBox.Show(Constants.SendSuccess);
                         runExam.Close();
                         runExam.studentModel.GetAllExams();
