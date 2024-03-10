@@ -101,9 +101,9 @@ namespace ExamSystem_Project.Forms
                 label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
             else
             {
-                examModel.SaveExam(false);
+               
                 label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
-                
+                examModel.SaveExam(false);
             }
         }
 
