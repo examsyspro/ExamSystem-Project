@@ -261,18 +261,28 @@ namespace ExamSystem_Project.FormModels
 
                 for (int i = 0; i < exam.questions.Count; i++)
                 {
-
-                    if (exam.questions[i].IndexCorrect == checkedDictionary[i])
+                    if (checkedDictionary.Keys.Contains(i))
                     {
-                        CurrectAnswerCount++;
+                        if (exam.questions[i].IndexCorrect == checkedDictionary[i])
+                        {
+                            CurrectAnswerCount++;
+                        }
+                        else
+                        {
+                            questionContent = exam.questions[i].Text;
+                            indexCur = exam.questions[i].IndexCorrect;
+                            currectAns = exam.questions[i].Options[indexCur].OptionText;
+                            indexWorng = checkedDictionary[i];
+                            worngAns = exam.questions[i].Options[indexWorng].OptionText;
+                            AddError(questionContent, currectAns, worngAns);
+                        }
                     }
                     else
                     {
                         questionContent = exam.questions[i].Text;
                         indexCur = exam.questions[i].IndexCorrect;
                         currectAns = exam.questions[i].Options[indexCur].OptionText;
-                        indexWorng = checkedDictionary[i];
-                        worngAns = exam.questions[i].Options[indexWorng].OptionText;
+                        worngAns = "answer was empty";
                         AddError(questionContent, currectAns, worngAns);
                     }
 

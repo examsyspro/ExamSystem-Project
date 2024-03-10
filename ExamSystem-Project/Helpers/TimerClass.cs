@@ -51,7 +51,7 @@ namespace ExamSystem.Client.Helpers
                     Msg = Msg_Remaining + FormattedTime;
                 TimeUpdater?.Invoke(Msg, new MyTimerEventArgs { IsExpired = false }) ;
 
-
+                Thread.Sleep(1000);
                 // Check for timer expiration outside of Dispatcher.Invoke
                 if (Hours == 0 && Minutes == 0 && Seconds == 0)
                 {

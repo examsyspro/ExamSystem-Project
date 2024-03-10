@@ -1,5 +1,7 @@
 ﻿using ExamSystem_Project.FormModels;
+using ExamSystem_Project.Helpers;
 using ExamSystem_Project.Models;
+using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,15 +18,27 @@ namespace ExamSystem_Project.Forms
     {
         public User user { get; set; }
         public StudentFormModel StudentModel;
+        LocalClock clock;
         public StudentForm(User user1)
         {
             InitializeComponent();
             InitializeAll();
             this.user = user1;
             StudentModel = new StudentFormModel(this);
+
+            clock = LocalClock.Get_Instance();
+            clock.Clock_event += Clock_Update;
         }
 
+        public void Clock_Update(object sender, EventArgs e)
+        {
 
+            label_clock.Invoke((MethodInvoker)delegate
+            {
+                label_clock.Text = sender.ToString();
+            });
+
+        }
         public void InitializeAll()
         {
             //datagridview configuration 
@@ -65,20 +79,31 @@ namespace ExamSystem_Project.Forms
 
         private void dataGridView_StudentExam_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 9)
+            try
             {
-                var x = (int)dataGridView_StudentExam.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag;
-                if (x != 1)
+                if (e.ColumnIndex == 9)
                 {
-                    StudentModel.OpenExam(user);
+
+                    var x = (int)dataGridView_StudentExam.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag;
+
+                    if (x != 1)
+                    {
+                        StudentModel.OpenExam(user);
+                    }
+
                 }
+            }
+            catch (Exception ex)
+            {
+
 
             }
+
         }
 
         private void StudentForm_Shown(object sender, EventArgs e)
         {
-
+            clock.Clock_Run();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -86,5 +111,10 @@ namespace ExamSystem_Project.Forms
 
         }
 
+        private void StudentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            clock.Stop();
+           // Environment.Exit(0);
+        }
     }
 }

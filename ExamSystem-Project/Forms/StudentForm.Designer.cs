@@ -36,6 +36,7 @@
             studentExamBindingSource1 = new BindingSource(components);
             studentExamBindingSource = new BindingSource(components);
             panel4 = new Panel();
+            label_clock = new Label();
             label11 = new Label();
             panel5 = new Panel();
             dataGridView_StudentExam = new DataGridView();
@@ -60,32 +61,46 @@
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(278, 127);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Location = new Point(334, 152);
+            textBox1.Margin = new Padding(4, 2, 4, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(258, 27);
+            textBox1.Size = new Size(309, 31);
             textBox1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(51, 127);
+            label1.Location = new Point(61, 152);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(211, 28);
+            label1.Size = new Size(263, 32);
             label1.TabIndex = 1;
             label1.Text = "Search for exam in DB :";
             // 
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(0, 135, 209);
+            panel4.Controls.Add(label_clock);
             panel4.Controls.Add(label11);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1257, 74);
+            panel4.Size = new Size(1508, 89);
             panel4.TabIndex = 5;
+            // 
+            // label_clock
+            // 
+            label_clock.AutoSize = true;
+            label_clock.BackColor = Color.AliceBlue;
+            label_clock.BorderStyle = BorderStyle.FixedSingle;
+            label_clock.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_clock.Location = new Point(61, 29);
+            label_clock.Name = "label_clock";
+            label_clock.Size = new Size(71, 32);
+            label_clock.TabIndex = 10;
+            label_clock.Text = "Clock";
             // 
             // label11
             // 
@@ -93,20 +108,20 @@
             label11.BackColor = Color.Transparent;
             label11.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
             label11.ForeColor = SystemColors.Window;
-            label11.Location = new Point(508, 8);
+            label11.Location = new Point(610, 10);
             label11.Margin = new Padding(0);
             label11.Name = "label11";
-            label11.Size = new Size(262, 50);
+            label11.Size = new Size(314, 60);
             label11.TabIndex = 7;
             label11.Text = "Student Panel";
             // 
             // panel5
             // 
             panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(0, 846);
+            panel5.Location = new Point(0, 1015);
             panel5.Margin = new Padding(2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(1257, 76);
+            panel5.Size = new Size(1508, 91);
             panel5.TabIndex = 6;
             // 
             // dataGridView_StudentExam
@@ -133,13 +148,13 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView_StudentExam.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView_StudentExam.EnableHeadersVisualStyles = false;
-            dataGridView_StudentExam.Location = new Point(51, 232);
-            dataGridView_StudentExam.Margin = new Padding(3, 2, 3, 2);
+            dataGridView_StudentExam.Location = new Point(61, 278);
+            dataGridView_StudentExam.Margin = new Padding(4, 2, 4, 2);
             dataGridView_StudentExam.Name = "dataGridView_StudentExam";
             dataGridView_StudentExam.RowHeadersWidth = 51;
             dataGridView_StudentExam.RowTemplate.Height = 29;
             dataGridView_StudentExam.ScrollBars = ScrollBars.Vertical;
-            dataGridView_StudentExam.Size = new Size(931, 466);
+            dataGridView_StudentExam.Size = new Size(1117, 559);
             dataGridView_StudentExam.TabIndex = 7;
             dataGridView_StudentExam.CellClick += dataGridView_StudentExam_CellClick;
             // 
@@ -234,20 +249,21 @@
             // 
             // StudentForm
             // 
-            AutoScaleDimensions = new SizeF(120F, 120F);
+            AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(1257, 922);
+            ClientSize = new Size(1508, 1106);
             Controls.Add(dataGridView_StudentExam);
             Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(label1);
             Controls.Add(textBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(4, 2, 4, 2);
             Name = "StudentForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "StudentForm";
-
+            FormClosing += StudentForm_FormClosing;
+            Shown += StudentForm_Shown;
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).EndInit();
             panel4.ResumeLayout(false);
@@ -301,5 +317,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private DataGridViewButtonColumn ShowExam;
         public DataGridView dataGridView_StudentExam;
+        public Label label_clock;
     }
 }

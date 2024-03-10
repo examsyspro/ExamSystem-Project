@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms.VisualStyles;
 using System.Windows.Forms;
 using ExamSystem_Project.FormModels;
+using ExamSystem.Client.Helpers;
 
 namespace ExamSystem_Project.Forms
 {
@@ -22,6 +23,9 @@ namespace ExamSystem_Project.Forms
         public static ExamRunForm2 runExam;
         public StudentFormModel studentModel;
         public User user;
+        TimerClass timer;
+    
+
         public ExamRunForm2(Exam exam, User user1, StudentFormModel stu)
         {
             InitializeComponent();
@@ -30,6 +34,10 @@ namespace ExamSystem_Project.Forms
             runExam = this;
             examModel = new RunExamFormModel(exam);
             this.studentModel = stu;
+
+            timer = new TimerClass(exam.TotalHours, exam.TotalMinutes, 00);
+            timer.TimeUpdater += Timer_Update;
+
 
         }
 
@@ -78,6 +86,22 @@ namespace ExamSystem_Project.Forms
 
 
 
+        }
+
+
+
+
+        //Updating the Timer
+        public void Timer_Update(object sender, MyTimerEventArgs e)
+        {
+
+
+            if (!e.IsExpired)
+                label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
+            else
+            {
+                label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
+            }
         }
 
         private void button_next_Click(object sender, EventArgs e)
@@ -217,8 +241,19 @@ namespace ExamSystem_Project.Forms
         private void button_start_Click(object sender, EventArgs e)
         {
             examModel.CreateQuestions();
+            timer.StartTimer();
+            //Button clickedButton = (Button)sender;
+            //clickedButton.Enabled = false;
         }
 
+        private void ExamRunForm2_Shown(object sender, EventArgs e)
+        {
+           
+        }
 
+        private void ExamRunForm2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer.Stop();
+        }
     }
 }

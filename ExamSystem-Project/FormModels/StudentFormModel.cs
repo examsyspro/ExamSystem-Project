@@ -41,14 +41,15 @@ namespace ExamSystem_Project.FormModels
                         if (res)
                         {
                             student.dataGridView_StudentExam.DataSource = exams;
-                            // Button b = new Button();
-                            //student.dataGridView_StudentExam.Rows[i].Cells[9].Selected = false;
-                            student.dataGridView_StudentExam.Rows[i].Cells[9].Tag = 1;
                             student.dataGridView_StudentExam.Rows[i].Cells[9] = new DataGridViewTextBoxCell();
-                            //b.but
-                            // b.Enabled = false;
+                            student.dataGridView_StudentExam.Rows[i].Cells[9].Tag = 1;
+                            student.dataGridView_StudentExam.Rows[i].Cells[9].Value = "Finished";
 
-
+                        }
+                        else
+                        {
+                            student.dataGridView_StudentExam.DataSource = exams;
+                            student.dataGridView_StudentExam.Rows[i].Cells[9].Tag = 0;
                         }
 
                     }
