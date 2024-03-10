@@ -102,7 +102,7 @@ namespace ExamSystem_Project.Forms
             else
             {
                 examModel.SaveExam(false);
-               // label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
+                label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
                 
             }
         }
