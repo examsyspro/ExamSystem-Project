@@ -355,7 +355,8 @@ namespace ExamSystem_Project.FormModels
             try
             {
                 bool res = false;
-                res = DialogMsgBox();
+                res = isExpired ? true : DialogMsgBox();
+
                 if (res)
                 {
                     GetExamAnswers();
@@ -366,6 +367,7 @@ namespace ExamSystem_Project.FormModels
                     {
                    
                         MessageBox.Show(Constants.SendSuccess);
+
                         runExam.Close();
                         runExam.studentModel.GetAllExams();
 
