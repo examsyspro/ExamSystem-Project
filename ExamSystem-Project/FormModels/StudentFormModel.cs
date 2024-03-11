@@ -65,6 +65,34 @@ namespace ExamSystem_Project.FormModels
             }
         }
 
+
+        public  void FilterRows(string filterValue)
+        {
+            try
+            {
+                
+                if (exams.Count > 0)
+                {
+
+
+                    List<Exam> filteredList = exams
+                         .Where(item => item.ExamTitle.ToLower().Contains(filterValue))
+                         .ToList();
+                    student.dataGridView_StudentExam.DataSource = null;
+                    student.dataGridView_StudentExam.DataSource = filteredList;
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+
+
+        }
+
+
         public void OpenExam(User user)
         {
             try

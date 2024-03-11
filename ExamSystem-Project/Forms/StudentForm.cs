@@ -18,7 +18,7 @@ namespace ExamSystem_Project.Forms
     {
         public User user { get; set; }
         public StudentFormModel StudentModel;
-        
+
         LocalClock clock;
         public StudentForm(User user1)
         {
@@ -29,7 +29,7 @@ namespace ExamSystem_Project.Forms
 
             clock = LocalClock.Get_Instance();
             clock.Clock_event += Clock_Update;
-            
+
 
         }
 
@@ -111,13 +111,15 @@ namespace ExamSystem_Project.Forms
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            StudentModel.FilterRows(textBox_filter.Text);
         }
 
         private void StudentForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-           // clock.Stop();
+            // clock.Stop();
             Environment.Exit(0);
         }
+
+
     }
 }
