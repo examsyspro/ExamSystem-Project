@@ -36,8 +36,6 @@ namespace ExamSystem.Client.Helpers
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
             timer.Enabled = true;
-
-            // Check for expiration after starting the timer
             CheckExpiration();
         }
 
@@ -45,13 +43,15 @@ namespace ExamSystem.Client.Helpers
         {
             try
             {
+             
                 UpdateTime();
+                CheckExpiration();
                 Msg = Msg_Remaining + FormattedTime;
                 TimeUpdater?.Invoke(Msg, new MyTimerEventArgs { IsExpired = false });
                 Thread.Sleep(1000);
 
-                // Check for timer expiration outside of the event handler
-                CheckExpiration();
+               
+             
             }
             catch (Exception ex)
             {
@@ -90,6 +90,7 @@ namespace ExamSystem.Client.Helpers
                 Timer_Args.IsExpired = true;
                 Msg = Msg_Expired + FormattedTime;
                 TimeUpdater?.Invoke(Msg, new MyTimerEventArgs { IsExpired = true });
+
             }
         }
 

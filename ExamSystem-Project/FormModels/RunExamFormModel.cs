@@ -356,6 +356,7 @@ namespace ExamSystem_Project.FormModels
             {
                 bool res = false;
                 res = isExpired ? true : DialogMsgBox();
+                string msg = string.Empty;  
 
                 if (res)
                 {
@@ -365,12 +366,17 @@ namespace ExamSystem_Project.FormModels
                     res = await General.mainRequestor.Request_NewPost<Participation>(participation, "api/participations/create");
                     if (res)
                     {
-                   
-                        MessageBox.Show(Constants.SendSuccess);
 
-                        runExam.Close();
-                        runExam.studentModel.GetAllExams();
+                        msg = isExpired ? Constants.ExpierdMsg : Constants.SendSuccess;
 
+                     
+                            runExam.Invoke((MethodInvoker)delegate
+                            {
+                                MessageBox.Show(msg);
+                                runExam.Close();
+                                runExam.studentModel.GetAllExams();
+                            });
+               
 
                     }
                 }
