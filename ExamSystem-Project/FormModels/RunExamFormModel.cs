@@ -34,17 +34,17 @@ namespace ExamSystem_Project.FormModels
         public List<Label> labelListOptions;
         public List<Control> ControlsList;
         public int questionIndex = 0;
-        public ExamRunForm2 runExam;
+        public ExamRunForm runExam;
         public bool isExist = false;
         public Dictionary<int, int> checkedDictionary;
         public Participation participation;
         public Error error;
-
+        
 
 
         public RunExamFormModel(Exam examFromSt)
         {
-            this.runExam = ExamRunForm2.runExam;
+            this.runExam = ExamRunForm.runExam;
             this.exam = examFromSt;
             FillAllExamFields();
             radioButtonList = new List<RadioButton>();
@@ -53,6 +53,8 @@ namespace ExamSystem_Project.FormModels
             labelList = new List<Label>();
             checkedDictionary = new Dictionary<int, int>();
             participation = new Participation();
+
+
         }
 
 
@@ -376,7 +378,7 @@ namespace ExamSystem_Project.FormModels
                                 runExam.Close();
                                 runExam.studentModel.GetAllExams();
                             });
-               
+              
 
                     }
                 }

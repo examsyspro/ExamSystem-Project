@@ -18,6 +18,7 @@ namespace ExamSystem_Project.Forms
     {
         public User user { get; set; }
         public StudentFormModel StudentModel;
+        
         LocalClock clock;
         public StudentForm(User user1)
         {
@@ -28,6 +29,8 @@ namespace ExamSystem_Project.Forms
 
             clock = LocalClock.Get_Instance();
             clock.Clock_event += Clock_Update;
+            
+
         }
 
         public void Clock_Update(object sender, EventArgs e)

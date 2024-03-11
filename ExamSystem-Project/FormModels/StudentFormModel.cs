@@ -16,10 +16,10 @@ namespace ExamSystem_Project.FormModels
         public StudentForm student;
         public List<Exam> exams;
         public static StudentFormModel studentFormModel;
-
-        public ExamRunForm2 examRun;
+        public ExamRunForm examRun;
         public StudentFormModel(StudentForm studentFrom)
         {
+            
             this.student = studentFrom;
             exam = new Exam();
             exams = new List<Exam>();
@@ -69,9 +69,11 @@ namespace ExamSystem_Project.FormModels
         {
             try
             {
+
+              
                 int index = student.dataGridView_StudentExam.SelectedRows[0].Index;
                 exam = exams[index];
-                examRun = new ExamRunForm2(exam, user, studentFormModel);
+                examRun = new ExamRunForm(exam, user, studentFormModel);
                 examRun.ShowDialog();
 
             }

@@ -1,5 +1,5 @@
-﻿using ExamSystem.Client.Helpers;
-using ExamSystem_Project.Helpers;
+﻿using ExamSystem_Project.Helpers;
+using ExamSystem_Project.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,37 +8,87 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 using System.Windows.Forms;
+using ExamSystem_Project.FormModels;
+using ExamSystem.Client.Helpers;
 
 namespace ExamSystem_Project.Forms
 {
     public partial class ExamRunForm : Form
     {
 
-        TimerClass timer;
-        LocalClock clock;
-        public ExamRunForm()
+        private readonly int[] numbersArr = { 1, 2, 3, 4, 5, 6, 7 };
+        public RunExamFormModel examModel;
+        public static ExamRunForm runExam;
+        public StudentFormModel studentModel;
+        public User user;
+        public TimerClass timer;
+        public  ExamAvailability examAvailability;
+
+
+        public ExamRunForm(Exam exam, User user1, StudentFormModel stu)
         {
             InitializeComponent();
-
-            timer = new TimerClass(0, 0, 10);
+            this.user = user1;
+            InitializeAll();
+            runExam = this;
+            examAvailability = new ExamAvailability(exam);
+            examModel = new RunExamFormModel(exam);
+            this.studentModel = stu;
+            timer = new TimerClass(exam.TotalHours, exam.TotalMinutes, 00);
             timer.TimeUpdater += Timer_Update;
-            clock = LocalClock.Get_Instance();
-            clock.Clock_Run();
-            clock.Clock_event += Clock_Update;
+
 
         }
 
 
-        public void Clock_Update(object sender, EventArgs e)
+
+        public void InitializeAll()
         {
 
-            label_clock.Invoke((MethodInvoker)delegate
+            try
             {
-                label_clock.Text = sender.ToString();
-            });
+                tabControl1.TabPages.Remove(tabPage_step2);
+                tabControl1.TabPages.Remove(tabPage_step3);
+                panel_questions.SendToBack();
 
+
+                // Set DPI Awareness
+                this.AutoScaleMode = AutoScaleMode.Dpi;
+
+                // Set StartPosition to Manual
+                StartPosition = FormStartPosition.CenterScreen;
+
+                // Calculate and set the position and size of the form
+                Rectangle screen = Screen.FromPoint(Cursor.Position).WorkingArea;
+
+                // Set maximum width and height for the form
+                int maxWidth = screen.Width - 100; // Adjust this value as needed
+                int maxHeight = screen.Height - 100; // Adjust this value as needed
+                int desiredFormWidth = 1546; // Set your desired form width
+                int w = Math.Min(desiredFormWidth, maxWidth);
+                int h = Math.Min(Height, maxHeight);
+
+                Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
+                Size = new Size(w, h);
+
+
+
+                button_SaveExamBuilder.Visible = false;
+                button_next.Visible = true;
+                //  textBox_teacherName.Text = user.FullName;
+            }
+            catch (Exception ex)
+            {
+
+
+            }
         }
+
+
+
+
 
 
         //Updating the Timer
@@ -46,26 +96,179 @@ namespace ExamSystem_Project.Forms
         {
 
 
-            if (!e.IsExpired)
-                label_clock.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
+  
+             label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
+            if (e.IsExpired)
+            {
+               
+                examModel.SaveExam(e.IsExpired);
+            }
+   
+        
+        }
+
+        private void button_next_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (examModel.questionIndex != examModel.exam.questions.Count - 1)
+                {
+                    examModel.ClearAllControls();
+                    examModel.CreateDynamicFullFields(1);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+
+
+        }
+
+        private void button_Previous_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (examModel.questionIndex > 0)
+                {
+                    examModel.ClearAllControls();
+                    examModel.CreateDynamicFullFields(2);
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+        }
+
+        public void ExamButtonHandler(Label text)
+        {
+            ChangeTextBoxColor(text);
+            bool res = CheckEmptyPanelControls(panel1);
+            button_next.Enabled = res;
+
+        }
+
+        public bool CheckEmptyPanelControls(Panel panel)
+        {
+            bool res = true;
+            foreach (Control item in panel.Controls)
+            {
+                if (item is TextBox t)
+                {
+                    if (string.IsNullOrEmpty(t.Text))
+                    {
+
+                        res = false;
+                        break;
+                    }
+                }
+                if (item is ComboBox c)
+                {
+                    if (c.SelectedItem == null || c.SelectedIndex == -1)
+                    {
+                        res = false;
+                        break;
+                    }
+                }
+            }
+
+            return res;
+        }
+
+        public void ChangeTextBoxColor(Label text)
+        {
+            if (text.Text == string.Empty)
+            {
+                text.BackColor = Color.MistyRose;
+            }
             else
             {
-                label_clock.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
+                text.BackColor = Color.White;
             }
         }
 
-        private void button_startExam_Click(object sender, EventArgs e)
+
+
+
+
+
+
+
+
+        private void button_Test_Click(object sender, EventArgs e)
         {
-            timer.StartTimer();
-            Button clickedButton = (Button)sender;
-            clickedButton.Enabled = false;
+            //textBox_examTitle.Text = "test exam";
+            //textBox_teacherName.Text = "test teacher";
+            //textBox_date.Text = dateTimePicker_examDate.Value.ToString("dd/MM/yy");
+            //comboBox_Course_Select.SelectedIndex = 0;
+            //checkBox_QuestionOrder.Checked = true;
+            //comboBox_hours_StartTime.SelectedIndex = 1;
+            //comboBox_minutes_StartTime.SelectedIndex = 0;
+            //comboBox_hours_totalTime.SelectedIndex = 1;
+            //comboBox_minutes_totalTime.SelectedIndex = 0;
+        }
+
+
+
+
+
+
+
+
+
+        private void button_SaveExamBuilder_Click(object sender, EventArgs e)
+        {
+            examModel.SaveExam(false);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void button_start_Click(object sender, EventArgs e)
+        {
+            bool res = false;
+            res = examAvailability.IsExamAvailable();
+           
+            if (res) 
+            {
+                examModel.CreateQuestions();
+                timer.StartTimer();
+            }
+            else
+            {
+                MessageBox.Show(Constants.NotAvailable + examModel.exam.ExamDateTime);
+            }
+
+        }
+
+        private void ExamRunForm_Shown(object sender, EventArgs e)
+        {
+           
         }
 
         private void ExamRunForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-           
+
+
             timer.Stop();
+            
         }
     }
 }
-
