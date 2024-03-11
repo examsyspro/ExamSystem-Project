@@ -76,7 +76,8 @@ namespace ExamSystem_Project.Forms
 
 
                 button_SaveExamBuilder.Visible = false;
-                button_next.Visible = true;
+                button_next.Visible = false;
+                button_Previous.Visible = false;
                 //  textBox_teacherName.Text = user.FullName;
             }
             catch (Exception ex)
@@ -111,11 +112,12 @@ namespace ExamSystem_Project.Forms
         {
             try
             {
-
+                button_Previous.Visible = true;
                 if (examModel.questionIndex != examModel.exam.questions.Count - 1)
                 {
                     examModel.ClearAllControls();
                     examModel.CreateDynamicFullFields(1);
+                    
                 }
 
             }
@@ -243,13 +245,16 @@ namespace ExamSystem_Project.Forms
 
         private void button_start_Click(object sender, EventArgs e)
         {
+            
             bool res = false;
             res = examAvailability.IsExamAvailable();
            
             if (res) 
             {
+
                 examModel.CreateQuestions();
                 timer.StartTimer();
+                button_next.Visible = true;
             }
             else
             {
