@@ -10,7 +10,7 @@ namespace ExamSystem_Project.Helpers
 {
     public class ExamAvailability
     {
-        private DateTime examDateTime;
+   
         private DateTime examEndTime;
         private DateTime currentDateTime;
         Exam exam;
@@ -26,7 +26,7 @@ namespace ExamSystem_Project.Helpers
             try
             {
                 currentDateTime = DateTime.Now;
-                examEndTime = examDateTime.AddMinutes(ExamBuffer);
+                examEndTime = exam.ExamDateTime.AddMinutes(ExamBuffer);
 
                 // Check if the current date is within the exam date range
                 if (currentDateTime.Date == exam.ExamDateTime.Date)
