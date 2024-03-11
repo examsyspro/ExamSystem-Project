@@ -350,7 +350,7 @@ namespace ExamSystem_Project.FormModels
 
         }
 
-        public async void SaveExam(bool saveOk)
+        public async void SaveExam(bool isExpired)
         {
             try
             {
@@ -371,6 +371,10 @@ namespace ExamSystem_Project.FormModels
 
 
                     }
+                }
+                else
+                {
+                    return;
                 }
 
 

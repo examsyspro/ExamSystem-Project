@@ -55,6 +55,7 @@ namespace ExamSystem.Client.Helpers
                 // Check for timer expiration outside of Dispatcher.Invoke
                 if (Hours == 0 && Minutes == 0 && Seconds == 0)
                 {
+                    Thread.Sleep(1000);
                     timer.Stop();
                     timer.Dispose();
                     Timer_Args.IsExpired = true;

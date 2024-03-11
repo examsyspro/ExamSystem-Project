@@ -97,14 +97,15 @@ namespace ExamSystem_Project.Forms
         {
 
 
-            if (!e.IsExpired)
-                label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
-            else
+  
+             label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
+            if (e.IsExpired)
             {
                
-                label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
-                examModel.SaveExam(false);
+                examModel.SaveExam(e.IsExpired);
             }
+   
+        
         }
 
         private void button_next_Click(object sender, EventArgs e)
@@ -226,7 +227,7 @@ namespace ExamSystem_Project.Forms
 
         private void button_SaveExamBuilder_Click(object sender, EventArgs e)
         {
-            examModel.SaveExam(true);
+            examModel.SaveExam(false);
         }
 
 
