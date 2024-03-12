@@ -24,7 +24,7 @@ namespace ExamSystem_Project.Forms
         public StudentFormModel studentModel;
         public User user;
         public TimerClass timer;
-        public  ExamAvailability examAvailability;
+        public ExamAvailability examAvailability;
 
 
         public ExamRunForm(Exam exam, User user1, StudentFormModel stu)
@@ -50,7 +50,6 @@ namespace ExamSystem_Project.Forms
             try
             {
                 tabControl1.TabPages.Remove(tabPage_step2);
-                tabControl1.TabPages.Remove(tabPage_step3);
                 panel_questions.SendToBack();
 
 
@@ -97,15 +96,15 @@ namespace ExamSystem_Project.Forms
         {
 
 
-  
-             label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
+
+            label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
             if (e.IsExpired)
             {
-               
+
                 examModel.SaveExam(e.IsExpired);
             }
-   
-        
+
+
         }
 
         private void button_next_Click(object sender, EventArgs e)
@@ -117,7 +116,7 @@ namespace ExamSystem_Project.Forms
                 {
                     examModel.ClearAllControls();
                     examModel.CreateDynamicFullFields(1);
-                    
+
                 }
 
             }
@@ -218,38 +217,18 @@ namespace ExamSystem_Project.Forms
             //comboBox_minutes_totalTime.SelectedIndex = 0;
         }
 
-
-
-
-
-
-
-
-
         private void button_SaveExamBuilder_Click(object sender, EventArgs e)
         {
             examModel.SaveExam(false);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
         private void button_start_Click(object sender, EventArgs e)
         {
-            
+
             bool res = false;
             res = examAvailability.IsExamAvailable();
-           
-            if (res) 
+
+            if (res)
             {
 
                 examModel.CreateQuestions();
@@ -265,15 +244,12 @@ namespace ExamSystem_Project.Forms
 
         private void ExamRunForm_Shown(object sender, EventArgs e)
         {
-           
+
         }
 
         private void ExamRunForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-
-
             timer.Stop();
-            
         }
     }
 }

@@ -38,10 +38,29 @@ namespace ExamSystem_Project.FormModels
             try
             {
                 exams = await General.mainRequestor.Request_GetAll<Exam>("api/exams/getallexams");
+
                 if (exams.Count > 0)
                 {
 
                     teacher.dataGridView_teacherExams.DataSource = exams;
+                    for (int i = 0; i < exams.Count; i++)
+                    {
+                        Participation res = await General.mainRequestor.Request_GetById<Participation>(exams[i].ExamId.ToString(), "api/participations");
+                        if (res != null)
+                        {
+                            teacher.dataGridView_teacherExams.DataSource = exams;
+                            teacher.dataGridView_teacherExams.Rows[i].Cells[9] = new DataGridViewTextBoxCell();
+                            teacher.dataGridView_teacherExams.Rows[i].Cells[9].Tag = 1;
+                            teacher.dataGridView_teacherExams.Rows[i].Cells[9].Value = "Finished";
+
+                        }
+                        else
+                        {
+                            teacher.dataGridView_teacherExams.DataSource = exams;
+                            teacher.dataGridView_teacherExams.Rows[i].Cells[9].Tag = 0;
+                        }
+
+                    }
                 }
             }
             catch (Exception ex)
@@ -95,7 +114,7 @@ namespace ExamSystem_Project.FormModels
 
         public void CreateNewExam(User user)
         {
-            buildExam = new BuildExamForm(null,user);
+            buildExam = new BuildExamForm(null, user);
             buildExam.ShowDialog();
         }
 

@@ -39,7 +39,7 @@ namespace ExamSystem_Project.FormModels
         public Dictionary<int, int> checkedDictionary;
         public Participation participation;
         public Error error;
-        
+
 
 
         public RunExamFormModel(Exam examFromSt)
@@ -53,6 +53,7 @@ namespace ExamSystem_Project.FormModels
             labelList = new List<Label>();
             checkedDictionary = new Dictionary<int, int>();
             participation = new Participation();
+
 
 
         }
@@ -172,10 +173,12 @@ namespace ExamSystem_Project.FormModels
 
                 runExam.textBox_QuetionContent.Text = exam.questions[questionIndex].Text;
                 question = exam.questions[questionIndex];
+                runExam.label_qNum.Text = $"{questionIndex + 1} / {exam.questions.Count}";
                 for (int i = 0; i < question.Options.Count; i++)
                 {
                     CreateDynamicOptions();
                     labelListOptions[i].Text = question.Options[i].ToString();
+
 
                     if (val == 1 || val == 2)
                     {
@@ -358,7 +361,7 @@ namespace ExamSystem_Project.FormModels
             {
                 bool res = false;
                 res = isExpired ? true : DialogMsgBox();
-                string msg = string.Empty;  
+                string msg = string.Empty;
 
                 if (res)
                 {
@@ -371,14 +374,14 @@ namespace ExamSystem_Project.FormModels
 
                         msg = isExpired ? Constants.ExpierdMsg : Constants.SendSuccess;
 
-                     
-                            runExam.Invoke((MethodInvoker)delegate
-                            {
-                                MessageBox.Show(msg);
-                                runExam.Close();
-                                runExam.studentModel.GetAllExams();
-                            });
-              
+
+                        runExam.Invoke((MethodInvoker)delegate
+                        {
+                            MessageBox.Show(msg);
+                            runExam.Close();
+                            runExam.studentModel.GetAllExams();
+                        });
+
 
                     }
                 }

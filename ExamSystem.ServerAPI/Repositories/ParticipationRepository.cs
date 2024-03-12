@@ -25,7 +25,8 @@ namespace ExamSystem.ServerAPI.Repositories
 
         public async Task<Participation> GetParticipationById(int id)
         {
-            var participation = await _context.Participations
+
+            var participation = await _context.Participations.Include(e => e.errors)
                 .FirstOrDefaultAsync(p => p.ParticipationId == id);
 
             return participation;
