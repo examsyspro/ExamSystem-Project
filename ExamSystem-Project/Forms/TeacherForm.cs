@@ -56,7 +56,7 @@ namespace ExamSystem_Project.Forms
 
             int dataGridViewWidth = 1500; // Set your desired width
             dataGridView_teacherExams.Width = dataGridViewWidth;
-            panel1.Width = dataGridViewWidth + 20;
+            panel1.Width = dataGridViewWidth + 30;
 
             Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
             Size = new Size(w, h);
