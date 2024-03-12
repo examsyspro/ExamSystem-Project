@@ -56,6 +56,7 @@ namespace ExamSystem_Project.Forms
 
             int dataGridViewWidth = 1500; // Set your desired width
             dataGridView_teacherExams.Width = dataGridViewWidth;
+            panel1.Width = dataGridViewWidth + 20;
 
             Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
             Size = new Size(w, h);
@@ -83,11 +84,28 @@ namespace ExamSystem_Project.Forms
 
         private void dataGridView_teacherExams_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 9)
+            try
             {
-                teacherModel.OpenExistExam(user);
+                if (e.ColumnIndex == 9)
+                {
+
+                    var x = (int)dataGridView_teacherExams.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag;
+
+                    if (x != 1)
+                    {
+                        teacherModel.OpenExistExam(user);
+                    }
+
+
+                }
 
             }
+            catch (Exception)
+            {
+
+
+            }
+
         }
 
         private void TeacherForm_Enter(object sender, EventArgs e)
