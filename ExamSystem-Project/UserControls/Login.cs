@@ -38,13 +38,13 @@ namespace ExamSystem_Project.UserControls
             userResponse = new User();
             textBox_userId.Text = "315082040";
             textBox_password.Text = "Mg123456789";
-            
-          
+
+
         }
 
         private void label_registerNow_Click(object sender, EventArgs e)
         {
-           MainForm.main.UISwitch("Register");
+            MainForm.main.UISwitch("Register");
         }
 
 
@@ -95,7 +95,7 @@ namespace ExamSystem_Project.UserControls
                             teacher.Show();
 
                             MainForm.main.Hide();
-                           
+
                         }
                     }
                     else
@@ -108,9 +108,9 @@ namespace ExamSystem_Project.UserControls
             catch (Exception ex)
             {
 
-                
+
             }
-          
+
         }
 
 

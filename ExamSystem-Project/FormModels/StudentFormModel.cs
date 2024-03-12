@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ExamSystem_Project.FormModels
 {
@@ -17,6 +18,9 @@ namespace ExamSystem_Project.FormModels
         public List<Exam> exams;
         public static StudentFormModel studentFormModel;
         public ExamRunForm examRun;
+        Dictionary<string, int> filterdTags;
+
+
         public StudentFormModel(StudentForm studentFrom)
         {
             
@@ -24,6 +28,8 @@ namespace ExamSystem_Project.FormModels
             exam = new Exam();
             exams = new List<Exam>();
             studentFormModel = this;
+            filterdTags = new Dictionary<string, int>();   
+
             GetAllExams();
 
         }
@@ -56,7 +62,7 @@ namespace ExamSystem_Project.FormModels
 
 
                 }
-
+              
             }
             catch (Exception ex)
             {
@@ -66,7 +72,62 @@ namespace ExamSystem_Project.FormModels
         }
 
 
-        public  void FilterRows(string filterValue)
+
+        private void SaveCellTags()
+        {
+            try
+            {
+                foreach (DataGridViewRow row in student.dataGridView_StudentExam.Rows)
+                {
+                    DataGridViewCell cell9 = row.Cells[9];
+                    DataGridViewCell cell0 = row.Cells[0];
+                    if (!filterdTags.ContainsKey(cell0.Value.ToString()))
+                    {
+                        filterdTags.Add(cell0.Value.ToString(), int.Parse(cell9.Tag.ToString()));
+                    }
+                    else
+                    {
+                        filterdTags[cell0.Value.ToString()] = int.Parse(cell9.Tag.ToString());
+                    }
+                }
+            }
+            catch (Exception ex )
+            {
+
+              
+            }
+         
+        }
+
+
+   
+
+        private void RestoreCellTags()
+        {
+            try
+            {
+                if (student.dataGridView_StudentExam.Rows.Count > 0)
+                {
+                    foreach (DataGridViewRow row in student.dataGridView_StudentExam.Rows)
+                    {
+                        DataGridViewCell cell9 = row.Cells[9];
+                        DataGridViewCell cell0 = row.Cells[0];
+                        if (filterdTags.ContainsKey(cell0.Value.ToString()))
+                        {
+                            cell9.Tag = filterdTags[cell0.Value.ToString()];
+                        }
+                    }
+                }
+            }
+            catch (Exception ex )
+            {
+
+            }
+        
+           
+        }
+
+        public void FilterRows(string filterValue)
         {
             try
             {
@@ -74,13 +135,32 @@ namespace ExamSystem_Project.FormModels
                 if (exams.Count > 0)
                 {
 
-
+                    SaveCellTags();
                     List<Exam> filteredList = exams
                          .Where(item => item.ExamTitle.ToLower().Contains(filterValue))
                          .ToList();
                     student.dataGridView_StudentExam.DataSource = null;
                     student.dataGridView_StudentExam.DataSource = filteredList;
+                    RestoreCellTags();
+
+
+                    if (student.dataGridView_StudentExam.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < student.dataGridView_StudentExam.Rows.Count; i++)
+                        {
+
+                            var x = student.dataGridView_StudentExam.Rows[i].Cells[9].Tag;
+                            if ((int)x == 1)
+                            {
+                                student.dataGridView_StudentExam.Rows[i].Cells[9] = new DataGridViewTextBoxCell();
+                                student.dataGridView_StudentExam.Rows[i].Cells[9].Tag = 1;
+                                student.dataGridView_StudentExam.Rows[i].Cells[9].Value = "Finished";
+                            }
+                        }
+                    }
+                    
                 }
+                 
             }
             catch (Exception ex)
             {
@@ -115,4 +195,6 @@ namespace ExamSystem_Project.FormModels
         }
 
     }
+
+
 }
