@@ -21,7 +21,7 @@ namespace ExamSystem_Project.FormModels
         public General gen = new General();
         public static TeacherFormModel teacherFormModel;
         public DataTable dataTable;
-
+        Dictionary<string, int> filterdTags;
         BuildExamForm buildExam;
         public TeacherFormModel(TeacherForm teacherForm)
         {
@@ -29,7 +29,7 @@ namespace ExamSystem_Project.FormModels
             exams = new List<Exam>();
             this.teacher = teacherForm;
             teacherFormModel = this;
-
+            filterdTags = new Dictionary<string, int>();
             GetAllExams();
 
         }
@@ -45,13 +45,13 @@ namespace ExamSystem_Project.FormModels
                     teacher.dataGridView_teacherExams.DataSource = exams;
                     for (int i = 0; i < exams.Count; i++)
                     {
-                        Participation res = await General.mainRequestor.Request_GetById<Participation>(exams[i].ExamId.ToString(), "api/participations");
-                        if (res != null)
+                        var res = await General.mainRequestor.Request_GetById<Participation?>(exams[i].ExamId.ToString(), "api/participations");
+                        if (res.Student_Id != null)
                         {
                             teacher.dataGridView_teacherExams.DataSource = exams;
                             teacher.dataGridView_teacherExams.Rows[i].Cells[9] = new DataGridViewTextBoxCell();
                             teacher.dataGridView_teacherExams.Rows[i].Cells[9].Tag = 1;
-                            teacher.dataGridView_teacherExams.Rows[i].Cells[9].Value = "Finished";
+                            teacher.dataGridView_teacherExams.Rows[i].Cells[9].Value = "Executed";
 
                         }
                         else
@@ -70,18 +70,96 @@ namespace ExamSystem_Project.FormModels
             }
         }
 
+
+
+        private void SaveCellTags()
+        {
+            try
+            {
+                foreach (DataGridViewRow row in teacher.dataGridView_teacherExams.Rows)
+                {
+                    DataGridViewCell cell9 = row.Cells[9];
+                    DataGridViewCell cell0 = row.Cells[0];
+                    if (!filterdTags.ContainsKey(cell0.Value.ToString()))
+                    {
+                        filterdTags.Add(cell0.Value.ToString(), int.Parse(cell9.Tag.ToString()));
+                    }
+                    else
+                    {
+                        filterdTags[cell0.Value.ToString()] = int.Parse(cell9.Tag.ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+        }
+
+
+
+
+        private void RestoreCellTags()
+        {
+            try
+            {
+                if (teacher.dataGridView_teacherExams.Rows.Count > 0)
+                {
+                    foreach (DataGridViewRow row in teacher.dataGridView_teacherExams.Rows)
+                    {
+                        DataGridViewCell cell9 = row.Cells[9];
+                        DataGridViewCell cell0 = row.Cells[0];
+                        if (filterdTags.ContainsKey(cell0.Value.ToString()))
+                        {
+                            cell9.Tag = filterdTags[cell0.Value.ToString()];
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+        }
+
         public void FilterRows(string filterValue)
         {
             try
             {
+
                 if (exams.Count > 0)
                 {
+
+                    SaveCellTags();
                     List<Exam> filteredList = exams
                          .Where(item => item.ExamTitle.ToLower().Contains(filterValue))
                          .ToList();
                     teacher.dataGridView_teacherExams.DataSource = null;
                     teacher.dataGridView_teacherExams.DataSource = filteredList;
+                    RestoreCellTags();
+
+
+                    if (teacher.dataGridView_teacherExams.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < teacher.dataGridView_teacherExams.Rows.Count; i++)
+                        {
+
+                            var x = teacher.dataGridView_teacherExams.Rows[i].Cells[9].Tag;
+                            if ((int)x == 1)
+                            {
+                                teacher.dataGridView_teacherExams.Rows[i].Cells[9] = new DataGridViewTextBoxCell();
+                                teacher.dataGridView_teacherExams.Rows[i].Cells[9].Tag = 1;
+                                teacher.dataGridView_teacherExams.Rows[i].Cells[9].Value = "Executed";
+                            }
+                        }
+                    }
+
                 }
+
             }
             catch (Exception ex)
             {
@@ -92,6 +170,29 @@ namespace ExamSystem_Project.FormModels
 
 
         }
+
+        //public void FilterRows(string filterValue)
+        //{
+        //    try
+        //    {
+        //        if (exams.Count > 0)
+        //        {
+        //            List<Exam> filteredList = exams
+        //                 .Where(item => item.ExamTitle.ToLower().Contains(filterValue))
+        //                 .ToList();
+        //            teacher.dataGridView_teacherExams.DataSource = null;
+        //            teacher.dataGridView_teacherExams.DataSource = filteredList;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+
+        //    }
+
+
+
+        //}
 
         public void OpenExistExam(User user)
         {

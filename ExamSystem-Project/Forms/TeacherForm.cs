@@ -65,7 +65,7 @@ namespace ExamSystem_Project.Forms
             dataGridView_teacherExams.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView_teacherExams.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right);
 
-            
+
         }
 
 

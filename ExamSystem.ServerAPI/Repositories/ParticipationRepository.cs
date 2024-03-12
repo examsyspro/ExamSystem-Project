@@ -19,17 +19,38 @@ namespace ExamSystem.ServerAPI.Repositories
 
         public async Task<List<Participation>> GetAllParticipations()
         {
-            List<Participation> participations = await _context.Participations.ToListAsync();
-            return participations;
+            try
+            {
+                List<Participation> participations = await _context.Participations.ToListAsync();
+                return participations;
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+
         }
 
         public async Task<Participation> GetParticipationById(int id)
         {
+            try
+            {
+                var participation = await _context.Participations.Include(e => e.errors)
+               .FirstOrDefaultAsync(p => p.Exam_Id == id);
+                if (participation == null)
+                {
+                    return new Participation();
+                }
 
-            var participation = await _context.Participations.Include(e => e.errors)
-                .FirstOrDefaultAsync(p => p.ParticipationId == id);
+                return participation;
+            }
+            catch (Exception ex)
+            {
 
-            return participation;
+                return new Participation();
+            }
+
         }
 
         public async Task<bool> CreateParticipation(Participation participation)
@@ -83,8 +104,17 @@ namespace ExamSystem.ServerAPI.Repositories
 
         public async Task<bool> GetByStudentAndExamId(string studentId, int examId)
         {
-            return await _context.Participations
-           .AnyAsync(p => p.Student_Id == studentId && p.Exam_Id == examId);
+            try
+            {
+                return await _context.Participations
+          .AnyAsync(p => p.Student_Id == studentId && p.Exam_Id == examId);
+            }
+            catch (Exception ex)
+            {
+                return false;
+
+            }
+
         }
     }
 }
