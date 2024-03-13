@@ -50,13 +50,14 @@ namespace ExamSystem_Project.Forms
             // Set maximum width and height for the form
             int maxWidth = screen.Width - 100; // Adjust this value as needed
             int maxHeight = screen.Height - 100; // Adjust this value as needed
-            int desiredFormWidth = 1650; // Set your desired form width
+            int dataGridViewWidth = 1584;
+            dataGridView_teacherExams.Width = dataGridViewWidth;
+            int desiredFormWidth = dataGridViewWidth + 200; // Set your desired form width
             int w = Math.Min(desiredFormWidth, maxWidth);
             int h = Math.Min(Height, maxHeight);
 
-            int dataGridViewWidth = 1500; // Set your desired width
-            dataGridView_teacherExams.Width = dataGridViewWidth;
-            panel1.Width = dataGridViewWidth + 30;
+
+
 
             Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
             Size = new Size(w, h);
@@ -95,8 +96,15 @@ namespace ExamSystem_Project.Forms
                     {
                         teacherModel.OpenExistExam(user);
                     }
+                }
+                else if (e.ColumnIndex == 10)
+                {
+                    var x = (int)dataGridView_teacherExams.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag;
 
-
+                    if (x != 1)
+                    {
+                        teacherModel.OpenExamStatistics(user);
+                    }
                 }
 
             }

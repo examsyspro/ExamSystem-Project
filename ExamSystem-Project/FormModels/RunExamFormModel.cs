@@ -18,7 +18,7 @@ namespace ExamSystem_Project.FormModels
     public class RunExamFormModel
     {
 
-        public int textBoxCounter = 0;
+        public int textBoxCounter = 0; 
         public int optionNameCounter = 1;
         public int CurrectAnswerCount = 0;
         public Label dynamicText;

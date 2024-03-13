@@ -23,6 +23,7 @@ namespace ExamSystem_Project.FormModels
         public DataTable dataTable;
         Dictionary<string, int> filterdTags;
         BuildExamForm buildExam;
+        StatisticsForm statisticsForm;
         public TeacherFormModel(TeacherForm teacherForm)
         {
             exam = new Exam();
@@ -52,12 +53,21 @@ namespace ExamSystem_Project.FormModels
                             teacher.dataGridView_teacherExams.Rows[i].Cells[9] = new DataGridViewTextBoxCell();
                             teacher.dataGridView_teacherExams.Rows[i].Cells[9].Tag = 1;
                             teacher.dataGridView_teacherExams.Rows[i].Cells[9].Value = "Executed";
+                            teacher.dataGridView_teacherExams.Rows[i].Cells[9].Style.BackColor = Color.LightGray;
+                            teacher.dataGridView_teacherExams.Rows[i].Cells[10].Tag = 0;
+                        
+
 
                         }
                         else
                         {
                             teacher.dataGridView_teacherExams.DataSource = exams;
                             teacher.dataGridView_teacherExams.Rows[i].Cells[9].Tag = 0;
+                            teacher.dataGridView_teacherExams.Rows[i].Cells[10] = new DataGridViewTextBoxCell();
+                            teacher.dataGridView_teacherExams.Rows[i].Cells[10].Value = "No Statistics";
+                            teacher.dataGridView_teacherExams.Rows[i].Cells[10].Tag = 1;
+                            teacher.dataGridView_teacherExams.Rows[i].Cells[10].Style.BackColor = Color.LightGray;
+
                         }
 
                     }
@@ -154,6 +164,17 @@ namespace ExamSystem_Project.FormModels
                                 teacher.dataGridView_teacherExams.Rows[i].Cells[9] = new DataGridViewTextBoxCell();
                                 teacher.dataGridView_teacherExams.Rows[i].Cells[9].Tag = 1;
                                 teacher.dataGridView_teacherExams.Rows[i].Cells[9].Value = "Executed";
+                                teacher.dataGridView_teacherExams.Rows[i].Cells[9].Style.BackColor = Color.LightGray;
+                                teacher.dataGridView_teacherExams.Rows[i].Cells[10].Tag = 0;
+                              
+                            }
+                            else
+                            {
+                                teacher.dataGridView_teacherExams.Rows[i].Cells[10] = new DataGridViewTextBoxCell();
+                                teacher.dataGridView_teacherExams.Rows[i].Cells[10].Value = "No Statistics";
+                                teacher.dataGridView_teacherExams.Rows[i].Cells[10].Tag = 1;
+                                teacher.dataGridView_teacherExams.Rows[i].Cells[10].Style.BackColor = Color.LightGray;
+
                             }
                         }
                     }
@@ -171,28 +192,6 @@ namespace ExamSystem_Project.FormModels
 
         }
 
-        //public void FilterRows(string filterValue)
-        //{
-        //    try
-        //    {
-        //        if (exams.Count > 0)
-        //        {
-        //            List<Exam> filteredList = exams
-        //                 .Where(item => item.ExamTitle.ToLower().Contains(filterValue))
-        //                 .ToList();
-        //            teacher.dataGridView_teacherExams.DataSource = null;
-        //            teacher.dataGridView_teacherExams.DataSource = filteredList;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-
-        //    }
-
-
-
-        //}
 
         public void OpenExistExam(User user)
         {
@@ -202,6 +201,25 @@ namespace ExamSystem_Project.FormModels
                 exam = exams[index];
                 buildExam = new BuildExamForm(exam, user);
                 buildExam.ShowDialog();
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+
+        }
+
+        public void OpenExamStatistics(User user)
+        {
+            try
+            {
+                int index = teacher.dataGridView_teacherExams.SelectedRows[0].Index;
+                exam = exams[index];
+                statisticsForm = new StatisticsForm(exam, user);
+                statisticsForm.ShowDialog();
 
             }
             catch (Exception ex)
