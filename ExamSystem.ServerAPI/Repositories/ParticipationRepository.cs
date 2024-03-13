@@ -130,6 +130,22 @@ namespace ExamSystem.ServerAPI.Repositories
             }
 
         }
+
+
+        public async Task<Participation> GetParticipationBySE(string studentId, int examId)
+        {
+            try
+            {
+                return await _context.Participations
+          .FirstOrDefaultAsync(p => p.Student_Id == studentId && p.Exam_Id == examId);
+            }
+            catch (Exception ex)
+            {
+                return null;
+
+            }
+
+        }
     }
 }
 

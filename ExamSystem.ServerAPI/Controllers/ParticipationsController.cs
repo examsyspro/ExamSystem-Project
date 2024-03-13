@@ -31,7 +31,7 @@ namespace ExamSystem.ServerAPI.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<Participation> GetParticipation(int id)
+        public async Task<Participation> GetParticipationById(int id)
         {
             return await _participationRepo.GetParticipationById(id);
         }
@@ -58,6 +58,12 @@ namespace ExamSystem.ServerAPI.Controllers
         public async Task<bool> GetByStudentAndExamId(string studentId, int examId)
         {
             return await _participationRepo.GetByStudentAndExamId(studentId, examId);
+        }
+
+        [HttpGet("getparticipationbyse")]
+        public async Task<Participation> GetParticipationBySE(string studentId, int examId)
+        {
+            return await _participationRepo.GetParticipationBySE(studentId, examId);
         }
     }
 }

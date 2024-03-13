@@ -148,6 +148,23 @@ namespace ExamSystem_Project.ApiRequestors
             }
         }
 
+
+        public async Task<Participation> Request_GetParticipationBySE(string studentId, int examId)
+        {
+            try
+            {
+                UriBuilder builder = new UriBuilder(httpClient.BaseAddress);
+                builder.Path = "api/participations/getparticipationbyse";
+                builder.Query = $"studentId={studentId}&examId={examId}";
+
+                return await httpClient.GetFromJsonAsync<Participation>(builder.Uri.ToString());
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public async Task<List<T>> Request_GetAll<T>(string apiStr)
         {
             try
