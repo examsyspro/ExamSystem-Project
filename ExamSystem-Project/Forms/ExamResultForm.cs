@@ -67,8 +67,8 @@ namespace ExamSystem_Project.Forms
             errorsList = new List<Error>();
             error = new Error();
             GetPaticipation();
-            GetErrors();
-            GetError();
+
+
 
 
             label_examName.Text = exam.ExamTitle;
@@ -84,6 +84,8 @@ namespace ExamSystem_Project.Forms
             {
 
                 participation = await General.mainRequestor.Request_GetParticipationBySE(user.UserId, exam.ExamId);
+                UpdateStudentLabels();
+                GetErrors();
 
             }
             catch (Exception ex)
@@ -109,10 +111,13 @@ namespace ExamSystem_Project.Forms
                         foreach (var item in participation.errors)
                         {
                             listBox_errorsList.Items.Add(item.QuestionContent);
+                            errorsList.Add(item);
                         }
                         listBox_errorsList.SelectedIndex = 0;
                         label_selectedAnswer.Visible = true;
                         label_currectAnswer.Visible = true;
+                        GetError();
+                        UpdateAnswersLabels();
                     }
                     else
                     {
@@ -137,6 +142,8 @@ namespace ExamSystem_Project.Forms
                 if (index != -1)
                 {
                     error = errorsList[index];
+
+
                 }
 
             }
@@ -173,20 +180,7 @@ namespace ExamSystem_Project.Forms
 
 
 
-        private void listBox_studentsList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                UpdateStudentLabels();
-                GetErrors();
-            }
-            catch (Exception ex)
-            {
 
-
-            }
-
-        }
 
         private void listBox_errorsList_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -136,9 +136,12 @@ namespace ExamSystem.ServerAPI.Repositories
         {
             try
             {
-                return await _context.Participations
+                Participation participation = await _context.Participations.Include(e => e.errors)
           .FirstOrDefaultAsync(p => p.Student_Id == studentId && p.Exam_Id == examId);
+
+                return participation;
             }
+
             catch (Exception ex)
             {
                 return null;
