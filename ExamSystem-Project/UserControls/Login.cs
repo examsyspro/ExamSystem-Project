@@ -36,8 +36,7 @@ namespace ExamSystem_Project.UserControls
             password = string.Empty;
             user = new User();
             userResponse = new User();
-            textBox_userId.Text = "315082040";
-            textBox_password.Text = "Mg123456789";
+
 
 
         }
@@ -113,8 +112,28 @@ namespace ExamSystem_Project.UserControls
 
         }
 
+        private void button_teacher_Click(object sender, EventArgs e)
+        {
+            textBox_userId.Text = "301325528";
+            textBox_password.Text = "Roei1234";
+        }
 
+        private void button1_student_Click(object sender, EventArgs e)
+        {
+            textBox_userId.Text = "300884335";
+            textBox_password.Text = "Roei1234";
+        }
 
+        private void button2_student_Click(object sender, EventArgs e)
+        {
+            textBox_userId.Text = "339923054";
+            textBox_password.Text = "Roei1234";
+        }
 
+        private void button3_student_Click(object sender, EventArgs e)
+        {
+            textBox_userId.Text = "344912936";
+            textBox_password.Text = "Roei1234";
+        }
     }
 }

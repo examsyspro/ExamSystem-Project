@@ -36,7 +36,7 @@
             studentExamBindingSource1 = new BindingSource(components);
             studentExamBindingSource = new BindingSource(components);
             panel4 = new Panel();
-            label_clock = new Label();
+            button_Logout = new Button();
             label11 = new Label();
             panel5 = new Panel();
             dataGridView_StudentExam = new DataGridView();
@@ -52,7 +52,6 @@
             ShowExam = new DataGridViewButtonColumn();
             examResult = new DataGridViewButtonColumn();
             examBindingSource = new BindingSource(components);
-            button_Logout = new Button();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).BeginInit();
             panel4.SuspendLayout();
@@ -85,7 +84,6 @@
             // 
             panel4.BackColor = Color.FromArgb(0, 135, 209);
             panel4.Controls.Add(button_Logout);
-            panel4.Controls.Add(label_clock);
             panel4.Controls.Add(label11);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
@@ -94,18 +92,21 @@
             panel4.Size = new Size(1508, 89);
             panel4.TabIndex = 5;
             // 
-            // label_clock
+            // button_Logout
             // 
-            label_clock.AutoSize = true;
-            label_clock.BackColor = Color.AliceBlue;
-            label_clock.BorderStyle = BorderStyle.FixedSingle;
-            label_clock.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label_clock.Location = new Point(61, 29);
-            label_clock.Margin = new Padding(2, 0, 2, 0);
-            label_clock.Name = "label_clock";
-            label_clock.Size = new Size(71, 32);
-            label_clock.TabIndex = 10;
-            label_clock.Text = "Clock";
+            button_Logout.BackColor = Color.AliceBlue;
+            button_Logout.BackgroundImageLayout = ImageLayout.Zoom;
+            button_Logout.FlatStyle = FlatStyle.Flat;
+            button_Logout.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Logout.ForeColor = Color.FromArgb(0, 135, 209);
+            button_Logout.Location = new Point(1326, 18);
+            button_Logout.Margin = new Padding(2);
+            button_Logout.Name = "button_Logout";
+            button_Logout.Size = new Size(148, 52);
+            button_Logout.TabIndex = 11;
+            button_Logout.Text = "Logout";
+            button_Logout.UseVisualStyleBackColor = false;
+            button_Logout.Click += button_Logout_Click;
             // 
             // label11
             // 
@@ -261,22 +262,6 @@
             // 
             examBindingSource.DataSource = typeof(Models.Exam);
             // 
-            // button_Logout
-            // 
-            button_Logout.BackColor = Color.AliceBlue;
-            button_Logout.BackgroundImageLayout = ImageLayout.Zoom;
-            button_Logout.FlatStyle = FlatStyle.Flat;
-            button_Logout.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Logout.ForeColor = Color.FromArgb(0, 135, 209);
-            button_Logout.Location = new Point(1326, 18);
-            button_Logout.Margin = new Padding(2);
-            button_Logout.Name = "button_Logout";
-            button_Logout.Size = new Size(148, 52);
-            button_Logout.TabIndex = 11;
-            button_Logout.Text = "Logout";
-            button_Logout.UseVisualStyleBackColor = false;
-            button_Logout.Click += button_Logout_Click;
-            // 
             // StudentForm
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
@@ -335,7 +320,6 @@
         public DataGridView dataGridView_teacherExams;
         private BindingSource examBindingSource;
         public DataGridView dataGridView_StudentExam;
-        public Label label_clock;
         public TextBox textBox_filter;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private DataGridViewTextBoxColumn examStrIdDataGridViewTextBoxColumn;

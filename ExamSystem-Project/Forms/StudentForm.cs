@@ -19,29 +19,15 @@ namespace ExamSystem_Project.Forms
         public User user { get; set; }
         public StudentFormModel StudentModel;
 
-        LocalClock clock;
+
         public StudentForm(User user1)
         {
             InitializeComponent();
             InitializeAll();
             this.user = user1;
             StudentModel = new StudentFormModel(this);
-
-            clock = LocalClock.Get_Instance();
-            clock.Clock_event += Clock_Update;
-
-
         }
 
-        public void Clock_Update(object sender, EventArgs e)
-        {
-
-            label_clock.Invoke((MethodInvoker)delegate
-            {
-                label_clock.Text = sender.ToString();
-            });
-
-        }
         public void InitializeAll()
         {
             //datagridview configuration 
@@ -117,7 +103,7 @@ namespace ExamSystem_Project.Forms
 
         private void StudentForm_Shown(object sender, EventArgs e)
         {
-            clock.Clock_Run();
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -127,19 +113,18 @@ namespace ExamSystem_Project.Forms
 
         private void StudentForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
-            
-           // Environment.Exit(0);
+
         }
 
         private void button_Logout_Click(object sender, EventArgs e)
         {
-            clock.Clock_event -= Clock_Update;
+
+
             MainForm main = new MainForm();
             main.Show();
             this.Close();
         }
 
-     
+
     }
 }

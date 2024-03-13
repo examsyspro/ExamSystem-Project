@@ -41,6 +41,10 @@
             textBox_userId = new TextBox();
             button_loginStart = new Button();
             panel3 = new Panel();
+            button_teacher = new Button();
+            button1_student = new Button();
+            button2_student = new Button();
+            button3_student = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -208,11 +212,55 @@
             panel3.Size = new Size(715, 662);
             panel3.TabIndex = 4;
             // 
+            // button_teacher
+            // 
+            button_teacher.Location = new Point(1091, 69);
+            button_teacher.Name = "button_teacher";
+            button_teacher.Size = new Size(141, 45);
+            button_teacher.TabIndex = 10;
+            button_teacher.Text = "teacher";
+            button_teacher.UseVisualStyleBackColor = true;
+            button_teacher.Click += button_teacher_Click;
+            // 
+            // button1_student
+            // 
+            button1_student.Location = new Point(1091, 146);
+            button1_student.Name = "button1_student";
+            button1_student.Size = new Size(141, 45);
+            button1_student.TabIndex = 11;
+            button1_student.Text = "student";
+            button1_student.UseVisualStyleBackColor = true;
+            button1_student.Click += button1_student_Click;
+            // 
+            // button2_student
+            // 
+            button2_student.Location = new Point(1091, 221);
+            button2_student.Name = "button2_student";
+            button2_student.Size = new Size(141, 45);
+            button2_student.TabIndex = 12;
+            button2_student.Text = "student";
+            button2_student.UseVisualStyleBackColor = true;
+            button2_student.Click += button2_student_Click;
+            // 
+            // button3_student
+            // 
+            button3_student.Location = new Point(1091, 295);
+            button3_student.Name = "button3_student";
+            button3_student.Size = new Size(141, 45);
+            button3_student.TabIndex = 13;
+            button3_student.Text = "student";
+            button3_student.UseVisualStyleBackColor = true;
+            button3_student.Click += button3_student_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
+            Controls.Add(button3_student);
+            Controls.Add(button2_student);
+            Controls.Add(button1_student);
+            Controls.Add(button_teacher);
             Controls.Add(panel2);
             Controls.Add(panel3);
             ForeColor = Color.FromArgb(100, 121, 95);
@@ -241,5 +289,9 @@
         private Label label_characters;
         private Label label4;
         private Label label3;
+        private Button button_teacher;
+        private Button button1_student;
+        private Button button2_student;
+        private Button button3_student;
     }
 }
