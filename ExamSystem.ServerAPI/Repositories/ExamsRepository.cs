@@ -83,12 +83,29 @@ namespace ExamSystem.ServerAPI.Repositories
 
         public async Task<bool> DeleteExam(int id)
         {
-            var examToDelete = await _context.Exams.FindAsync(id);
+            var examToDelete = await _context.Exams
+                .Include(e => e.questions)
+                .ThenInclude(q => q.Options)
+                .FirstOrDefaultAsync(e => e.ExamId == id);
+
             if (examToDelete != null)
             {
+                // Manually remove options associated with questions
+                foreach (var question in examToDelete.questions)
+                {
+                    _context.OptionAns.RemoveRange(question.Options);
+                }
+
+                // Manually remove questions associated with the exam
+                _context.Questions.RemoveRange(examToDelete.questions);
+
+                // Remove the exam itself
                 _context.Exams.Remove(examToDelete);
+
+                // Save changes to the database
                 return await _context.SaveChangesAsync() > 0;
             }
+
             return false;
         }
     }

@@ -28,6 +28,8 @@ namespace ExamSystem_Project.Helpers
         public const string SendSuccess = "Send Exam Successfully";
         public const string ExpierdMsg = "Time expired";
         public const string NotAvailable = "Exam is not available for execution!\nexam date is :";
+        public const string successDelete = "Delete successfully";
+
     }
 }
 

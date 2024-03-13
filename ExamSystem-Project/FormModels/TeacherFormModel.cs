@@ -72,6 +72,12 @@ namespace ExamSystem_Project.FormModels
 
                     }
                 }
+                else
+                {
+                    teacher.dataGridView_teacherExams.DataSource = null;
+                }
+
+                teacher.CheckDataGridEmpty();
             }
             catch (Exception ex)
             {
@@ -235,6 +241,65 @@ namespace ExamSystem_Project.FormModels
         {
             buildExam = new BuildExamForm(null, user);
             buildExam.ShowDialog();
+        }
+
+
+        public bool DialogMsgBox()
+        {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show($"Are you sure you want to delete?\n exam : {exam.ExamTitle}", "Confirmation", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+
+            }
+        }
+
+        public async void DeleteExam()
+        {
+            try
+            {
+                bool res = false;
+                int index = teacher.dataGridView_teacherExams.SelectedRows[0].Index;
+                exam = exams[index];
+
+                 res = DialogMsgBox();
+                if (res)
+                {
+                    res = await General.mainRequestor.Request_Delete(exam.ExamId.ToString(), "api/exams");
+
+                    if (res)
+                    {
+                        MessageBox.Show(Constants.successDelete);
+                        GetAllExams();
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show(Constants.notSuccessReg);
+                    }
+                }
+
+                 
+            }
+            catch (Exception ex)
+            {
+
+                
+            }
+           
+
         }
 
     }

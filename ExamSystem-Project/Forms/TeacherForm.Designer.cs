@@ -48,8 +48,9 @@
             textBox_filter = new TextBox();
             label_searchExam = new Label();
             panel4 = new Panel();
-            label11 = new Label();
             button_Logout = new Button();
+            label11 = new Label();
+            button_delete = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView_teacherExams).BeginInit();
             ((System.ComponentModel.ISupportInitialize)examBindingSource).BeginInit();
             panel4.SuspendLayout();
@@ -102,6 +103,7 @@
             dataGridView_teacherExams.Size = new Size(1584, 559);
             dataGridView_teacherExams.TabIndex = 5;
             dataGridView_teacherExams.CellClick += dataGridView_teacherExams_CellClick;
+            dataGridView_teacherExams.SelectionChanged += dataGridView_teacherExams_SelectionChanged;
             // 
             // examIdDataGridViewTextBoxColumn
             // 
@@ -234,19 +236,6 @@
             panel4.Size = new Size(1712, 88);
             panel4.TabIndex = 9;
             // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.Transparent;
-            label11.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.ForeColor = SystemColors.Window;
-            label11.Location = new Point(711, 10);
-            label11.Margin = new Padding(0);
-            label11.Name = "label11";
-            label11.Size = new Size(310, 60);
-            label11.TabIndex = 7;
-            label11.Text = "Teacher Panel";
-            // 
             // button_Logout
             // 
             button_Logout.BackColor = Color.AliceBlue;
@@ -263,11 +252,39 @@
             button_Logout.UseVisualStyleBackColor = false;
             button_Logout.Click += button_Logout_Click;
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.ForeColor = SystemColors.Window;
+            label11.Location = new Point(711, 10);
+            label11.Margin = new Padding(0);
+            label11.Name = "label11";
+            label11.Size = new Size(310, 60);
+            label11.TabIndex = 7;
+            label11.Text = "Teacher Panel";
+            // 
+            // button_delete
+            // 
+            button_delete.BackColor = Color.FromArgb(0, 135, 209);
+            button_delete.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button_delete.ForeColor = Color.White;
+            button_delete.Location = new Point(367, 162);
+            button_delete.Margin = new Padding(4);
+            button_delete.Name = "button_delete";
+            button_delete.Size = new Size(240, 85);
+            button_delete.TabIndex = 10;
+            button_delete.Text = "Delete Exam";
+            button_delete.UseVisualStyleBackColor = false;
+            button_delete.Click += button_delete_Click;
+            // 
             // TeacherForm
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(1712, 1099);
+            Controls.Add(button_delete);
             Controls.Add(label_searchExam);
             Controls.Add(dataGridView_teacherExams);
             Controls.Add(textBox_filter);
@@ -306,5 +323,6 @@
         private DataGridViewButtonColumn ShowExam;
         private DataGridViewButtonColumn ExamStatistics;
         public Button button_Logout;
+        private Button button_delete;
     }
 }

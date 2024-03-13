@@ -1,4 +1,5 @@
 ﻿using ExamSystem_Project.FormModels;
+using ExamSystem_Project.Helpers;
 using ExamSystem_Project.Models;
 using System;
 using System.Collections.Generic;
@@ -67,7 +68,7 @@ namespace ExamSystem_Project.Forms
             dataGridView_teacherExams.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView_teacherExams.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right);
 
-
+            CheckDataGridEmpty();
         }
 
 
@@ -134,6 +135,53 @@ namespace ExamSystem_Project.Forms
             MainForm main = new MainForm();
             main.Show();
             this.Close();
+        }
+
+        private void button_delete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridView_teacherExams.Rows.Count > 0)
+                {
+                    var x = (int)dataGridView_teacherExams.SelectedRows[0].Cells[9].Tag;
+
+                    if (x == 0)
+                    {
+                        teacherModel.DeleteExam();
+                   
+                    }
+                    else
+                    {
+                        MessageBox.Show("Exam already executed");
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+
+        }
+
+        private void dataGridView_teacherExams_SelectionChanged(object sender, EventArgs e)
+        {
+            CheckDataGridEmpty();
+        }
+
+
+        public void CheckDataGridEmpty()
+        {
+            if (dataGridView_teacherExams.Rows.Count == 0)
+            {
+                button_delete.Enabled = false;
+            }
+            else
+            {
+                button_delete.Enabled = true;
+            }
         }
     }
 }
