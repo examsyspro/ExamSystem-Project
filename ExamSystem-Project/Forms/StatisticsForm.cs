@@ -13,23 +13,19 @@ namespace ExamSystem_Project.Forms
 {
     public partial class StatisticsForm : Form
     {
-        public StatisticsForm(Exam exam , User user)
+        public Exam exam;
+        public User user;
+        public StatisticsForm(Exam recivedexam,User reciveduser)
         {
             InitializeComponent();
             InitializeAll();
+            this.user = reciveduser;
+            this.exam = recivedexam;
         }
 
 
         public void InitializeAll()
         {
-            //datagridview configuration 
-            //dataGridView_teacherExams.ReadOnly = true;
-            //dataGridView_teacherExams.AllowUserToAddRows = false;
-            //dataGridView_teacherExams.MultiSelect = false;
-            //dataGridView_teacherExams.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            //dataGridView_teacherExams.ClearSelection();
-            //dataGridView_teacherExams.AllowUserToResizeColumns = false;
-            //dataGridView_teacherExams.RowTemplate.Height = 40;
             // Set DPI Awareness
             this.AutoScaleMode = AutoScaleMode.Dpi;
 
@@ -47,16 +43,11 @@ namespace ExamSystem_Project.Forms
             int h = Math.Min(Height, maxHeight);
 
             int dataGridViewWidth = 1500; // Set your desired width
-                                          // dataGridView_teacherExams.Width = dataGridViewWidth;
-
+                                        
 
             Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
             Size = new Size(w, h);
 
-            //// Set DataGridView properties
-            //dataGridView_teacherExams.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //dataGridView_teacherExams.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            //dataGridView_teacherExams.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right);
 
 
         }
