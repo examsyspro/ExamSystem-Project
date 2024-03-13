@@ -62,7 +62,7 @@ namespace ExamSystem_Project.Forms
 
             Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
             Size = new Size(w, h);
-
+            GetPaticipation();
             errorsList = new List<Error>();
             error = new Error();
             GetErrors();
