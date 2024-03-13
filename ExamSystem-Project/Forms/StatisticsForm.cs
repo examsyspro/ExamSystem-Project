@@ -56,7 +56,7 @@ namespace ExamSystem_Project.Forms
             // Set maximum width and height for the form
             int maxWidth = screen.Width - 100; // Adjust this value as needed
             int maxHeight = screen.Height - 100; // Adjust this value as needed
-            int desiredFormWidth = 1650; // Set your desired form width
+            int desiredFormWidth = 1500; // Set your desired form width
             int w = Math.Min(desiredFormWidth, maxWidth);
             int h = Math.Min(Height, maxHeight);
 
@@ -74,7 +74,7 @@ namespace ExamSystem_Project.Forms
             GetAllParticipations();
             GetErrors();
             GetError();
-            GetAverage();
+
 
             label_examName.Text = exam.ExamTitle;
 
@@ -98,6 +98,7 @@ namespace ExamSystem_Project.Forms
 
                     }
                     listBox_studentsList.SelectedIndex = 0;
+                    GetAverage();
                 }
             }
             catch (Exception ex)
@@ -116,7 +117,7 @@ namespace ExamSystem_Project.Forms
                 {
                     participation = participationsList[index];
                 }
-
+                UpdateStudentLabels();
             }
             catch (Exception ex)
             {
@@ -142,10 +143,14 @@ namespace ExamSystem_Project.Forms
                             listBox_errorsList.Items.Add(item.QuestionContent);
                         }
                         listBox_errorsList.SelectedIndex = 0;
+                        label_selectedAnswer.Visible = true;
+                        label_currectAnswer.Visible = true;
                     }
                     else
                     {
                         listBox_errorsList.Items.Add("No Errors congratulations :)");
+                        label_selectedAnswer.Visible = false;
+                        label_currectAnswer.Visible = false;
                     }
                 }
             }
@@ -195,14 +200,15 @@ namespace ExamSystem_Project.Forms
             label_studentName.Text = participation.Student_Name;
             label_idStudent.Text = participation.Student_Id;
             label_gradeStudent.Text = participation.Grade.ToString();
+
         }
 
 
         public void UpdateAnswersLabels()
         {
             label_currectAnswer.Text = error.CorrectAnswer;
-            label_selectedAnswer.Text = participation.Student_Id;
-            label_gradeStudent.Text = participation.Grade.ToString();
+            label_selectedAnswer.Text = error.StudentAnswer;
+
         }
 
 

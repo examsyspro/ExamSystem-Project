@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel4 = new Panel();
+            panel1 = new Panel();
+            label4 = new Label();
             label11 = new Label();
             label15 = new Label();
             listBox_studentsList = new ListBox();
@@ -48,8 +50,6 @@
             label_examName = new Label();
             label3 = new Label();
             label_studentsAver = new Label();
-            panel1 = new Panel();
-            label4 = new Label();
             panel2 = new Panel();
             panel4.SuspendLayout();
             panel1.SuspendLayout();
@@ -67,6 +67,30 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(1481, 89);
             panel4.TabIndex = 10;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(0, 135, 209);
+            panel1.Controls.Add(label4);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(2);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1481, 89);
+            panel1.TabIndex = 11;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.Window;
+            label4.Location = new Point(562, 9);
+            label4.Margin = new Padding(0);
+            label4.Name = "label4";
+            label4.Size = new Size(335, 60);
+            label4.TabIndex = 7;
+            label4.Text = "Statistics Panel";
             // 
             // label11
             // 
@@ -142,24 +166,24 @@
             // label_idStudent
             // 
             label_idStudent.AutoSize = true;
-            label_idStudent.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label_idStudent.ForeColor = Color.Black;
+            label_idStudent.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_idStudent.ForeColor = SystemColors.GrayText;
             label_idStudent.Location = new Point(441, 402);
             label_idStudent.Margin = new Padding(2, 0, 2, 0);
             label_idStudent.Name = "label_idStudent";
-            label_idStudent.Size = new Size(105, 30);
+            label_idStudent.Size = new Size(114, 30);
             label_idStudent.TabIndex = 49;
             label_idStudent.Text = "idStudent";
             // 
             // label_selectedAnswer
             // 
             label_selectedAnswer.AutoSize = true;
-            label_selectedAnswer.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label_selectedAnswer.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label_selectedAnswer.ForeColor = Color.Red;
             label_selectedAnswer.Location = new Point(594, 655);
             label_selectedAnswer.Margin = new Padding(2, 0, 2, 0);
             label_selectedAnswer.Name = "label_selectedAnswer";
-            label_selectedAnswer.Size = new Size(164, 30);
+            label_selectedAnswer.Size = new Size(176, 30);
             label_selectedAnswer.TabIndex = 50;
             label_selectedAnswer.Text = "selectedAnswer";
             // 
@@ -190,24 +214,24 @@
             // label_studentName
             // 
             label_studentName.AutoSize = true;
-            label_studentName.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label_studentName.ForeColor = Color.Black;
+            label_studentName.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_studentName.ForeColor = SystemColors.GrayText;
             label_studentName.Location = new Point(501, 279);
             label_studentName.Margin = new Padding(2, 0, 2, 0);
             label_studentName.Name = "label_studentName";
-            label_studentName.Size = new Size(143, 30);
+            label_studentName.Size = new Size(154, 30);
             label_studentName.TabIndex = 48;
             label_studentName.Text = "studentName";
             // 
             // label_gradeStudent
             // 
             label_gradeStudent.AutoSize = true;
-            label_gradeStudent.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label_gradeStudent.ForeColor = Color.Black;
+            label_gradeStudent.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_gradeStudent.ForeColor = SystemColors.GrayText;
             label_gradeStudent.Location = new Point(476, 524);
             label_gradeStudent.Margin = new Padding(2, 0, 2, 0);
             label_gradeStudent.Name = "label_gradeStudent";
-            label_gradeStudent.Size = new Size(144, 30);
+            label_gradeStudent.Size = new Size(156, 30);
             label_gradeStudent.TabIndex = 51;
             label_gradeStudent.Text = "studentGrade";
             // 
@@ -226,12 +250,12 @@
             // label_currectAnswer
             // 
             label_currectAnswer.AutoSize = true;
-            label_currectAnswer.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label_currectAnswer.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label_currectAnswer.ForeColor = Color.ForestGreen;
             label_currectAnswer.Location = new Point(594, 792);
             label_currectAnswer.Margin = new Padding(2, 0, 2, 0);
             label_currectAnswer.Name = "label_currectAnswer";
-            label_currectAnswer.Size = new Size(151, 30);
+            label_currectAnswer.Size = new Size(164, 30);
             label_currectAnswer.TabIndex = 52;
             label_currectAnswer.Text = "currectAnswer";
             // 
@@ -262,12 +286,12 @@
             // label_examName
             // 
             label_examName.AutoSize = true;
-            label_examName.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label_examName.ForeColor = Color.Black;
+            label_examName.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_examName.ForeColor = SystemColors.ControlDarkDark;
             label_examName.Location = new Point(500, 19);
             label_examName.Margin = new Padding(2, 0, 2, 0);
             label_examName.Name = "label_examName";
-            label_examName.Size = new Size(123, 30);
+            label_examName.Size = new Size(130, 30);
             label_examName.TabIndex = 58;
             label_examName.Text = "examName";
             // 
@@ -286,38 +310,14 @@
             // label_studentsAver
             // 
             label_studentsAver.AutoSize = true;
-            label_studentsAver.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label_studentsAver.ForeColor = Color.Black;
+            label_studentsAver.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label_studentsAver.ForeColor = SystemColors.ControlDarkDark;
             label_studentsAver.Location = new Point(899, 19);
             label_studentsAver.Margin = new Padding(2, 0, 2, 0);
             label_studentsAver.Name = "label_studentsAver";
-            label_studentsAver.Size = new Size(177, 30);
+            label_studentsAver.Size = new Size(190, 30);
             label_studentsAver.TabIndex = 60;
             label_studentsAver.Text = "StudentsAverage";
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(0, 135, 209);
-            panel1.Controls.Add(label4);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1481, 89);
-            panel1.TabIndex = 11;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.ForeColor = SystemColors.Window;
-            label4.Location = new Point(562, 9);
-            label4.Margin = new Padding(0);
-            label4.Name = "label4";
-            label4.Size = new Size(335, 60);
-            label4.TabIndex = 7;
-            label4.Text = "Statistics Panel";
             // 
             // panel2
             // 
