@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace ExamSystem_Project.Forms
 {
-    public partial class ExamResulltForm : Form
+    public partial class ExamResultForm : Form
     {
         public Exam exam;
         public User user;
@@ -22,7 +22,7 @@ namespace ExamSystem_Project.Forms
         public Participation participation;
 
 
-        public ExamResulltForm(Exam recivedexam, User reciveduser)
+        public ExamResultForm(Exam recivedexam, User reciveduser)
         {
 
             InitializeComponent();
@@ -53,7 +53,7 @@ namespace ExamSystem_Project.Forms
             // Set maximum width and height for the form
             int maxWidth = screen.Width - 100; // Adjust this value as needed
             int maxHeight = screen.Height - 100; // Adjust this value as needed
-            int desiredFormWidth = 1500; // Set your desired form width
+            int desiredFormWidth = 900; // Set your desired form width
             int w = Math.Min(desiredFormWidth, maxWidth);
             int h = Math.Min(Height, maxHeight);
 

@@ -1,6 +1,6 @@
 ﻿namespace ExamSystem_Project.Forms
 {
-    partial class ExamResulltForm
+    partial class ExamResultForm
     {
         /// <summary>
         /// Required designer variable.

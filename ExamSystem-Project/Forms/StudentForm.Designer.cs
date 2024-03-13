@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             textBox_filter = new TextBox();
             label1 = new Label();
             studentExamBindingSource1 = new BindingSource(components);
@@ -40,6 +40,7 @@
             label11 = new Label();
             panel5 = new Panel();
             dataGridView_StudentExam = new DataGridView();
+            examBindingSource = new BindingSource(components);
             dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
             examStrIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
@@ -50,7 +51,7 @@
             randomQuestionOrderDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
             ShowExam = new DataGridViewButtonColumn();
-            examBindingSource = new BindingSource(components);
+            examResult = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)studentExamBindingSource).BeginInit();
             panel4.SuspendLayout();
@@ -61,10 +62,10 @@
             // textBox_filter
             // 
             textBox_filter.BorderStyle = BorderStyle.FixedSingle;
-            textBox_filter.Location = new Point(334, 152);
-            textBox_filter.Margin = new Padding(4, 2, 4, 2);
+            textBox_filter.Location = new Point(278, 127);
+            textBox_filter.Margin = new Padding(3, 2, 3, 2);
             textBox_filter.Name = "textBox_filter";
-            textBox_filter.Size = new Size(309, 31);
+            textBox_filter.Size = new Size(258, 27);
             textBox_filter.TabIndex = 0;
             textBox_filter.TextChanged += textBox1_TextChanged;
             // 
@@ -72,10 +73,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(61, 152);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(51, 127);
             label1.Name = "label1";
-            label1.Size = new Size(263, 32);
+            label1.Size = new Size(211, 28);
             label1.TabIndex = 1;
             label1.Text = "Search for exam in DB :";
             // 
@@ -88,7 +88,7 @@
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1508, 89);
+            panel4.Size = new Size(1257, 74);
             panel4.TabIndex = 5;
             // 
             // label_clock
@@ -97,9 +97,10 @@
             label_clock.BackColor = Color.AliceBlue;
             label_clock.BorderStyle = BorderStyle.FixedSingle;
             label_clock.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label_clock.Location = new Point(61, 29);
+            label_clock.Location = new Point(51, 24);
+            label_clock.Margin = new Padding(2, 0, 2, 0);
             label_clock.Name = "label_clock";
-            label_clock.Size = new Size(71, 32);
+            label_clock.Size = new Size(63, 27);
             label_clock.TabIndex = 10;
             label_clock.Text = "Clock";
             // 
@@ -109,55 +110,59 @@
             label11.BackColor = Color.Transparent;
             label11.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
             label11.ForeColor = SystemColors.Window;
-            label11.Location = new Point(610, 10);
+            label11.Location = new Point(508, 8);
             label11.Margin = new Padding(0);
             label11.Name = "label11";
-            label11.Size = new Size(314, 60);
+            label11.Size = new Size(262, 50);
             label11.TabIndex = 7;
             label11.Text = "Student Panel";
             // 
             // panel5
             // 
             panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(0, 1015);
+            panel5.Location = new Point(0, 846);
             panel5.Margin = new Padding(2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(1508, 91);
+            panel5.Size = new Size(1257, 76);
             panel5.TabIndex = 6;
             // 
             // dataGridView_StudentExam
             // 
             dataGridView_StudentExam.AutoGenerateColumns = false;
             dataGridView_StudentExam.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(0, 135, 209);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 135, 209);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView_StudentExam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 135, 209);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 135, 209);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView_StudentExam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView_StudentExam.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_StudentExam.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn10, examStrIdDataGridViewTextBoxColumn, dataGridViewTextBoxColumn11, examDateTimeDataGridViewTextBoxColumn, teacherFullNameDataGridViewTextBoxColumn, totalHoursDataGridViewTextBoxColumn, totalMinutesDataGridViewTextBoxColumn, randomQuestionOrderDataGridViewCheckBoxColumn, dataGridViewTextBoxColumn12, ShowExam });
+            dataGridView_StudentExam.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn10, examStrIdDataGridViewTextBoxColumn, dataGridViewTextBoxColumn11, examDateTimeDataGridViewTextBoxColumn, teacherFullNameDataGridViewTextBoxColumn, totalHoursDataGridViewTextBoxColumn, totalMinutesDataGridViewTextBoxColumn, randomQuestionOrderDataGridViewCheckBoxColumn, dataGridViewTextBoxColumn12, ShowExam, examResult });
             dataGridView_StudentExam.DataSource = examBindingSource;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dataGridView_StudentExam.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView_StudentExam.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView_StudentExam.EnableHeadersVisualStyles = false;
-            dataGridView_StudentExam.Location = new Point(61, 278);
-            dataGridView_StudentExam.Margin = new Padding(4, 2, 4, 2);
+            dataGridView_StudentExam.Location = new Point(51, 232);
+            dataGridView_StudentExam.Margin = new Padding(3, 2, 3, 2);
             dataGridView_StudentExam.Name = "dataGridView_StudentExam";
             dataGridView_StudentExam.RowHeadersWidth = 51;
             dataGridView_StudentExam.RowTemplate.Height = 29;
             dataGridView_StudentExam.ScrollBars = ScrollBars.Vertical;
-            dataGridView_StudentExam.Size = new Size(1117, 559);
+            dataGridView_StudentExam.Size = new Size(1074, 466);
             dataGridView_StudentExam.TabIndex = 7;
             dataGridView_StudentExam.CellClick += dataGridView_StudentExam_CellClick;
+            // 
+            // examBindingSource
+            // 
+            examBindingSource.DataSource = typeof(Models.Exam);
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -244,22 +249,27 @@
             ShowExam.UseColumnTextForButtonValue = true;
             ShowExam.Width = 140;
             // 
-            // examBindingSource
+            // examResult
             // 
-            examBindingSource.DataSource = typeof(Models.Exam);
+            examResult.HeaderText = "Exam Result";
+            examResult.MinimumWidth = 6;
+            examResult.Name = "examResult";
+            examResult.Text = "Open";
+            examResult.UseColumnTextForButtonValue = true;
+            examResult.Width = 125;
             // 
             // StudentForm
             // 
-            AutoScaleDimensions = new SizeF(144F, 144F);
+            AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(1508, 1106);
+            ClientSize = new Size(1257, 922);
             Controls.Add(dataGridView_StudentExam);
             Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(label1);
             Controls.Add(textBox_filter);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(4, 2, 4, 2);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "StudentForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "StudentForm";
@@ -305,6 +315,9 @@
         private DataGridViewButtonColumn StartExam;
         public DataGridView dataGridView_teacherExams;
         private BindingSource examBindingSource;
+        public DataGridView dataGridView_StudentExam;
+        public Label label_clock;
+        public TextBox textBox_filter;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private DataGridViewTextBoxColumn examStrIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
@@ -315,8 +328,6 @@
         private DataGridViewCheckBoxColumn randomQuestionOrderDataGridViewCheckBoxColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private DataGridViewButtonColumn ShowExam;
-        public DataGridView dataGridView_StudentExam;
-        public Label label_clock;
-        public TextBox textBox_filter;
+        private DataGridViewButtonColumn examResult;
     }
 }
