@@ -13,5 +13,6 @@ namespace ExamSystem.ServerAPI.Repositories
         Task<bool> UpdateParticipation(Participation updatedParticipation);
         Task<bool> DeleteParticipation(int id);
         Task<bool> GetByStudentAndExamId(string studentId, int examId);
+        Task<List<Participation>> GetAllParticipationsById(int examId);
     }
 }

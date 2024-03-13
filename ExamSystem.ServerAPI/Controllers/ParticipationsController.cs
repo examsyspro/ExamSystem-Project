@@ -23,6 +23,13 @@ namespace ExamSystem.ServerAPI.Controllers
             return await _participationRepo.GetAllParticipations();
         }
 
+        [HttpGet("getallparticipationsbyexamid/{id}")]
+        public async Task<List<Participation>> GetAllParticipationsById(int id)
+        {
+            return await _participationRepo.GetAllParticipationsById(id);
+        }
+
+
         [HttpGet("{id}")]
         public async Task<Participation> GetParticipation(int id)
         {

@@ -163,10 +163,6 @@ namespace ExamSystem_Project.ApiRequestors
                 List<T> objList = await response.Content.ReadFromJsonAsync<List<T>>();
 
 
-                //List<Exam> exams = await Request_GetAll<Exam>("yourApiEndpoint");
-                //List<Question> questions = await Request_GetAll<Question>("yourApiEndpoint");
-                //List<OptionAns> optionAnswers = await Request_GetAll<OptionAns>("yourApiEndpoint");
-                //List<User> users = await Request_GetAll<User>("yourApiEndpoint");
 
 
                 return objList;
@@ -177,6 +173,26 @@ namespace ExamSystem_Project.ApiRequestors
             }
         }
 
+
+        public async Task<List<Participation>> Request_GetAllById(int id)
+        {
+            try
+            {
+
+                using HttpResponseMessage response = await httpClient.GetAsync($"api/participations/getallparticipationsbyexamid/{id}");
+
+                response.EnsureSuccessStatusCode(); // 201
+
+                List<Participation> participations = await response.Content.ReadFromJsonAsync<List<Participation>>();
+
+
+                return participations;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
 
         public async Task<bool> Request_Put<T>(T obj, string apiStr)

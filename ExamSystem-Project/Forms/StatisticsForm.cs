@@ -1,4 +1,6 @@
-﻿using ExamSystem_Project.Models;
+﻿using ExamSystem_Project.ApiRequestors;
+using ExamSystem_Project.Helpers;
+using ExamSystem_Project.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +17,23 @@ namespace ExamSystem_Project.Forms
     {
         public Exam exam;
         public User user;
-        public StatisticsForm(Exam recivedexam,User reciveduser)
+        public List<Participation> participationsList;
+        public List<Error> errorsList;
+        public Participation participation;
+
+        public StatisticsForm(Exam recivedexam, User reciveduser)
         {
+
             InitializeComponent();
-            InitializeAll();
             this.user = reciveduser;
             this.exam = recivedexam;
+
+            InitializeAll();
+
+
+
+
+
 
         }
 
@@ -44,14 +57,88 @@ namespace ExamSystem_Project.Forms
             int h = Math.Min(Height, maxHeight);
 
             int dataGridViewWidth = 1500; // Set your desired width
-                                        
+
 
             Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
             Size = new Size(w, h);
 
-
+            participationsList = new List<Participation>();
+            errorsList = new List<Error>();
+            GetAllParticipations();
+            participation = new Participation();
+            if (participationsList.Count > 0)
+            {
+                listBox_studentsList.SelectedIndex = 0;
+            }
+            GetErrors();
 
         }
 
+        public async void GetAllParticipations()
+        {
+            try
+            {
+                participationsList = await General.mainRequestor.Request_GetAllById(exam.ExamId);
+                foreach (var item in participationsList)
+                {
+                    errorsList.AddRange(item.errors);
+
+                    listBox_studentsList.Items.Add(item.Student_Name);
+
+                }
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
+
+        private void listBox_studentsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetErrors();
+        }
+
+        public void GetErrors()
+        {
+            try
+            {
+                listBox_errorsList.DataSource = null;
+                listBox_errorsList.Items.Clear();
+                GetParticipation();
+                foreach (var item in participation.errors)
+                {
+                    listBox_errorsList.Items.Add(item.StudentAnswer);
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
+
+        public void GetParticipation()
+        {
+            try
+            {
+                var index = listBox_studentsList.SelectedIndex;
+                if (index != -1)
+                {
+                    participation = participationsList[index];
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+        }
     }
 }

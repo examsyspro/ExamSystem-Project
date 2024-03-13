@@ -12,6 +12,7 @@ using System.Windows.Forms.VisualStyles;
 using System.Windows.Forms;
 using ExamSystem_Project.FormModels;
 using ExamSystem.Client.Helpers;
+using ExamSystem_Project.ApiRequestors;
 
 namespace ExamSystem_Project.Forms
 {
@@ -25,6 +26,7 @@ namespace ExamSystem_Project.Forms
         public User user;
         public TimerClass timer;
         public ExamAvailability examAvailability;
+       
 
 
         public ExamRunForm(Exam exam, User user1, StudentFormModel stu)
@@ -38,6 +40,7 @@ namespace ExamSystem_Project.Forms
             this.studentModel = stu;
             timer = new TimerClass(exam.TotalHours, exam.TotalMinutes, 00);
             timer.TimeUpdater += Timer_Update;
+          
 
 
         }
@@ -78,6 +81,8 @@ namespace ExamSystem_Project.Forms
                 button_next.Visible = false;
                 button_Previous.Visible = false;
                 //  textBox_teacherName.Text = user.FullName;
+
+
             }
             catch (Exception ex)
             {

@@ -32,6 +32,20 @@ namespace ExamSystem.ServerAPI.Repositories
 
         }
 
+        public async Task<List<Participation>> GetAllParticipationsById(int examId)
+        {
+            try
+            {
+                return await _context.Participations.Where(id => id.Exam_Id == examId).Include(e => e.errors).ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+
+        }
         public async Task<Participation> GetParticipationById(int id)
         {
             try
