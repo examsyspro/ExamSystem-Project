@@ -21,6 +21,7 @@ namespace ExamSystem_Project.Forms
             InitializeAll();
             this.user = reciveduser;
             this.exam = recivedexam;
+
         }
 
 
