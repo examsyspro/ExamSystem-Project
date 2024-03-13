@@ -36,22 +36,41 @@ namespace ExamSystem.ServerAPI.Repositories
         {
             try
             {
-                return await _context.Participations.Where(id => id.Exam_Id == examId).Include(e => e.errors).ToListAsync();
+                // Retrieve participations filtered by examId
+                List<Participation> participations = await _context.Participations
+                    .Where(p => p.Exam_Id == examId)
+                    .ToListAsync();
 
+                // Loop through each participation to retrieve errors
+                foreach (var participation in participations)
+                {
+                    participation.errors = await _context.Errors
+                        .Where(e => e.ParticipationId == participation.ParticipationId)
+                        .ToListAsync();
+                }
+
+            
+                return participations;
             }
             catch (Exception ex)
             {
-
+                // Log the exception or handle it appropriately
+                // Returning null might not be the best practice; consider throwing the exception instead
                 return null;
             }
-
         }
         public async Task<Participation> GetParticipationById(int id)
         {
             try
             {
-                var participation = await _context.Participations.Include(e => e.errors)
-               .FirstOrDefaultAsync(p => p.Exam_Id == id);
+
+                var participation = await _context.Participations.FirstOrDefaultAsync(p => p.Exam_Id == id);
+                
+                if (participation != null)
+                {
+                    participation.errors = await _context.Errors.Where(e=>e.ParticipationId == participation.ParticipationId).ToListAsync();
+                }
+              
                 if (participation == null)
                 {
                     return new Participation();
@@ -136,19 +155,23 @@ namespace ExamSystem.ServerAPI.Repositories
         {
             try
             {
-                Participation participation = await _context.Participations.Include(e => e.errors)
-          .FirstOrDefaultAsync(p => p.Student_Id == studentId && p.Exam_Id == examId);
+                Participation participation = await _context.Participations.FirstOrDefaultAsync(p => p.Student_Id == studentId && p.Exam_Id == examId);
+
+                // Assuming you intended to retrieve errors associated with the participation, you should include that logic
+                if (participation != null)
+                {
+                    participation.errors = await _context.Errors.Where(e=>e.ParticipationId == participation.ParticipationId).ToListAsync();
+                }
 
                 return participation;
             }
-
             catch (Exception ex)
             {
+                // Log or handle the exception appropriately
                 return null;
-
             }
-
         }
+
     }
 }
 

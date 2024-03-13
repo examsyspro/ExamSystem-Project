@@ -49,6 +49,7 @@
             label_searchExam = new Label();
             panel4 = new Panel();
             label11 = new Label();
+            button_Logout = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView_teacherExams).BeginInit();
             ((System.ComponentModel.ISupportInitialize)examBindingSource).BeginInit();
             panel4.SuspendLayout();
@@ -224,6 +225,7 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(0, 135, 209);
+            panel4.Controls.Add(button_Logout);
             panel4.Controls.Add(label11);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
@@ -238,12 +240,28 @@
             label11.BackColor = Color.Transparent;
             label11.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
             label11.ForeColor = SystemColors.Window;
-            label11.Location = new Point(618, 10);
+            label11.Location = new Point(711, 10);
             label11.Margin = new Padding(0);
             label11.Name = "label11";
             label11.Size = new Size(310, 60);
             label11.TabIndex = 7;
             label11.Text = "Teacher Panel";
+            // 
+            // button_Logout
+            // 
+            button_Logout.BackColor = Color.AliceBlue;
+            button_Logout.BackgroundImageLayout = ImageLayout.Zoom;
+            button_Logout.FlatStyle = FlatStyle.Flat;
+            button_Logout.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Logout.ForeColor = Color.FromArgb(0, 135, 209);
+            button_Logout.Location = new Point(1532, 18);
+            button_Logout.Margin = new Padding(2);
+            button_Logout.Name = "button_Logout";
+            button_Logout.Size = new Size(148, 52);
+            button_Logout.TabIndex = 10;
+            button_Logout.Text = "Logout";
+            button_Logout.UseVisualStyleBackColor = false;
+            button_Logout.Click += button_Logout_Click;
             // 
             // TeacherForm
             // 
@@ -287,5 +305,6 @@
         private DataGridViewTextBoxColumn courseTypeDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn ShowExam;
         private DataGridViewButtonColumn ExamStatistics;
+        public Button button_Logout;
     }
 }

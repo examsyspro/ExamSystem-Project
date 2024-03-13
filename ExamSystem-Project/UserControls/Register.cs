@@ -51,6 +51,7 @@ namespace ExamSystem_Project.UserControls
 
         private void label_LoginNow_Click(object sender, EventArgs e)
         {
+          
             MainForm.main.UISwitch("Login");
         }
 
@@ -110,7 +111,9 @@ namespace ExamSystem_Project.UserControls
                         success = await General.mainRequestor.Request_NewPost(user, "api/users/register");
                         if (success)
                         {
+                         
                             MessageBox.Show(Helpers.Constants.successReg);
+                            ResetFormControls();
                             MainForm.main.UISwitch("Login");
 
 
@@ -132,6 +135,19 @@ namespace ExamSystem_Project.UserControls
             }
 
 
+        }
+
+        private void ResetFormControls()
+        {
+            textBox_textName.Text = string.Empty;
+            textBox_textid.Text = string.Empty;
+            textBox_password.Text = string.Empty;
+            comboBox_Type.SelectedIndex = 0;
+            label_firlas.Visible = false;
+            label_id.Visible = false;
+            label_pass.Visible = false;
+            label_cour.Visible = false;
+            label_teaStu.Visible = false;
         }
 
         private void Register_Load(object sender, EventArgs e)

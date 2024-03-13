@@ -129,6 +129,12 @@ namespace ExamSystem_Project.Forms
 
         }
 
+        private void button_Logout_Click(object sender, EventArgs e)
+        {
+            MainForm main = new MainForm();
+            main.Show();
+            this.Close();
+        }
     }
 }
 

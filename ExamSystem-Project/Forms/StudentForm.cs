@@ -127,10 +127,19 @@ namespace ExamSystem_Project.Forms
 
         private void StudentForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // clock.Stop();
-            Environment.Exit(0);
+            
+            
+           // Environment.Exit(0);
         }
 
+        private void button_Logout_Click(object sender, EventArgs e)
+        {
+            clock.Clock_event -= Clock_Update;
+            MainForm main = new MainForm();
+            main.Show();
+            this.Close();
+        }
 
+     
     }
 }

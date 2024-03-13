@@ -21,5 +21,9 @@ namespace ExamSystem_Project.Models
               errors = new List<Error>();
         }
 
+        public override string? ToString()
+        {
+            return Student_Name;
+        }
     }
 }

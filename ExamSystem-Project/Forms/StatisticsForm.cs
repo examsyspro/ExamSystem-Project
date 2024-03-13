@@ -71,9 +71,8 @@ namespace ExamSystem_Project.Forms
             participation = new Participation();
             gradesList = new List<float>();
             error = new Error();
-            GetAllParticipations();
-            GetErrors();
-            GetError();
+            
+
 
 
             label_examName.Text = exam.ExamTitle;
@@ -82,6 +81,8 @@ namespace ExamSystem_Project.Forms
 
         }
 
+
+
         public async void GetAllParticipations()
         {
             try
@@ -89,17 +90,11 @@ namespace ExamSystem_Project.Forms
                 participationsList = await General.mainRequestor.Request_GetAllById(exam.ExamId);
                 if (participationsList != null)
                 {
-                    foreach (var item in participationsList)
-                    {
-                        errorsList.AddRange(item.errors);
-
-                        listBox_studentsList.Items.Add(item.Student_Name);
-                        gradesList.Add(item.Grade);
-
-                    }
-                    listBox_studentsList.SelectedIndex = 0;
-                    GetAverage();
+                    listBox_studentsList.DataSource = participationsList;
                 }
+                listBox_studentsList.SelectedIndex = 0;
+                GetAverage();
+                GetParticipation();
             }
             catch (Exception ex)
             {
@@ -116,35 +111,18 @@ namespace ExamSystem_Project.Forms
                 if (index != -1)
                 {
                     participation = participationsList[index];
-                }
-                UpdateStudentLabels();
-            }
-            catch (Exception ex)
-            {
-
-
-            }
-
-        }
-
-        public void GetErrors()
-        {
-            try
-            {
-                listBox_errorsList.DataSource = null;
-                listBox_errorsList.Items.Clear();
-                GetParticipation();
-                if (participation != null)
-                {
+                    listBox_errorsList.DataSource = null;
+                    listBox_errorsList.Items.Clear();
+                   
+                    
                     if (participation.errors.Count > 0)
                     {
-                        foreach (var item in participation.errors)
-                        {
-                            listBox_errorsList.Items.Add(item.QuestionContent);
-                        }
+                        listBox_errorsList.DataSource = participation.errors;
+                        errorsList.AddRange(participation.errors);
                         listBox_errorsList.SelectedIndex = 0;
                         label_selectedAnswer.Visible = true;
                         label_currectAnswer.Visible = true;
+                        
                     }
                     else
                     {
@@ -152,14 +130,21 @@ namespace ExamSystem_Project.Forms
                         label_selectedAnswer.Visible = false;
                         label_currectAnswer.Visible = false;
                     }
+
+
                 }
+                UpdateStudentLabels();
+                GetError();
             }
             catch (Exception ex)
             {
 
 
             }
+
         }
+
+
 
         public void GetError()
         {
@@ -169,6 +154,7 @@ namespace ExamSystem_Project.Forms
                 if (index != -1)
                 {
                     error = errorsList[index];
+                    UpdateStudentLabels();
                 }
 
             }
@@ -184,6 +170,11 @@ namespace ExamSystem_Project.Forms
         {
             try
             {
+                foreach (var item in participationsList)
+                {
+                    gradesList.Add(item.Grade);
+                }
+
                 average = gradesList.Sum() / gradesList.Count;
                 label_studentsAver.Text = average.ToString();
             }
@@ -221,8 +212,11 @@ namespace ExamSystem_Project.Forms
         {
             try
             {
+                errorsList.Clear();
+                GetParticipation();
                 UpdateStudentLabels();
-                GetErrors();
+                UpdateAnswersLabels();
+
             }
             catch (Exception ex)
             {
@@ -236,6 +230,11 @@ namespace ExamSystem_Project.Forms
         {
             GetError();
             UpdateAnswersLabels();
+        }
+
+        private void StatisticsForm_Shown(object sender, EventArgs e)
+        {
+            GetAllParticipations();
         }
     }
 }

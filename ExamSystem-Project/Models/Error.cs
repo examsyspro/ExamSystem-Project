@@ -15,5 +15,10 @@ namespace ExamSystem_Project.Models
         public string StudentAnswer { get; set; }
         public int ParticipationId { get; set; }
 
+        public override string ToString()
+        {
+            return QuestionContent;
+        }
+
     }
 }

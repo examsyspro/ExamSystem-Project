@@ -65,7 +65,7 @@
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1185, 71);
+            panel4.Size = new Size(1481, 89);
             panel4.TabIndex = 10;
             // 
             // panel1
@@ -76,7 +76,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1185, 71);
+            panel1.Size = new Size(1481, 89);
             panel1.TabIndex = 11;
             // 
             // label4
@@ -85,10 +85,10 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.Window;
-            label4.Location = new Point(450, 7);
+            label4.Location = new Point(562, 9);
             label4.Margin = new Padding(0);
             label4.Name = "label4";
-            label4.Size = new Size(281, 50);
+            label4.Size = new Size(335, 60);
             label4.TabIndex = 7;
             label4.Text = "Statistics Panel";
             // 
@@ -98,10 +98,10 @@
             label11.BackColor = Color.Transparent;
             label11.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
             label11.ForeColor = SystemColors.Window;
-            label11.Location = new Point(450, 7);
+            label11.Location = new Point(562, 9);
             label11.Margin = new Padding(0);
             label11.Name = "label11";
-            label11.Size = new Size(281, 50);
+            label11.Size = new Size(335, 60);
             label11.TabIndex = 7;
             label11.Text = "Statistics Panel";
             // 
@@ -110,30 +110,32 @@
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label15.ForeColor = Color.FromArgb(0, 135, 209);
-            label15.Location = new Point(86, 149);
+            label15.Location = new Point(108, 186);
             label15.Margin = new Padding(2, 0, 2, 0);
             label15.Name = "label15";
-            label15.Size = new Size(126, 25);
+            label15.Size = new Size(146, 30);
             label15.TabIndex = 42;
             label15.Text = "Students List";
             // 
             // listBox_studentsList
             // 
             listBox_studentsList.FormattingEnabled = true;
-            listBox_studentsList.ItemHeight = 20;
-            listBox_studentsList.Location = new Point(86, 183);
+            listBox_studentsList.ItemHeight = 25;
+            listBox_studentsList.Location = new Point(108, 229);
+            listBox_studentsList.Margin = new Padding(4, 4, 4, 4);
             listBox_studentsList.Name = "listBox_studentsList";
-            listBox_studentsList.Size = new Size(174, 544);
+            listBox_studentsList.Size = new Size(216, 679);
             listBox_studentsList.TabIndex = 43;
             listBox_studentsList.SelectedIndexChanged += listBox_studentsList_SelectedIndexChanged;
             // 
             // listBox_errorsList
             // 
             listBox_errorsList.FormattingEnabled = true;
-            listBox_errorsList.ItemHeight = 20;
-            listBox_errorsList.Location = new Point(769, 183);
+            listBox_errorsList.ItemHeight = 25;
+            listBox_errorsList.Location = new Point(961, 229);
+            listBox_errorsList.Margin = new Padding(4, 4, 4, 4);
             listBox_errorsList.Name = "listBox_errorsList";
-            listBox_errorsList.Size = new Size(339, 544);
+            listBox_errorsList.Size = new Size(423, 679);
             listBox_errorsList.TabIndex = 45;
             listBox_errorsList.SelectedIndexChanged += listBox_errorsList_SelectedIndexChanged;
             // 
@@ -142,10 +144,10 @@
             label_errorList.AutoSize = true;
             label_errorList.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label_errorList.ForeColor = Color.FromArgb(0, 135, 209);
-            label_errorList.Location = new Point(769, 149);
+            label_errorList.Location = new Point(961, 186);
             label_errorList.Margin = new Padding(2, 0, 2, 0);
             label_errorList.Name = "label_errorList";
-            label_errorList.Size = new Size(101, 25);
+            label_errorList.Size = new Size(117, 30);
             label_errorList.TabIndex = 44;
             label_errorList.Text = "Erorrs List";
             // 
@@ -154,10 +156,10 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(0, 135, 209);
-            label1.Location = new Point(307, 223);
+            label1.Location = new Point(384, 279);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(98, 25);
+            label1.Size = new Size(112, 30);
             label1.TabIndex = 53;
             label1.Text = "Student : ";
             // 
@@ -166,10 +168,10 @@
             label_idStudent.AutoSize = true;
             label_idStudent.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label_idStudent.ForeColor = SystemColors.GrayText;
-            label_idStudent.Location = new Point(353, 322);
+            label_idStudent.Location = new Point(441, 402);
             label_idStudent.Margin = new Padding(2, 0, 2, 0);
             label_idStudent.Name = "label_idStudent";
-            label_idStudent.Size = new Size(100, 25);
+            label_idStudent.Size = new Size(114, 30);
             label_idStudent.TabIndex = 49;
             label_idStudent.Text = "idStudent";
             // 
@@ -178,10 +180,10 @@
             label_selectedAnswer.AutoSize = true;
             label_selectedAnswer.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label_selectedAnswer.ForeColor = Color.Red;
-            label_selectedAnswer.Location = new Point(475, 524);
+            label_selectedAnswer.Location = new Point(594, 655);
             label_selectedAnswer.Margin = new Padding(2, 0, 2, 0);
             label_selectedAnswer.Name = "label_selectedAnswer";
-            label_selectedAnswer.Size = new Size(149, 25);
+            label_selectedAnswer.Size = new Size(176, 30);
             label_selectedAnswer.TabIndex = 50;
             label_selectedAnswer.Text = "selectedAnswer";
             // 
@@ -190,10 +192,10 @@
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label19.ForeColor = Color.FromArgb(0, 135, 209);
-            label19.Location = new Point(307, 322);
+            label19.Location = new Point(384, 402);
             label19.Margin = new Padding(2, 0, 2, 0);
             label19.Name = "label19";
-            label19.Size = new Size(42, 25);
+            label19.Size = new Size(48, 30);
             label19.TabIndex = 54;
             label19.Text = "ID :";
             // 
@@ -202,10 +204,10 @@
             label17.AutoSize = true;
             label17.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label17.ForeColor = Color.FromArgb(0, 135, 209);
-            label17.Location = new Point(307, 419);
+            label17.Location = new Point(384, 524);
             label17.Margin = new Padding(2, 0, 2, 0);
             label17.Name = "label17";
-            label17.Size = new Size(76, 25);
+            label17.Size = new Size(88, 30);
             label17.TabIndex = 56;
             label17.Text = "Grade :";
             // 
@@ -214,10 +216,10 @@
             label_studentName.AutoSize = true;
             label_studentName.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label_studentName.ForeColor = SystemColors.GrayText;
-            label_studentName.Location = new Point(401, 223);
+            label_studentName.Location = new Point(501, 279);
             label_studentName.Margin = new Padding(2, 0, 2, 0);
             label_studentName.Name = "label_studentName";
-            label_studentName.Size = new Size(132, 25);
+            label_studentName.Size = new Size(154, 30);
             label_studentName.TabIndex = 48;
             label_studentName.Text = "studentName";
             // 
@@ -226,10 +228,10 @@
             label_gradeStudent.AutoSize = true;
             label_gradeStudent.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label_gradeStudent.ForeColor = SystemColors.GrayText;
-            label_gradeStudent.Location = new Point(381, 419);
+            label_gradeStudent.Location = new Point(476, 524);
             label_gradeStudent.Margin = new Padding(2, 0, 2, 0);
             label_gradeStudent.Name = "label_gradeStudent";
-            label_gradeStudent.Size = new Size(134, 25);
+            label_gradeStudent.Size = new Size(156, 30);
             label_gradeStudent.TabIndex = 51;
             label_gradeStudent.Text = "studentGrade";
             // 
@@ -238,10 +240,10 @@
             label18.AutoSize = true;
             label18.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label18.ForeColor = Color.FromArgb(0, 135, 209);
-            label18.Location = new Point(307, 524);
+            label18.Location = new Point(384, 655);
             label18.Margin = new Padding(2, 0, 2, 0);
             label18.Name = "label18";
-            label18.Size = new Size(172, 25);
+            label18.Size = new Size(202, 30);
             label18.TabIndex = 55;
             label18.Text = "Selected Answer : ";
             // 
@@ -250,10 +252,10 @@
             label_currectAnswer.AutoSize = true;
             label_currectAnswer.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label_currectAnswer.ForeColor = Color.ForestGreen;
-            label_currectAnswer.Location = new Point(475, 634);
+            label_currectAnswer.Location = new Point(594, 792);
             label_currectAnswer.Margin = new Padding(2, 0, 2, 0);
             label_currectAnswer.Name = "label_currectAnswer";
-            label_currectAnswer.Size = new Size(141, 25);
+            label_currectAnswer.Size = new Size(164, 30);
             label_currectAnswer.TabIndex = 52;
             label_currectAnswer.Text = "currectAnswer";
             // 
@@ -262,10 +264,10 @@
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label14.ForeColor = Color.FromArgb(0, 135, 209);
-            label14.Location = new Point(307, 634);
+            label14.Location = new Point(384, 792);
             label14.Margin = new Padding(2, 0, 2, 0);
             label14.Name = "label14";
-            label14.Size = new Size(164, 25);
+            label14.Size = new Size(191, 30);
             label14.TabIndex = 57;
             label14.Text = "Currect Answer : ";
             // 
@@ -274,10 +276,10 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.FromArgb(0, 135, 209);
-            label2.Location = new Point(274, 15);
+            label2.Location = new Point(342, 19);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(132, 25);
+            label2.Size = new Size(154, 30);
             label2.TabIndex = 59;
             label2.Text = "Exam Name : ";
             // 
@@ -286,10 +288,10 @@
             label_examName.AutoSize = true;
             label_examName.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label_examName.ForeColor = SystemColors.ControlDarkDark;
-            label_examName.Location = new Point(400, 15);
+            label_examName.Location = new Point(500, 19);
             label_examName.Margin = new Padding(2, 0, 2, 0);
             label_examName.Name = "label_examName";
-            label_examName.Size = new Size(112, 25);
+            label_examName.Size = new Size(130, 30);
             label_examName.TabIndex = 58;
             label_examName.Text = "examName";
             // 
@@ -298,10 +300,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.FromArgb(0, 135, 209);
-            label3.Location = new Point(540, 15);
+            label3.Location = new Point(675, 19);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(179, 25);
+            label3.Size = new Size(208, 30);
             label3.TabIndex = 61;
             label3.Text = "Students Average :";
             // 
@@ -310,10 +312,10 @@
             label_studentsAver.AutoSize = true;
             label_studentsAver.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label_studentsAver.ForeColor = SystemColors.ControlDarkDark;
-            label_studentsAver.Location = new Point(719, 15);
+            label_studentsAver.Location = new Point(899, 19);
             label_studentsAver.Margin = new Padding(2, 0, 2, 0);
             label_studentsAver.Name = "label_studentsAver";
-            label_studentsAver.Size = new Size(164, 25);
+            label_studentsAver.Size = new Size(190, 30);
             label_studentsAver.TabIndex = 60;
             label_studentsAver.Text = "StudentsAverage";
             // 
@@ -325,17 +327,17 @@
             panel2.Controls.Add(label_examName);
             panel2.Controls.Add(label_studentsAver);
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 71);
+            panel2.Location = new Point(0, 89);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1185, 53);
+            panel2.Size = new Size(1481, 66);
             panel2.TabIndex = 62;
             // 
             // StatisticsForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1185, 763);
+            ClientSize = new Size(1481, 954);
             Controls.Add(panel2);
             Controls.Add(label1);
             Controls.Add(label14);
@@ -357,6 +359,7 @@
             Name = "StatisticsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "StatisticForm";
+            Shown += StatisticsForm_Shown;
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel1.ResumeLayout(false);
