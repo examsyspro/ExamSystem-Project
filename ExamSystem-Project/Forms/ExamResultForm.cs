@@ -62,9 +62,11 @@ namespace ExamSystem_Project.Forms
 
             Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
             Size = new Size(w, h);
-            GetPaticipation();
+
+            participation = new Participation();
             errorsList = new List<Error>();
             error = new Error();
+            GetPaticipation();
             GetErrors();
             GetError();
 
@@ -78,7 +80,18 @@ namespace ExamSystem_Project.Forms
 
         public async void GetPaticipation()
         {
-            participation = await General.mainRequestor.Request_GetParticipationBySE(user.UserId, exam.ExamId);
+            try
+            {
+
+                participation = await General.mainRequestor.Request_GetParticipationBySE(user.UserId, exam.ExamId);
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
         }
 
 

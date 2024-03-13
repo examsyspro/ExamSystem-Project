@@ -81,12 +81,12 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.Window;
-            label4.Location = new Point(289, 7);
+            label4.Location = new Point(265, 9);
             label4.Margin = new Padding(0);
             label4.Name = "label4";
-            label4.Size = new Size(281, 50);
+            label4.Size = new Size(337, 50);
             label4.TabIndex = 7;
-            label4.Text = "Statistics Panel";
+            label4.Text = "Exam Result Panel";
             // 
             // label11
             // 
@@ -279,7 +279,7 @@
             panel2.Size = new Size(876, 53);
             panel2.TabIndex = 62;
             // 
-            // ExamResulltForm
+            // ExamResultForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -299,8 +299,8 @@
             Controls.Add(label_errorList);
             Controls.Add(panel4);
             Margin = new Padding(2);
-            Name = "ExamResulltForm";
-            Text = "StatisticForm";
+            Name = "ExamResultForm";
+            Text = "ExamResultForm";
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel1.ResumeLayout(false);
