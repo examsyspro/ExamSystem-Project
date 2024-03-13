@@ -20,6 +20,10 @@ namespace ExamSystem_Project.Forms
         public List<Participation> participationsList;
         public List<Error> errorsList;
         public Participation participation;
+        public Error error;
+        public float average = 0;
+        public List<float> gradesList;
+
 
         public StatisticsForm(Exam recivedexam, User reciveduser)
         {
@@ -64,13 +68,17 @@ namespace ExamSystem_Project.Forms
 
             participationsList = new List<Participation>();
             errorsList = new List<Error>();
-            GetAllParticipations();
             participation = new Participation();
-            if (participationsList.Count > 0)
-            {
-                listBox_studentsList.SelectedIndex = 0;
-            }
+            gradesList = new List<float>();
+            error = new Error();
+            GetAllParticipations();
             GetErrors();
+            GetError();
+            GetAverage();
+
+            label_examName.Text = exam.ExamTitle;
+
+
 
         }
 
@@ -79,40 +87,17 @@ namespace ExamSystem_Project.Forms
             try
             {
                 participationsList = await General.mainRequestor.Request_GetAllById(exam.ExamId);
-                foreach (var item in participationsList)
+                if (participationsList != null)
                 {
-                    errorsList.AddRange(item.errors);
+                    foreach (var item in participationsList)
+                    {
+                        errorsList.AddRange(item.errors);
 
-                    listBox_studentsList.Items.Add(item.Student_Name);
+                        listBox_studentsList.Items.Add(item.Student_Name);
+                        gradesList.Add(item.Grade);
 
-                }
-
-
-
-
-            }
-            catch (Exception ex)
-            {
-
-
-            }
-        }
-
-        private void listBox_studentsList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GetErrors();
-        }
-
-        public void GetErrors()
-        {
-            try
-            {
-                listBox_errorsList.DataSource = null;
-                listBox_errorsList.Items.Clear();
-                GetParticipation();
-                foreach (var item in participation.errors)
-                {
-                    listBox_errorsList.Items.Add(item.StudentAnswer);
+                    }
+                    listBox_studentsList.SelectedIndex = 0;
                 }
             }
             catch (Exception ex)
@@ -139,6 +124,112 @@ namespace ExamSystem_Project.Forms
 
             }
 
+        }
+
+        public void GetErrors()
+        {
+            try
+            {
+                listBox_errorsList.DataSource = null;
+                listBox_errorsList.Items.Clear();
+                GetParticipation();
+                if (participation != null)
+                {
+                    if (participation.errors.Count > 0)
+                    {
+                        foreach (var item in participation.errors)
+                        {
+                            listBox_errorsList.Items.Add(item.QuestionContent);
+                        }
+                        listBox_errorsList.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        listBox_errorsList.Items.Add("No Errors congratulations :)");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
+
+        public void GetError()
+        {
+            try
+            {
+                var index = listBox_errorsList.SelectedIndex;
+                if (index != -1)
+                {
+                    error = errorsList[index];
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+        }
+
+        public void GetAverage()
+        {
+            try
+            {
+                average = gradesList.Sum() / gradesList.Count;
+                label_studentsAver.Text = average.ToString();
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
+
+
+        public void UpdateStudentLabels()
+        {
+            label_studentName.Text = participation.Student_Name;
+            label_idStudent.Text = participation.Student_Id;
+            label_gradeStudent.Text = participation.Grade.ToString();
+        }
+
+
+        public void UpdateAnswersLabels()
+        {
+            label_currectAnswer.Text = error.CorrectAnswer;
+            label_selectedAnswer.Text = participation.Student_Id;
+            label_gradeStudent.Text = participation.Grade.ToString();
+        }
+
+
+
+
+
+
+
+        private void listBox_studentsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                UpdateStudentLabels();
+                GetErrors();
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+        }
+
+        private void listBox_errorsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetError();
+            UpdateAnswersLabels();
         }
     }
 }
