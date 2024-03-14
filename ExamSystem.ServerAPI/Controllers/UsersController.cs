@@ -11,8 +11,8 @@ namespace ExamSystem.ServerAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IUsersRepository _usersRepo;
-        public UsersController(IUsersRepository repo)
+        private readonly ISystemRepository _usersRepo;
+        public UsersController(ISystemRepository repo)
         {
             _usersRepo = repo;
         }

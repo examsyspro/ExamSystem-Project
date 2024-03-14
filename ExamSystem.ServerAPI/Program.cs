@@ -20,9 +20,8 @@ public class Program
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-        builder.Services.AddScoped<IExamsRepository, ExamsRepository>();
-        builder.Services.AddScoped<IUsersRepository, UsersRepository>();
-        builder.Services.AddScoped<IParticipationRepository, ParticipationRepository>();
+        builder.Services.AddScoped<ISystemRepository, SystemRepository>();
+
 
 
 

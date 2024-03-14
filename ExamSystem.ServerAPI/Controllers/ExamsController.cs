@@ -12,9 +12,9 @@ namespace ExamSystem.ServerAPI.Controllers
     [ApiController]
     public class ExamsController : ControllerBase
     {
-        private readonly IExamsRepository _examsRepo;
+        private readonly ISystemRepository _examsRepo;
 
-        public ExamsController(IExamsRepository repo)
+        public ExamsController(ISystemRepository repo)
         {
             _examsRepo = repo;
         }

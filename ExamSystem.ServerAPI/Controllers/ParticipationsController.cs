@@ -10,9 +10,9 @@ namespace ExamSystem.ServerAPI.Controllers
     [ApiController]
     public class ParticipationsController : ControllerBase
     {
-        private readonly IParticipationRepository _participationRepo;
+        private readonly ISystemRepository _participationRepo;
 
-        public ParticipationsController(IParticipationRepository repo)
+        public ParticipationsController(ISystemRepository repo)
         {
             _participationRepo = repo;
         }
