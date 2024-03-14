@@ -48,9 +48,6 @@ namespace ExamSystem.Client.Helpers
                 Msg = Msg_Remaining + FormattedTime;
                 TimeUpdater?.Invoke(Msg, new MyTimerEventArgs { IsExpired = false });
                 Thread.Sleep(1000);
-
-               
-             
             }
             catch (Exception ex)
             {
@@ -88,7 +85,6 @@ namespace ExamSystem.Client.Helpers
                 timer.Dispose();
                 Msg = Msg_Expired + FormattedTime;
                 TimeUpdater?.Invoke(Msg, new MyTimerEventArgs { IsExpired = true });
-
             }
         }
 
