@@ -40,21 +40,14 @@ namespace ExamSystem_Project.Forms
             this.studentModel = stu;
             timer = new TimerClass(exam.TotalHours, exam.TotalMinutes, 00);
             timer.TimeUpdater += Timer_Update;
-          
-
-
         }
-
-
 
         public void InitializeAll()
         {
-
             try
             {
                 tabControl1.TabPages.Remove(tabPage_step2);
                 panel_questions.SendToBack();
-
 
                 // Set DPI Awareness
                 this.AutoScaleMode = AutoScaleMode.Dpi;
@@ -75,14 +68,10 @@ namespace ExamSystem_Project.Forms
                 Location = new Point(screen.Left + (screen.Width - w) / 2, screen.Top + (screen.Height - h) / 2);
                 Size = new Size(w, h);
 
-
-
                 button_SaveExamBuilder.Visible = false;
                 button_next.Visible = false;
                 button_Previous.Visible = false;
-                //  textBox_teacherName.Text = user.FullName;
-
-
+             
             }
             catch (Exception ex)
             {
@@ -119,9 +108,6 @@ namespace ExamSystem_Project.Forms
 
 
             }
-
-
-
         }
 
         private void button_Previous_Click(object sender, EventArgs e)

@@ -33,8 +33,10 @@
             label5 = new Label();
             label6 = new Label();
             panel2 = new Panel();
+            label1 = new Label();
             panel1_main = new Panel();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -90,11 +92,23 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.Window;
+            panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 1062);
+            panel2.Location = new Point(0, 1042);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1801, 42);
+            panel2.Size = new Size(1801, 62);
             panel2.TabIndex = 7;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.GrayText;
+            label1.Location = new Point(665, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(526, 30);
+            label1.TabIndex = 9;
+            label1.Text = "By Roei Atar && Matan Gaida All rights reserved ©";
             // 
             // panel1_main
             // 
@@ -119,9 +133,11 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Exam System";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -133,5 +149,6 @@
         private Label label6;
         private Panel panel2;
         private Panel panel1_main;
+        private Label label1;
     }
 }
