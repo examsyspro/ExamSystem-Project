@@ -147,7 +147,6 @@ namespace ExamSystem_Project.Forms
                     if (x == 0)
                     {
                         teacherModel.DeleteExam();
-                   
                     }
                     else
                     {

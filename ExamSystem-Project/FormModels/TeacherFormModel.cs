@@ -158,7 +158,6 @@ namespace ExamSystem_Project.FormModels
                                 teacher.dataGridView_teacherExams.Rows[i].Cells[9].Value = "Executed";
                                 teacher.dataGridView_teacherExams.Rows[i].Cells[9].Style.BackColor = Color.LightGray;
                                 teacher.dataGridView_teacherExams.Rows[i].Cells[10].Tag = 0;
-                              
                             }
                             else
                             {
@@ -262,7 +261,6 @@ namespace ExamSystem_Project.FormModels
                     {
                         MessageBox.Show(Constants.successDelete);
                         GetAllExams();
-                        
                     }
                     else
                     {
@@ -273,7 +271,6 @@ namespace ExamSystem_Project.FormModels
             catch (Exception ex)
             {
 
-                
             }
         }
 
