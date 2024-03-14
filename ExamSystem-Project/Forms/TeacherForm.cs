@@ -15,7 +15,6 @@ namespace ExamSystem_Project.Forms
 {
     public partial class TeacherForm : Form
     {
-        BuildExamForm buildExamForm;
         TeacherFormModel teacherModel;
         public User user;
 

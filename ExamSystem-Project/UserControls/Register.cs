@@ -44,9 +44,6 @@ namespace ExamSystem_Project.UserControls
             label_cour.Visible = false;
             label_teaStu.Visible = false;
             label_id.Visible = false;
-
-
-
         }
 
         private void label_LoginNow_Click(object sender, EventArgs e)
@@ -57,82 +54,94 @@ namespace ExamSystem_Project.UserControls
 
         private async void button_Register_Click(object sender, EventArgs e)
         {
-
-
-            if ((textBox_textName.Text == "") || textBox_textid.Text == "")
+            try
             {
-                MessageBox.Show(Helpers.Constants.requiredfields);
-            }
-            else if (comboBox_Type.SelectedIndex == 0)
-            {
-                MessageBox.Show(Helpers.Constants.typeSelect);
-            }
-            else
-            {
-                selectedItem = comboBox_Type.SelectedItem.ToString();
-                //Convert String from ComboBox (string) to Enum UserType
-                userType = (UserType_Enum)Enum.Parse(typeof(UserType_Enum), selectedItem);
-                if (userType == UserType_Enum.Student && comboBox_Course_Select.SelectedIndex == 0)
+                if ((textBox_textName.Text == "") || textBox_textid.Text == "")
                 {
-                    MessageBox.Show(Helpers.Constants.curseSelect);
+                    MessageBox.Show(Helpers.Constants.requiredfields);
+                }
+                else if (comboBox_Type.SelectedIndex == 0)
+                {
+                    MessageBox.Show(Helpers.Constants.typeSelect);
                 }
                 else
                 {
-                    password = textBox_password.Text;
-                    fullname = textBox_textName.Text;
-                    userid = textBox_textid.Text;
-                    if (!Regex.IsMatch(fullname, "^[a-zA-Z]+\\s[a-zA-Z]+$"))
+                    selectedItem = comboBox_Type.SelectedItem.ToString();
+                    //Convert String from ComboBox (string) to Enum UserType  
+                   bool res = Enum.TryParse(selectedItem, out UserType_Enum userType);
+                    if (res)
                     {
-                        MessageBox.Show(Helpers.Constants.fullNameRegex);
-
-                        return;
-                    }
-                    if (!Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"))
-                    {
-                        MessageBox.Show(Helpers.Constants.passwordRegex);
-                        return;
-                    }
-                    if (!Regex.IsMatch(userid, "^[0-9]{9}$"))
-                    {
-                        MessageBox.Show(Helpers.Constants.userIdRegex);
-                        return;
-                    }
-                    if (userType == UserType_Enum.Teacher)
-                    {
-                        courseType = null;
-                    }
-
-                    user = new User() { TypeOfUser = userType.ToString(), FullName = fullname, UserId = userid, CourseType = courseType, PassWord = password };
-
-                    User rtnUser = await General.mainRequestor.Request_GetById<User>(userid, $"api/users");
-                    if (rtnUser.UserId == null)
-                    {
-
-                        success = await General.mainRequestor.Request_NewPost(user, "api/users/register");
-                        if (success)
+                        if (userType == UserType_Enum.Student && comboBox_Course_Select.SelectedIndex == 0)
                         {
-                         
-                            MessageBox.Show(Helpers.Constants.successReg);
-                            ResetFormControls();
-                            MainForm.main.UISwitch("Login");
-
-
+                            MessageBox.Show(Helpers.Constants.curseSelect);
                         }
                         else
                         {
-                            MessageBox.Show(Helpers.Constants.notSuccessReg);
-                            return;
+                            password = textBox_password.Text;
+                            fullname = textBox_textName.Text;
+                            userid = textBox_textid.Text;
+                            if (!Regex.IsMatch(fullname, "^[a-zA-Z]+\\s[a-zA-Z]+$"))
+                            {
+                                MessageBox.Show(Helpers.Constants.fullNameRegex);
+
+                                return;
+                            }
+                            if (!Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"))
+                            {
+                                MessageBox.Show(Helpers.Constants.passwordRegex);
+                                return;
+                            }
+                            if (!Regex.IsMatch(userid, "^[0-9]{9}$"))
+                            {
+                                MessageBox.Show(Helpers.Constants.userIdRegex);
+                                return;
+                            }
+                            if (userType == UserType_Enum.Teacher)
+                            {
+                                courseType = null;
+                            }
+
+                            user = new User() { TypeOfUser = userType.ToString(), FullName = fullname, UserId = userid, CourseType = courseType, PassWord = password };
+
+                            User rtnUser = await General.mainRequestor.Request_GetById<User>(userid, $"api/users");
+                            if (rtnUser.UserId == null)
+                            {
+
+                                success = await General.mainRequestor.Request_NewPost(user, "api/users/register");
+                                if (success)
+                                {
+
+                                    MessageBox.Show(Helpers.Constants.successReg);
+                                    ResetFormControls();
+                                    MainForm.main.UISwitch("Login");
+
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show(Helpers.Constants.notSuccessReg);
+                                    return;
+                                }
+                            }
+
+                            else
+                            {
+                                MessageBox.Show(Helpers.Constants.alreadyExists);
+                            }
                         }
                     }
+                  
 
-                    else
-                    {
-                        MessageBox.Show(Helpers.Constants.alreadyExists);
-                    }
+
                 }
-
-
             }
+            catch (Exception ex)
+            {
+
+             
+            }
+
+          
 
 
         }

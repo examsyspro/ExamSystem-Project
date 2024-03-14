@@ -39,10 +39,8 @@ namespace ExamSystem_Project.FormModels
             try
             {
                 exams = await General.mainRequestor.Request_GetAll<Exam>("api/exams/getallexams");
-
                 if (exams.Count > 0)
                 {
-
                     teacher.dataGridView_teacherExams.DataSource = exams;
                     for (int i = 0; i < exams.Count; i++)
                     {
@@ -55,9 +53,6 @@ namespace ExamSystem_Project.FormModels
                             teacher.dataGridView_teacherExams.Rows[i].Cells[9].Value = "Executed";
                             teacher.dataGridView_teacherExams.Rows[i].Cells[9].Style.BackColor = Color.LightGray;
                             teacher.dataGridView_teacherExams.Rows[i].Cells[10].Tag = 0;
-                        
-
-
                         }
                         else
                         {
@@ -67,16 +62,13 @@ namespace ExamSystem_Project.FormModels
                             teacher.dataGridView_teacherExams.Rows[i].Cells[10].Value = "No Statistics";
                             teacher.dataGridView_teacherExams.Rows[i].Cells[10].Tag = 1;
                             teacher.dataGridView_teacherExams.Rows[i].Cells[10].Style.BackColor = Color.LightGray;
-
                         }
-
                     }
                 }
                 else
                 {
                     teacher.dataGridView_teacherExams.DataSource = null;
                 }
-
                 teacher.CheckDataGridEmpty();
             }
             catch (Exception ex)
@@ -114,9 +106,6 @@ namespace ExamSystem_Project.FormModels
 
         }
 
-
-
-
         private void RestoreCellTags()
         {
             try
@@ -146,10 +135,8 @@ namespace ExamSystem_Project.FormModels
         {
             try
             {
-
                 if (exams.Count > 0)
                 {
-
                     SaveCellTags();
                     List<Exam> filteredList = exams
                          .Where(item => item.ExamTitle.ToLower().Contains(filterValue))
@@ -157,7 +144,6 @@ namespace ExamSystem_Project.FormModels
                     teacher.dataGridView_teacherExams.DataSource = null;
                     teacher.dataGridView_teacherExams.DataSource = filteredList;
                     RestoreCellTags();
-
 
                     if (teacher.dataGridView_teacherExams.Rows.Count > 0)
                     {
@@ -207,15 +193,12 @@ namespace ExamSystem_Project.FormModels
                 exam = exams[index];
                 buildExam = new BuildExamForm(exam, user);
                 buildExam.ShowDialog();
-
             }
             catch (Exception ex)
             {
 
 
             }
-
-
         }
 
         public void OpenExamStatistics(User user)
@@ -226,15 +209,12 @@ namespace ExamSystem_Project.FormModels
                 exam = exams[index];
                 statisticsForm = new StatisticsForm(exam, user);
                 statisticsForm.ShowDialog();
-
             }
             catch (Exception ex)
             {
 
 
             }
-
-
         }
 
         public void CreateNewExam(User user)
@@ -242,7 +222,6 @@ namespace ExamSystem_Project.FormModels
             buildExam = new BuildExamForm(null, user);
             buildExam.ShowDialog();
         }
-
 
         public bool DialogMsgBox()
         {
@@ -290,16 +269,12 @@ namespace ExamSystem_Project.FormModels
                         MessageBox.Show(Constants.notSuccessReg);
                     }
                 }
-
-                 
             }
             catch (Exception ex)
             {
 
                 
             }
-           
-
         }
 
     }

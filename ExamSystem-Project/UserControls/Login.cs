@@ -72,7 +72,7 @@ namespace ExamSystem_Project.UserControls
                         MessageBox.Show(Constants.userIdRegex);
                         return;
                     }
-                    //this.Content = new Progress();
+                  
                     user = new User() { PassWord = password, UserId = userid };
                     userResponse = await General.mainRequestor.Request_LoginAsync(user);
 
@@ -83,10 +83,7 @@ namespace ExamSystem_Project.UserControls
 
                             student = new StudentForm(userResponse);
                             student.Show();
-
                             MainForm.main.Hide();
-
-
                         }
                         else if (userResponse.TypeOfUser == "Teacher")
                         {
@@ -100,7 +97,6 @@ namespace ExamSystem_Project.UserControls
                     else
                     {
                         MessageBox.Show(Constants.invalidMsg);
-                        //this.Content = new Login();
                     }
                 }
             }

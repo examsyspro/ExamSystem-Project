@@ -13,14 +13,12 @@ namespace ExamSystem_Project
         General gen;
         public MainForm()
         {
-
             InitializeComponent();
             panel1_main.Controls.Add(new Register());
             panel1_main.Controls.Add(new Login());
             gen = new General();
             UISwitch("Login");
             main = this;
-
         }
 
 

@@ -42,7 +42,6 @@ namespace ExamSystem_Project.ApiRequestors
 
                 response.EnsureSuccessStatusCode(); // 201
 
-                // Get Json Data From Server Result
                 bool isOkResponse = await response.Content.ReadFromJsonAsync<bool>();
 
                 return isOkResponse;
@@ -52,14 +51,6 @@ namespace ExamSystem_Project.ApiRequestors
 
                 throw;
             }
-
-
-
-            //bool resultExam = await Request_NewPost<Exam>(examObject, "yourApiEndpoint");
-            //bool resultQuestion = await Request_NewPost<Question>(questionObject, "yourApiEndpoint");
-            //bool resultOptionAns = await Request_NewPost<OptionAns>(optionAnsObject, "yourApiEndpoint");
-            // bool resultUser = await Request_NewPost<User>(userObject, string apiStr);
-
         }
 
 
