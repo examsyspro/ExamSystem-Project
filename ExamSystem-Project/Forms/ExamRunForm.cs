@@ -99,17 +99,11 @@ namespace ExamSystem_Project.Forms
         //Updating the Timer
         public void Timer_Update(object sender, MyTimerEventArgs e)
         {
-
-
-
             label_timer.Invoke((MethodInvoker)delegate { label_timer.Text = sender.ToString(); });
             if (e.IsExpired)
             {
-
                 examModel.SaveExam(e.IsExpired);
             }
-
-
         }
 
         private void button_next_Click(object sender, EventArgs e)

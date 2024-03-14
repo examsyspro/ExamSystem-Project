@@ -20,14 +20,13 @@ namespace ExamSystem.Client.Helpers
         public string FormattedTime = "";
         public string Msg = "";
         private System.Timers.Timer timer;
-        MyTimerEventArgs Timer_Args;
+
 
         public TimerClass(int initialHours, int initialMinutes, int initialSeconds)
         {
             Hours = initialHours;
             Minutes = initialMinutes;
             Seconds = initialSeconds;
-            Timer_Args = new MyTimerEventArgs();
         }
 
         public void StartTimer()
@@ -87,7 +86,6 @@ namespace ExamSystem.Client.Helpers
             {
                 timer.Stop();
                 timer.Dispose();
-                Timer_Args.IsExpired = true;
                 Msg = Msg_Expired + FormattedTime;
                 TimeUpdater?.Invoke(Msg, new MyTimerEventArgs { IsExpired = true });
 

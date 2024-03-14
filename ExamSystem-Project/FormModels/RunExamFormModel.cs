@@ -17,12 +17,9 @@ namespace ExamSystem_Project.FormModels
 {
     public class RunExamFormModel
     {
-
         public int textBoxCounter = 0; 
         public int optionNameCounter = 1;
         public int CurrectAnswerCount = 0;
-        public Label dynamicText;
-        public string[] strArr;
         public Exam exam;
         public Label dynamicLabelOption;
         public Question question;
@@ -40,8 +37,6 @@ namespace ExamSystem_Project.FormModels
         public Participation participation;
         public Error error;
 
-
-
         public RunExamFormModel(Exam examFromSt)
         {
             this.runExam = ExamRunForm.runExam;
@@ -54,16 +49,7 @@ namespace ExamSystem_Project.FormModels
             checkedDictionary = new Dictionary<int, int>();
             participation = new Participation();
 
-
-
         }
-
-
-
-
-
-
-
 
         public void CreateDynamicOptions()
         {
@@ -74,28 +60,28 @@ namespace ExamSystem_Project.FormModels
                 // Create a unique identifier for the dynamic controls
                 string controlId = Guid.NewGuid().ToString();
 
-                // Create a new Label
+              
                 dynamicLabel = new Label
                 {
-                    Font = new Font("Segoe UI", 11, FontStyle.Bold), // Set Font to bold
+                    Font = new Font("Segoe UI", 11, FontStyle.Bold),
                     ForeColor = Color.FromArgb(0, 135, 209),
                     Text = "Option " + optionNameCounter + " :",
                     TextAlign = System.Drawing.ContentAlignment.MiddleLeft,
                     Location = new Point(runExam.label_question.Left, Convert.ToInt32(GetTopMargin())),
                     AutoSize = true,
-                    Tag = controlId // Set a unique identifier as the Tag
+                    Tag = controlId 
                 };
 
                 labelList.Add(dynamicLabel);
-                // Create a new TextBox
+                
                 dynamicLabelOption = new Label
                 {
-                    Font = new Font("Segoe UI", 11, FontStyle.Regular), // Set Font to bold
+                    Font = new Font("Segoe UI", 11, FontStyle.Regular),
                     TextAlign = System.Drawing.ContentAlignment.MiddleLeft,
                     Location = new Point(runExam.textBox_QuetionContent.Left - 80, dynamicLabel.Top),
-                    Name = "label_labeloption" + optionNameCounter, // Unique name based on the counter
+                    Name = "label_labeloption" + optionNameCounter,
                     AutoSize = true,
-                    Tag = controlId, // Set the same unique identifier as the Tag
+                    Tag = controlId, 
 
                 };
 
@@ -128,7 +114,6 @@ namespace ExamSystem_Project.FormModels
                 runExam.panel_questions.Controls.Add(radioButton);
 
                 // Increment the counter for the next TextBox
-
                 textBoxCounter++;
                 optionNameCounter++;
 
@@ -140,14 +125,6 @@ namespace ExamSystem_Project.FormModels
 
             }
         }
-
-
-
-
-
-
-
-
 
         public void CreateDynamicFullFields(int val)
         {
@@ -219,14 +196,21 @@ namespace ExamSystem_Project.FormModels
 
         public void SaveMarkedIndex(object sender, EventArgs e)
         {
-
-            int index = radioButtonList.FindIndex(x => x.Checked == true);
-            if (index >= 0 && !checkedDictionary.ContainsKey(questionIndex))
+            try
             {
-                checkedDictionary.Add(questionIndex, index);
+                int index = radioButtonList.FindIndex(x => x.Checked == true);
+                if (index >= 0 && !checkedDictionary.ContainsKey(questionIndex))
+                {
+                    checkedDictionary.Add(questionIndex, index);
+                }
+                else
+                    checkedDictionary[questionIndex] = index;
             }
-            else
-                checkedDictionary[questionIndex] = index;
+            catch (Exception ex)
+            {
+
+            }
+  
 
 
         }
@@ -403,25 +387,35 @@ namespace ExamSystem_Project.FormModels
 
         private double GetTopMargin()
         {
-            double topMargin = 50;
-
-            // Find the last TextBox in panel_questions and adjust the top margin
-            if (runExam.panel_questions.Controls.Count > 0)
+            try
             {
-                foreach (Control control in runExam.panel_questions.Controls)
+                double topMargin = 50;
+
+                // Find the last TextBox in panel_questions and adjust the top margin
+                if (runExam.panel_questions.Controls.Count > 0)
                 {
-                    if (control is TextBox text)
+                    foreach (Control control in runExam.panel_questions.Controls)
                     {
-                        topMargin += text.Height + 20; // Increase the space between TextBoxes
-                    }
-                    if (control is Label label)
-                    {
-                        topMargin += label.Height + 10; // Increase the space between TextBoxes
+                        if (control is TextBox text)
+                        {
+                            topMargin += text.Height + 20; // Increase the space between TextBoxes
+                        }
+                        if (control is Label label)
+                        {
+                            topMargin += label.Height + 10; // Increase the space between TextBoxes
+                        }
                     }
                 }
-            }
 
-            return topMargin;
+                return topMargin;
+            }
+            catch (Exception ex)
+            {
+               return 0;
+
+
+            }
+       
         }
 
         public void FillAllExamFields()
@@ -437,21 +431,28 @@ namespace ExamSystem_Project.FormModels
 
         public void ClearAllControls()
         {
-            for (int i = 0; i < radioButtonList.Count; i++)
+            try
             {
-                runExam.panel_questions.Controls.Remove(labelList[i]);
-                runExam.panel_questions.Controls.Remove(labelListOptions[i]);
-                runExam.panel_questions.Controls.Remove(radioButtonList[i]);
+                for (int i = 0; i < radioButtonList.Count; i++)
+                {
+                    runExam.panel_questions.Controls.Remove(labelList[i]);
+                    runExam.panel_questions.Controls.Remove(labelListOptions[i]);
+                    runExam.panel_questions.Controls.Remove(radioButtonList[i]);
 
+                }
+                textBoxCounter = 0;
+                optionNameCounter = 1;
+
+                runExam.textBox_QuetionContent.Text = string.Empty;
+                labelListOptions = new List<Label>();
+                radioButtonList = new List<RadioButton>();
+                labelList = new List<Label>();
             }
-            textBoxCounter = 0;
-            optionNameCounter = 1;
+            catch (Exception ex)
+            {
 
-            runExam.textBox_QuetionContent.Text = string.Empty;
-            labelListOptions = new List<Label>();
-            radioButtonList = new List<RadioButton>();
-            labelList = new List<Label>();
-
+            
+            }
         }
 
 

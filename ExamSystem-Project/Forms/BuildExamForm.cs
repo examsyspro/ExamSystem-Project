@@ -268,7 +268,6 @@ namespace ExamSystem_Project.Forms
                 res = true;
             }
 
-
             button_SaveQuestion.Enabled = res;
         }
 

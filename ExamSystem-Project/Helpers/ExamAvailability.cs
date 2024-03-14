@@ -13,7 +13,7 @@ namespace ExamSystem_Project.Helpers
    
         private DateTime examEndTime;
         private DateTime currentDateTime;
-        Exam exam;
+        private Exam exam;
         public const int ExamBuffer = 30;
 
         public ExamAvailability(Exam Myexam)

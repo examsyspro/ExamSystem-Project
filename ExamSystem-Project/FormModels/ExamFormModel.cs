@@ -19,7 +19,6 @@ namespace ExamSystem_Project.FormModels
         public int textBoxCounter = 0;
         public int optionNameCounter = 1;
         public TextBox dynamicTextBox;
-        public string[] strArr;
         public Exam exam;
         public Question question;
         public OptionAns optionAns;
@@ -58,8 +57,6 @@ namespace ExamSystem_Project.FormModels
                 exam = dtExam;
 
                 FillAllExamFields();
-
-
             }
             else
             {
@@ -117,9 +114,6 @@ namespace ExamSystem_Project.FormModels
             {
 
             }
-
-            //exam.CourseType = (Course_Enum)Enum.Parse(typeof(Course_Enum), coursetype);
-            //exam.RandomQuestionOrder = checkBox_QuestionOrder.Checked;
         }
 
         public void UpdateQuestion()
@@ -195,8 +189,6 @@ namespace ExamSystem_Project.FormModels
                 }
 
                 RefreshQuestionsListBox();
-
-
                 CheckQuestionListSize();
                 return true;
 
@@ -230,9 +222,6 @@ namespace ExamSystem_Project.FormModels
                 exam.questions.Remove(question);
                 RefreshQuestionsListBox();
                 CheckQuestionListSize();
-
-
-
             }
             catch (Exception ex)
             {
@@ -265,16 +254,21 @@ namespace ExamSystem_Project.FormModels
 
         public void CreateDynamicFullFields()
         {
-            buildExam.textBox_QuetionContent.Text = question.Text;
-            for (int i = 0; i < question.Options.Count; i++)
+            try
             {
-                CreateDynamicOptions();
-                textBoxesList[i].Text = question.Options[i].ToString();
-                radioButtonList[i].Checked = question.Options[i].IsCorrect;
+                buildExam.textBox_QuetionContent.Text = question.Text;
+                for (int i = 0; i < question.Options.Count; i++)
+                {
+                    CreateDynamicOptions();
+                    textBoxesList[i].Text = question.Options[i].ToString();
+                    radioButtonList[i].Checked = question.Options[i].IsCorrect;
+                }
             }
+            catch (Exception ex)
+            {
 
-
-
+             
+            }
         }
 
         public void RandomQuestionOrder()
@@ -305,29 +299,27 @@ namespace ExamSystem_Project.FormModels
 
                 // Create a unique identifier for the dynamic controls
                 string controlId = Guid.NewGuid().ToString();
-
-                // Create a new Label
                 dynamicLabel = new Label
                 {
-                    Font = new Font("Segoe UI", 11, FontStyle.Bold), // Set Font to bold
+                    Font = new Font("Segoe UI", 11, FontStyle.Bold), 
                     ForeColor = Color.FromArgb(0, 135, 209),
                     Text = "Option " + optionNameCounter + " :",
                     TextAlign = System.Drawing.ContentAlignment.MiddleLeft,
                     Location = new Point(buildExam.label_question.Left, Convert.ToInt32(GetTopMargin())),
                     AutoSize = true,
-                    Tag = controlId // Set a unique identifier as the Tag
+                    Tag = controlId 
                 };
 
                 labelList.Add(dynamicLabel);
-                // Create a new TextBox
+
                 dynamicTextBox = new TextBox
                 {
                     Width = 600,
                     Height = 26,
                     BorderStyle = BorderStyle.FixedSingle,
                     Location = new Point(buildExam.textBox_QuetionContent.Left - 80, dynamicLabel.Top),
-                    Name = "textBox_option" + optionNameCounter, // Unique name based on the counter
-                    Tag = controlId, // Set the same unique identifier as the Tag
+                    Name = "textBox_option" + optionNameCounter, 
+                    Tag = controlId,
 
                 };
                 dynamicTextBox.TextChanged += (dynamicTextBox, textBoxEventArgs) =>
@@ -335,11 +327,9 @@ namespace ExamSystem_Project.FormModels
                     buildExam.OptionsButtonHandler(dynamicTextBox as TextBox, textBoxEventArgs);
                 };
 
-
                 textBoxesList.Add(dynamicTextBox);
 
-
-                // Create a Delete button (trash icon)
+               
                 Button deleteButton = new Button
                 {
                     Text = "Delete",
@@ -387,8 +377,6 @@ namespace ExamSystem_Project.FormModels
                     textBoxCounter--;
                     optionNameCounter--;
 
-
-
                     // Retrieve the unique identifier associated with the controls
                     string tag = deleteButton.Tag as string;
 
@@ -407,7 +395,6 @@ namespace ExamSystem_Project.FormModels
                     }
                     buildExam.button_addOption.Enabled = textBoxCounter < 5;
                     buildExam.OptionsButtonHandler(new TextBox(), EventArgs.Empty);
-
                 };
 
                 // Add Label, TextBox, and Delete button to the panel_questions
@@ -471,11 +458,19 @@ namespace ExamSystem_Project.FormModels
 
         public void AddQuestion()
         {
+            try
+            {
+                ClearAllControls();
+                question = new Question();
+                question.ExamStrId = exam.ExamStrId;
+                buildExam.textBox_QuetionContent.Invoke(() => buildExam.OptionsButtonHandler(buildExam.textBox_QuetionContent, EventArgs.Empty));
+            }
+            catch (Exception ex)
+            {
 
-            ClearAllControls();
-            question = new Question();
-            question.ExamStrId = exam.ExamStrId;
-            buildExam.textBox_QuetionContent.Invoke(() => buildExam.OptionsButtonHandler(buildExam.textBox_QuetionContent, EventArgs.Empty));
+               
+            }
+         
         }
 
         private double GetTopMargin()
@@ -489,7 +484,7 @@ namespace ExamSystem_Project.FormModels
                 {
                     if (control is TextBox textBox)
                     {
-                        topMargin += textBox.Height + 40; // Increase the space between TextBoxes
+                        topMargin += textBox.Height + 40;
                     }
                 }
             }
