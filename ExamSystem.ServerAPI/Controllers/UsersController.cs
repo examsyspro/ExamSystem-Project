@@ -16,26 +16,19 @@ namespace ExamSystem.ServerAPI.Controllers
         {
             _usersRepo = repo;
         }
-        // GET: api/<UsersController>
+
         [HttpGet("getallusers")]
         public async Task<List<User>> GetAllUsers()
         {
             return await _usersRepo.GetAllUsers();
         }
 
-        // GET api/<UsersController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
         [HttpGet("{id}")]
         public async Task<User> GetUser(string id)
         {
             return await _usersRepo.GetUserByUserId(id);
         }
 
-        // POST api/<UsersController>
         [HttpPost("register")]
         public async Task<bool> Post_Register([FromBody] User user)
         {
@@ -48,7 +41,6 @@ namespace ExamSystem.ServerAPI.Controllers
             return await _usersRepo.ValidateUser(user.PassWord, user.UserId);
         }
 
-        // PUT api/<UsersController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
@@ -56,7 +48,6 @@ namespace ExamSystem.ServerAPI.Controllers
 
         }
 
-        // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

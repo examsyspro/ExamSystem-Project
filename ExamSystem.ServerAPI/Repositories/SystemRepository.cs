@@ -103,7 +103,6 @@ namespace ExamSystem.ServerAPI.Repositories
             }
         }
 
-
         public async Task<List<Exam>> GetExamsByCourseType(Course_Enum courseType)
         {
             var exam = await _context.Exams
@@ -279,7 +278,6 @@ namespace ExamSystem.ServerAPI.Repositories
             }
 
         }
-
 
         public async Task<Participation> GetParticipationBySE(string studentId, int examId)
         {

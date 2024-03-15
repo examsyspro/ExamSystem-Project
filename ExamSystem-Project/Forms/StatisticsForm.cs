@@ -176,7 +176,7 @@ namespace ExamSystem_Project.Forms
                 }
 
                 average = gradesList.Sum() / gradesList.Count;
-                label_studentsAver.Text = average.ToString();
+                label_studentsAver.Text = Math.Round(average,2).ToString();
             }
             catch (Exception ex)
             {

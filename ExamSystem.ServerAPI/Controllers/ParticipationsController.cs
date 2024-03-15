@@ -29,7 +29,6 @@ namespace ExamSystem.ServerAPI.Controllers
             return await _participationRepo.GetAllParticipationsById(id);
         }
 
-
         [HttpGet("{id}")]
         public async Task<Participation> GetParticipationById(int id)
         {
