@@ -24,18 +24,10 @@ namespace ExamSystem_Project.Forms
 
         public ExamResultForm(Exam recivedexam, User reciveduser)
         {
-
             InitializeComponent();
             this.user = reciveduser;
             this.exam = recivedexam;
-
             InitializeAll();
-
-
-
-
-
-
         }
 
 
@@ -67,14 +59,7 @@ namespace ExamSystem_Project.Forms
             errorsList = new List<Error>();
             error = new Error();
             GetPaticipation();
-
-
-
-
             label_examName.Text = exam.ExamTitle;
-
-
-
         }
 
 
@@ -82,7 +67,6 @@ namespace ExamSystem_Project.Forms
         {
             try
             {
-
                 participation = await General.mainRequestor.Request_GetParticipationBySE(user.UserId, exam.ExamId);
                 UpdateStudentLabels();
                 GetErrors();
@@ -142,8 +126,6 @@ namespace ExamSystem_Project.Forms
                 if (index != -1)
                 {
                     error = errorsList[index];
-
-
                 }
 
             }
@@ -155,32 +137,18 @@ namespace ExamSystem_Project.Forms
 
         }
 
-
-
-
         public void UpdateStudentLabels()
         {
             label_studentName.Text = participation.Student_Name;
             label_idStudent.Text = participation.Student_Id;
             label_gradeStudent.Text = participation.Grade.ToString();
-
         }
-
 
         public void UpdateAnswersLabels()
         {
             label_currectAnswer.Text = error.CorrectAnswer;
             label_selectedAnswer.Text = error.StudentAnswer;
-
         }
-
-
-
-
-
-
-
-
 
         private void listBox_errorsList_SelectedIndexChanged(object sender, EventArgs e)
         {
