@@ -73,12 +73,6 @@ namespace ExamSystem_Project.ApiRequestors
                 throw;
             }
 
-
-
-            //Exam exam = await Request_GetById<Exam>("yourId", "yourApiEndpoint");
-            //Question question = await Request_GetById<Question>("yourId", "yourApiEndpoint");
-            //OptionAns optionAns = await Request_GetById<OptionAns>("yourId", "yourApiEndpoint");
-            //User user = await Request_GetById<User>("yourId", "yourApiEndpoint");
         }
 
         public async Task<User> Request_LoginAsync(User credentials)
@@ -175,7 +169,7 @@ namespace ExamSystem_Project.ApiRequestors
 
                 return objList;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw; // Return false in case of an exception.
             }
@@ -222,17 +216,11 @@ namespace ExamSystem_Project.ApiRequestors
             }
             catch (Exception ex)
             {
-                // Log exception details or throw a custom exception
-                // Log.Error(ex, "An error occurred in Request_Put.");
                 throw;
             }
 
 
 
-            //Exam updatedExam = await Request_Put<Exam>(examObject, "yourId", "yourApiEndpoint");
-            //Question updatedQuestion = await Request_Put<Question>(questionObject, "yourId", "yourApiEndpoint");
-            //OptionAns updatedOptionAns = await Request_Put<OptionAns>(optionAnsObject, "yourId", "yourApiEndpoint");
-            //User updatedUser = await Request_Put<User>(userObject, "yourId", "yourApiEndpoint");
 
         }
 
@@ -252,13 +240,8 @@ namespace ExamSystem_Project.ApiRequestors
             }
             catch (Exception ex)
             {
-                // Log exception details or throw a custom exception
-                // Log.Error(ex, "An error occurred in Request_Delete.");
                 throw;
             }
-
-
-            //bool resultDelete = await Request_Delete("yourId", "yourApiEndpoint");
 
         }
 
