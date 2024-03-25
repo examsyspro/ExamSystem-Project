@@ -176,27 +176,6 @@ namespace ExamSystem_Project.Forms
             }
         }
 
-
-
-
-
-
-
-
-
-        private void button_Test_Click(object sender, EventArgs e)
-        {
-            //textBox_examTitle.Text = "test exam";
-            //textBox_teacherName.Text = "test teacher";
-            //textBox_date.Text = dateTimePicker_examDate.Value.ToString("dd/MM/yy");
-            //comboBox_Course_Select.SelectedIndex = 0;
-            //checkBox_QuestionOrder.Checked = true;
-            //comboBox_hours_StartTime.SelectedIndex = 1;
-            //comboBox_minutes_StartTime.SelectedIndex = 0;
-            //comboBox_hours_totalTime.SelectedIndex = 1;
-            //comboBox_minutes_totalTime.SelectedIndex = 0;
-        }
-
         private void button_SaveExamBuilder_Click(object sender, EventArgs e)
         {
             examModel.SaveExam(false);
